@@ -99,7 +99,14 @@
         .signal-status.demo { background: rgba(234, 179, 8, 0.2); color: var(--yellow); }
         .info-btn { width: 18px; height: 18px; border-radius: 50%; background: var(--border); border: none; color: var(--text-muted); font-size: 10px; font-weight: 700; cursor: pointer; margin-left: 4px; }
         .info-btn:hover { background: var(--text-muted); color: var(--bg); }
-        .signal-value { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; min-width: 48px; text-align: right; }
+        .signal-right { display: flex; flex-direction: column; align-items: flex-end; min-width: 80px; gap: 4px; }
+        .signal-value { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; text-align: right; color: var(--green); }
+        .signal-bar { width: 80px; height: 6px; background: var(--card-elevated); border-radius: 3px; overflow: hidden; }
+        .signal-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease, background 0.4s ease; }
+        .signal-bar-fill.green { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .signal-bar-fill.yellow { background: linear-gradient(90deg, #22c55e, #eab308); }
+        .signal-bar-fill.orange { background: linear-gradient(90deg, #eab308, #f97316); }
+        .signal-bar-fill.red { background: linear-gradient(90deg, #f97316, #ef4444); }
 
         /* Feed */
         .feed-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
@@ -188,7 +195,7 @@
                 </svg>
             </div>
             <div class="gauge-value green" id="gaugeValue">0%</div>
-            <div class="gauge-window">Projected Risk: Next 24 Hours</div>
+            <div class="gauge-window">Projected Risk: Next 8 Hours</div>
         </div>
 
         <div class="trend-section">
@@ -207,25 +214,34 @@
                     <div class="signal-name">News Intel <span class="signal-status live" id="newsStatus">LIVE</span><button class="info-btn" onclick="showInfo('news')">i</button></div>
                     <div class="signal-detail" id="newsDetail">Scanning sources...</div>
                 </div>
-                <div class="signal-value" id="newsValue" style="color: var(--green)">0%</div>
+                <div class="signal-right">
+                    <div class="signal-value" id="newsValue">0%</div>
+                    <div class="signal-bar"><div class="signal-bar-fill green" id="newsBar" style="width: 0%"></div></div>
+                </div>
             </div>
 
             <div class="signal-item">
                 <div class="signal-icon trends">📈</div>
                 <div class="signal-info">
                     <div class="signal-name">Public Interest <span class="signal-status live" id="trendsStatus">LIVE</span><button class="info-btn" onclick="showInfo('trends')">i</button></div>
-                    <div class="signal-detail" id="socialDetail">Wikipedia pageviews</div>
+                    <div class="signal-detail" id="socialDetail">Reddit + Wikipedia</div>
                 </div>
-                <div class="signal-value" id="socialValue" style="color: var(--green)">0%</div>
+                <div class="signal-right">
+                    <div class="signal-value" id="socialValue">0%</div>
+                    <div class="signal-bar"><div class="signal-bar-fill green" id="socialBar" style="width: 0%"></div></div>
+                </div>
             </div>
 
             <div class="signal-item">
                 <div class="signal-icon flight">✈️</div>
                 <div class="signal-info">
-                    <div class="signal-name">Iran Airspace <span class="signal-status live" id="flightStatus">LIVE</span><button class="info-btn" onclick="showInfo('aviation')">i</button></div>
-                    <div class="signal-detail" id="flightDetail">Aircraft over Iran</div>
+                    <div class="signal-name">Aviation Activity <span class="signal-status live" id="flightStatus">LIVE</span><button class="info-btn" onclick="showInfo('aviation')">i</button></div>
+                    <div class="signal-detail" id="flightDetail">Civilian + Military tracking</div>
                 </div>
-                <div class="signal-value" id="flightValue" style="color: var(--green)">0%</div>
+                <div class="signal-right">
+                    <div class="signal-value" id="flightValue">0%</div>
+                    <div class="signal-bar"><div class="signal-bar-fill green" id="flightBar" style="width: 0%"></div></div>
+                </div>
             </div>
 
             <div class="signal-item">
@@ -234,7 +250,10 @@
                     <div class="signal-name">Op. Conditions <span class="signal-status live" id="weatherStatus">LIVE</span><button class="info-btn" onclick="showInfo('weather')">i</button></div>
                     <div class="signal-detail" id="weatherDetail">Tehran conditions</div>
                 </div>
-                <div class="signal-value" id="weatherValue" style="color: var(--green)">--</div>
+                <div class="signal-right">
+                    <div class="signal-value" id="weatherValue">--</div>
+                    <div class="signal-bar"><div class="signal-bar-fill green" id="weatherBar" style="width: 0%"></div></div>
+                </div>
             </div>
         </div>
 
@@ -301,10 +320,22 @@
         const MIL_PREFIX = ['AE', 'AF', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'];
 
         const INFO_CONTENT = {
-            news: { title: 'News Intelligence', body: '<strong>Source:</strong> NewsData.io API<br><br><strong>What it tracks:</strong> Real-time news articles mentioning Iran, Israel, Pentagon, CENTCOM, military operations, and strikes.<br><br><strong>Risk logic:</strong> More articles + alert keywords (strike, attack, escalation) = higher risk score. Sudden spikes indicate developing situations.' },
-            trends: { title: 'Public Interest', body: '<strong>Source:</strong> Wikipedia Pageviews API<br><br><strong>What it tracks:</strong> Daily views on the "Iran" Wikipedia page. During crises, public interest spikes dramatically.<br><br><strong>Risk logic:</strong> Baseline is ~35k views/day. Views above 70k suggest elevated public concern. 200k+ views indicate major crisis attention.' },
-            aviation: { title: 'Iran Airspace Activity', body: '<strong>Source:</strong> OpenSky Network (Live ADS-B)<br><br><strong>What it tracks:</strong> All aircraft currently flying over Iranian airspace (lat 25-40°, lon 44-63°).<br><br><strong>Risk logic:</strong> Monitors for military transponder codes (USAF hex prefixes), tanker callsigns (KC-135, KC-10), and unusual cargo flight patterns from Tehran to Damascus/Beirut.' },
-            weather: { title: 'Operational Conditions', body: '<strong>Source:</strong> OpenWeatherMap API<br><br><strong>What it tracks:</strong> Current weather in Tehran including visibility, cloud cover, and conditions.<br><br><strong>Risk logic:</strong> Clear skies and high visibility favor aerial operations. Poor weather (low visibility, storms) reduces operational likelihood. Shown as tactical impact assessment.' }
+            news: {
+                title: 'News Intelligence',
+                body: '<strong>Source:</strong> NewsData.io API<br><br><strong>What it tracks:</strong> Real-time news articles mentioning USA, Iran, military strike, Pentagon, CENTCOM.<br><br><strong>Risk logic:</strong> Baseline ~3-5 articles = low risk. 10+ articles with alert keywords (strike, attack, imminent) = high risk. Breaking news surge can push to 30%+.<br><br><strong>Max contribution:</strong> 35%'
+            },
+            trends: {
+                title: 'Public Interest',
+                body: '<strong>Sources:</strong> Reddit (r/worldnews, r/geopolitics) + Wikipedia pageviews<br><br><strong>What it tracks:</strong> Reddit posts about Iran strike/attack in last 24h, plus Wikipedia views on "Iran", "Iran-United States relations", and "Iran-Israel conflict" pages.<br><br><strong>Risk logic:</strong> Reddit posts with high upvotes + Wikipedia spikes above 50k/day = elevated concern. Viral Reddit threads are early indicators.<br><br><strong>Max contribution:</strong> 25%'
+            },
+            aviation: {
+                title: 'Aviation Activity',
+                body: '<strong>Source:</strong> OpenSky Network (Live ADS-B)<br><br><strong>What it tracks:</strong> Two signals combined:<br>1. <strong>Civilian DROP:</strong> Normal = 40-80 aircraft over Iran. If drops to <20, airlines are avoiding = very bad sign.<br>2. <strong>Military PRESENCE:</strong> US military transponders (AE/AF hex), tankers (KC-135), cargo (RCH).<br><br><strong>Risk logic:</strong> Civilian drop + military presence = compounding risk.<br><br><strong>Max contribution:</strong> 35%'
+            },
+            weather: {
+                title: 'Op. Conditions',
+                body: '<strong>Source:</strong> OpenWeatherMap API<br><br><strong>What it tracks:</strong> Tehran weather - visibility, cloud cover, conditions.<br><br><strong>Risk logic:</strong> Clear skies (visibility >10km, clouds <30%) = favorable for aerial operations = +5% to risk. Poor weather = 0% contribution.<br><br><strong>Max contribution:</strong> 5%'
+            }
         };
 
         let chart;
@@ -347,14 +378,26 @@
         function updateSignal(name, value, detail) {
             const valEl = document.getElementById(`${name}Value`);
             const detailEl = document.getElementById(`${name}Detail`);
+            const barEl = document.getElementById(`${name}Bar`);
+
             if (name === 'weather') {
                 valEl.textContent = value;
-                valEl.style.color = value === 'Favorable' ? 'var(--green)' : value === 'Marginal' ? 'var(--yellow)' : 'var(--orange)';
+                const weatherColor = value === 'Favorable' ? 'var(--green)' : value === 'Marginal' ? 'var(--yellow)' : 'var(--orange)';
+                valEl.style.color = weatherColor;
+                // Weather bar: Favorable = 100%, Marginal = 50%, Poor = 0%
+                const barValue = value === 'Favorable' ? 100 : value === 'Marginal' ? 50 : 0;
+                barEl.style.width = `${barValue}%`;
+                barEl.className = `signal-bar-fill ${value === 'Favorable' ? 'green' : value === 'Marginal' ? 'yellow' : 'green'}`;
             } else {
-                valEl.textContent = `${Math.round(value)}%`;
-                valEl.style.color = `var(--${getColor(value)})`;
+                const roundedValue = Math.round(value) || 0;
+                const colorClass = getColor(roundedValue);
+                valEl.textContent = `${roundedValue}%`;
+                valEl.style.color = `var(--${colorClass})`;
+                // Update progress bar - ensure minimum visibility
+                barEl.style.width = `${Math.max(0, roundedValue)}%`;
+                barEl.className = `signal-bar-fill ${colorClass}`;
             }
-            detailEl.textContent = detail;
+            if (detailEl) detailEl.textContent = detail;
         }
 
         function addFeed(source, text, isAlert = false, badge = null) {
@@ -515,7 +558,7 @@
             trackEvent('share', 'engagement', 'snapshot_shared', state.risk);
             const text = `🎯 Aegis USA Strike on Iran Monitor\n\n` +
                 `📊 Current Risk: ${state.risk}% (${getStatusText(state.risk)})\n` +
-                `⏱️ Next 24 Hours\n\n` +
+                `⏱️ Next 8 Hours\n\n` +
                 `📰 News: ${document.getElementById('newsValue').textContent}\n` +
                 `📈 Interest: ${document.getElementById('socialValue').textContent}\n` +
                 `✈️ Aviation: ${document.getElementById('flightValue').textContent}\n` +
@@ -530,75 +573,165 @@
             }
         }
 
-        // API Fetchers
+        // =============================================
+        // API FETCHERS - NEW CALIBRATED LOGIC
+        // Normal: 5-7% | Pre-strike: 90-95% | Max: 100%
+        // =============================================
+
+        // SIGNAL 1: NEWS INTEL (Max 35%)
         async function fetchNews() {
             if (!state.keys.newsdata) { setStatus('newsStatus', false); return 0; }
             try {
                 setStatus('newsStatus', true);
-                const q = encodeURIComponent('USA Iran military strike Pentagon CENTCOM');
+                const q = encodeURIComponent('USA Iran military strike attack Pentagon CENTCOM');
                 const res = await fetch(`https://newsdata.io/api/1/news?apikey=${state.keys.newsdata}&q=${q}&language=en`);
                 const data = await res.json();
                 if (data.status === 'success' && data.results) {
-                    // Much lower base - only count truly relevant articles
                     let alertCount = 0;
+                    const articles = data.results.length;
                     data.results.slice(0, 5).forEach(a => {
                         const title = (a.title || '').substring(0, 80);
                         const isAlert = KEYWORDS.some(k => title.toLowerCase().includes(k));
                         if (isAlert) alertCount++;
-                        addFeed('NEWS', title, isAlert, isAlert ? 'High Impact' : null);
+                        addFeed('NEWS', title, isAlert, isAlert ? 'Alert' : null);
                     });
-                    // Calibrated: 10 articles = ~15%, alert keywords add small bump
-                    const risk = Math.min(50, data.results.length * 1.5 + alertCount * 3);
-                    updateSignal('news', Math.round(risk), `${data.results.length} articles, ${alertCount} critical`);
-                    return Math.min(15, risk * 0.25); // Max 15% contribution
+
+                    // NEW CALIBRATION:
+                    // 0-3 articles = 0-2% | 4-7 = 3-8% | 8-15 = 10-20% | 15+ with alerts = 25-35%
+                    let contribution = 0;
+                    if (articles <= 3) contribution = articles * 0.7;
+                    else if (articles <= 7) contribution = 2 + (articles - 3) * 1.5;
+                    else if (articles <= 15) contribution = 8 + (articles - 7) * 1.5 + alertCount * 2;
+                    else contribution = 20 + Math.min(15, alertCount * 3 + (articles - 15) * 0.5);
+
+                    contribution = Math.min(35, contribution);
+                    const displayRisk = Math.round((contribution / 35) * 100);
+                    updateSignal('news', displayRisk, `${articles} articles, ${alertCount} critical`);
+                    return contribution;
                 }
             } catch (e) { setStatus('newsStatus', false); updateSignal('news', 0, 'API error'); }
             return 0;
         }
 
-        async function fetchTrends() {
+        // SIGNAL 2: PUBLIC INTEREST - Reddit + Wikipedia (Max 25%)
+        async function fetchPublicInterest() {
+            let redditRisk = 0, wikiRisk = 0;
+            let redditPosts = 0, wikiViews = 0;
+
+            // REDDIT: Search r/worldnews for Iran-related posts
+            try {
+                const redditRes = await fetch('https://www.reddit.com/r/worldnews/search.json?q=iran+strike+OR+iran+attack+OR+iran+military&sort=new&t=day&limit=25', {
+                    headers: { 'User-Agent': 'AegisMonitor/1.0' }
+                });
+                if (redditRes.ok) {
+                    const redditData = await redditRes.json();
+                    if (redditData.data?.children) {
+                        redditPosts = redditData.data.children.length;
+                        const highScore = redditData.data.children.filter(p => p.data.score > 1000).length;
+                        // 0 posts = 0% | 5 posts = 3% | 10+ posts with high scores = 8-12%
+                        redditRisk = Math.min(12, redditPosts * 0.4 + highScore * 2);
+                        redditData.data.children.slice(0, 2).forEach(p => {
+                            const title = p.data.title.substring(0, 70);
+                            const isHot = p.data.score > 1000;
+                            addFeed('REDDIT', title, isHot, isHot ? `${Math.round(p.data.score/1000)}k↑` : null);
+                        });
+                    }
+                }
+            } catch (e) { /* Reddit failed, continue with Wikipedia */ }
+
+            // WIKIPEDIA: Multiple relevant pages
             try {
                 const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0].replace(/-/g, '');
-                const res = await fetch(`https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Iran/daily/${yesterday}/${yesterday}`);
-                const data = await res.json();
-                if (data.items && data.items[0]) {
-                    setStatus('trendsStatus', true);
-                    const views = data.items[0].views;
-                    const baseline = 40000; // Raised baseline
-                    // Calibrated: normal ~40k = ~10%, spikes 100k+ = ~25%
-                    const risk = Math.min(40, Math.round((views / baseline) * 10));
-                    updateSignal('social', risk, `${Math.round(views/1000)}k views yesterday`);
-                    if (risk > 25) addFeed('TRENDS', `Iran Wikipedia: ${Math.round(views/1000)}k pageviews (elevated)`, true);
-                    return Math.min(10, risk * 0.2); // Max 10% contribution
+                const pages = ['Iran', 'Iran%E2%80%93United_States_relations', 'Iran%E2%80%93Israel_conflict'];
+                let totalViews = 0;
+
+                for (const page of pages) {
+                    try {
+                        const res = await fetch(`https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/${page}/daily/${yesterday}/${yesterday}`);
+                        const data = await res.json();
+                        if (data.items?.[0]) totalViews += data.items[0].views;
+                    } catch (e) { /* Skip failed page */ }
                 }
-            } catch (e) { setStatus('trendsStatus', false); updateSignal('social', 0, 'API error'); }
-            return 0;
+
+                wikiViews = totalViews;
+                // Baseline combined ~60k | Elevated 100k+ | Crisis 200k+
+                // 60k = 0% | 100k = 5% | 150k = 10% | 200k+ = 13%
+                if (totalViews > 60000) {
+                    wikiRisk = Math.min(13, (totalViews - 60000) / 10000);
+                }
+                if (wikiRisk > 8) addFeed('WIKI', `Iran pages: ${Math.round(totalViews/1000)}k views (elevated)`, true);
+            } catch (e) { /* Wikipedia failed */ }
+
+            const totalContribution = Math.min(25, redditRisk + wikiRisk);
+            const displayRisk = Math.round((totalContribution / 25) * 100);
+
+            setStatus('trendsStatus', redditPosts > 0 || wikiViews > 0);
+            updateSignal('social', displayRisk, `${redditPosts} Reddit, ${Math.round(wikiViews/1000)}k Wiki`);
+
+            return totalContribution;
         }
 
-        async function fetchFlights() {
+        // SIGNAL 3: AVIATION - Civilian Drop + Military Presence (Max 35%)
+        async function fetchAviation() {
             try {
                 const url = 'https://opensky-network.org/api/states/all?lamin=25.0&lomin=44.0&lamax=40.0&lomax=63.0';
                 const res = await fetch(url);
                 if (!res.ok) throw new Error('Rate limited');
                 const data = await res.json();
+
                 if (data.states) {
                     setStatus('flightStatus', true);
-                    const flights = data.states.filter(s => !s[8]);
-                    const mil = flights.filter(s => {
+                    const allFlights = data.states.filter(s => !s[8]); // Not on ground
+
+                    // Separate civilian and military
+                    const military = allFlights.filter(s => {
                         const hex = (s[0] || '').toUpperCase();
                         const cs = (s[1] || '').toUpperCase();
-                        return MIL_PREFIX.some(p => hex.startsWith(p)) || cs.includes('KC') || cs.includes('RCH') || cs.includes('DUKE');
+                        return MIL_PREFIX.some(p => hex.startsWith(p)) ||
+                               cs.includes('KC') || cs.includes('RCH') ||
+                               cs.includes('DUKE') || cs.includes('REACH');
                     });
-                    // Calibrated: 50 aircraft = ~10%, military adds significant bump
-                    const risk = Math.min(50, flights.length * 0.2 + mil.length * 15);
-                    updateSignal('flight', Math.round(risk), `${flights.length} aircraft${mil.length ? `, ${mil.length} military` : ''}`);
-                    if (mil.length > 0) addFeed('AVIATION', `${mil.length} potential military aircraft over Iran`, true, 'Alert');
-                    return mil.length > 0 ? 15 : Math.min(5, flights.length * 0.05); // Max 15% with military, 5% without
+                    const civilian = allFlights.length - military.length;
+
+                    // CIVILIAN DROP LOGIC:
+                    // Normal: 40-80 civilian aircraft | Warning: <30 | Critical: <15
+                    // Higher civilian count = LOWER risk (normal operations)
+                    let civilianRisk = 0;
+                    if (civilian < 15) civilianRisk = 20; // Critical drop
+                    else if (civilian < 25) civilianRisk = 15;
+                    else if (civilian < 35) civilianRisk = 10;
+                    else if (civilian < 45) civilianRisk = 5;
+                    else civilianRisk = 0; // Normal traffic
+
+                    // MILITARY PRESENCE LOGIC:
+                    // 0 = normal | 1-2 = elevated | 3+ = high
+                    let militaryRisk = Math.min(15, military.length * 5);
+
+                    if (military.length > 0) {
+                        addFeed('AVIATION', `${military.length} military aircraft detected over Iran`, true, 'Alert');
+                    }
+                    if (civilian < 30 && civilian > 0) {
+                        addFeed('AVIATION', `Low civilian traffic: only ${civilian} aircraft (airlines avoiding?)`, true, 'Warning');
+                    }
+
+                    const totalContribution = Math.min(35, civilianRisk + militaryRisk);
+                    const displayRisk = Math.round((totalContribution / 35) * 100);
+
+                    let detail = `${civilian} civilian`;
+                    if (military.length > 0) detail += `, ${military.length} military`;
+                    if (civilian < 30) detail += ' ⚠️';
+
+                    updateSignal('flight', displayRisk, detail);
+                    return totalContribution;
                 }
-            } catch (e) { setStatus('flightStatus', false); updateSignal('flight', 10, 'Rate limited'); }
+            } catch (e) {
+                setStatus('flightStatus', false);
+                updateSignal('flight', 0, 'Rate limited - retry in 10s');
+            }
             return 0;
         }
 
+        // SIGNAL 4: WEATHER CONDITIONS (Max 5%)
         async function fetchWeather() {
             if (!state.keys.openweather) { setStatus('weatherStatus', false); return 0; }
             try {
@@ -609,33 +742,57 @@
                     const temp = Math.round(data.main.temp);
                     const vis = data.visibility || 10000;
                     const clouds = data.clouds?.all || 0;
-                    let condition = 'Favorable';
-                    if (vis < 5000 || clouds > 80) condition = 'Poor';
-                    else if (vis < 8000 || clouds > 50) condition = 'Marginal';
-                    updateSignal('weather', condition, `${temp}°C, ${vis >= 10000 ? '10+' : Math.round(vis/1000)}km vis`);
-                    addFeed('WEATHER', `Tehran: ${temp}°C, ${data.weather[0]?.description || 'Unknown'}. Ops: ${condition}`);
+
+                    let condition, contribution;
+                    if (vis >= 10000 && clouds < 30) {
+                        condition = 'Favorable';
+                        contribution = 5; // Clear skies ADD to risk (good for ops)
+                    } else if (vis >= 7000 && clouds < 60) {
+                        condition = 'Marginal';
+                        contribution = 2;
+                    } else {
+                        condition = 'Poor';
+                        contribution = 0; // Bad weather = less likely
+                    }
+
+                    updateSignal('weather', condition, `${temp}°C, ${vis >= 10000 ? '10+' : Math.round(vis/1000)}km vis, ${clouds}% clouds`);
+                    addFeed('WEATHER', `Tehran: ${temp}°C, ${data.weather[0]?.description || 'clear'}. Ops: ${condition}`);
+                    return contribution;
                 }
             } catch (e) { setStatus('weatherStatus', false); updateSignal('weather', 'Unknown', 'API error'); }
-            return 0; // Weather doesn't add to risk score
+            return 0;
         }
 
+        // MASTER CALCULATION
         async function calculate() {
-            const [n, t, f] = await Promise.all([fetchNews(), fetchTrends(), fetchFlights(), fetchWeather()]);
-            // Total is now calibrated to stay low (typically 5-15%) unless real escalation
-            const total = Math.min(100, n + t + f);
+            const [news, interest, aviation, weather] = await Promise.all([
+                fetchNews(),
+                fetchPublicInterest(),
+                fetchAviation(),
+                fetchWeather()
+            ]);
 
-            // Track risk level changes for analytics
+            // Sum all contributions (max 100%)
+            let total = news + interest + aviation + weather;
+
+            // ESCALATION MULTIPLIER: If 3+ signals elevated, compound effect
+            const elevated = [news > 10, interest > 8, aviation > 10, weather > 2].filter(Boolean).length;
+            if (elevated >= 3) {
+                total = Math.min(100, total * 1.15); // 15% boost
+                addFeed('SYSTEM', 'Multiple elevated signals detected - escalation multiplier applied', true, 'Alert');
+            }
+
+            total = Math.min(100, Math.round(total));
+
+            // Track for analytics
             const prevRisk = state.risk;
             updateGauge(total);
             trackEvent('data_refresh', 'api', 'risk_calculated', total);
 
-            // Track significant risk changes (>10% change)
             if (Math.abs(total - prevRisk) > 10) {
                 trackEvent('risk_change', 'alert', total > prevRisk ? 'risk_increased' : 'risk_decreased', total);
             }
-
-            // Track high risk events
-            if (total >= 40 && prevRisk < 40) {
+            if (total >= 50 && prevRisk < 50) {
                 trackEvent('high_risk_alert', 'alert', 'threshold_crossed', total);
             }
 
