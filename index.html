@@ -135,9 +135,6 @@
         .modal-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
         .modal-body strong { color: var(--text); }
 
-        /* Share button */
-        .share-btn { width: 100%; padding: 14px; background: var(--accent); border: none; border-radius: 12px; color: white; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .share-btn:active { opacity: 0.9; }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
@@ -266,10 +263,6 @@
             <button class="show-more-btn" id="showMoreBtn" onclick="toggleFeed()" style="display:none">Show All</button>
         </div>
 
-        <button class="share-btn" onclick="shareSnapshot()">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v4h12v-4M12 3l4 4-4 4M16 7H6"/></svg>
-            Share Current Status
-        </button>
     </div>
 
     <!-- Info Modal -->
@@ -683,68 +676,83 @@
 
         // SIGNAL 3: AVIATION - Civilian Drop + Military Presence (Max 35%)
         async function fetchAviation() {
-            try {
-                const url = 'https://opensky-network.org/api/states/all?lamin=25.0&lomin=44.0&lamax=40.0&lomax=63.0';
-                const res = await fetch(url);
-                if (!res.ok) throw new Error('Rate limited');
-                const data = await res.json();
+            // Try multiple regions: Iran + Persian Gulf for better coverage
+            const regions = [
+                { name: 'Iran', url: 'https://opensky-network.org/api/states/all?lamin=25&lomin=44&lamax=40&lomax=63' },
+                { name: 'Gulf', url: 'https://opensky-network.org/api/states/all?lamin=23&lomin=48&lamax=32&lomax=60' }
+            ];
 
-                if (data.states) {
-                    setStatus('flightStatus', true);
-                    const allFlights = data.states.filter(s => !s[8]); // Not on ground
+            let allFlights = [];
+            let apiWorked = false;
 
-                    // Separate civilian and military
-                    const military = allFlights.filter(s => {
-                        const hex = (s[0] || '').toUpperCase();
-                        const cs = (s[1] || '').toUpperCase();
-                        return MIL_PREFIX.some(p => hex.startsWith(p)) ||
-                               cs.includes('KC') || cs.includes('RCH') ||
-                               cs.includes('DUKE') || cs.includes('REACH');
-                    });
-                    const civilian = allFlights.length - military.length;
-
-                    // CIVILIAN DROP LOGIC:
-                    // Normal: 40-80 civilian aircraft | Warning: <30 | Critical: <15
-                    // Higher civilian count = LOWER risk (normal operations)
-                    let civilianRisk = 0;
-                    if (civilian < 15) civilianRisk = 20; // Critical drop
-                    else if (civilian < 25) civilianRisk = 15;
-                    else if (civilian < 35) civilianRisk = 10;
-                    else if (civilian < 45) civilianRisk = 5;
-                    else civilianRisk = 0; // Normal traffic
-
-                    // MILITARY PRESENCE LOGIC:
-                    // 0 = normal | 1-2 = elevated | 3+ = high
-                    let militaryRisk = Math.min(15, military.length * 5);
-
-                    if (military.length > 0) {
-                        addFeed('AVIATION', `${military.length} military aircraft detected over Iran`, true, 'Alert');
+            for (const region of regions) {
+                try {
+                    const res = await fetch(region.url);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.states && data.states.length > 0) {
+                            // Dedupe by ICAO24 (index 0)
+                            const existing = new Set(allFlights.map(f => f[0]));
+                            data.states.forEach(s => {
+                                if (!existing.has(s[0])) allFlights.push(s);
+                            });
+                            apiWorked = true;
+                        }
                     }
-                    if (civilian < 30 && civilian > 0) {
-                        addFeed('AVIATION', `Low civilian traffic: only ${civilian} aircraft (airlines avoiding?)`, true, 'Warning');
-                    }
-
-                    const totalContribution = Math.min(35, civilianRisk + militaryRisk);
-                    const displayRisk = Math.round((totalContribution / 35) * 100);
-
-                    let detail = `${civilian} civilian`;
-                    if (military.length > 0) detail += `, ${military.length} military`;
-                    if (civilian < 30) detail += ' ⚠️';
-
-                    updateSignal('flight', displayRisk, detail);
-                    return totalContribution;
-                } else {
-                    // No states data - return baseline
-                    setStatus('flightStatus', false);
-                    updateSignal('flight', 8, 'No data - baseline estimate');
-                    return 3;
-                }
-            } catch (e) {
-                setStatus('flightStatus', false);
-                // Show baseline when API unavailable (normal traffic assumed)
-                updateSignal('flight', 8, 'API limited - baseline estimate');
-                return 3; // Small baseline contribution
+                } catch (e) { /* Try next region */ }
             }
+
+            if (apiWorked && allFlights.length > 0) {
+                setStatus('flightStatus', true);
+                const inAir = allFlights.filter(s => !s[8]); // Not on ground
+
+                // Separate civilian and military
+                const military = inAir.filter(s => {
+                    const hex = (s[0] || '').toUpperCase();
+                    const cs = (s[1] || '').toUpperCase();
+                    return MIL_PREFIX.some(p => hex.startsWith(p)) ||
+                           cs.includes('KC') || cs.includes('RCH') ||
+                           cs.includes('DUKE') || cs.includes('REACH') ||
+                           cs.includes('EVAC') || cs.includes('NAVY');
+                });
+                const civilian = inAir.length - military.length;
+
+                // CIVILIAN DROP LOGIC:
+                // Normal: 40-80 civilian aircraft | Warning: <30 | Critical: <15
+                // Higher civilian count = LOWER risk (normal operations)
+                let civilianRisk = 0;
+                if (civilian < 15) civilianRisk = 20; // Critical drop
+                else if (civilian < 25) civilianRisk = 15;
+                else if (civilian < 35) civilianRisk = 10;
+                else if (civilian < 45) civilianRisk = 5;
+                else civilianRisk = 0; // Normal traffic
+
+                // MILITARY PRESENCE LOGIC:
+                // 0 = normal | 1-2 = elevated | 3+ = high
+                let militaryRisk = Math.min(15, military.length * 5);
+
+                if (military.length > 0) {
+                    addFeed('AVIATION', `${military.length} military aircraft detected in region`, true, 'Alert');
+                }
+                if (civilian < 30 && civilian > 0) {
+                    addFeed('AVIATION', `Low civilian traffic: only ${civilian} aircraft (airlines avoiding?)`, true, 'Warning');
+                }
+
+                const totalContribution = Math.min(35, civilianRisk + militaryRisk);
+                const displayRisk = Math.round((totalContribution / 35) * 100);
+
+                let detail = `${civilian} civilian`;
+                if (military.length > 0) detail += `, ${military.length} military`;
+                if (civilian < 30) detail += ' ⚠️';
+
+                updateSignal('flight', displayRisk, detail);
+                return totalContribution;
+            }
+
+            // API failed or no data - show baseline
+            setStatus('flightStatus', false);
+            updateSignal('flight', 8, 'API limited - baseline');
+            return 3;
         }
 
         // SIGNAL 4: WEATHER CONDITIONS (Max 5%)
