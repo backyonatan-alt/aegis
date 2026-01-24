@@ -357,7 +357,6 @@
                 valEl.textContent = value;
                 const weatherColor = value === 'Favorable' ? 'var(--green)' : value === 'Marginal' ? 'var(--yellow)' : 'var(--orange)';
                 valEl.style.color = weatherColor;
-                // Weather bar: Favorable = 100%, Marginal = 50%, Poor = 0%
                 const barValue = value === 'Favorable' ? 100 : value === 'Marginal' ? 50 : 0;
                 barEl.style.width = `${barValue}%`;
                 barEl.className = `signal-bar-fill ${value === 'Favorable' ? 'green' : value === 'Marginal' ? 'yellow' : 'green'}`;
@@ -366,7 +365,6 @@
                 const colorClass = getColor(roundedValue);
                 valEl.textContent = `${roundedValue}%`;
                 valEl.style.color = `var(--${colorClass})`;
-                // Update progress bar - ensure minimum visibility
                 barEl.style.width = `${Math.max(0, roundedValue)}%`;
                 barEl.className = `signal-bar-fill ${colorClass}`;
             }
@@ -374,7 +372,6 @@
         }
 
         function addFeed(source, text, isAlert = false, badge = null) {
-            // Dedupe by first 50 chars
             const key = text.substring(0, 50).toLowerCase();
             if (state.seenHeadlines.has(key)) return;
             state.seenHeadlines.add(key);
@@ -413,11 +410,10 @@
 
         function initChart() {
             const ctx = document.getElementById('trendChart').getContext('2d');
-            // Generate last 7 days labels
             for (let i = 6; i >= 0; i--) {
                 const d = new Date(Date.now() - i * 86400000);
                 state.trendLabels.push(formatDate(d));
-                state.trendData.push(Math.random() * 25 + 15); // Initial random data
+                state.trendData.push(Math.random() * 25 + 15);
             }
 
             chart = new Chart(ctx, {
@@ -455,19 +451,6 @@
                                 title: (ctx) => ctx[0].label,
                                 label: (ctx) => `Risk: ${Math.round(ctx.raw)}%`
                             }
-                        },
-                        annotation: {
-                            annotations: {
-                                baseline: {
-                                    type: 'line',
-                                    yMin: 15,
-                                    yMax: 15,
-                                    borderColor: 'rgba(255,255,255,0.15)',
-                                    borderWidth: 1,
-                                    borderDash: [5, 5],
-                                    label: { content: 'Baseline', enabled: true, position: 'start', color: '#666', font: { size: 10 } }
-                                }
-                            }
                         }
                     },
                     scales: {
@@ -485,7 +468,6 @@
                 }
             });
 
-            // Draw baseline manually since annotation plugin not loaded
             const originalDraw = chart.draw;
             chart.draw = function() {
                 originalDraw.apply(this, arguments);
@@ -507,7 +489,6 @@
             };
         }
 
-        // Modals
         function showInfo(type) {
             trackEvent('info_view', 'engagement', type);
             const info = INFO_CONTENT[type];
@@ -517,7 +498,6 @@
         }
         function closeInfo(e) { if (!e || e.target.id === 'infoModal') document.getElementById('infoModal').classList.remove('open'); }
 
-        // Share functionality (not currently used but kept for future)
         function shareSnapshot() {
             trackEvent('share', 'engagement', 'snapshot_shared', state.risk);
             const text = `🎯 Aegis USA Strike on Iran Monitor\n\n` +
@@ -537,16 +517,10 @@
             }
         }
 
-        // =============================================
-        // API FETCHERS - NEW CALIBRATED LOGIC
-        // Normal: 5-7% | Pre-strike: 90-95% | Max: 100%
-        // =============================================
-
         // SIGNAL 1: NEWS INTEL (Max 35%)
         async function fetchNews() {
             try {
                 setStatus('newsStatus', true);
-                // Broader query to catch more Iran-related news
                 const q = encodeURIComponent('Iran military OR Iran nuclear OR Iran US OR Iran attack');
                 const res = await fetch(`https://newsdata.io/api/1/news?apikey=${API_KEYS.newsdata}&q=${q}&language=en`);
                 const data = await res.json();
@@ -560,19 +534,15 @@
                         addFeed('NEWS', title, isAlert, isAlert ? 'Alert' : null);
                     });
 
-                    // RECALIBRATED: 10 articles = ~10% display (baseline normal news)
-                    // 0-5 articles = 5-8% | 6-10 = 8-12% | 11-15 = 15-25% | 16+ = 30-35%
-                    // Critical keywords add extra weight only when many present
-                    let contribution = 1; // Base level
-
+                    let contribution = 1;
                     if (articles <= 5) {
-                        contribution = 1 + articles * 0.4; // 5 articles = 3
+                        contribution = 1 + articles * 0.4;
                     } else if (articles <= 10) {
-                        contribution = 3 + (articles - 5) * 0.3; // 10 articles = 4.5
+                        contribution = 3 + (articles - 5) * 0.3;
                     } else if (articles <= 15) {
-                        contribution = 4.5 + (articles - 10) * 1.5 + alertCount * 1; // 15 articles = 12
+                        contribution = 4.5 + (articles - 10) * 1.5 + alertCount * 1;
                     } else {
-                        contribution = 12 + (articles - 15) * 2 + alertCount * 2; // 20+ = surge
+                        contribution = 12 + (articles - 15) * 2 + alertCount * 2;
                     }
 
                     contribution = Math.min(35, contribution);
@@ -580,7 +550,6 @@
                     updateSignal('news', displayRisk, `${articles} articles, ${alertCount} critical`);
                     return contribution;
                 } else {
-                    // API returned but no results - show baseline
                     updateSignal('news', 6, 'Monitoring...');
                     return 2;
                 }
@@ -595,7 +564,6 @@
             let gdeltWorked = false;
             let wikiWorked = false;
 
-            // GDELT: Global news database (CORS-friendly, free, updates every 15 min)
             try {
                 const gdeltQuery = encodeURIComponent('iran attack OR iran strike OR iran military OR iran us');
                 const gdeltUrl = `https://api.gdeltproject.org/api/v2/doc/doc?query=${gdeltQuery}&mode=artlist&maxrecords=50&format=json&timespan=24h`;
@@ -604,13 +572,11 @@
                     const gdeltData = await gdeltRes.json();
                     if (gdeltData.articles && Array.isArray(gdeltData.articles)) {
                         gdeltArticles = gdeltData.articles.length;
-                        // Calculate average tone (negative = concerning)
                         const tones = gdeltData.articles.map(a => a.tone || 0).filter(t => t !== 0);
                         if (tones.length > 0) {
                             gdeltTone = tones.reduce((a, b) => a + b, 0) / tones.length;
                         }
                         gdeltWorked = true;
-                        // Add top article to feed
                         if (gdeltData.articles[0]) {
                             const title = (gdeltData.articles[0].title || '').substring(0, 70);
                             const isNegative = gdeltTone < -3;
@@ -620,7 +586,6 @@
                 }
             } catch (e) { console.log('GDELT error:', e.message); }
 
-            // WIKIPEDIA: Multiple relevant pages (CORS-friendly API)
             try {
                 const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0].replace(/-/g, '');
                 const pages = ['Iran', 'Iran%E2%80%93United_States_relations', 'Iran%E2%80%93Israel_conflict'];
@@ -636,20 +601,16 @@
                                 wikiWorked = true;
                             }
                         }
-                    } catch (e) { /* Skip failed page */ }
+                    } catch (e) { }
                 }
                 wikiViews = totalViews;
-            } catch (e) { /* Wikipedia failed entirely */ }
+            } catch (e) { }
 
-            // Always show LIVE if at least one source worked
             setStatus('trendsStatus', gdeltWorked || wikiWorked);
 
-            // Calculate combined risk contribution
             let gdeltRisk = 0;
             let wikiRisk = 0;
 
-            // GDELT scoring: articles + tone sentiment
-            // 0-10 articles = 1-3 | 11-25 = 4-7 | 26-50 = 8-12 | negative tone adds bonus
             if (gdeltWorked) {
                 if (gdeltArticles <= 10) {
                     gdeltRisk = 1 + gdeltArticles * 0.2;
@@ -658,13 +619,11 @@
                 } else {
                     gdeltRisk = 7 + (gdeltArticles - 25) * 0.2;
                 }
-                // Negative tone (< -3) adds extra risk
                 if (gdeltTone < -5) gdeltRisk += 3;
                 else if (gdeltTone < -3) gdeltRisk += 1.5;
                 gdeltRisk = Math.min(12, gdeltRisk);
             }
 
-            // Wikipedia scoring (same as before but max 13)
             if (wikiWorked && wikiViews > 0) {
                 if (wikiViews < 20000) {
                     wikiRisk = 1 + (wikiViews / 15000);
@@ -682,11 +641,9 @@
                 }
             }
 
-            // Combine: GDELT max 12 + Wiki max 13 = 25 total
-            const totalRisk = Math.min(25, gdeltRisk + wikiRisk + 1); // +1 baseline
+            const totalRisk = Math.min(25, gdeltRisk + wikiRisk + 1);
             const displayRisk = Math.round((totalRisk / 25) * 100);
 
-            // Build detail string
             let detail = '';
             if (gdeltWorked) detail += `${gdeltArticles} GDELT`;
             if (wikiWorked) detail += (detail ? ', ' : '') + `${Math.round(wikiViews/1000)}k Wiki`;
@@ -697,9 +654,7 @@
         }
 
         // SIGNAL 3: AVIATION - Iran Airspace Activity (Max 35%)
-        // Uses Aviationstack API for real flight data
         async function fetchAviation() {
-            // Check if API key is configured
             if (!API_KEYS.aviationstack) {
                 setStatus('flightStatus', false);
                 updateSignal('flight', 0, 'API key needed - see console');
@@ -707,15 +662,12 @@
                 return 0;
             }
 
-            // Iranian airports to monitor
-            const airports = ['IKA', 'THR', 'SYZ', 'MHD', 'IFN']; // Tehran IKA, Tehran Mehrabad, Shiraz, Mashhad, Isfahan
+            const airports = ['IKA', 'THR', 'SYZ', 'MHD', 'IFN'];
             let totalFlights = 0;
             let apiWorked = false;
 
             try {
-                // Aviationstack: Get flights for Iran's main airports
-                // Free tier: 500 requests/month, supports CORS
-                for (const iata of airports.slice(0, 2)) { // Limit to 2 airports to save API calls
+                for (const iata of airports.slice(0, 2)) {
                     try {
                         const url = `https://api.aviationstack.com/v1/flights?access_key=${API_KEYS.aviationstack}&arr_iata=${iata}&flight_status=active`;
                         const res = await fetch(url);
@@ -725,7 +677,6 @@
                                 totalFlights += data.data.length;
                                 apiWorked = true;
 
-                                // Add first flight to feed
                                 if (data.data[0]) {
                                     const flight = data.data[0];
                                     const airline = flight.airline?.name || 'Unknown';
@@ -748,22 +699,20 @@
             if (apiWorked) {
                 setStatus('flightStatus', true);
 
-                // FLIGHT DROP LOGIC - Fewer flights = Higher risk (airlines avoiding Iran)
-                // Normal: 30-60 active flights | Warning: 15-30 | Critical: <15
                 let contribution = 0;
 
                 if (totalFlights < 5) {
-                    contribution = 35; // Critical - almost no flights
+                    contribution = 35;
                     addFeed('AVIATION', `⚠️ CRITICAL: Only ${totalFlights} active flights to Iran!`, true, 'Alert');
                 } else if (totalFlights < 15) {
-                    contribution = 25; // High alert
+                    contribution = 25;
                     addFeed('AVIATION', `Low traffic: ${totalFlights} flights (airlines may be avoiding)`, true, 'Warning');
                 } else if (totalFlights < 25) {
-                    contribution = 15; // Elevated
+                    contribution = 15;
                 } else if (totalFlights < 40) {
-                    contribution = 8; // Slightly below normal
+                    contribution = 8;
                 } else {
-                    contribution = 3; // Normal traffic
+                    contribution = 3;
                 }
 
                 const displayRisk = Math.round((contribution / 35) * 100);
@@ -771,7 +720,6 @@
                 return contribution;
             }
 
-            // API failed
             setStatus('flightStatus', false);
             updateSignal('flight', 0, 'API error');
             return 0;
@@ -791,13 +739,13 @@
                     let condition, contribution;
                     if (vis >= 10000 && clouds < 30) {
                         condition = 'Favorable';
-                        contribution = 5; // Clear skies ADD to risk (good for ops)
+                        contribution = 5;
                     } else if (vis >= 7000 && clouds < 60) {
                         condition = 'Marginal';
                         contribution = 2;
                     } else {
                         condition = 'Poor';
-                        contribution = 0; // Bad weather = less likely
+                        contribution = 0;
                     }
 
                     updateSignal('weather', condition, `${temp}°C, ${vis >= 10000 ? '10+' : Math.round(vis/1000)}km vis, ${clouds}% clouds`);
@@ -817,25 +765,21 @@
                 fetchWeather()
             ]);
 
-            // Ensure all values are numbers (protect against NaN)
             const safeNews = Number(news) || 0;
             const safeInterest = Number(interest) || 0;
             const safeAviation = Number(aviation) || 0;
             const safeWeather = Number(weather) || 0;
 
-            // Sum all contributions (max 100%)
             let total = safeNews + safeInterest + safeAviation + safeWeather;
 
-            // ESCALATION MULTIPLIER: If 3+ signals elevated, compound effect
             const elevated = [safeNews > 10, safeInterest > 8, safeAviation > 10, safeWeather > 2].filter(Boolean).length;
             if (elevated >= 3) {
-                total = Math.min(100, total * 1.15); // 15% boost
+                total = Math.min(100, total * 1.15);
                 addFeed('SYSTEM', 'Multiple elevated signals detected - escalation multiplier applied', true, 'Alert');
             }
 
-            total = Math.min(100, Math.max(0, Math.round(total) || 0)); // Extra NaN protection
+            total = Math.min(100, Math.max(0, Math.round(total) || 0));
 
-            // Track for analytics
             const prevRisk = state.risk;
             updateGauge(total);
             trackEvent('data_refresh', 'api', 'risk_calculated', total);
@@ -847,7 +791,6 @@
                 trackEvent('high_risk_alert', 'alert', 'threshold_crossed', total);
             }
 
-            // Update trend chart
             state.trendData.shift();
             state.trendData.push(total);
             state.trendLabels.shift();
@@ -859,11 +802,10 @@
             }
         }
 
-        // Init - refresh every 30 MINUTES to save API calls
         document.addEventListener('DOMContentLoaded', () => {
             initChart();
             addFeed('SYSTEM', 'Aegis threat monitor initialized');
-            setTimeout(() => { calculate(); setInterval(calculate, 1800000); }, 500); // 1800000ms = 30 minutes
+            setTimeout(() => { calculate(); setInterval(calculate, 1800000); }, 500);
         });
     </script>
 </body>
