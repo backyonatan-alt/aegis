@@ -597,12 +597,20 @@
                         addFeed('NEWS', title, isAlert, isAlert ? 'Alert' : null);
                     });
 
-                    // CALIBRATION: Always show some baseline activity
-                    // 0 articles = 2% base | 1-5 = 5-10% | 6-10 = 12-20% | 10+ = 25-35%
-                    let contribution = 2; // Base level
-                    if (articles >= 1) contribution = 2 + Math.min(8, articles * 1.5);
-                    if (articles >= 6) contribution = 10 + (articles - 5) * 1.5 + alertCount * 2;
-                    if (articles >= 10) contribution = 20 + Math.min(15, alertCount * 3);
+                    // RECALIBRATED: 10 articles = ~10% display (baseline normal news)
+                    // 0-5 articles = 5-8% | 6-10 = 8-12% | 11-15 = 15-25% | 16+ = 30-35%
+                    // Critical keywords add extra weight only when many present
+                    let contribution = 1; // Base level
+
+                    if (articles <= 5) {
+                        contribution = 1 + articles * 0.4; // 5 articles = 3
+                    } else if (articles <= 10) {
+                        contribution = 3 + (articles - 5) * 0.3; // 10 articles = 4.5
+                    } else if (articles <= 15) {
+                        contribution = 4.5 + (articles - 10) * 1.5 + alertCount * 1; // 15 articles = 12
+                    } else {
+                        contribution = 12 + (articles - 15) * 2 + alertCount * 2; // 20+ = surge
+                    }
 
                     contribution = Math.min(35, contribution);
                     const displayRisk = Math.round((contribution / 35) * 100);
