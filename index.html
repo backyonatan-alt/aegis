@@ -73,6 +73,9 @@
         .gauge-value.green { color: var(--green); } .gauge-value.yellow { color: var(--yellow); }
         .gauge-value.orange { color: var(--orange); } .gauge-value.red { color: var(--red); }
         .gauge-window { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+        .gauge-header { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px; }
+        .gauge-info-btn { width: 20px; height: 20px; border-radius: 50%; background: var(--border); border: none; color: var(--text-muted); font-size: 11px; font-weight: 700; cursor: pointer; }
+        .gauge-info-btn:hover { background: var(--text-muted); color: var(--bg); }
 
         /* Trend chart */
         .trend-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
@@ -158,12 +161,15 @@
         </header>
 
         <div class="timestamp-bar">
-            <span>Last Updated: <span class="time" id="lastUpdate">--:--</span> <span class="tz" id="timezone">UTC</span></span>
-            <span style="color: var(--text-muted)">Refreshes every 30m</span>
+            <span>Updated at <span class="time" id="lastUpdate">--:--</span> <span class="tz" id="timezone"></span></span>
+            <span style="color: var(--text-muted)" id="nextUpdate">Next update in 30m</span>
         </div>
 
         <div class="gauge-card">
-            <div class="gauge-title">USA Strike on Iran Probability</div>
+            <div class="gauge-header">
+                <span class="gauge-title" style="margin-bottom: 0;">USA Strike on Iran Probability</span>
+                <button class="gauge-info-btn" onclick="showInfo('calculation')">i</button>
+            </div>
             <div class="gauge-subtitle">Tactical Alert Level</div>
             <div class="status-label low" id="statusLabel">Low Risk</div>
             <div class="gauge-container">
@@ -303,15 +309,21 @@
             },
             aviation: {
                 title: 'Aviation Activity',
-                body: '<strong>Source:</strong> Aviationstack API (Real-time flight data)<br><br><strong>What it tracks:</strong> Live flights in Iran airspace - arrivals/departures at Tehran (IKA, THR), Shiraz, Isfahan, Mashhad airports.<br><br><strong>Risk logic:</strong> Normal = 50-100+ flights/day. Significant DROP in flights (airlines avoiding Iran) = warning sign. <30 flights = high alert.<br><br><strong>Max contribution:</strong> 35%'
+                body: '<strong>Source:</strong> Aviationstack API (Real-time flight data)<br><br><strong>What it tracks:</strong> Active flights arriving at Tehran airports (IKA, THR). IKA handles ~100 flights/day (~50 arrivals).<br><br><strong>Risk logic:</strong> Checks "active" flights (within 1-2 hrs of landing). Thresholds by Tehran time (UTC+3:30):<br>• <strong>Day (7AM-9PM):</strong> Expect 5-15+ active. 0 = critical, &lt;3 = warning.<br>• <strong>Off-peak (5-7AM, 9-11PM):</strong> Expect 2-8 active. 0 = warning.<br>• <strong>Night (11PM-5AM):</strong> Expect 0-3 active. Normal to see 0.<br><br>Unusual DROP = airlines may be avoiding Iran airspace = risk indicator.<br><br><strong>Max contribution:</strong> 35%'
             },
             weather: {
                 title: 'Op. Conditions',
                 body: '<strong>Source:</strong> OpenWeatherMap API<br><br><strong>What it tracks:</strong> Tehran weather - visibility, cloud cover, conditions.<br><br><strong>Risk logic:</strong> Clear skies (visibility >10km, clouds <30%) = favorable for aerial operations = +5% to risk. Poor weather = 0% contribution.<br><br><strong>Max contribution:</strong> 5%'
+            },
+            calculation: {
+                title: 'How We Calculate Risk',
+                body: '<strong>Total Risk = Sum of 4 Signals</strong><br><br>📰 <strong>News Intel (max 35%):</strong> Real-time news volume + critical keywords like "strike", "attack", "imminent".<br><br>📈 <strong>Public Interest (max 25%):</strong> GDELT global news sentiment + Wikipedia page views on Iran-related pages.<br><br>✈️ <strong>Aviation (max 35%):</strong> Active flights to Tehran. Fewer flights than expected (by time of day) = airlines may be avoiding = higher risk.<br><br>🌤️ <strong>Op. Conditions (max 5%):</strong> Clear weather in Tehran = favorable for operations.<br><br><strong>Escalation Multiplier:</strong> If 3+ signals are elevated, total gets a 15% boost.<br><br><strong>Risk Levels:</strong><br>• 0-30% = Low Risk<br>• 31-60% = Elevated<br>• 61-85% = High Risk<br>• 86-100% = Imminent'
             }
         };
 
         let chart;
+        let lastUpdateTime = null;
+        let countdownInterval = null;
 
         // Utilities
         const getTimezone = () => Intl.DateTimeFormat().resolvedOptions().timeZone.split('/').pop().replace('_', ' ');
@@ -330,8 +342,27 @@
         }
 
         function updateTimestamp() {
+            lastUpdateTime = new Date();
             document.getElementById('lastUpdate').textContent = formatTime();
             document.getElementById('timezone').textContent = getTimezone();
+            startCountdown();
+        }
+
+        function startCountdown() {
+            if (countdownInterval) clearInterval(countdownInterval);
+            countdownInterval = setInterval(() => {
+                if (!lastUpdateTime) return;
+                const elapsed = Math.floor((Date.now() - lastUpdateTime.getTime()) / 1000);
+                const remaining = Math.max(0, 1800 - elapsed); // 30 minutes = 1800 seconds
+                const mins = Math.floor(remaining / 60);
+                const secs = remaining % 60;
+                const nextEl = document.getElementById('nextUpdate');
+                if (remaining > 0) {
+                    nextEl.textContent = `Next in ${mins}:${secs.toString().padStart(2, '0')}`;
+                } else {
+                    nextEl.textContent = 'Updating...';
+                }
+            }, 1000);
         }
 
         function updateGauge(score) {
@@ -654,6 +685,7 @@
         }
 
         // SIGNAL 3: AVIATION - Iran Airspace Activity (Max 35%)
+        // With DAY/NIGHT thresholds - Tehran is UTC+3:30
         async function fetchAviation() {
             if (!API_KEYS.aviationstack) {
                 setStatus('flightStatus', false);
@@ -699,24 +731,70 @@
             if (apiWorked) {
                 setStatus('flightStatus', true);
 
-                let contribution = 0;
+                // Get Tehran local time (UTC+3:30)
+                const now = new Date();
+                const tehranHour = (now.getUTCHours() + 3 + (now.getUTCMinutes() >= 30 ? 1 : 0)) % 24;
 
-                if (totalFlights < 5) {
-                    contribution = 35;
-                    addFeed('AVIATION', `⚠️ CRITICAL: Only ${totalFlights} active flights to Iran!`, true, 'Alert');
-                } else if (totalFlights < 15) {
-                    contribution = 25;
-                    addFeed('AVIATION', `Low traffic: ${totalFlights} flights (airlines may be avoiding)`, true, 'Warning');
-                } else if (totalFlights < 25) {
-                    contribution = 15;
-                } else if (totalFlights < 40) {
-                    contribution = 8;
-                } else {
-                    contribution = 3;
+                // Determine time of day in Tehran
+                // Night: 11 PM - 5 AM (very few flights)
+                // Off-peak: 5-7 AM, 9-11 PM (building up/winding down)
+                // Day: 7 AM - 9 PM (peak operations)
+                const isNightTime = tehranHour >= 23 || tehranHour < 5;
+                const isOffPeak = (tehranHour >= 5 && tehranHour < 7) || (tehranHour >= 21 && tehranHour < 23);
+
+                let contribution = 0;
+                let timeLabel = isNightTime ? 'night' : (isOffPeak ? 'off-peak' : 'day');
+
+                // Based on research: IKA has ~700 flights/week = 100/day = ~50 arrivals/day
+                // "Active" flights at any moment = flights within 1-2 hours of landing
+                // Expected active arrivals: Night 0-3, Off-peak 2-8, Day 5-15+
+
+                // NIGHT TIME (11 PM - 5 AM Tehran): expect 0-3 active flights - very normal
+                if (isNightTime) {
+                    if (totalFlights === 0) {
+                        contribution = 5; // Zero at night is normal, slight baseline
+                    } else if (totalFlights <= 3) {
+                        contribution = 3; // Normal for night
+                    } else {
+                        contribution = 2; // Good traffic for night
+                    }
+                    // Only alert if NO flights for multiple checks would matter
+                }
+                // OFF-PEAK (5-7 AM, 9-11 PM): expect 2-8 active flights
+                else if (isOffPeak) {
+                    if (totalFlights === 0) {
+                        contribution = 20; // Zero during off-peak is concerning
+                        addFeed('AVIATION', `⚠️ No active flights (${timeLabel})`, true, 'Warning');
+                    } else if (totalFlights < 2) {
+                        contribution = 12; // Very low for off-peak
+                    } else if (totalFlights < 5) {
+                        contribution = 6; // Slightly low
+                    } else {
+                        contribution = 3; // Normal for off-peak
+                    }
+                }
+                // DAY TIME (7 AM - 9 PM): expect 5-15+ active flights
+                else {
+                    if (totalFlights === 0) {
+                        contribution = 35; // Zero during day = critical
+                        addFeed('AVIATION', `⚠️ CRITICAL: No active flights (${timeLabel})!`, true, 'Alert');
+                    } else if (totalFlights < 3) {
+                        contribution = 25; // Very concerning during day
+                        addFeed('AVIATION', `Very low: ${totalFlights} flights (${timeLabel})`, true, 'Warning');
+                    } else if (totalFlights < 5) {
+                        contribution = 15; // Low for daytime
+                        addFeed('AVIATION', `Low traffic: ${totalFlights} flights (${timeLabel})`, false);
+                    } else if (totalFlights < 8) {
+                        contribution = 8; // Slightly below normal
+                    } else if (totalFlights < 12) {
+                        contribution = 5; // Normal range
+                    } else {
+                        contribution = 3; // Good traffic
+                    }
                 }
 
                 const displayRisk = Math.round((contribution / 35) * 100);
-                updateSignal('flight', displayRisk, `${totalFlights} active flights`);
+                updateSignal('flight', displayRisk, `${totalFlights} flights (${timeLabel})`);
                 return contribution;
             }
 
