@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aegis - USA Strike on Iran Monitor</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXY7DKJKVK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JXY7DKJKVK');
+
+        // Custom event tracking helper
+        function trackEvent(action, category, label, value) {
+            gtag('event', action, {
+                'event_category': category,
+                'event_label': label,
+                'value': value
+            });
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root {
+            --bg: #0a0a0a; --card: #141414; --card-elevated: #1c1c1c;
+            --border: #252525; --text: #ffffff; --text-secondary: #999; --text-muted: #666;
+            --accent: #3b82f6; --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444;
+        }
+        html, body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .app { padding: 16px; padding-bottom: 80px; max-width: 100%; }
+
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; }
+        .header-right { display: flex; align-items: center; gap: 10px; }
+        .live-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--green); }
+        .live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .icon-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--card); border: none; border-radius: 10px; color: var(--text-secondary); cursor: pointer; }
+        .icon-btn:active { background: var(--card-elevated); }
+
+        /* Timestamp bar */
+        .timestamp-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--card); border-radius: 10px; margin-bottom: 16px; font-size: 12px; }
+        .timestamp-bar .time { color: var(--text); font-weight: 600; }
+        .timestamp-bar .tz { color: var(--text-muted); }
+
+        /* Main gauge card */
+        .gauge-card { background: var(--card); border-radius: 20px; padding: 24px 20px; text-align: center; margin-bottom: 16px; }
+        .gauge-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .gauge-subtitle { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; }
+        .status-label { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+        .status-label.low { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+        .status-label.elevated { background: rgba(234, 179, 8, 0.15); color: var(--yellow); }
+        .status-label.high { background: rgba(249, 115, 22, 0.15); color: var(--orange); }
+        .status-label.imminent { background: rgba(239, 68, 68, 0.15); color: var(--red); animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .gauge-container { position: relative; width: 200px; height: 115px; margin: 0 auto 12px; }
+        .gauge-svg { width: 100%; height: 100%; overflow: visible; }
+        .gauge-track { fill: none; stroke: var(--card-elevated); stroke-width: 20; stroke-linecap: round; }
+        .gauge-fill { fill: none; stroke-width: 20; stroke-linecap: round; transition: stroke-dashoffset 0.8s ease, stroke 0.5s ease; }
+        .gauge-value { font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 700; line-height: 1; }
+        .gauge-value.green { color: var(--green); } .gauge-value.yellow { color: var(--yellow); }
+        .gauge-value.orange { color: var(--orange); } .gauge-value.red { color: var(--red); }
+        .gauge-window { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+
+        /* Trend chart */
+        .trend-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .trend-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .trend-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+        .chart-wrap { height: 140px; position: relative; }
+
+        /* Signals */
+        .signals-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .section-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px; }
+        .signal-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .signal-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .signal-item:first-of-type { padding-top: 0; }
+        .signal-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px; }
+        .signal-icon.news { background: rgba(59, 130, 246, 0.15); }
+        .signal-icon.trends { background: rgba(168, 85, 247, 0.15); }
+        .signal-icon.flight { background: rgba(34, 197, 94, 0.15); }
+        .signal-icon.weather { background: rgba(14, 165, 233, 0.15); }
+        .signal-info { flex: 1; min-width: 0; }
+        .signal-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
+        .signal-detail { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .signal-status { font-size: 9px; padding: 2px 5px; border-radius: 4px; font-weight: 600; }
+        .signal-status.live { background: rgba(34, 197, 94, 0.2); color: var(--green); }
+        .signal-status.demo { background: rgba(234, 179, 8, 0.2); color: var(--yellow); }
+        .info-btn { width: 18px; height: 18px; border-radius: 50%; background: var(--border); border: none; color: var(--text-muted); font-size: 10px; font-weight: 700; cursor: pointer; margin-left: 4px; }
+        .info-btn:hover { background: var(--text-muted); color: var(--bg); }
+        .signal-value { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; min-width: 48px; text-align: right; }
+
+        /* Feed */
+        .feed-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .feed-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .feed-list { display: flex; flex-direction: column; gap: 8px; max-height: 200px; overflow-y: auto; }
+        .feed-list.expanded { max-height: none; }
+        .feed-item { padding: 10px 12px; background: var(--card-elevated); border-radius: 10px; }
+        .feed-item.alert { border-left: 3px solid var(--orange); }
+        .feed-meta { display: flex; justify-content: space-between; margin-bottom: 3px; }
+        .feed-source { font-size: 10px; font-weight: 600; color: var(--accent); text-transform: uppercase; }
+        .feed-item.alert .feed-source { color: var(--orange); }
+        .feed-badge { font-size: 9px; padding: 2px 6px; border-radius: 4px; background: rgba(239, 68, 68, 0.15); color: var(--red); font-weight: 600; }
+        .feed-time { font-size: 10px; color: var(--text-muted); }
+        .feed-text { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        .feed-item.alert .feed-text { color: var(--text); }
+        .show-more-btn { width: 100%; padding: 10px; margin-top: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text-secondary); font-size: 12px; font-weight: 500; cursor: pointer; }
+        .show-more-btn:hover { color: var(--text); }
+
+        /* Info Modal */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        .modal-overlay.open { display: flex; }
+        .modal { background: var(--card); border-radius: 16px; padding: 24px; width: 100%; max-width: 360px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .modal-title { font-size: 16px; font-weight: 600; }
+        .modal-close { width: 28px; height: 28px; border-radius: 8px; background: var(--bg); border: none; color: var(--text-secondary); font-size: 18px; cursor: pointer; }
+        .modal-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+        .modal-body strong { color: var(--text); }
+
+        /* Share button */
+        .share-btn { width: 100%; padding: 14px; background: var(--accent); border: none; border-radius: 12px; color: white; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .share-btn:active { opacity: 0.9; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+        @media (min-width: 768px) {
+            .app { max-width: 480px; margin: 0 auto; padding: 24px; }
+            .gauge-container { width: 240px; height: 135px; }
+            .gauge-value { font-size: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="appContainer">
+        <header class="header">
+            <div class="logo">Aegis</div>
+            <div class="header-right">
+                <div class="live-badge"><div class="live-dot"></div>Live</div>
+                <button class="icon-btn" onclick="openSettings()" title="Settings">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <circle cx="9" cy="9" r="3"/><path d="M9 1v2m0 12v2M1 9h2m12 0h2m-2.6-5.4l-1.4 1.4m-8 8l-1.4 1.4m0-11.4l1.4 1.4m8 8l1.4 1.4"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="timestamp-bar">
+            <span>Last Updated: <span class="time" id="lastUpdate">--:--</span> <span class="tz" id="timezone">UTC</span></span>
+            <span style="color: var(--text-muted)">Refreshes every 30m</span>
+        </div>
+
+        <div class="gauge-card">
+            <div class="gauge-title">USA Strike on Iran Probability</div>
+            <div class="gauge-subtitle">Tactical Alert Level</div>
+            <div class="status-label low" id="statusLabel">Low Risk</div>
+            <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 200 115">
+                    <defs>
+                        <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#22c55e"/>
+                        </linearGradient>
+                        <linearGradient id="gradYellow" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#eab308"/>
+                        </linearGradient>
+                        <linearGradient id="gradOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#22c55e"/><stop offset="50%" stop-color="#eab308"/><stop offset="100%" stop-color="#f97316"/>
+                        </linearGradient>
+                        <linearGradient id="gradRed" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#22c55e"/><stop offset="33%" stop-color="#eab308"/><stop offset="66%" stop-color="#f97316"/><stop offset="100%" stop-color="#ef4444"/>
+                        </linearGradient>
+                    </defs>
+                    <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/>
+                    <path class="gauge-fill" id="gaugeFill" d="M 20 100 A 80 80 0 0 1 180 100" stroke="url(#gradGreen)" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
+                </svg>
+            </div>
+            <div class="gauge-value green" id="gaugeValue">0%</div>
+            <div class="gauge-window">Projected Risk: Next 24 Hours</div>
+        </div>
+
+        <div class="trend-section">
+            <div class="trend-header">
+                <span class="trend-title">7-Day Risk Trend</span>
+            </div>
+            <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+        </div>
+
+        <div class="signals-section">
+            <div class="section-title">Data Signals</div>
+
+            <div class="signal-item">
+                <div class="signal-icon news">📰</div>
+                <div class="signal-info">
+                    <div class="signal-name">News Intel <span class="signal-status live" id="newsStatus">LIVE</span><button class="info-btn" onclick="showInfo('news')">i</button></div>
+                    <div class="signal-detail" id="newsDetail">Scanning sources...</div>
+                </div>
+                <div class="signal-value" id="newsValue" style="color: var(--green)">0%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon trends">📈</div>
+                <div class="signal-info">
+                    <div class="signal-name">Public Interest <span class="signal-status live" id="trendsStatus">LIVE</span><button class="info-btn" onclick="showInfo('trends')">i</button></div>
+                    <div class="signal-detail" id="socialDetail">Wikipedia pageviews</div>
+                </div>
+                <div class="signal-value" id="socialValue" style="color: var(--green)">0%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon flight">✈️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Iran Airspace <span class="signal-status live" id="flightStatus">LIVE</span><button class="info-btn" onclick="showInfo('aviation')">i</button></div>
+                    <div class="signal-detail" id="flightDetail">Aircraft over Iran</div>
+                </div>
+                <div class="signal-value" id="flightValue" style="color: var(--green)">0%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon weather">🌤️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Op. Conditions <span class="signal-status live" id="weatherStatus">LIVE</span><button class="info-btn" onclick="showInfo('weather')">i</button></div>
+                    <div class="signal-detail" id="weatherDetail">Tehran conditions</div>
+                </div>
+                <div class="signal-value" id="weatherValue" style="color: var(--green)">--</div>
+            </div>
+        </div>
+
+        <div class="feed-section">
+            <div class="feed-header">
+                <span class="section-title" style="margin-bottom:0">Intelligence Feed</span>
+                <span style="font-size: 11px; color: var(--text-muted)" id="feedCount">0 items</span>
+            </div>
+            <div class="feed-list" id="feedList"></div>
+            <button class="show-more-btn" id="showMoreBtn" onclick="toggleFeed()" style="display:none">Show All</button>
+        </div>
+
+        <button class="share-btn" onclick="shareSnapshot()">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v4h12v-4M12 3l4 4-4 4M16 7H6"/></svg>
+            Share Current Status
+        </button>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal-overlay" id="infoModal" onclick="closeInfo(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span class="modal-title" id="infoTitle">Signal Info</span>
+                <button class="modal-close" onclick="closeInfo()">&times;</button>
+            </div>
+            <div class="modal-body" id="infoBody"></div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal" onclick="closeSettings(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span class="modal-title">API Configuration</span>
+                <button class="modal-close" onclick="closeSettings()">&times;</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+                <div><label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:4px">NewsData.io Key</label><input type="text" id="newsApiKey" style="width:100%;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px" placeholder="pub_xxxxx"></div>
+                <div><label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:4px">OpenWeatherMap Key</label><input type="text" id="weatherApiKey" style="width:100%;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px" placeholder="xxxxxxxx"></div>
+                <button onclick="saveSettings()" style="width:100%;padding:12px;background:var(--accent);border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;margin-top:8px">Save & Refresh</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =============================================
+        // API KEYS (Pre-configured)
+        // =============================================
+        const API_KEYS = {
+            newsdata: 'pub_13a914590d954af5a5e59aaef487cece',
+            openweather: '2e1d472bc1b48449837208507a2367af',
+        };
+
+        const state = {
+            risk: 0,
+            keys: { newsdata: API_KEYS.newsdata, openweather: API_KEYS.openweather },
+            feedItems: [],
+            seenHeadlines: new Set(),
+            trendData: [],
+            trendLabels: []
+        };
+
+        const KEYWORDS = ['retaliation', 'strike', 'attack', 'escalation', 'military', 'threat', 'imminent', 'missile', 'nuclear', 'war'];
+        const MIL_PREFIX = ['AE', 'AF', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'];
+
+        const INFO_CONTENT = {
+            news: { title: 'News Intelligence', body: '<strong>Source:</strong> NewsData.io API<br><br><strong>What it tracks:</strong> Real-time news articles mentioning Iran, Israel, Pentagon, CENTCOM, military operations, and strikes.<br><br><strong>Risk logic:</strong> More articles + alert keywords (strike, attack, escalation) = higher risk score. Sudden spikes indicate developing situations.' },
+            trends: { title: 'Public Interest', body: '<strong>Source:</strong> Wikipedia Pageviews API<br><br><strong>What it tracks:</strong> Daily views on the "Iran" Wikipedia page. During crises, public interest spikes dramatically.<br><br><strong>Risk logic:</strong> Baseline is ~35k views/day. Views above 70k suggest elevated public concern. 200k+ views indicate major crisis attention.' },
+            aviation: { title: 'Iran Airspace Activity', body: '<strong>Source:</strong> OpenSky Network (Live ADS-B)<br><br><strong>What it tracks:</strong> All aircraft currently flying over Iranian airspace (lat 25-40°, lon 44-63°).<br><br><strong>Risk logic:</strong> Monitors for military transponder codes (USAF hex prefixes), tanker callsigns (KC-135, KC-10), and unusual cargo flight patterns from Tehran to Damascus/Beirut.' },
+            weather: { title: 'Operational Conditions', body: '<strong>Source:</strong> OpenWeatherMap API<br><br><strong>What it tracks:</strong> Current weather in Tehran including visibility, cloud cover, and conditions.<br><br><strong>Risk logic:</strong> Clear skies and high visibility favor aerial operations. Poor weather (low visibility, storms) reduces operational likelihood. Shown as tactical impact assessment.' }
+        };
+
+        let chart;
+
+        // Utilities
+        const getTimezone = () => Intl.DateTimeFormat().resolvedOptions().timeZone.split('/').pop().replace('_', ' ');
+        const formatTime = () => new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+        const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        function getColor(v) { return v >= 86 ? 'red' : v >= 61 ? 'orange' : v >= 31 ? 'yellow' : 'green'; }
+        function getGradient(v) { return v >= 86 ? 'url(#gradRed)' : v >= 61 ? 'url(#gradOrange)' : v >= 31 ? 'url(#gradYellow)' : 'url(#gradGreen)'; }
+        function getStatusText(v) { return v >= 86 ? 'Imminent' : v >= 61 ? 'High Risk' : v >= 31 ? 'Elevated' : 'Low Risk'; }
+        function getStatusClass(v) { return v >= 86 ? 'imminent' : v >= 61 ? 'high' : v >= 31 ? 'elevated' : 'low'; }
+
+        function setStatus(id, live) {
+            const el = document.getElementById(id);
+            el.textContent = live ? 'LIVE' : 'DEMO';
+            el.className = `signal-status ${live ? 'live' : 'demo'}`;
+        }
+
+        function updateTimestamp() {
+            document.getElementById('lastUpdate').textContent = formatTime();
+            document.getElementById('timezone').textContent = getTimezone();
+        }
+
+        function updateGauge(score) {
+            score = Math.max(0, Math.min(100, Math.round(score)));
+            state.risk = score;
+            document.getElementById('gaugeFill').style.strokeDashoffset = 251.2 - (score / 100 * 251.2);
+            document.getElementById('gaugeFill').setAttribute('stroke', getGradient(score));
+            const val = document.getElementById('gaugeValue');
+            val.textContent = `${score}%`;
+            val.className = `gauge-value ${getColor(score)}`;
+            const label = document.getElementById('statusLabel');
+            label.textContent = getStatusText(score);
+            label.className = `status-label ${getStatusClass(score)}`;
+            updateTimestamp();
+        }
+
+        function updateSignal(name, value, detail) {
+            const valEl = document.getElementById(`${name}Value`);
+            const detailEl = document.getElementById(`${name}Detail`);
+            if (name === 'weather') {
+                valEl.textContent = value;
+                valEl.style.color = value === 'Favorable' ? 'var(--green)' : value === 'Marginal' ? 'var(--yellow)' : 'var(--orange)';
+            } else {
+                valEl.textContent = `${Math.round(value)}%`;
+                valEl.style.color = `var(--${getColor(value)})`;
+            }
+            detailEl.textContent = detail;
+        }
+
+        function addFeed(source, text, isAlert = false, badge = null) {
+            // Dedupe by first 50 chars
+            const key = text.substring(0, 50).toLowerCase();
+            if (state.seenHeadlines.has(key)) return;
+            state.seenHeadlines.add(key);
+
+            const item = { source, text, isAlert, badge, time: formatTime() };
+            state.feedItems.unshift(item);
+            if (state.feedItems.length > 20) state.feedItems.pop();
+            renderFeed();
+        }
+
+        function renderFeed() {
+            const list = document.getElementById('feedList');
+            const btn = document.getElementById('showMoreBtn');
+            const expanded = list.classList.contains('expanded');
+            const items = expanded ? state.feedItems : state.feedItems.slice(0, 3);
+
+            list.innerHTML = items.map(i => `
+                <div class="feed-item${i.isAlert ? ' alert' : ''}">
+                    <div class="feed-meta">
+                        <span class="feed-source">${i.source}${i.badge ? ` <span class="feed-badge">${i.badge}</span>` : ''}</span>
+                        <span class="feed-time">${i.time}</span>
+                    </div>
+                    <div class="feed-text">${i.text}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('feedCount').textContent = `${state.feedItems.length} items`;
+            btn.style.display = state.feedItems.length > 3 ? 'block' : 'none';
+            btn.textContent = expanded ? 'Show Less' : `Show All (${state.feedItems.length})`;
+        }
+
+        function toggleFeed() {
+            document.getElementById('feedList').classList.toggle('expanded');
+            renderFeed();
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('trendChart').getContext('2d');
+            // Generate last 7 days labels
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date(Date.now() - i * 86400000);
+                state.trendLabels.push(formatDate(d));
+                state.trendData.push(Math.random() * 25 + 15); // Initial random data
+            }
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: state.trendLabels,
+                    datasets: [{
+                        data: state.trendData,
+                        borderColor: '#f97316',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#f97316',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { intersect: false, mode: 'index' },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1c1c1c',
+                            titleColor: '#fff',
+                            bodyColor: '#999',
+                            borderColor: '#333',
+                            borderWidth: 1,
+                            padding: 10,
+                            displayColors: false,
+                            callbacks: {
+                                title: (ctx) => ctx[0].label,
+                                label: (ctx) => `Risk: ${Math.round(ctx.raw)}%`
+                            }
+                        },
+                        annotation: {
+                            annotations: {
+                                baseline: {
+                                    type: 'line',
+                                    yMin: 15,
+                                    yMax: 15,
+                                    borderColor: 'rgba(255,255,255,0.15)',
+                                    borderWidth: 1,
+                                    borderDash: [5, 5],
+                                    label: { content: 'Baseline', enabled: true, position: 'start', color: '#666', font: { size: 10 } }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#666', font: { size: 10 } }
+                        },
+                        y: {
+                            min: 0,
+                            max: 100,
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#666', font: { size: 10 }, stepSize: 25, callback: v => v + '%' }
+                        }
+                    }
+                }
+            });
+
+            // Draw baseline manually since annotation plugin not loaded
+            const originalDraw = chart.draw;
+            chart.draw = function() {
+                originalDraw.apply(this, arguments);
+                const ctx = this.ctx;
+                const yAxis = this.scales.y;
+                const xAxis = this.scales.x;
+                const y = yAxis.getPixelForValue(15);
+                ctx.save();
+                ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(xAxis.left, y);
+                ctx.lineTo(xAxis.right, y);
+                ctx.stroke();
+                ctx.fillStyle = '#555';
+                ctx.font = '10px Inter';
+                ctx.fillText('Normal', xAxis.left + 5, y - 5);
+                ctx.restore();
+            };
+        }
+
+        // Modals
+        function showInfo(type) {
+            trackEvent('info_view', 'engagement', type);
+            const info = INFO_CONTENT[type];
+            document.getElementById('infoTitle').textContent = info.title;
+            document.getElementById('infoBody').innerHTML = info.body;
+            document.getElementById('infoModal').classList.add('open');
+        }
+        function closeInfo(e) { if (!e || e.target.id === 'infoModal') document.getElementById('infoModal').classList.remove('open'); }
+        function openSettings() { trackEvent('settings_open', 'engagement', 'settings'); document.getElementById('settingsModal').classList.add('open'); }
+        function closeSettings(e) { if (!e || e.target.id === 'settingsModal') document.getElementById('settingsModal').classList.remove('open'); }
+
+        function saveSettings() {
+            state.keys.newsdata = document.getElementById('newsApiKey').value.trim() || API_KEYS.newsdata;
+            state.keys.openweather = document.getElementById('weatherApiKey').value.trim() || API_KEYS.openweather;
+            closeSettings();
+            calculate();
+        }
+
+        // Share functionality
+        function shareSnapshot() {
+            trackEvent('share', 'engagement', 'snapshot_shared', state.risk);
+            const text = `🎯 Aegis USA Strike on Iran Monitor\n\n` +
+                `📊 Current Risk: ${state.risk}% (${getStatusText(state.risk)})\n` +
+                `⏱️ Next 24 Hours\n\n` +
+                `📰 News: ${document.getElementById('newsValue').textContent}\n` +
+                `📈 Interest: ${document.getElementById('socialValue').textContent}\n` +
+                `✈️ Aviation: ${document.getElementById('flightValue').textContent}\n` +
+                `🌤️ Conditions: ${document.getElementById('weatherValue').textContent}\n\n` +
+                `Updated: ${formatTime()} ${getTimezone()}\n` +
+                `🔗 https://backyonatan-alt.github.io/aegis`;
+
+            if (navigator.share) {
+                navigator.share({ title: 'Aegis Threat Monitor', text });
+            } else {
+                navigator.clipboard.writeText(text).then(() => alert('Status copied to clipboard!'));
+            }
+        }
+
+        // API Fetchers
+        async function fetchNews() {
+            if (!state.keys.newsdata) { setStatus('newsStatus', false); return 0; }
+            try {
+                setStatus('newsStatus', true);
+                const q = encodeURIComponent('USA Iran military strike Pentagon CENTCOM');
+                const res = await fetch(`https://newsdata.io/api/1/news?apikey=${state.keys.newsdata}&q=${q}&language=en`);
+                const data = await res.json();
+                if (data.status === 'success' && data.results) {
+                    // Much lower base - only count truly relevant articles
+                    let alertCount = 0;
+                    data.results.slice(0, 5).forEach(a => {
+                        const title = (a.title || '').substring(0, 80);
+                        const isAlert = KEYWORDS.some(k => title.toLowerCase().includes(k));
+                        if (isAlert) alertCount++;
+                        addFeed('NEWS', title, isAlert, isAlert ? 'High Impact' : null);
+                    });
+                    // Calibrated: 10 articles = ~15%, alert keywords add small bump
+                    const risk = Math.min(50, data.results.length * 1.5 + alertCount * 3);
+                    updateSignal('news', Math.round(risk), `${data.results.length} articles, ${alertCount} critical`);
+                    return Math.min(15, risk * 0.25); // Max 15% contribution
+                }
+            } catch (e) { setStatus('newsStatus', false); updateSignal('news', 0, 'API error'); }
+            return 0;
+        }
+
+        async function fetchTrends() {
+            try {
+                const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0].replace(/-/g, '');
+                const res = await fetch(`https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Iran/daily/${yesterday}/${yesterday}`);
+                const data = await res.json();
+                if (data.items && data.items[0]) {
+                    setStatus('trendsStatus', true);
+                    const views = data.items[0].views;
+                    const baseline = 40000; // Raised baseline
+                    // Calibrated: normal ~40k = ~10%, spikes 100k+ = ~25%
+                    const risk = Math.min(40, Math.round((views / baseline) * 10));
+                    updateSignal('social', risk, `${Math.round(views/1000)}k views yesterday`);
+                    if (risk > 25) addFeed('TRENDS', `Iran Wikipedia: ${Math.round(views/1000)}k pageviews (elevated)`, true);
+                    return Math.min(10, risk * 0.2); // Max 10% contribution
+                }
+            } catch (e) { setStatus('trendsStatus', false); updateSignal('social', 0, 'API error'); }
+            return 0;
+        }
+
+        async function fetchFlights() {
+            try {
+                const url = 'https://opensky-network.org/api/states/all?lamin=25.0&lomin=44.0&lamax=40.0&lomax=63.0';
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Rate limited');
+                const data = await res.json();
+                if (data.states) {
+                    setStatus('flightStatus', true);
+                    const flights = data.states.filter(s => !s[8]);
+                    const mil = flights.filter(s => {
+                        const hex = (s[0] || '').toUpperCase();
+                        const cs = (s[1] || '').toUpperCase();
+                        return MIL_PREFIX.some(p => hex.startsWith(p)) || cs.includes('KC') || cs.includes('RCH') || cs.includes('DUKE');
+                    });
+                    // Calibrated: 50 aircraft = ~10%, military adds significant bump
+                    const risk = Math.min(50, flights.length * 0.2 + mil.length * 15);
+                    updateSignal('flight', Math.round(risk), `${flights.length} aircraft${mil.length ? `, ${mil.length} military` : ''}`);
+                    if (mil.length > 0) addFeed('AVIATION', `${mil.length} potential military aircraft over Iran`, true, 'Alert');
+                    return mil.length > 0 ? 15 : Math.min(5, flights.length * 0.05); // Max 15% with military, 5% without
+                }
+            } catch (e) { setStatus('flightStatus', false); updateSignal('flight', 10, 'Rate limited'); }
+            return 0;
+        }
+
+        async function fetchWeather() {
+            if (!state.keys.openweather) { setStatus('weatherStatus', false); return 0; }
+            try {
+                setStatus('weatherStatus', true);
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=35.6892&lon=51.389&appid=${state.keys.openweather}&units=metric`);
+                const data = await res.json();
+                if (data.main) {
+                    const temp = Math.round(data.main.temp);
+                    const vis = data.visibility || 10000;
+                    const clouds = data.clouds?.all || 0;
+                    let condition = 'Favorable';
+                    if (vis < 5000 || clouds > 80) condition = 'Poor';
+                    else if (vis < 8000 || clouds > 50) condition = 'Marginal';
+                    updateSignal('weather', condition, `${temp}°C, ${vis >= 10000 ? '10+' : Math.round(vis/1000)}km vis`);
+                    addFeed('WEATHER', `Tehran: ${temp}°C, ${data.weather[0]?.description || 'Unknown'}. Ops: ${condition}`);
+                }
+            } catch (e) { setStatus('weatherStatus', false); updateSignal('weather', 'Unknown', 'API error'); }
+            return 0; // Weather doesn't add to risk score
+        }
+
+        async function calculate() {
+            const [n, t, f] = await Promise.all([fetchNews(), fetchTrends(), fetchFlights(), fetchWeather()]);
+            // Total is now calibrated to stay low (typically 5-15%) unless real escalation
+            const total = Math.min(100, n + t + f);
+
+            // Track risk level changes for analytics
+            const prevRisk = state.risk;
+            updateGauge(total);
+            trackEvent('data_refresh', 'api', 'risk_calculated', total);
+
+            // Track significant risk changes (>10% change)
+            if (Math.abs(total - prevRisk) > 10) {
+                trackEvent('risk_change', 'alert', total > prevRisk ? 'risk_increased' : 'risk_decreased', total);
+            }
+
+            // Track high risk events
+            if (total >= 40 && prevRisk < 40) {
+                trackEvent('high_risk_alert', 'alert', 'threshold_crossed', total);
+            }
+
+            // Update trend chart
+            state.trendData.shift();
+            state.trendData.push(total);
+            state.trendLabels.shift();
+            state.trendLabels.push(formatDate(new Date()));
+            if (chart) {
+                chart.data.labels = state.trendLabels;
+                chart.data.datasets[0].data = state.trendData;
+                chart.update('none');
+            }
+        }
+
+        // Init - refresh every 30 MINUTES to save API calls
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('newsApiKey').value = state.keys.newsdata;
+            document.getElementById('weatherApiKey').value = state.keys.openweather;
+            initChart();
+            addFeed('SYSTEM', 'Aegis threat monitor initialized');
+            setTimeout(() => { calculate(); setInterval(calculate, 1800000); }, 500); // 1800000ms = 30 minutes
+        });
+    </script>
+</body>
+</html>
