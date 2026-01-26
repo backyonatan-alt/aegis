@@ -88,8 +88,20 @@ function updateSignal(name, value, detail) {
 
 function showInfo(type) {
     const modal = document.getElementById('infoModal');
+    const title = document.getElementById('infoTitle');
     const content = document.getElementById('infoBody');
-    content.innerHTML = INFO_CONTENT[type] || 'Information not available.';
+    
+    const info = INFO_CONTENT[type];
+    if (!info) {
+        content.innerHTML = 'Information not available.';
+    } else if (typeof info === 'object') {
+        title.textContent = info.title || 'Signal Info';
+        content.innerHTML = info.content;
+    } else {
+        title.textContent = 'Signal Info';
+        content.innerHTML = info;
+    }
+    
     modal.classList.add('open');
 }
 

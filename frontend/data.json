@@ -16,6 +16,7 @@
       9,
       9,
       7,
+      7,
       7
     ],
     "raw_data": {
@@ -91,12 +92,12 @@
       ],
       "total_count": 17,
       "alert_count": 5,
-      "timestamp": "2026-01-27T00:29:11.482550"
+      "timestamp": "2026-01-27T00:38:46.756101"
     }
   },
   "flight": {
-    "risk": 52,
-    "detail": "54 aircraft over Iran",
+    "risk": 49,
+    "detail": "58 aircraft over Iran",
     "history": [
       51,
       52,
@@ -111,24 +112,25 @@
       95,
       95,
       55,
-      52
+      52,
+      49
     ],
     "raw_data": {
-      "aircraft_count": 54,
-      "airline_count": 27,
+      "aircraft_count": 58,
+      "airline_count": 30,
       "airlines": [
         "SWR",
         "PGT",
         "AXB",
-        "SVA",
+        "AHY",
+        "KQA",
         "ETD",
         "TKJ",
         "UAE",
         "RAM",
-        "FJL",
-        "THY"
+        "FJL"
       ],
-      "timestamp": "2026-01-27T00:29:12.001984"
+      "timestamp": "2026-01-27T00:38:47.265687"
     }
   },
   "tanker": {
@@ -148,18 +150,20 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-27T00:29:14.450712"
+      "timestamp": "2026-01-27T00:38:49.783982"
     }
   },
   "weather": {
     "risk": 100,
     "detail": "clear sky",
     "history": [
+      100,
       100,
       100,
       100,
@@ -181,7 +185,7 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Marginal",
-      "timestamp": "2026-01-27T00:29:14.857339"
+      "timestamp": "2026-01-27T00:38:50.092099"
     }
   },
   "polymarket": {
@@ -201,18 +205,20 @@
       13,
       13,
       13,
+      12,
       12
     ],
     "raw_data": {
       "odds": 12,
       "market": "Israel strikes Iran by January 31, 2026?",
-      "timestamp": "2026-01-27T00:29:10.988442"
+      "timestamp": "2026-01-27T00:38:46.300861"
     }
   },
   "pentagon": {
     "risk": 10,
     "detail": "Low Activity (late night)",
     "history": [
+      10,
       10,
       10,
       10,
@@ -249,13 +255,13 @@
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-27T00:29:10.656497",
+      "timestamp": "2026-01-27T00:38:45.916353",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 26,
+    "risk": 25,
     "history": [
       {
         "timestamp": 1769463822123,
@@ -320,9 +326,13 @@
       {
         "timestamp": 1769466554860,
         "risk": 26
+      },
+      {
+        "timestamp": 1769467130096,
+        "risk": 25
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-27T00:29:14.860249"
+  "last_updated": "2026-01-27T00:38:50.096127"
 }

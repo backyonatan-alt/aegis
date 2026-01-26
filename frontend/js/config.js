@@ -18,6 +18,26 @@ const state = {
 const KEYWORDS = ['retaliation', 'strike', 'attack', 'escalation', 'military', 'threat', 'imminent', 'missile', 'nuclear', 'war'];
 
 const INFO_CONTENT = {
+    about: {
+        title: 'About Strike Radar',
+        content: `<div class="modal-body" id="infoBody"><strong>⚠️ Disclaimer</strong><br><br>This is an <strong>experimental project</strong> for informational purposes only.<br><br><strong>NOT:</strong><br>• Official intelligence<br>• Verified predictions<br>• Basis for decisions<br><br><strong>Data Sources</strong><br>• NewsData.io<br>• GDELT Project<br>• Wikipedia<br>• Aviationstack<br>• OpenWeatherMap<br><br><strong>Limitations</strong><br>Cannot account for classified intel or diplomatic activity. One data point among many.<br><br><em>Stay informed. Think critically.</em></div>`
+    },
+    calculation: {
+        title: 'How We Calculate Risk',
+        content: `<strong>Total Risk = Sum of 6 Signals</strong><br><br>
+        📰 <strong>News Intel (30%):</strong> Real-time news from Reuters, BBC, NYT, Al Jazeera. Critical keywords like "strike", "attack", "imminent".<br><br>
+        ✈️ <strong>Civil Aviation (35%):</strong> Aircraft over Iran airspace. Fewer = airlines avoiding = higher risk.<br><br>
+        🛩️ <strong>Military Tankers (15%):</strong> KC-135 refueling tankers detected in Middle East via ADS-B.<br><br>
+        📊 <strong>Market Odds (10%):</strong> Polymarket prediction odds for "US strikes Iran" events.<br><br>
+        🍕 <strong>Pentagon Pizza Meter (10%):</strong> Pizza delivery busyness near Pentagon. Late-night/weekend spikes = potential overtime work.<br><br>
+        ☀️ <strong>Op. Conditions (5%):</strong> Clear weather in Tehran = favorable for operations.<br><br>
+        <strong>Escalation Multiplier:</strong> If 3+ signals are elevated, total gets a 15% boost.<br><br>
+        <strong>Risk Levels:</strong><br>
+        • 0-30% = Low Risk<br>
+        • 31-60% = Elevated<br>
+        • 61-85% = High Risk<br>
+        • 86-100% = Imminent`
+    },
     news: `<strong>News Intelligence Monitor</strong><br><br>
         Analyzes breaking news from BBC World and Al Jazeera for Iran conflict developments.<br><br>
         <strong>Alert triggers:</strong> Headlines with keywords like "strike", "retaliation", "imminent"<br>
