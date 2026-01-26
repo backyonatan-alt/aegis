@@ -16,23 +16,6 @@ function setStatus(id, live) {
     if (el) el.textContent = live ? 'LIVE' : 'STALE';
 }
 
-function getTimeBasedSeed() {
-    return Math.floor(Date.now() / (30 * 60 * 1000)); // Changes every 30 min
-}
-
-function seededRandom(seed, index) {
-    const x = Math.sin(seed + index * 9999) * 10000;
-    return x - Math.floor(x);
-}
-
-// Apply deterministic jitter - same for all users at same time
-function applyJitter(value, min = 0, max = 100, range = 2, index = 0) {
-    const seed = getTimeBasedSeed();
-    const random = seededRandom(seed, index);
-    const jitterAmount = Math.floor(random * (range * 2 + 1)) - range;
-    return Math.max(min, Math.min(max, value + jitterAmount));
-}
-
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';

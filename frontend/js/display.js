@@ -4,13 +4,6 @@
 
 // Display data on the dashboard
 function displayData(data, fromCache = false) {
-    const safeNews = applyJitter(data.news, 0, 30, 1, 1);
-    const safeInterest = applyJitter(data.interest, 0, 20, 1, 2);
-    const safeAviation = applyJitter(data.aviation, 0, 15, 1, 3);
-    const safeTanker = applyJitter(data.tanker || 0, 0, 10, 1, 4);
-    const safePolymarket = applyJitter(data.polymarket || 0, 0, 10, 1, 5);
-    const safeWeather = data.weather;
-
     // Load signal history from cache if available
     if (data.signalHistory) {
         console.log('Loading signalHistory from cache:', Object.keys(data.signalHistory).map(k => `${k}: ${data.signalHistory[k]?.length || 0} points`).join(', '));
@@ -23,8 +16,8 @@ function displayData(data, fromCache = false) {
 
     // Update individual signal displays with stored details or computed values
     // NEWS: Use news_intel from GitHub Action cache if available (consistent for all users)
-    let newsDisplayRisk = Math.round((safeNews / 30) * 100);
-    let newsDetail = `${Math.round(safeNews / 2)} articles, ${Math.round(safeNews / 10)} critical`;
+    let newsDisplayRisk = Math.round((data.news / 30) * 100);
+    let newsDetail = `${Math.round(data.news / 2)} articles, ${Math.round(data.news / 10)} critical`;
 
     if (data.news_intel && data.news_intel.total_count !== undefined) {
         // Use server-side cached news data (consistent!)
@@ -52,15 +45,15 @@ function displayData(data, fromCache = false) {
 
     updateSignal('news', newsDisplayRisk, newsDetail, !fromCache);
 
-    updateSignal('social', Math.round((safeInterest / 20) * 100), data.socialDetail || 'GDELT + Wikipedia', !fromCache);
+    updateSignal('social', Math.round((data.interest / 20) * 100), data.socialDetail || 'GDELT + Wikipedia', !fromCache);
 
-    const flightCount = Math.round(safeAviation * 10);
+    const flightCount = Math.round(data.aviation * 10);
     const flightDetail = (data.flightDetail && !data.flightDetail.includes('Scanning') && !data.flightDetail.includes('Loading')) ? data.flightDetail : `${flightCount} aircraft over Iran`;
-    updateSignal('flight', Math.round((safeAviation / 15) * 100), flightDetail, !fromCache);
+    updateSignal('flight', Math.round((data.aviation / 15) * 100), flightDetail, !fromCache);
 
-    const tankerCount = Math.round(safeTanker / 4);
+    const tankerCount = Math.round(data.tanker / 4);
     const tankerDetail = (data.tankerDetail && !data.tankerDetail.includes('Scanning') && !data.tankerDetail.includes('Loading')) ? data.tankerDetail : `${tankerCount} detected in region`;
-    updateSignal('tanker', Math.round((safeTanker / 10) * 100), tankerDetail, !fromCache);
+    updateSignal('tanker', Math.round((data.tanker / 10) * 100), tankerDetail, !fromCache);
 
     // Polymarket odds signal (from cached data updated by GitHub Actions)
     let polymarketOdds = 0;
@@ -94,10 +87,8 @@ function displayData(data, fromCache = false) {
         updateSignal('polymarket', 10, 'Awaiting data...', !fromCache);
         setStatus('polymarketStatus', true);
     }
-    // Store for total calculation
-    const safePolymarketCalc = polymarketContribution;
 
-    updateSignal('weather', safeWeather >= 4 ? 'Favorable' : safeWeather >= 2 ? 'Marginal' : 'Poor', data.weatherDetail || 'Tehran conditions', !fromCache);
+    updateSignal('weather', data.weather >= 4 ? 'Favorable' : data.weather >= 2 ? 'Marginal' : 'Poor', data.weatherDetail || 'Tehran conditions', !fromCache);
 
     // Pentagon Pizza Meter signal (from cached data updated by GitHub Actions)
     // Max contribution: 10% of total risk
@@ -187,9 +178,9 @@ function displayData(data, fromCache = false) {
         renderFeed();
     }
 
-    let total = safeNews + safeInterest + safeAviation + safeTanker + safePolymarketCalc + safeWeather + pentagonContribution;
+    let total = data.news + data.interest + data.aviation + data.tanker + polymarketContribution + data.weather + pentagonContribution;
 
-    const elevated = [safeNews > 10, safeInterest > 8, safeAviation > 10, safeTanker > 5, safeWeather > 2, pentagonContribution > 5].filter(Boolean).length;
+    const elevated = [data.news > 10, data.interest > 8, data.aviation > 10, data.tanker > 5, data.weather > 2, pentagonContribution > 5].filter(Boolean).length;
     if (elevated >= 3) {
         total = Math.min(100, total * 1.15);
         if (!fromCache) addFeed('SYSTEM', 'Multiple elevated signals detected - escalation multiplier applied', true, 'Alert');

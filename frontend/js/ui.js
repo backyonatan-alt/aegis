@@ -34,6 +34,8 @@ function updateGauge(score) {
     const statusText = document.getElementById('statusText');
     const container = document.querySelector('.gauge-container');
     
+    score = Math.max(0, Math.min(100, Math.round(score)));
+    
     const degrees = -90 + (score / 100) * 180;
     needle.style.transform = `translateX(-50%) rotate(${degrees}deg)`;
     value.textContent = Math.round(score);
@@ -57,12 +59,8 @@ function updateSignal(name, value, detail, addToHistory = false) {
         const sparkColor = value === 'Favorable' ? '#f97316' : value === 'Marginal' ? '#eab308' : '#22c55e';
         updateSparkline(name, weatherNum, sparkColor, addToHistory);
     } else {
-        // Deterministic jitter for signal display - all users see same
+        // Display the actual value
         let displayValue = Math.round(value) || 0;
-        const seed = Math.floor(Date.now() / (30 * 60 * 1000));
-        const signalIndex = { news: 10, social: 11, flight: 12 }[name] || 13;
-        const jitterVal = Math.floor(seededRandom(seed, signalIndex) * 5) - 2;
-        displayValue = Math.max(0, Math.min(100, displayValue + jitterVal));
         const colorClass = getColor(displayValue);
         valEl.textContent = `${displayValue}%`;
         valEl.style.color = `var(--${colorClass})`;
