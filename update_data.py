@@ -895,24 +895,45 @@ def update_data_file():
         current_data["last_updated"] = datetime.now().isoformat()
 
         # Calculate risk scores for history tracking
-        news_contribution = calculate_news_risk(current_data.get("news_intel", {}))
-        aviation_risk = calculate_aviation_risk(current_data.get("aviation", {}))
-        tanker_risk = calculate_tanker_risk(current_data.get("tanker", {}))
-        weather_risk = (
-            5 if weather_data and weather_data.get("condition") == "Favorable" else 0
-        )
-        polymarket_risk = min(
+        # Match the JavaScript calculation in display.js
+        news_intel = current_data.get("news_intel", {})
+        articles = news_intel.get("total_count", 0)
+        alert_count = news_intel.get("alert_count", 0)
+        alert_ratio = alert_count / articles if articles > 0 else 0
+        news_display_risk = max(3, round(pow(alert_ratio, 2) * 85))
+
+        aviation = current_data.get("aviation", {})
+        aircraft_count = aviation.get("aircraft_count", 0)
+        flight_risk = max(3, 95 - round(aircraft_count * 0.8))
+
+        tanker = current_data.get("tanker", {})
+        tanker_count = tanker.get("tanker_count", 0)
+        tanker_risk = round((tanker_count / 10) * 100)
+
+        weather = current_data.get("weather", {})
+        clouds = weather.get("clouds", 0)
+        weather_risk = 100 - (max(0, clouds - 6) * 10)
+
+        polymarket_contribution = min(
             10, current_data.get("polymarket", {}).get("odds", 0) * 0.1
         )
-        pentagon_risk = pentagon_data.get("risk_contribution", 1)
+        pentagon_contribution = pentagon_data.get("risk_contribution", 1)
+
+        # Apply weighted contributions (matching JavaScript)
+        news_contribution_weighted = news_display_risk * 0.25  # 25% weight
+        flight_contribution_weighted = flight_risk * 0.20  # 20% weight
+        tanker_contribution_weighted = tanker_risk * 0.15  # 15% weight
+        weather_contribution_weighted = weather_risk * 0.10  # 10% weight
+        polymarket_contribution_weighted = polymarket_contribution * 2  # 20% weight
+        pentagon_contribution_weighted = pentagon_contribution * 1  # 10% weight
 
         total_risk = (
-            news_contribution
-            + aviation_risk
-            + tanker_risk
-            + weather_risk
-            + polymarket_risk
-            + pentagon_risk
+            news_contribution_weighted
+            + flight_contribution_weighted
+            + tanker_contribution_weighted
+            + weather_contribution_weighted
+            + polymarket_contribution_weighted
+            + pentagon_contribution_weighted
         )
         total_risk = min(100, max(0, round(total_risk)))
 
@@ -925,16 +946,14 @@ def update_data_file():
         current_data["history"] = history
 
         # Add to signal history (keep last 20 points per signal)
-        signal_history["news"].append(round((news_contribution / 30) * 100))
-        signal_history["flight"].append(round((aviation_risk / 15) * 100))
-        signal_history["tanker"].append(round((tanker_risk / 10) * 100))
-        signal_history["pentagon"].append(round((pentagon_risk / 10) * 100))
+        signal_history["news"].append(news_display_risk)
+        signal_history["flight"].append(flight_risk)
+        signal_history["tanker"].append(tanker_risk)
+        signal_history["pentagon"].append(round((pentagon_contribution / 10) * 100))
         signal_history["polymarket"].append(
             round(current_data.get("polymarket", {}).get("odds", 0))
         )
-        signal_history["weather"].append(
-            100 if weather_risk >= 4 else 50 if weather_risk >= 2 else 20
-        )
+        signal_history["weather"].append(weather_risk)
 
         # Keep only last 20 points
         for sig in signal_history:

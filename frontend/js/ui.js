@@ -64,13 +64,13 @@ function updateSignal(name, value, detail) {
     if (name === 'weather') {
         // Good weather = favorable for attack = higher risk
         // Show "Clear" (orange) when good, "Poor" (green) when bad
-        const displayText = value === 'Favorable' ? 'Clear' : value === 'Marginal' ? 'Marginal' : 'Poor';
+        const displayText = value > 75 ? 'Clear' : value > 40 ? 'Marginal' : 'Poor';
         valEl.textContent = displayText;
-        const weatherColor = value === 'Favorable' ? 'var(--orange)' : value === 'Marginal' ? 'var(--yellow)' : 'var(--green)';
+        const weatherColor = value > 75 ? 'var(--orange)' : value > 40 ? 'var(--yellow)' : 'var(--green)';
         valEl.style.color = weatherColor;
         // Update sparkline for weather - Clear (good attack conditions) = high, Poor = low
-        const weatherNum = value === 'Favorable' ? 100 : value === 'Marginal' ? 50 : 20;
-        const sparkColor = value === 'Favorable' ? '#f97316' : value === 'Marginal' ? '#eab308' : '#22c55e';
+        const weatherNum = value > 75 ? 100 : value > 40 ? 50 : 20;
+        const sparkColor = value > 75 ? '#f97316' : value > 40 ? '#eab308' : '#22c55e';
         updateSparkline(name, weatherNum, sparkColor);
     } else {
         // Display the actual value

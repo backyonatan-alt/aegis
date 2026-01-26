@@ -70,7 +70,7 @@ function displayData(data) {
         setStatus('polymarketStatus', true);
     }
 
-    updateSignal('weather', data.weather >= 4 ? 'Favorable' : data.weather >= 2 ? 'Marginal' : 'Poor', data.weatherDetail || 'Tehran conditions');
+    updateSignal('weather', 100 - (Math.max(0, data.weather.clouds - 6) * 10), data.weather.description);
 
     // Pentagon Pizza Meter signal (from data.json updated by GitHub Actions)
     // Max contribution: 10% of total risk
@@ -153,15 +153,23 @@ function displayData(data) {
         setStatus('pentagonStatus', true); // Show LIVE with simulated data
     }
 
-    let total = data.news + data.interest + data.aviation + data.tanker + polymarketContribution + data.weather + pentagonContribution;
+    // Calculate signal contributions (weighted percentages)
+    const newsContribution = newsDisplayRisk * 0.25; // 25% weight
+    const flightContribution = (95 - Math.round(data.aviation.aircraft_count*0.8 )) * 0.20; // 20% weight
+    const tankerContribution = Math.round((data.tanker.tanker_count / 10) * 100) * 0.15; // 15% weight
+    const weatherContribution = (100 - (Math.max(0, data.weather.clouds - 6) * 10)) * 0.10; // 10% weight
+    const polymarketContributionWeighted = polymarketContribution * 2; // Already in range 0-10, weight at 20%
+    const pentagonContributionWeighted = pentagonContribution * 1; // Already in range 0-10, weight at 10%
+    
+    let total = newsContribution + flightContribution + tankerContribution + weatherContribution + polymarketContributionWeighted + pentagonContributionWeighted;
 
-    const elevated = [data.news > 10, data.interest > 8, data.aviation > 10, data.tanker > 5, data.weather > 2, pentagonContribution > 5].filter(Boolean).length;
+    const elevated = [newsDisplayRisk > 30, flightContribution > 15, tankerContribution > 10, weatherContribution > 7, polymarketContribution > 5, pentagonContribution > 5].filter(Boolean).length;
     if (elevated >= 3) {
         total = Math.min(100, total * 1.15);
         addFeed('SYSTEM', 'Multiple elevated signals detected - escalation multiplier applied', true, 'Alert');
     }
 
-    total = Math.min(100, total);
+    total = Math.min(100, Math.round(total));
 
     updateGauge(total);
     updateTimestamp(data.timestamp);

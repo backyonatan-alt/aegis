@@ -1,34 +1,34 @@
 {
   "pentagon": {
-    "score": 30,
+    "score": 20,
     "risk_contribution": 1,
     "status": "Low Activity",
     "places": [
       {
         "status": "normal",
-        "score": 30,
+        "score": 20,
         "name": "Domino's Pizza"
       },
       {
         "status": "normal",
-        "score": 30,
+        "score": 20,
         "name": "Papa John's"
       },
       {
         "status": "normal",
-        "score": 30,
+        "score": 20,
         "name": "Pizza Hut"
       }
     ],
-    "timestamp": "2026-01-26T21:43:37.242170",
-    "is_late_night": false,
+    "timestamp": "2026-01-26T23:35:16.099863",
+    "is_late_night": true,
     "is_weekend": false
   },
-  "pentagon_updated": "2026-01-26T21:43:37.242176",
+  "pentagon_updated": "2026-01-26T23:35:16.099868",
   "polymarket": {
-    "odds": 14,
+    "odds": 13,
     "market": "Will US or Israel strike Iran by January 31, 2026?",
-    "timestamp": "2026-01-26T21:43:37.295834"
+    "timestamp": "2026-01-26T23:35:16.455606"
   },
   "news_intel": {
     "articles": [
@@ -103,51 +103,47 @@
       {
         "title": "As US \u2018armada\u2019 approaches, Iran warns of dire consequences if attacked",
         "is_alert": true
-      },
-      {
-        "title": "Iraq\u2019s Kataib Hezbollah warns of \u2018total war\u2019 if Iran is attacked",
-        "is_alert": true
       }
     ],
-    "total_count": 19,
-    "alert_count": 7,
-    "timestamp": "2026-01-26T21:43:37.873210"
+    "total_count": 18,
+    "alert_count": 6,
+    "timestamp": "2026-01-26T23:35:17.082240"
   },
   "wikipedia": {
     "total_views": 21490,
     "timestamp": "2026-01-26T20:38:16.443477"
   },
   "aviation": {
-    "aircraft_count": 117,
-    "airline_count": 31,
+    "aircraft_count": 60,
+    "airline_count": 28,
     "airlines": [
-      "AXB",
-      "WZZ",
-      "AIC",
+      "PGT",
       "IGO",
+      "AXB",
       "SVA",
-      "IAW",
       "UAE",
-      "CXA",
-      "RAM",
+      "THY",
+      "CCA",
+      "DSO",
+      "QSM",
       "FDB"
     ],
-    "timestamp": "2026-01-26T21:43:38.141050"
+    "timestamp": "2026-01-26T23:35:17.399490"
   },
   "tanker": {
     "tanker_count": 0,
     "callsigns": [],
-    "timestamp": "2026-01-26T21:43:40.421212"
+    "timestamp": "2026-01-26T23:35:19.671351"
   },
   "weather": {
-    "temp": 6,
-    "visibility": 10000,
+    "temp": 4,
+    "visibility": 8000,
     "clouds": 0,
     "description": "clear sky",
-    "condition": "Favorable",
-    "timestamp": "2026-01-26T21:43:40.633236"
+    "condition": "Marginal",
+    "timestamp": "2026-01-26T23:35:19.900340"
   },
-  "last_updated": "2026-01-26T21:43:40.635433",
+  "last_updated": "2026-01-26T23:35:19.904106",
   "history": [
     {
       "timestamp": 1769446072052,
@@ -288,6 +284,10 @@
     {
       "timestamp": 1769456620635,
       "risk": 41
+    },
+    {
+      "timestamp": 1769463319904,
+      "risk": 25
     }
   ],
   "signalHistory": {
@@ -311,11 +311,10 @@
       100,
       100,
       100,
-      100
+      9
     ],
     "social": [],
     "flight": [
-      20,
       20,
       100,
       167,
@@ -334,7 +333,8 @@
       20,
       20,
       20,
-      20
+      20,
+      47
     ],
     "tanker": [
       10,
@@ -356,11 +356,11 @@
       10,
       10,
       10,
-      10
+      0
     ],
     "pentagon": [
       30,
-      30,
+      10,
       10,
       10,
       10,
@@ -381,7 +381,6 @@
       10
     ],
     "polymarket": [
-      61,
       62,
       62,
       62,
@@ -400,13 +399,14 @@
       71,
       71,
       71,
-      14
+      14,
+      13
     ],
     "weather": [
       100,
       100,
       100,
-      100,
+      90,
       100,
       100,
       100,
