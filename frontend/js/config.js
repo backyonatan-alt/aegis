@@ -1,11 +1,6 @@
 // =============================================
 // CONFIG & CONSTANTS
 // =============================================
-const API_KEYS = {
-    telegram: '7798704396:AAHdV18HFUC3gfP1q6DWx-4RtOXLmFRGVH8'
-};
-
-const TELEGRAM_CHANNEL = '@StrikeRadarAlerts';
 
 const state = {
     trendLabels: [],
