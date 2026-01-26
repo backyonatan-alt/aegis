@@ -62,7 +62,7 @@ function displayData(data) {
     const total = data.total_risk?.risk || 0;
 
     updateGauge(total);
-    updateTimestamp(new Date(data.last_updated)).getTime();
+    updateTimestamp(data.last_updated ? new Date(data.last_updated).getTime() : Date.now());
 
     return total;
 }

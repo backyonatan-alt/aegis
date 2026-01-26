@@ -3,7 +3,6 @@
 // =============================================
 
 function updateTimestamp(timestamp) {
-    console.log('Updating timestamp:', timestamp);
     const el = document.getElementById('lastUpdate');
     const tz = document.getElementById('timezone');
     
@@ -89,7 +88,7 @@ function updateSignal(name, value, detail) {
 
 function showInfo(type) {
     const modal = document.getElementById('infoModal');
-    const content = document.getElementById('infoContent');
+    const content = document.getElementById('infoBody');
     content.innerHTML = INFO_CONTENT[type] || 'Information not available.';
     modal.classList.add('open');
 }
