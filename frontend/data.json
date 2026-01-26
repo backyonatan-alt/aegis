@@ -1,34 +1,34 @@
 {
   "pentagon": {
-    "score": 55,
-    "risk_contribution": 3,
-    "status": "Normal",
+    "score": 30,
+    "risk_contribution": 1,
+    "status": "Low Activity",
     "places": [
       {
         "status": "normal",
-        "score": 55,
+        "score": 30,
         "name": "Domino's Pizza"
       },
       {
         "status": "normal",
-        "score": 55,
+        "score": 30,
         "name": "Papa John's"
       },
       {
         "status": "normal",
-        "score": 55,
+        "score": 30,
         "name": "Pizza Hut"
       }
     ],
-    "timestamp": "2026-01-26T20:13:09.742566",
+    "timestamp": "2026-01-26T21:43:37.242170",
     "is_late_night": false,
     "is_weekend": false
   },
-  "pentagon_updated": "2026-01-26T20:13:09.742904",
+  "pentagon_updated": "2026-01-26T21:43:37.242176",
   "polymarket": {
-    "odds": 61,
-    "market": "Israel x Iran ceasefire broken by June 30, 2026?",
-    "timestamp": "2026-01-26T20:13:10.115182"
+    "odds": 14,
+    "market": "Will US or Israel strike Iran by January 31, 2026?",
+    "timestamp": "2026-01-26T21:43:37.295834"
   },
   "news_intel": {
     "articles": [
@@ -111,33 +111,33 @@
     ],
     "total_count": 19,
     "alert_count": 7,
-    "timestamp": "2026-01-26T20:13:10.974501"
+    "timestamp": "2026-01-26T21:43:37.873210"
   },
   "wikipedia": {
-    "total_views": 0,
-    "timestamp": "2026-01-26T20:13:13.875499"
+    "total_views": 21490,
+    "timestamp": "2026-01-26T20:38:16.443477"
   },
   "aviation": {
-    "aircraft_count": 90,
-    "airline_count": 28,
+    "aircraft_count": 117,
+    "airline_count": 31,
     "airlines": [
-      "IGO",
       "AXB",
-      "VRH",
+      "WZZ",
+      "AIC",
+      "IGO",
+      "SVA",
+      "IAW",
       "UAE",
-      "KNE",
-      "ABY",
-      "CPA",
-      "FJL",
-      "AUV",
+      "CXA",
+      "RAM",
       "FDB"
     ],
-    "timestamp": "2026-01-26T20:13:16.265199"
+    "timestamp": "2026-01-26T21:43:38.141050"
   },
   "tanker": {
     "tanker_count": 0,
     "callsigns": [],
-    "timestamp": "2026-01-26T20:13:18.553440"
+    "timestamp": "2026-01-26T21:43:40.421212"
   },
   "weather": {
     "temp": 6,
@@ -145,9 +145,9 @@
     "clouds": 0,
     "description": "clear sky",
     "condition": "Favorable",
-    "timestamp": "2026-01-26T20:13:19.217705"
+    "timestamp": "2026-01-26T21:43:40.633236"
   },
-  "last_updated": "2026-01-26T20:13:19.222165",
+  "last_updated": "2026-01-26T21:43:40.635433",
   "history": [
     {
       "timestamp": 1769446072052,
@@ -164,10 +164,150 @@
     {
       "timestamp": 1769451199222,
       "risk": 48
+    },
+    {
+      "timestamp": 1769451833621,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769451976142,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452015504,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452068967,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452287424,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452337786,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452526361,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452574610,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452633262,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452669197,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769452701309,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769453211154,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769453753798,
+      "risk": 48
+    },
+    {
+      "timestamp": 1769454140013,
+      "risk": 58
+    },
+    {
+      "timestamp": 1769454286209,
+      "risk": 68
+    },
+    {
+      "timestamp": 1769454324005,
+      "risk": 46
+    },
+    {
+      "timestamp": 1769454405153,
+      "risk": 68
+    },
+    {
+      "timestamp": 1769454694764,
+      "risk": 46
+    },
+    {
+      "timestamp": 1769455196635,
+      "risk": 46
+    },
+    {
+      "timestamp": 1769455334694,
+      "risk": 46
+    },
+    {
+      "timestamp": 1769455466449,
+      "risk": 46
+    },
+    {
+      "timestamp": 1769455637990,
+      "risk": 40
+    },
+    {
+      "timestamp": 1769455813015,
+      "risk": 40
+    },
+    {
+      "timestamp": 1769455978955,
+      "risk": 40
+    },
+    {
+      "timestamp": 1769456059656,
+      "risk": 40
+    },
+    {
+      "timestamp": 1769456142647,
+      "risk": 49
+    },
+    {
+      "timestamp": 1769456409319,
+      "risk": 49
+    },
+    {
+      "timestamp": 1769456460475,
+      "risk": 47
+    },
+    {
+      "timestamp": 1769456554799,
+      "risk": 47
+    },
+    {
+      "timestamp": 1769456569942,
+      "risk": 47
+    },
+    {
+      "timestamp": 1769456620635,
+      "risk": 41
     }
   ],
   "signalHistory": {
     "news": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
       100,
       100,
       100,
@@ -177,10 +317,42 @@
     "flight": [
       20,
       20,
+      100,
+      167,
+      20,
+      167,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
       20,
       20
     ],
     "tanker": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
       10,
       10,
       10,
@@ -189,20 +361,74 @@
     "pentagon": [
       30,
       30,
-      30,
-      30
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
     ],
     "polymarket": [
-      60,
-      60,
       61,
-      61
+      62,
+      62,
+      62,
+      62,
+      62,
+      62,
+      61,
+      61,
+      60,
+      0,
+      0,
+      0,
+      0,
+      86,
+      87,
+      71,
+      71,
+      71,
+      14
     ],
     "weather": [
       100,
       100,
       100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
       100
     ]
-  }
+  },
+  "gdelt": {
+    "article_count": 25,
+    "top_article": "\u7f8e\u822a\u6bcd\u6253\u51fb\u7fa4\u62b5\u8fbe\u4e2d\u4e1c \uff0c \u7f8e\u5927\u89c4\u6a21\u519b\u4e8b\u96c6\u7ed3\u5f15\u53d1\u4f0a\u6717  \u5f3a\u786c\u8b66\u544a _ \u51e4\u51f0\u7f51",
+    "timestamp": "2026-01-26T20:38:09.104615"
+  },
+  "social": 1.2894
 }

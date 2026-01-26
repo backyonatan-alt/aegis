@@ -101,6 +101,10 @@ def calculate_pentagon_activity_score(busyness_data):
     is_late_night = current_hour >= 22 or current_hour < 6
     is_weekend = datetime.now().weekday() >= 5
 
+    print(
+        f"  Calculating score - Hour: {current_hour}, Late night: {is_late_night}, Weekend: {is_weekend}"
+    )
+
     total_score = 0
     valid_readings = 0
 
@@ -108,25 +112,40 @@ def calculate_pentagon_activity_score(busyness_data):
         if place.get("score") is not None:
             score = place["score"]
             valid_readings += 1
+            weighted_score = score
 
             # Weight: busier than usual at odd hours = higher risk
             if is_late_night and score > 60:
                 # Late night busy = very unusual = high risk indicator
-                total_score += score * 1.5
+                weighted_score = score * 1.5
+                print(
+                    f"    {place['name']}: {score} × 1.5 (late night busy) = {weighted_score}"
+                )
+                total_score += weighted_score
             elif is_weekend and score > 70:
                 # Weekend busy = unusual = moderate risk indicator
-                total_score += score * 1.3
+                weighted_score = score * 1.3
+                print(
+                    f"    {place['name']}: {score} × 1.3 (weekend busy) = {weighted_score}"
+                )
+                total_score += weighted_score
             else:
+                print(f"    {place['name']}: {score} (normal weighting)")
                 total_score += score
 
     if valid_readings == 0:
+        print("  No valid readings, using default score of 30")
         return 30  # Default low score (nothing unusual)
 
     avg_score = total_score / valid_readings
+    print(
+        f"  Total: {total_score:.1f}, Valid readings: {valid_readings}, Average: {avg_score:.1f}"
+    )
 
     # Normalize to 0-100 scale
     # Normal activity = 30-50, Elevated = 60-80, High = 80+
     normalized = min(100, max(0, avg_score))
+    print(f"  Normalized score: {normalized:.1f}")
 
     return round(normalized)
 
@@ -136,23 +155,41 @@ def fetch_polymarket_odds():
     try:
         print("Fetching Polymarket odds...")
 
+        # Search for "US strikes Iran" specifically (the exact market we want)
+        strike_keywords = ["strike", "attack", "bomb", "military action"]
+
         # Try the events endpoint with higher limit
         response = requests.get(
-            "https://gamma-api.polymarket.com/events?closed=false&limit=200", timeout=20
+            "https://gamma-api.polymarket.com/public-search?q=iran",
+            timeout=20,
         )
 
         if response.status_code != 200:
             print(f"Polymarket API error: {response.status_code}")
             return None
 
-        events = response.json()
+        data = response.json()
+
+        # Handle different response formats
+        if isinstance(data, dict) and data.get("events"):
+            events = data["events"]
+        elif isinstance(data, dict) and data.get("data"):
+            events = data["data"]
+        elif isinstance(data, list):
+            events = data
+        else:
+            print(
+                f"Unexpected Polymarket response format: {type(data)}, keys: {data.keys() if isinstance(data, dict) else 'N/A'}"
+            )
+            return None
+
+        # Filter out non-dict items (ensure all events are dictionaries)
+        events = [e for e in events if isinstance(e, dict)]
+
         highest_odds = 0
         market_title = ""
 
-        print(f"Found {len(events)} events on Polymarket")
-
-        # Search for "US strikes Iran" specifically (the exact market we want)
-        strike_keywords = ["strike", "attack", "bomb", "military action"]
+        print(f"Found {len(events)} valid events on Polymarket")
 
         def get_market_odds(market):
             """Extract odds from a market using multiple methods"""
@@ -162,49 +199,127 @@ def fetch_polymarket_odds():
             prices = market.get("outcomePrices", [])
             if prices and len(prices) > 0:
                 try:
-                    yes_price = float(prices[0]) if prices[0] else 0
-                    # Price should be between 0 and 1 (0% to 100%)
-                    if 0 < yes_price <= 1:
+                    # First price is YES, second is NO
+                    yes_price_str = str(prices[0]) if prices[0] else "0"
+                    yes_price = float(yes_price_str)
+
+                    # Handle different formats: 0.5 (50%) or 50 (50%)
+                    if yes_price > 1:
+                        # Already in percentage format
+                        odds = round(yes_price)
+                    elif 0 < yes_price <= 1:
+                        # Decimal format (0-1)
                         odds = round(yes_price * 100)
+
+                    # Additional check: if we got exactly 100, might be parsing the NO price
+                    # In that case, try the second element
+                    if odds >= 100 and len(prices) > 1:
+                        no_price = float(str(prices[1])) if prices[1] else 0
+                        if 0 < no_price < 1:
+                            odds = round((1 - no_price) * 100)
+                        elif no_price > 1:
+                            odds = 100 - round(no_price)
+
                 except (ValueError, TypeError):
                     pass
 
             # Method 2: bestAsk
-            if odds == 0:
+            if odds == 0 or odds >= 100:
                 try:
                     best_ask = float(market.get("bestAsk", 0) or 0)
-                    if 0 < best_ask <= 1:
+                    if best_ask > 1:
+                        odds = round(best_ask)
+                    elif 0 < best_ask <= 1:
                         odds = round(best_ask * 100)
                 except (ValueError, TypeError):
                     pass
 
             # Method 3: lastTradePrice
-            if odds == 0:
+            if odds == 0 or odds >= 100:
                 try:
                     last_price = float(market.get("lastTradePrice", 0) or 0)
-                    if 0 < last_price <= 1:
+                    if last_price > 1:
+                        odds = round(last_price)
+                    elif 0 < last_price <= 1:
                         odds = round(last_price * 100)
                 except (ValueError, TypeError):
                     pass
 
-            # Safety cap: odds should never exceed 95% (if it does, data is suspect)
-            if odds > 95:
-                print(
-                    f"  WARNING: Odds too high ({odds}%), likely parsing error - ignoring"
-                )
+            # Safety: Cap odds at 95% (if still 100%, likely bad data)
+            if odds >= 100:
                 return 0
 
             return odds
 
-        # First pass: Look for exact "US strikes Iran" market
+        # Helper function to check if market is within 7 days
+        def is_near_term_market(title):
+            """Check if market has a date within the next 7 days"""
+            import re
+            from datetime import timedelta
+
+            # Look for date patterns like "by January 27" or "January 27, 2026"
+            months = [
+                "january",
+                "february",
+                "march",
+                "april",
+                "may",
+                "june",
+                "july",
+                "august",
+                "september",
+                "october",
+                "november",
+                "december",
+            ]
+
+            title_lower = title.lower()
+            now = datetime.now()
+            week_ahead = now + timedelta(days=7)
+
+            # Try to find month and day in title
+            for i, month in enumerate(months, 1):
+                if month in title_lower:
+                    # Look for day number after month
+                    match = re.search(rf"{month}\s+(\d{{1,2}})", title_lower)
+                    if match:
+                        day = int(match.group(1))
+                        try:
+                            # Assume current year if not specified
+                            market_date = datetime(now.year, i, day)
+                            # If date is in the past, try next year
+                            if market_date < now:
+                                market_date = datetime(now.year + 1, i, day)
+
+                            # Check if within 7 days
+                            if now <= market_date <= week_ahead:
+                                print(
+                                    f"    Market date {market_date.strftime('%Y-%m-%d')} is within 7 days"
+                                )
+                                return True
+                            else:
+                                print(
+                                    f"    Market date {market_date.strftime('%Y-%m-%d')} is too far away (>7 days)"
+                                )
+                        except ValueError:
+                            pass
+            return False
+
+        # First pass: Look for the specific "Will US or Israel strike Iran" market
         for event in events:
             event_title = (event.get("title") or "").lower()
 
-            # Check event title for Iran strike
-            if "iran" in event_title and any(
-                kw in event_title for kw in strike_keywords
+            # Look for the positive bet version (not negatives like "will not strike")
+            if (
+                "will us or israel strike iran" in event_title
+                or "us strikes iran by" in event_title
             ):
                 print(f"Found Iran strike event: {event.get('title')}")
+
+                # Check if it's a near-term market (within 7 days)
+                if not is_near_term_market(event.get("title", "")):
+                    continue
+
                 markets = event.get("markets", [])
 
                 for market in markets:
@@ -223,34 +338,77 @@ def fetch_polymarket_odds():
             for market in markets:
                 market_question = (market.get("question") or "").lower()
 
+                # Skip negative questions (containing "not", "won't", etc.)
+                if any(
+                    neg in market_question
+                    for neg in [" not ", "won't", "will not", "doesn't", "does not"]
+                ):
+                    continue
+
                 if "iran" in market_question and any(
                     kw in market_question for kw in strike_keywords
                 ):
                     market_name = market.get("question") or ""
                     print(f"Found Iran strike market question: {market_name}")
+                    
+                    # Check if near-term (within 7 days)
+                    if not is_near_term_market(market_name):
+                        continue
 
                     odds = get_market_odds(market)
                     print(f"  Odds: {odds}%")
 
-                    if odds > highest_odds:
+                    if odds > 0 and odds > highest_odds:
                         highest_odds = odds
                         market_title = market_name
 
-        # Second pass: If no strike markets, look for any Iran-related market
+        # Second pass: If no strike markets, look for any Iran-related market (excluding negatives)
         if highest_odds == 0:
             print("No strike markets found, checking all Iran markets...")
             for event in events:
                 event_title = (event.get("title") or "").lower()
 
+                # Skip events with negative framing
+                if any(
+                    neg in event_title
+                    for neg in [" not ", "won't", "will not", "doesn't", "does not"]
+                ):
+                    continue
+
                 if "iran" in event_title:
                     print(f"Found Iran event: {event.get('title')}")
+                    
+                    # Check if near-term
+                    if not is_near_term_market(event.get("title", "")):
+                        continue
+                    
                     markets = event.get("markets", [])
 
                     for market in markets:
+                        market_question = (market.get("question") or "").lower()
+
+                        # Skip negative questions
+                        if any(
+                            neg in market_question
+                            for neg in [
+                                " not ",
+                                "won't",
+                                "will not",
+                                "doesn't",
+                                "does not",
+                            ]
+                        ):
+                            continue
+
                         market_name = market.get("question") or event.get("title") or ""
+                        
+                        # Check if market question has near-term date
+                        if not is_near_term_market(market_name):
+                            continue
+                        
                         odds = get_market_odds(market)
 
-                        if odds > highest_odds:
+                        if odds > 0 and odds > highest_odds:
                             highest_odds = odds
                             market_title = market_name
 
@@ -381,10 +539,12 @@ def fetch_gdelt_data():
     """Fetch GDELT news data for Iran-related articles"""
     try:
         print("Fetching GDELT data...")
-        query = "iran attack OR iran strike OR iran military OR iran us"
-        url = f"https://api.gdeltproject.org/api/v2/doc/doc?query={requests.utils.quote(query)}&mode=artlist&maxrecords=50&format=json&timespan=24h"
+        query = "(United States OR Pentagon OR White House OR Trump) AND (strike OR attack OR bombing OR missile OR airstrike OR military action) AND Iran"
+        url = f"https://api.gdeltproject.org/api/v2/doc/doc?query={requests.utils.quote(query)}&mode=artlist&format=json&timespan=24h"
 
         response = requests.get(url, timeout=20)
+        print(f"GDELT response status: {response.status_code}")
+        print(f"GDELT response text: {response.text}")
         if response.ok:
             text = response.text
             if text.startswith("{") or text.startswith("["):
@@ -392,16 +552,11 @@ def fetch_gdelt_data():
                 if data.get("articles") and isinstance(data["articles"], list):
                     articles = data["articles"]
                     article_count = len(articles)
-                    tones = [
-                        a.get("tone", 0) for a in articles if a.get("tone", 0) != 0
-                    ]
-                    avg_tone = sum(tones) / len(tones) if tones else 0
 
-                    print(f"GDELT: {article_count} articles, avg tone: {avg_tone:.2f}")
+                    print(f"GDELT: {article_count} articles")
 
                     return {
                         "article_count": article_count,
-                        "avg_tone": avg_tone,
                         "top_article": articles[0].get("title", "")[:70]
                         if articles
                         else "",
@@ -419,6 +574,7 @@ def fetch_wikipedia_views():
     try:
         print("Fetching Wikipedia pageviews...")
         yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y%m%d")
+        today = (datetime.now() - timedelta(days=1)).strftime("%Y%m%d")
         pages = [
             "Iran",
             "Iran%E2%80%93United_States_relations",
@@ -429,7 +585,12 @@ def fetch_wikipedia_views():
         for page in pages:
             try:
                 url = f"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/{page}/daily/{yesterday}/{yesterday}"
-                response = requests.get(url, timeout=10)
+                headers = {
+                    "User-Agent": "Mozilla/5.0 (compatible; StrikeRadar/1.0)",
+                    "Accept": "application/json",
+                }
+                response = requests.get(url, headers=headers, timeout=10)
+                print(f"  Wiki {page}: {response.status_code}")
                 if response.ok:
                     data = response.json()
                     if data.get("items") and len(data["items"]) > 0:
@@ -656,7 +817,7 @@ def calculate_tanker_risk(tanker):
         return 15
 
 
-def update_data_file(pentagon_data):
+def update_data_file():
     """Save ALL data from all APIs to frontend/data.json file with history tracking"""
     try:
         # Get existing data (to preserve history)
@@ -685,7 +846,8 @@ def update_data_file(pentagon_data):
             },
         )
 
-        # Add/update pentagon data
+        # Fetch Pentagon data
+        pentagon_data = fetch_pentagon_data()
         current_data["pentagon"] = pentagon_data
         current_data["pentagon_updated"] = datetime.now().isoformat()
 
@@ -705,17 +867,15 @@ def update_data_file(pentagon_data):
         print("=" * 50)
 
         # GDELT data
-        gdelt_data = fetch_gdelt_data()
-        if gdelt_data:
-            current_data["gdelt"] = gdelt_data
+        # TODO: this is good, add it sometime, it returned 25 articles on jan 26th
+        # gdelt_data = fetch_gdelt_data()
 
         # Wikipedia data
-        wiki_data = fetch_wikipedia_views()
-        if wiki_data:
-            current_data["wikipedia"] = wiki_data
+        # wiki_data = fetch_wikipedia_views()
+        # if wiki_data:
+        #     current_data["social"] = 12 * wiki_data["total_views"] / 2000000
 
         # Aviation data
-        time.sleep(2)  # Rate limiting for OpenSky
         aviation_data = fetch_aviation_data()
         if aviation_data:
             current_data["aviation"] = aviation_data
@@ -804,22 +964,21 @@ def update_data_file(pentagon_data):
         return False
 
 
-def main():
-    print(f"Pentagon Pizza Meter - {datetime.now().isoformat()}")
-    print("-" * 50)
+def fetch_pentagon_data():
+    """Fetch Pentagon Pizza Meter data - pizza place busyness near Pentagon"""
+    print("Fetching Pentagon activity...")
 
     busyness_data = []
 
     for place in PIZZA_PLACES:
-        print(f"Checking {place['name']}...")
+        print(f"  Checking {place['name']}...")
         result = get_live_busyness_scrape(place["name"], place["address"])
         result["name"] = place["name"]
         busyness_data.append(result)
-        print(f"  Status: {result['status']}, Score: {result['score']}")
+        print(f"    Status: {result['status']}, Score: {result['score']}")
 
     # Calculate overall score
     activity_score = calculate_pentagon_activity_score(busyness_data)
-    print(f"\nOverall Pentagon Activity Score: {activity_score}")
 
     # Determine risk contribution (max 10% for this signal)
     # Normal baseline should show ~5-10% on the bar
@@ -846,11 +1005,16 @@ def main():
         "is_weekend": datetime.now().weekday() >= 5,
     }
 
-    # Save to frontend/data.json
-    update_data_file(pentagon_data)
+    print(
+        f"Pentagon: {status} (score: {activity_score}, contribution: {risk_contribution}%)"
+    )
+    return pentagon_data
 
-    print(f"\nRisk Contribution: {risk_contribution}%")
-    print(f"Status: {status}")
+
+def main():
+    print(f"Updating data - {datetime.now().isoformat()}")
+    print("-" * 50)
+    update_data_file()
 
 
 if __name__ == "__main__":

@@ -24,18 +24,18 @@ function displayData(data) {
     const alertRatio = alertCount / articles;
     newsDisplayRisk = Math.max(3, Math.round(Math.pow(alertRatio, 2) * 85));
     newsDetail = `${articles} articles, ${alertCount} critical`;
-
     updateSignal('news', newsDisplayRisk, newsDetail);
 
-    updateSignal('social', Math.round((data.interest / 20) * 100), data.socialDetail || 'GDELT + Wikipedia');
+    // SOCIAL: Use interest from data.json (Wikipedia)
+    // updateSignal('social', Math.round((data.interest / 20) * 100), data.socialDetail || 'Wikipedia');
 
-    const flightCount = Math.round(data.aviation * 10);
+    const flightCount = Math.round(data.aviation.aircraft_count);
     const flightDetail = (data.flightDetail && !data.flightDetail.includes('Scanning') && !data.flightDetail.includes('Loading')) ? data.flightDetail : `${flightCount} aircraft over Iran`;
-    updateSignal('flight', Math.round((data.aviation / 15) * 100), flightDetail);
+    updateSignal('flight', Math.max(3, 95 - Math.round(data.aviation.aircraft_count*0.8 )), flightDetail);
 
-    const tankerCount = Math.round(data.tanker / 4);
+    const tankerCount = Math.round(data.tanker.tanker_count / 4);
     const tankerDetail = (data.tankerDetail && !data.tankerDetail.includes('Scanning') && !data.tankerDetail.includes('Loading')) ? data.tankerDetail : `${tankerCount} detected in region`;
-    updateSignal('tanker', Math.round((data.tanker / 10) * 100), tankerDetail);
+    updateSignal('tanker', Math.round((data.tanker.tanker_count / 10) * 100), tankerDetail);
 
     // Polymarket odds signal (from data.json updated by GitHub Actions)
     let polymarketOdds = 0;

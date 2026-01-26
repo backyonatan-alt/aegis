@@ -31,11 +31,11 @@ const INFO_CONTENT = {
         <strong>Alert triggers:</strong> Headlines with keywords like "strike", "retaliation", "imminent"<br>
         <strong>Max contribution:</strong> 30% of total risk<br>
         <strong>Update frequency:</strong> Every 30 minutes via server`,
-    social: `<strong>Public Interest Tracker</strong><br><br>
-        Combines GDELT news coverage and Wikipedia traffic for Iran-related pages.<br><br>
-        <strong>Sources:</strong> GDELT Event Database + Wikipedia Pageviews API<br>
-        <strong>Max contribution:</strong> 25% of total risk<br>
-        <strong>Indicates:</strong> Public attention and media focus`,
+    // social: `<strong>Public Interest Tracker</strong><br><br>
+    //     Combines GDELT news coverage and Wikipedia traffic for Iran-related pages.<br><br>
+    //     <strong>Sources:</strong> Wikipedia Pageviews API<br>
+    //     <strong>Max contribution:</strong> 25% of total risk<br>
+    //     <strong>Indicates:</strong> Public attention and media focus`,
     flight: `<strong>Civil Aviation Monitor</strong><br><br>
         Tracks commercial aircraft over Iranian airspace using OpenSky Network.<br><br>
         <strong>Logic:</strong> Fewer flights = Higher risk (airlines avoiding area)<br>
