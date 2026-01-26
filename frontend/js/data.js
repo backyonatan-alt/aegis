@@ -24,7 +24,6 @@ async function getData() {
         history: [],
         signalHistory: {},
         newsDetail: 'Data unavailable',
-        socialDetail: 'Data unavailable',
         flightDetail: 'Data unavailable',
         tankerDetail: 'Data unavailable',
         weatherDetail: 'Data unavailable'

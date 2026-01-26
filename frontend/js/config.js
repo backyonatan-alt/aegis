@@ -14,7 +14,6 @@ const state = {
     seenHeadlines: new Set(),
     signalHistory: {
         news: [],
-        social: [],
         flight: [],
         tanker: [],
         pentagon: [],

@@ -9,7 +9,7 @@ function displayData(data) {
     // Load signal history from data.json
     if (data?.signalHistory) {
         console.log('Loading signalHistory:', Object.keys(data.signalHistory).map(k => `${k}: ${data.signalHistory[k]?.length || 0} points`).join(', '));
-        ['news', 'social', 'flight', 'tanker', 'pentagon', 'polymarket', 'weather'].forEach(sig => {
+        ['news', 'flight', 'tanker', 'pentagon', 'polymarket', 'weather'].forEach(sig => {
             if (data.signalHistory[sig] && data.signalHistory[sig].length > 0) {
                 state.signalHistory[sig] = data.signalHistory[sig];
             }
