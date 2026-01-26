@@ -7,8 +7,14 @@ async function loadData() {
     const data = await getData();
     
     if (data) {
+        // Initialize chart if not already done
+        if (!chart) {
+            initChart(data.history);
+        } else {
+            updateChartFromHistory(data.history);
+        }
+        
         displayData(data, true);
-        updateChartFromHistory(data.history);
     }
 }
 
@@ -19,12 +25,8 @@ async function forceRefresh() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', async () => {
-    // Load data and initialize
-    const data = await getData();
-    initChart(data?.history);
-    
     startCountdown();
-    await loadData();
+    await loadData(); // Single source of truth
 
     // Update every 5 minutes
     setInterval(loadData, 5 * 60 * 1000);
