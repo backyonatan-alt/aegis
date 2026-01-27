@@ -15,7 +15,7 @@ const API_KEYS = {
 const TELEGRAM_CHANNEL = '@StrikeRadarAlerts';
 
 // JSONbin configuration
-const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
+const CACHE_DURATION = 30 * 60 * 1000 ; // 30 minutes
 
 const state = {
     risk: 0,
