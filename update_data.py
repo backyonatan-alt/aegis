@@ -1016,43 +1016,49 @@ def update_data_file():
             if len(signal_history[sig]) > 20:
                 signal_history[sig] = signal_history[sig][-20:]
 
-        # Total risk history: 6 pinned points (12am/12pm for 3 days) + 1 NOW point = 7 total
+        # Total risk history management
+        # - Runs every 30 minutes
+        # - If 12am/12pm boundary NOT crossed: update the last point
+        # - If 12am/12pm boundary crossed: remove first, pin last at boundary, add new now point
         now = datetime.now()
         current_timestamp = int(now.timestamp() * 1000)
 
-        # Determine the most recent 12am or 12pm boundary
+        # Get the most recent 12am or 12pm boundary
         if now.hour >= 12:
-            last_boundary = now.replace(hour=12, minute=0, second=0, microsecond=0)
+            current_boundary = now.replace(hour=12, minute=0, second=0, microsecond=0)
         else:
-            last_boundary = now.replace(hour=0, minute=0, second=0, microsecond=0)
-        last_boundary_ts = int(last_boundary.timestamp() * 1000)
+            current_boundary = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        current_boundary_ts = int(current_boundary.timestamp() * 1000)
 
-        # Separate pinned points (at 12am/12pm) from the "now" point
-        pinned_points = [h for h in history if h.get("pinned")]
+        # Get the last point's timestamp (if history exists)
+        if history:
+            last_point = history[-1]
+            last_point_ts = last_point.get("timestamp", 0)
 
-        # Check if we need to pin a new point at the last boundary
-        boundary_already_pinned = any(
-            p["timestamp"] == last_boundary_ts for p in pinned_points
-        )
+            # Check if we crossed a 12am/12pm boundary since the last point
+            crossed_boundary = last_point_ts < current_boundary_ts
 
-        if not boundary_already_pinned:
-            # Pin a new point at the boundary with current risk
-            pinned_points.append({
-                "timestamp": last_boundary_ts,
-                "risk": total_risk,
-                "pinned": True
-            })
-            pinned_points.sort(key=lambda x: x["timestamp"])
+            if crossed_boundary:
+                # Boundary crossed: remove first, pin last at boundary, add new now point
+                if len(history) > 0:
+                    history = history[1:]  # Remove first point
 
-            # Keep only last 6 pinned points (3 days × 2 per day)
-            if len(pinned_points) > 6:
-                pinned_points = pinned_points[-6:]
+                if len(history) > 0:
+                    # Pin the last point at the boundary
+                    history[-1] = {
+                        "timestamp": current_boundary_ts,
+                        "risk": last_point.get("risk", total_risk),
+                        "pinned": True
+                    }
 
-        # Create the NOW point (not pinned, always at current time)
-        now_point = {"timestamp": current_timestamp, "risk": total_risk}
-
-        # Combine: pinned points + now point
-        history = pinned_points + [now_point]
+                # Add new "now" point
+                history.append({"timestamp": current_timestamp, "risk": total_risk})
+            else:
+                # No boundary crossed: just update the last point
+                history[-1] = {"timestamp": current_timestamp, "risk": total_risk}
+        else:
+            # No history yet, start with a single point
+            history = [{"timestamp": current_timestamp, "risk": total_risk}]
 
         # RESTRUCTURED DATA: Each signal has its own complete object
         restructured_data = {
