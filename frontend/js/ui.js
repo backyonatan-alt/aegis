@@ -5,10 +5,21 @@
 function updateTimestamp(timestamp) {
     const el = document.getElementById('lastUpdate');
     const tz = document.getElementById('timezone');
-    
-    const age = Math.floor((Date.now() - timestamp) / 60000);
+
+    // Parse timestamp - if ISO string without timezone, treat as UTC (GMT)
+    let timestampMs;
+    if (typeof timestamp === 'string') {
+        // Append 'Z' if no timezone indicator (server saves in GMT)
+        const hasTimezone = timestamp.includes('Z') || /[+-]\d{2}:?\d{2}$/.test(timestamp);
+        const isoString = hasTimezone ? timestamp : timestamp + 'Z';
+        timestampMs = new Date(isoString).getTime();
+    } else {
+        timestampMs = timestamp;
+    }
+
+    const age = Math.floor((Date.now() - timestampMs) / 60000);
     el.textContent = age < 1 ? 'Just now' : `${age} min ago`;
-    
+
     tz.textContent = getTimezone();
 }
 

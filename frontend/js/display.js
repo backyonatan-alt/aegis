@@ -2,6 +2,15 @@
 // DATA DISPLAY LOGIC
 // =============================================
 
+// Parse ISO timestamp as UTC (server saves in GMT without 'Z' suffix)
+function parseUtcTimestamp(timestamp) {
+    if (!timestamp) return 0;
+    if (typeof timestamp === 'number') return timestamp;
+    // Append 'Z' if no timezone indicator to treat as UTC
+    const hasTimezone = timestamp.includes('Z') || /[+-]\d{2}:?\d{2}$/.test(timestamp);
+    return new Date(hasTimezone ? timestamp : timestamp + 'Z').getTime();
+}
+
 // Display data on the dashboard
 function displayData(data) {
     console.log('Displaying data:', data);
@@ -46,9 +55,9 @@ function displayData(data) {
         // Check if pentagon data is fresh (less than 40 minutes old)
         let pentagonTimestamp = 0;
         if (data.pentagon.raw_data?.timestamp) {
-            pentagonTimestamp = new Date(data.pentagon.raw_data.timestamp).getTime();
+            pentagonTimestamp = parseUtcTimestamp(data.pentagon.raw_data.timestamp);
         } else if (data.last_updated) {
-            pentagonTimestamp = new Date(data.last_updated).getTime();
+            pentagonTimestamp = parseUtcTimestamp(data.last_updated);
         }
         
         const pentagonAge = Date.now() - pentagonTimestamp;
@@ -62,7 +71,7 @@ function displayData(data) {
     const total = data.total_risk?.risk || 0;
 
     updateGauge(total);
-    updateTimestamp(data.last_updated ? new Date(data.last_updated).getTime() : Date.now());
+    updateTimestamp(data.last_updated ? parseUtcTimestamp(data.last_updated) : Date.now());
 
     return total;
 }
