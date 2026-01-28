@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "24 articles, 11 critical",
+    "risk": 16,
+    "detail": "25 articles, 11 critical",
     "history": [
       9,
       9,
@@ -18,7 +18,8 @@
       7,
       7,
       7,
-      18
+      18,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -31,16 +32,20 @@
           "is_alert": true
         },
         {
+          "title": "Iran's internet is returning - but not for everyone",
+          "is_alert": false
+        },
+        {
           "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
+          "is_alert": false
+        },
+        {
+          "title": "New Iran videos show bodies piled in hospital and snipers on roofs",
           "is_alert": false
         },
         {
           "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
           "is_alert": true
-        },
-        {
-          "title": "New Iran videos show bodies piled in hospital and snipers on roofs",
-          "is_alert": false
         },
         {
           "title": "'I saw people getting shot': Eyewitness tells of Iran protest crackdown",
@@ -119,9 +124,9 @@
           "is_alert": true
         }
       ],
-      "total_count": 24,
+      "total_count": 25,
       "alert_count": 11,
-      "timestamp": "2026-01-28T17:51:48.532409"
+      "timestamp": "2026-01-28T18:15:21.156009"
     }
   },
   "flight": {
@@ -143,24 +148,25 @@
       55,
       52,
       49,
+      9,
       9
     ],
     "raw_data": {
       "aircraft_count": 107,
-      "airline_count": 43,
+      "airline_count": 31,
       "airlines": [
+        "N80",
+        "SEJ",
         "IGO",
+        "DLH",
         "AIC",
-        "BBC",
-        "ELY",
-        "UPS",
-        "MEA",
         "UAE",
-        "ETD",
-        "CPA",
-        "THY"
+        "CEB",
+        "UBG",
+        "CSN",
+        "ABY"
       ],
-      "timestamp": "2026-01-28T17:51:49.025398"
+      "timestamp": "2026-01-28T18:15:21.770632"
     }
   },
   "tanker": {
@@ -182,12 +188,13 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-28T17:51:51.536994"
+      "timestamp": "2026-01-28T18:15:24.206965"
     }
   },
   "weather": {
@@ -209,12 +216,14 @@
       100,
       100,
       100,
+      100,
       100
     ],
     "raw_data": {
       "risk": 100,
-      "detail": "clear sky",
+      "detail": "clear",
       "history": [
+        100,
         100,
         100,
         100,
@@ -233,12 +242,34 @@
         100
       ],
       "raw_data": {
-        "temp": 4,
-        "visibility": 8000,
-        "clouds": 0,
-        "description": "clear sky",
-        "condition": "Marginal",
-        "timestamp": "2026-01-27T00:38:50.092099"
+        "risk": 100,
+        "detail": "clear sky",
+        "history": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "raw_data": {
+          "temp": 4,
+          "visibility": 8000,
+          "clouds": 0,
+          "description": "clear sky",
+          "condition": "Marginal",
+          "timestamp": "2026-01-27T00:38:50.092099"
+        }
       }
     }
   },
@@ -261,12 +292,13 @@
       13,
       12,
       12,
+      10,
       10
     ],
     "raw_data": {
       "odds": 10,
       "market": "Will US or Israel strike Iran by January 31, 2026?",
-      "timestamp": "2026-01-28T17:51:48.138635"
+      "timestamp": "2026-01-28T18:15:20.897615"
     }
   },
   "pentagon": {
@@ -288,6 +320,7 @@
       10,
       10,
       10,
+      30,
       30
     ],
     "raw_data": {
@@ -311,7 +344,7 @@
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-28T17:51:47.868513",
+      "timestamp": "2026-01-28T18:15:20.599272",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -350,11 +383,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769622711681,
+        "timestamp": 1769624124306,
         "risk": 21
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-28T17:51:51.681140"
+  "last_updated": "2026-01-28T18:15:24.306005"
 }
