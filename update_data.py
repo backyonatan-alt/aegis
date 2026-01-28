@@ -771,8 +771,8 @@ def fetch_weather_data():
                 else:
                     condition = "Poor"
 
-                print(f"Conditions: {temp}°C, {condition}, {description}")
-                risk = 100 - (max(0, clouds - 6) * 10)
+                print(f"Conditions: {temp}°C, {condition}, clouds {clouds}, {description}")
+                risk = max(0, min(100, 100 - max(0, clouds - 6)))
                 print(f"✓ Result: Risk {risk}%")
                 return {
                     "temp": temp,
@@ -945,7 +945,7 @@ def update_data_file():
         # WEATHER SIGNAL CALCULATION
         weather = current_data.get("weather", {})
         clouds = weather.get("clouds", 0)
-        weather_risk = 100 - (max(0, clouds - 6) * 10)
+        weather_risk = max(0, min(100, 100 - (max(0, clouds - 6) * 10)))
         weather_detail = weather.get("description", "clear")
 
         # POLYMARKET SIGNAL CALCULATION
@@ -1016,12 +1016,43 @@ def update_data_file():
             if len(signal_history[sig]) > 20:
                 signal_history[sig] = signal_history[sig][-20:]
 
-        # Add to total risk history (keep last 72 hours)
-        history.append(
-            {"timestamp": int(datetime.now().timestamp() * 1000), "risk": total_risk}
+        # Total risk history: 6 pinned points (12am/12pm for 3 days) + 1 NOW point = 7 total
+        now = datetime.now()
+        current_timestamp = int(now.timestamp() * 1000)
+
+        # Determine the most recent 12am or 12pm boundary
+        if now.hour >= 12:
+            last_boundary = now.replace(hour=12, minute=0, second=0, microsecond=0)
+        else:
+            last_boundary = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        last_boundary_ts = int(last_boundary.timestamp() * 1000)
+
+        # Separate pinned points (at 12am/12pm) from the "now" point
+        pinned_points = [h for h in history if h.get("pinned")]
+
+        # Check if we need to pin a new point at the last boundary
+        boundary_already_pinned = any(
+            p["timestamp"] == last_boundary_ts for p in pinned_points
         )
-        cutoff_time = int((datetime.now().timestamp() - 72 * 60 * 60) * 1000)
-        history = [h for h in history if h["timestamp"] > cutoff_time]
+
+        if not boundary_already_pinned:
+            # Pin a new point at the boundary with current risk
+            pinned_points.append({
+                "timestamp": last_boundary_ts,
+                "risk": total_risk,
+                "pinned": True
+            })
+            pinned_points.sort(key=lambda x: x["timestamp"])
+
+            # Keep only last 6 pinned points (3 days × 2 per day)
+            if len(pinned_points) > 6:
+                pinned_points = pinned_points[-6:]
+
+        # Create the NOW point (not pinned, always at current time)
+        now_point = {"timestamp": current_timestamp, "risk": total_risk}
+
+        # Combine: pinned points + now point
+        history = pinned_points + [now_point]
 
         # RESTRUCTURED DATA: Each signal has its own complete object
         restructured_data = {
