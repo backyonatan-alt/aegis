@@ -3,10 +3,14 @@ set -e
 
 # Pentagon Pizza Meter / StrikeRadar - Run Commands
 # Usage:
-#   ./cmd.sh update    - Run the backend data updater (updates npoint.io)
-#   ./cmd.sh serve     - Serve the frontend locally
-#   ./cmd.sh all       - Run update once, then serve frontend
-#   ./cmd.sh watch     - Run update every 30 min + serve frontend
+#   ./run.sh update    - Run the backend data updater (updates npoint.io)
+#   ./run.sh serve     - Serve the frontend locally
+#   ./run.sh all       - Run update once, then serve frontend
+#   ./run.sh watch     - Run update every 30 min + serve frontend
+#   ./run.sh kill      - Kill any running background server
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PID_FILE="$SCRIPT_DIR/.server.pid"
 
 case "${1:-help}" in
     update)
@@ -41,8 +45,16 @@ case "${1:-help}" in
         (cd frontend && uv run python -m http.server 8000) &
         SERVER_PID=$!
         
+        # Save PID to file for kill command
+        echo $SERVER_PID > "$PID_FILE"
+        
         # Trap to clean up on exit
-        trap "kill $SERVER_PID 2>/dev/null; exit" INT TERM
+        cleanup() {
+            kill $SERVER_PID 2>/dev/null
+            rm -f "$PID_FILE"
+            exit
+        }
+        trap cleanup INT TERM
         
         # Run update loop
         while true; do
@@ -54,16 +66,22 @@ case "${1:-help}" in
         done
         ;;
     
+    kill)
+        lsof -ti:8000 | xargs kill 2>/dev/null && echo "✅ Server killed" || echo "No server running"
+        rm -f "$PID_FILE"
+        ;;
+    
     help|*)
         echo "Pentagon Pizza Meter / StrikeRadar"
         echo ""
-        echo "Usage: ./cmd.sh <command>"
+        echo "Usage: ./run.sh <command>"
         echo ""
         echo "Commands:"
         echo "  update  - Run the backend data updater (updates npoint.io)"
         echo "  serve   - Serve the frontend locally at http://localhost:8000"
         echo "  all     - Run update once, then serve frontend"
         echo "  watch   - Run update every 30 min + serve frontend"
+        echo "  kill    - Kill any running background server on port 8000"
         echo "  help    - Show this help message"
         echo ""
         echo "First time setup:"
