@@ -2,8 +2,18 @@ name: Update Dashboard Data
 
 on:
   schedule:
+    # Scheduled runs only happen on the default branch (main)
     - cron: '*/30 * * * *'
   workflow_dispatch:
+    # Manual trigger - can be run on any branch from GitHub UI
+  push:
+    # For testing: also run on re-haul branch pushes
+    branches:
+      - re-haul
+    paths:
+      # Only trigger on workflow file changes to avoid loops
+      - '.github/workflows/update-data.yml'
+      - 'update_data.py'
 
 jobs:
   update-data:
@@ -12,6 +22,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,4 +47,4 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add frontend/data.json
           git diff --quiet && git diff --staged --quiet || git commit -m "Update data.json - $(date -u +"%Y-%m-%d %H:%M UTC")"
-          git push
+          git push origin HEAD
