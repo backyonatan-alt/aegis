@@ -108,9 +108,9 @@ function showInfo(type) {
 function closeInfo(e) { if (!e || e.target.id === 'infoModal') document.getElementById('infoModal').classList.remove('open'); }
 
 function shareSnapshot() {
-    const url = 'https://backyonatan-alt.github.io/strikeradar';
+    const url = 'https://usstrikeradar.com';
     const text = `🚨 StrikeRadar Alert\n\nCurrent Risk Level: ${Math.round(state.currentRisk || 0)}%\nStatus: ${getStatusText(state.currentRisk || 0)}\n\n` +
-        `🔗 https://backyonatan-alt.github.io/strikeradar`;
+        `🔗 https://usstrikeradar.com`;
     
     if (navigator.share) {
         navigator.share({ title: 'StrikeRadar', text, url }).catch(() => {});
