@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 7,
-    "detail": "17 articles, 5 critical",
+    "risk": 18,
+    "detail": "24 articles, 11 critical",
     "history": [
       9,
       9,
@@ -17,10 +17,27 @@
       9,
       7,
       7,
-      7
+      7,
+      18
     ],
     "raw_data": {
       "articles": [
+        {
+          "title": "Trump warns Iran 'time is running out' for nuclear deal as US military builds up in Gulf",
+          "is_alert": true
+        },
+        {
+          "title": "Is the US preparing to strike Iran?",
+          "is_alert": true
+        },
+        {
+          "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
+          "is_alert": false
+        },
+        {
+          "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
+          "is_alert": true
+        },
         {
           "title": "New Iran videos show bodies piled in hospital and snipers on roofs",
           "is_alert": false
@@ -88,16 +105,28 @@
         {
           "title": "Watch: Protests break out in Iranian capital Tehran",
           "is_alert": false
+        },
+        {
+          "title": "Trump says US ready to attack Iran with \u2018speed and violence\u2019",
+          "is_alert": true
+        },
+        {
+          "title": "LIVE: Iran says it will \u2018respond like never before\u2019 after Trump\u2019s threats",
+          "is_alert": true
+        },
+        {
+          "title": "Trump reiterates threat of military action with demand for Iran deal",
+          "is_alert": true
         }
       ],
-      "total_count": 17,
-      "alert_count": 5,
-      "timestamp": "2026-01-27T00:38:46.756101"
+      "total_count": 24,
+      "alert_count": 11,
+      "timestamp": "2026-01-28T17:51:48.532409"
     }
   },
   "flight": {
-    "risk": 49,
-    "detail": "58 aircraft over Iran",
+    "risk": 9,
+    "detail": "107 aircraft over Iran",
     "history": [
       51,
       52,
@@ -113,24 +142,25 @@
       95,
       55,
       52,
-      49
+      49,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 58,
-      "airline_count": 30,
+      "aircraft_count": 107,
+      "airline_count": 43,
       "airlines": [
-        "SWR",
-        "PGT",
-        "AXB",
-        "AHY",
-        "KQA",
-        "ETD",
-        "TKJ",
+        "IGO",
+        "AIC",
+        "BBC",
+        "ELY",
+        "UPS",
+        "MEA",
         "UAE",
-        "RAM",
-        "FJL"
+        "ETD",
+        "CPA",
+        "THY"
       ],
-      "timestamp": "2026-01-27T00:38:47.265687"
+      "timestamp": "2026-01-28T17:51:49.025398"
     }
   },
   "tanker": {
@@ -151,18 +181,20 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-27T00:38:49.783982"
+      "timestamp": "2026-01-28T17:51:51.536994"
     }
   },
   "weather": {
     "risk": 100,
-    "detail": "clear sky",
+    "detail": "clear",
     "history": [
+      100,
       100,
       100,
       100,
@@ -180,17 +212,39 @@
       100
     ],
     "raw_data": {
-      "temp": 4,
-      "visibility": 8000,
-      "clouds": 0,
-      "description": "clear sky",
-      "condition": "Marginal",
-      "timestamp": "2026-01-27T00:38:50.092099"
+      "risk": 100,
+      "detail": "clear sky",
+      "history": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "raw_data": {
+        "temp": 4,
+        "visibility": 8000,
+        "clouds": 0,
+        "description": "clear sky",
+        "condition": "Marginal",
+        "timestamp": "2026-01-27T00:38:50.092099"
+      }
     }
   },
   "polymarket": {
-    "risk": 12,
-    "detail": "12% odds",
+    "risk": 10,
+    "detail": "10% odds",
     "history": [
       13,
       13,
@@ -206,17 +260,18 @@
       13,
       13,
       12,
-      12
+      12,
+      10
     ],
     "raw_data": {
-      "odds": 12,
-      "market": "Israel strikes Iran by January 31, 2026?",
-      "timestamp": "2026-01-27T00:38:46.300861"
+      "odds": 10,
+      "market": "Will US or Israel strike Iran by January 31, 2026?",
+      "timestamp": "2026-01-28T17:51:48.138635"
     }
   },
   "pentagon": {
-    "risk": 10,
-    "detail": "Low Activity (late night)",
+    "risk": 30,
+    "detail": "Normal",
     "history": [
       10,
       10,
@@ -232,107 +287,49 @@
       10,
       10,
       10,
-      10
+      10,
+      30
     ],
     "raw_data": {
-      "score": 20,
-      "risk_contribution": 1,
-      "status": "Low Activity",
+      "score": 55,
+      "risk_contribution": 3,
+      "status": "Normal",
       "places": [
         {
           "status": "normal",
-          "score": 20,
+          "score": 55,
           "name": "Domino's Pizza"
         },
         {
           "status": "normal",
-          "score": 20,
+          "score": 55,
           "name": "Papa John's"
         },
         {
           "status": "normal",
-          "score": 20,
+          "score": 55,
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-27T00:38:45.916353",
-      "is_late_night": true,
+      "timestamp": "2026-01-28T17:51:47.868513",
+      "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 25,
+    "risk": 21,
     "history": [
       {
-        "timestamp": 1769463822123,
-        "risk": 26
+        "timestamp": 1769601600000,
+        "risk": 21,
+        "pinned": true
       },
       {
-        "timestamp": 1769463829063,
-        "risk": 26
-      },
-      {
-        "timestamp": 1769463849351,
-        "risk": 26
-      },
-      {
-        "timestamp": 1769464065378,
-        "risk": 27,
-        "signals": {
-          "news": 9,
-          "flight": 55,
-          "tanker": 0,
-          "weather": 100,
-          "polymarket": 13,
-          "pentagon": 10
-        }
-      },
-      {
-        "timestamp": 1769464646662,
-        "risk": 28
-      },
-      {
-        "timestamp": 1769464874170,
-        "risk": 35
-      },
-      {
-        "timestamp": 1769464889855,
-        "risk": 35
-      },
-      {
-        "timestamp": 1769464923630,
-        "risk": 35
-      },
-      {
-        "timestamp": 1769465152625,
-        "risk": 35
-      },
-      {
-        "timestamp": 1769465182475,
-        "risk": 35
-      },
-      {
-        "timestamp": 1769465382583,
-        "risk": 35
-      },
-      {
-        "timestamp": 1769465510994,
-        "risk": 35
-      },
-      {
-        "timestamp": 1769465850792,
-        "risk": 26
-      },
-      {
-        "timestamp": 1769466554860,
-        "risk": 26
-      },
-      {
-        "timestamp": 1769467130096,
-        "risk": 25
+        "timestamp": 1769622711681,
+        "risk": 21
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-27T00:38:50.096127"
+  "last_updated": "2026-01-28T17:51:51.681140"
 }
