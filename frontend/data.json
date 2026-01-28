@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 16,
-    "detail": "25 articles, 11 critical",
+    "risk": 18,
+    "detail": "26 articles, 12 critical",
     "history": [
       9,
       9,
@@ -19,7 +19,8 @@
       7,
       7,
       18,
-      16
+      16,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -28,15 +29,15 @@
           "is_alert": true
         },
         {
+          "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
+          "is_alert": false
+        },
+        {
           "title": "Is the US preparing to strike Iran?",
           "is_alert": true
         },
         {
           "title": "Iran's internet is returning - but not for everyone",
-          "is_alert": false
-        },
-        {
-          "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
           "is_alert": false
         },
         {
@@ -112,6 +113,10 @@
           "is_alert": false
         },
         {
+          "title": "Iran delegates import powers as US war threats keep economy unstable",
+          "is_alert": true
+        },
+        {
           "title": "Trump says US ready to attack Iran with \u2018speed and violence\u2019",
           "is_alert": true
         },
@@ -124,14 +129,14 @@
           "is_alert": true
         }
       ],
-      "total_count": 25,
-      "alert_count": 11,
-      "timestamp": "2026-01-28T18:15:21.156009"
+      "total_count": 26,
+      "alert_count": 12,
+      "timestamp": "2026-01-28T19:01:36.579462"
     }
   },
   "flight": {
-    "risk": 9,
-    "detail": "107 aircraft over Iran",
+    "risk": 15,
+    "detail": "100 aircraft over Iran",
     "history": [
       51,
       52,
@@ -149,24 +154,25 @@
       52,
       49,
       9,
-      9
+      9,
+      15
     ],
     "raw_data": {
-      "aircraft_count": 107,
-      "airline_count": 31,
+      "aircraft_count": 100,
+      "airline_count": 29,
       "airlines": [
-        "N80",
-        "SEJ",
-        "IGO",
+        "AXB",
+        "FYC",
         "DLH",
-        "AIC",
+        "IGO",
+        "IAW",
         "UAE",
-        "CEB",
-        "UBG",
-        "CSN",
-        "ABY"
+        "ETD",
+        "ABY",
+        "OMA",
+        "FDB"
       ],
-      "timestamp": "2026-01-28T18:15:21.770632"
+      "timestamp": "2026-01-28T19:01:37.314481"
     }
   },
   "tanker": {
@@ -189,18 +195,20 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-28T18:15:24.206965"
+      "timestamp": "2026-01-28T19:01:40.073692"
     }
   },
   "weather": {
     "risk": 100,
     "detail": "clear",
     "history": [
+      100,
       100,
       100,
       100,
@@ -239,12 +247,14 @@
         100,
         100,
         100,
+        100,
         100
       ],
       "raw_data": {
         "risk": 100,
-        "detail": "clear sky",
+        "detail": "clear",
         "history": [
+          100,
           100,
           100,
           100,
@@ -263,19 +273,41 @@
           100
         ],
         "raw_data": {
-          "temp": 4,
-          "visibility": 8000,
-          "clouds": 0,
-          "description": "clear sky",
-          "condition": "Marginal",
-          "timestamp": "2026-01-27T00:38:50.092099"
+          "risk": 100,
+          "detail": "clear sky",
+          "history": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "raw_data": {
+            "temp": 4,
+            "visibility": 8000,
+            "clouds": 0,
+            "description": "clear sky",
+            "condition": "Marginal",
+            "timestamp": "2026-01-27T00:38:50.092099"
+          }
         }
       }
     }
   },
   "polymarket": {
-    "risk": 10,
-    "detail": "10% odds",
+    "risk": 11,
+    "detail": "11% odds",
     "history": [
       13,
       13,
@@ -293,12 +325,13 @@
       12,
       12,
       10,
-      10
+      10,
+      11
     ],
     "raw_data": {
-      "odds": 10,
+      "odds": 11,
       "market": "Will US or Israel strike Iran by January 31, 2026?",
-      "timestamp": "2026-01-28T18:15:20.897615"
+      "timestamp": "2026-01-28T19:01:35.636686"
     }
   },
   "pentagon": {
@@ -320,6 +353,7 @@
       10,
       10,
       10,
+      30,
       30,
       30
     ],
@@ -344,13 +378,13 @@
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-28T18:15:20.599272",
+      "timestamp": "2026-01-28T19:01:35.182122",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 21,
+    "risk": 23,
     "history": [
       {
         "timestamp": 1769385600000,
@@ -383,11 +417,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769624124306,
-        "risk": 21
+        "timestamp": 1769626900407,
+        "risk": 23
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-28T18:15:24.306005"
+  "last_updated": "2026-01-28T19:01:40.407724"
 }
