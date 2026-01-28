@@ -1,0 +1,393 @@
+{
+  "news": {
+    "risk": 16,
+    "detail": "25 articles, 11 critical",
+    "history": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      7,
+      7,
+      7,
+      18,
+      16
+    ],
+    "raw_data": {
+      "articles": [
+        {
+          "title": "Trump warns Iran 'time is running out' for nuclear deal as US military builds up in Gulf",
+          "is_alert": true
+        },
+        {
+          "title": "Is the US preparing to strike Iran?",
+          "is_alert": true
+        },
+        {
+          "title": "Iran's internet is returning - but not for everyone",
+          "is_alert": false
+        },
+        {
+          "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
+          "is_alert": false
+        },
+        {
+          "title": "New Iran videos show bodies piled in hospital and snipers on roofs",
+          "is_alert": false
+        },
+        {
+          "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
+          "is_alert": true
+        },
+        {
+          "title": "'I saw people getting shot': Eyewitness tells of Iran protest crackdown",
+          "is_alert": true
+        },
+        {
+          "title": "Fears Iran's internet shutdown could lead to 'extreme digital isolation'",
+          "is_alert": true
+        },
+        {
+          "title": "What next for Iran's supreme leader?",
+          "is_alert": false
+        },
+        {
+          "title": "'I carried my wife's body for an hour and a half' - BBC hears stories of protesters killed in Iran",
+          "is_alert": false
+        },
+        {
+          "title": "Tehran morgue videos show the brutality of Iran's crackdown on protesters",
+          "is_alert": false
+        },
+        {
+          "title": "Why are there protests in Iran and what has Trump said about US action?",
+          "is_alert": true
+        },
+        {
+          "title": "Bowen: Authoritarian regimes die gradually then suddenly, but Iran is not there yet",
+          "is_alert": false
+        },
+        {
+          "title": "Decision time for Trump on Iran but what does he ultimately want?",
+          "is_alert": false
+        },
+        {
+          "title": "Which countries do business with Iran  and what could US tariffs mean?",
+          "is_alert": false
+        },
+        {
+          "title": "'They just kept killing': Eyewitnesses describe deadly crackdown in Iran",
+          "is_alert": true
+        },
+        {
+          "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
+          "is_alert": false
+        },
+        {
+          "title": "Where do these protests leave the Iranian regime?",
+          "is_alert": true
+        },
+        {
+          "title": "'Now there's the threat of executions' in Iran",
+          "is_alert": false
+        },
+        {
+          "title": "Mortuary videos show how deadly Iran crackdown has become",
+          "is_alert": false
+        },
+        {
+          "title": "Watch: Buildings in Tehran set on fire as demonstrations spread across Iran",
+          "is_alert": false
+        },
+        {
+          "title": "Watch: Protests break out in Iranian capital Tehran",
+          "is_alert": false
+        },
+        {
+          "title": "Trump says US ready to attack Iran with \u2018speed and violence\u2019",
+          "is_alert": true
+        },
+        {
+          "title": "LIVE: Iran says it will \u2018respond like never before\u2019 after Trump\u2019s threats",
+          "is_alert": true
+        },
+        {
+          "title": "Trump reiterates threat of military action with demand for Iran deal",
+          "is_alert": true
+        }
+      ],
+      "total_count": 25,
+      "alert_count": 11,
+      "timestamp": "2026-01-28T18:15:21.156009"
+    }
+  },
+  "flight": {
+    "risk": 9,
+    "detail": "107 aircraft over Iran",
+    "history": [
+      51,
+      52,
+      51,
+      55,
+      61,
+      95,
+      95,
+      95,
+      95,
+      95,
+      95,
+      95,
+      55,
+      52,
+      49,
+      9,
+      9
+    ],
+    "raw_data": {
+      "aircraft_count": 107,
+      "airline_count": 31,
+      "airlines": [
+        "N80",
+        "SEJ",
+        "IGO",
+        "DLH",
+        "AIC",
+        "UAE",
+        "CEB",
+        "UBG",
+        "CSN",
+        "ABY"
+      ],
+      "timestamp": "2026-01-28T18:15:21.770632"
+    }
+  },
+  "tanker": {
+    "risk": 0,
+    "detail": "0 detected in region",
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "raw_data": {
+      "tanker_count": 0,
+      "callsigns": [],
+      "timestamp": "2026-01-28T18:15:24.206965"
+    }
+  },
+  "weather": {
+    "risk": 100,
+    "detail": "clear",
+    "history": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "raw_data": {
+      "risk": 100,
+      "detail": "clear",
+      "history": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "raw_data": {
+        "risk": 100,
+        "detail": "clear sky",
+        "history": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "raw_data": {
+          "temp": 4,
+          "visibility": 8000,
+          "clouds": 0,
+          "description": "clear sky",
+          "condition": "Marginal",
+          "timestamp": "2026-01-27T00:38:50.092099"
+        }
+      }
+    }
+  },
+  "polymarket": {
+    "risk": 10,
+    "detail": "10% odds",
+    "history": [
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      13,
+      12,
+      12,
+      10,
+      10
+    ],
+    "raw_data": {
+      "odds": 10,
+      "market": "Will US or Israel strike Iran by January 31, 2026?",
+      "timestamp": "2026-01-28T18:15:20.897615"
+    }
+  },
+  "pentagon": {
+    "risk": 30,
+    "detail": "Normal",
+    "history": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      30,
+      30
+    ],
+    "raw_data": {
+      "score": 55,
+      "risk_contribution": 3,
+      "status": "Normal",
+      "places": [
+        {
+          "status": "normal",
+          "score": 55,
+          "name": "Domino's Pizza"
+        },
+        {
+          "status": "normal",
+          "score": 55,
+          "name": "Papa John's"
+        },
+        {
+          "status": "normal",
+          "score": 55,
+          "name": "Pizza Hut"
+        }
+      ],
+      "timestamp": "2026-01-28T18:15:20.599272",
+      "is_late_night": false,
+      "is_weekend": false
+    }
+  },
+  "total_risk": {
+    "risk": 21,
+    "history": [
+      {
+        "timestamp": 1769385600000,
+        "risk": 13,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769428800000,
+        "risk": 18,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769472000000,
+        "risk": 16,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769515200000,
+        "risk": 16,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769558400000,
+        "risk": 48,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769601600000,
+        "risk": 42,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769624124306,
+        "risk": 21
+      }
+    ],
+    "elevated_count": 1
+  },
+  "last_updated": "2026-01-28T18:15:24.306005"
+}

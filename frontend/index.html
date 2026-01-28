@@ -89,8 +89,8 @@
         </header>
 
         <div class="timestamp-bar">
-            <span>Updated at <span class="time" id="lastUpdate">--:--</span> <span class="tz" id="timezone"></span></span>
-            <span style="color: var(--text-muted)" id="nextUpdate">Next update in 30m</span>
+            <span>Updated <span class="time" id="lastUpdate">--:--</span> <span class="tz" id="timezone"></span></span>
+            <span style="color: var(--text-muted)" id="nextUpdate"></span>
         </div>
 
         <div class="gauge-card">
@@ -147,21 +147,9 @@
             </div>
 
             <div class="signal-item">
-                <div class="signal-icon trends">📈</div>
-                <div class="signal-info">
-                    <div class="signal-name">Public Interest <span class="signal-status live" id="trendsStatus">LIVE</span><button class="info-btn" onclick="showInfo('trends')">i</button></div>
-                    <div class="signal-detail" id="socialDetail">Loading...</div>
-                </div>
-                <div class="signal-right">
-                    <div class="signal-sparkline" id="socialSparkline"></div>
-                    <div class="signal-value" id="socialValue">--</div>
-                </div>
-            </div>
-
-            <div class="signal-item">
                 <div class="signal-icon flight">✈️</div>
                 <div class="signal-info">
-                    <div class="signal-name">Civil Aviation <span class="signal-status live" id="flightStatus">LIVE</span><button class="info-btn" onclick="showInfo('aviation')">i</button></div>
+                    <div class="signal-name">Civil Aviation <span class="signal-status live" id="flightStatus">LIVE</span><button class="info-btn" onclick="showInfo('flight')">i</button></div>
                     <div class="signal-detail" id="flightDetail">Loading...</div>
                 </div>
                 <div class="signal-right">
@@ -209,7 +197,7 @@
             <div class="signal-item">
                 <div class="signal-icon weather">🌤️</div>
                 <div class="signal-info">
-                    <div class="signal-name">Op. Conditions <span class="signal-status live" id="weatherStatus">LIVE</span><button class="info-btn" onclick="showInfo('weather')">i</button></div>
+                    <div class="signal-name">Weather Conditions <span class="signal-status live" id="weatherStatus">LIVE</span><button class="info-btn" onclick="showInfo('weather')">i</button></div>
                     <div class="signal-detail" id="weatherDetail">Loading...</div>
                 </div>
                 <div class="signal-right">
@@ -219,23 +207,11 @@
             </div>
         </div>
 
-        <div class="feed-section">
-            <div class="feed-header">
-                <span class="section-title" style="margin-bottom:0">Intelligence Feed</span>
-                <span style="font-size: 11px; color: var(--text-muted)" id="feedCount">0 items</span>
-            </div>
-            <div class="feed-list" id="feedList"></div>
-            <button class="show-more-btn" id="showMoreBtn" onclick="toggleFeed()" style="display:none">Show All</button>
-        </div>
-
         <!-- Footer with share, telegram and about -->
         <div style="display: flex; gap: 10px; margin-top: 8px;">
             <button class="show-more-btn" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;" onclick="shareSnapshot()">
                 <span>📤</span> Share
             </button>
-            <a href="https://t.me/StrikeRadarAlerts" target="_blank" class="show-more-btn" style="flex: 1.5; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; color: inherit;">
-                <span>🔔</span> Get Alerts
-            </a>
             <button class="show-more-btn" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;" onclick="showInfo('about')">
                 <span>ℹ️</span> About
             </button>
@@ -262,6 +238,14 @@
     <!-- Offline bar -->
     <div id="offlineBar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#ef4444;color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600;z-index:999;">⚠️ No internet connection</div>
 
-    <script src="app.js"></script>
+    <!-- Modular JavaScript - Load in dependency order -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/sparklines.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/display.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
