@@ -12,7 +12,6 @@
       9,
       9,
       9,
-      9,
       7,
       7,
       7,
@@ -21,6 +20,7 @@
       18,
       18,
       16,
+      15,
       15,
       15
     ],
@@ -133,14 +133,13 @@
       ],
       "total_count": 26,
       "alert_count": 11,
-      "timestamp": "2026-01-28T23:01:51.810481"
+      "timestamp": "2026-01-28T23:57:33.088870"
     }
   },
   "flight": {
-    "risk": 24,
-    "detail": "89 aircraft over Iran",
+    "risk": 11,
+    "detail": "105 aircraft over Iran",
     "history": [
-      51,
       55,
       61,
       95,
@@ -159,24 +158,25 @@
       3,
       30,
       49,
-      24
+      24,
+      11
     ],
     "raw_data": {
-      "aircraft_count": 89,
-      "airline_count": 40,
+      "aircraft_count": 105,
+      "airline_count": 28,
       "airlines": [
-        "AXB",
-        "IGO",
-        "SWR",
-        "AUA",
+        "PAL",
         "QFA",
-        "FYC",
+        "SEJ",
+        "PGT",
         "BBC",
         "UAE",
-        "ETD",
-        "TKJ"
+        "AXB",
+        "IGO",
+        "AIC",
+        "THY"
       ],
-      "timestamp": "2026-01-28T23:01:52.394160"
+      "timestamp": "2026-01-28T23:57:33.737025"
     }
   },
   "tanker": {
@@ -207,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-28T23:01:54.845159"
+      "timestamp": "2026-01-28T23:57:36.411811"
     }
   },
   "weather": {
@@ -310,12 +310,14 @@
             100,
             100,
             100,
+            100,
             100
           ],
           "raw_data": {
             "risk": 100,
             "detail": "clear",
             "history": [
+              100,
               100,
               100,
               100,
@@ -357,6 +359,7 @@
                 100,
                 100,
                 100,
+                100,
                 100
               ],
               "raw_data": {
@@ -379,12 +382,14 @@
                   100,
                   100,
                   100,
+                  100,
                   100
                 ],
                 "raw_data": {
                   "risk": 100,
-                  "detail": "clear sky",
+                  "detail": "clear",
                   "history": [
+                    100,
                     100,
                     100,
                     100,
@@ -403,12 +408,34 @@
                     100
                   ],
                   "raw_data": {
-                    "temp": 4,
-                    "visibility": 8000,
-                    "clouds": 0,
-                    "description": "clear sky",
-                    "condition": "Marginal",
-                    "timestamp": "2026-01-27T00:38:50.092099"
+                    "risk": 100,
+                    "detail": "clear sky",
+                    "history": [
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100,
+                      100
+                    ],
+                    "raw_data": {
+                      "temp": 4,
+                      "visibility": 8000,
+                      "clouds": 0,
+                      "description": "clear sky",
+                      "condition": "Marginal",
+                      "timestamp": "2026-01-27T00:38:50.092099"
+                    }
                   }
                 }
               }
@@ -432,21 +459,21 @@
       13,
       13,
       13,
+      12,
+      12,
+      10,
+      10,
+      11,
+      11,
+      12,
       13,
-      12,
-      12,
-      10,
-      10,
-      11,
-      11,
-      12,
       13,
       13
     ],
     "raw_data": {
       "odds": 13,
       "market": "Will US or Israel strike Iran by January 31, 2026?",
-      "timestamp": "2026-01-28T23:01:51.205584"
+      "timestamp": "2026-01-28T23:57:32.740084"
     }
   },
   "pentagon": {
@@ -465,11 +492,11 @@
       10,
       10,
       10,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
       10,
       10,
       10
@@ -495,13 +522,13 @@
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-28T23:01:51.082083",
+      "timestamp": "2026-01-28T23:57:32.441882",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 22,
+    "risk": 20,
     "history": [
       {
         "timestamp": 1769385600000,
@@ -534,11 +561,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769641314921,
-        "risk": 22
+        "timestamp": 1769644656705,
+        "risk": 20
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-28T23:01:54.921786"
+  "last_updated": "2026-01-28T23:57:36.705297"
 }
