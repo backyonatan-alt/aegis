@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "26 articles, 11 critical",
+    "risk": 12,
+    "detail": "24 articles, 9 critical",
     "history": [
       9,
       9,
@@ -11,7 +11,6 @@
       9,
       9,
       9,
-      9,
       7,
       7,
       7,
@@ -22,7 +21,8 @@
       16,
       15,
       15,
-      15
+      15,
+      12
     ],
     "raw_data": {
       "articles": [
@@ -121,26 +121,17 @@
         {
           "title": "Iran delegates import powers as US war threats keep economy unstable",
           "is_alert": true
-        },
-        {
-          "title": "Trump says US ready to attack Iran with \u2018speed and violence\u2019",
-          "is_alert": true
-        },
-        {
-          "title": "Updates: Iran will \u2018respond like never before\u2019 after Trump\u2019s threats",
-          "is_alert": true
         }
       ],
-      "total_count": 26,
-      "alert_count": 11,
-      "timestamp": "2026-01-28T23:57:33.088870"
+      "total_count": 24,
+      "alert_count": 9,
+      "timestamp": "2026-01-29T04:54:25.848653"
     }
   },
   "flight": {
-    "risk": 11,
-    "detail": "105 aircraft over Iran",
+    "risk": 25,
+    "detail": "87 aircraft over Iran",
     "history": [
-      55,
       61,
       95,
       95,
@@ -159,24 +150,25 @@
       30,
       49,
       24,
-      11
+      11,
+      25
     ],
     "raw_data": {
-      "aircraft_count": 105,
-      "airline_count": 28,
+      "aircraft_count": 87,
+      "airline_count": 25,
       "airlines": [
-        "PAL",
-        "QFA",
-        "SEJ",
-        "PGT",
-        "BBC",
-        "UAE",
-        "AXB",
-        "IGO",
         "AIC",
-        "THY"
+        "BAW",
+        "SVA",
+        "IAW",
+        "UAE",
+        "THY",
+        "ABY",
+        "OMA",
+        "FDB",
+        "FJL"
       ],
-      "timestamp": "2026-01-28T23:57:33.737025"
+      "timestamp": "2026-01-29T04:54:26.616858"
     }
   },
   "tanker": {
@@ -207,7 +199,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-28T23:57:36.411811"
+      "timestamp": "2026-01-29T04:54:29.215697"
     }
   },
   "weather": {
@@ -336,12 +328,14 @@
               100,
               100,
               100,
+              100,
               100
             ],
             "raw_data": {
               "risk": 100,
               "detail": "clear",
               "history": [
+                100,
                 100,
                 100,
                 100,
@@ -383,6 +377,7 @@
                   100,
                   100,
                   100,
+                  100,
                   100
                 ],
                 "raw_data": {
@@ -405,12 +400,14 @@
                     100,
                     100,
                     100,
+                    100,
                     100
                   ],
                   "raw_data": {
                     "risk": 100,
-                    "detail": "clear sky",
+                    "detail": "clear",
                     "history": [
+                      100,
                       100,
                       100,
                       100,
@@ -429,12 +426,34 @@
                       100
                     ],
                     "raw_data": {
-                      "temp": 4,
-                      "visibility": 8000,
-                      "clouds": 0,
-                      "description": "clear sky",
-                      "condition": "Marginal",
-                      "timestamp": "2026-01-27T00:38:50.092099"
+                      "risk": 100,
+                      "detail": "clear sky",
+                      "history": [
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100,
+                        100
+                      ],
+                      "raw_data": {
+                        "temp": 4,
+                        "visibility": 8000,
+                        "clouds": 0,
+                        "description": "clear sky",
+                        "condition": "Marginal",
+                        "timestamp": "2026-01-27T00:38:50.092099"
+                      }
                     }
                   }
                 }
@@ -446,8 +465,8 @@
     }
   },
   "polymarket": {
-    "risk": 13,
-    "detail": "13% odds",
+    "risk": 12,
+    "detail": "12% odds",
     "history": [
       13,
       13,
@@ -458,7 +477,6 @@
       13,
       13,
       13,
-      13,
       12,
       12,
       10,
@@ -468,12 +486,13 @@
       12,
       13,
       13,
-      13
+      13,
+      12
     ],
     "raw_data": {
-      "odds": 13,
+      "odds": 12,
       "market": "Will US or Israel strike Iran by January 31, 2026?",
-      "timestamp": "2026-01-28T23:57:32.740084"
+      "timestamp": "2026-01-29T04:54:25.215504"
     }
   },
   "pentagon": {
@@ -491,11 +510,11 @@
       10,
       10,
       10,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
       10,
       10,
       10,
@@ -522,19 +541,14 @@
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-28T23:57:32.441882",
+      "timestamp": "2026-01-29T04:54:24.846816",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 20,
+    "risk": 21,
     "history": [
-      {
-        "timestamp": 1769385600000,
-        "risk": 13,
-        "pinned": true
-      },
       {
         "timestamp": 1769428800000,
         "risk": 18,
@@ -561,11 +575,16 @@
         "pinned": true
       },
       {
-        "timestamp": 1769644656705,
-        "risk": 20
+        "timestamp": 1769644800000,
+        "risk": 20,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769662469351,
+        "risk": 21
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-28T23:57:36.705297"
+  "last_updated": "2026-01-29T04:54:29.351750"
 }
