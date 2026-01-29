@@ -5,7 +5,7 @@
 // Read data from adjacent data.json file (updated by GitHub Actions)
 async function getData() {
     try {
-        const res = await fetch('./data.json');
+        const res = await fetch('/data.json');
         if (res.ok) {
             return await res.json();
         }
