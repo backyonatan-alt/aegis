@@ -11,5 +11,5 @@ binding = "DATA_BUCKET"
 bucket_name = "aegis-data"
 
 [[routes]]
-pattern = "usstrikeradar.com/data.json"
+pattern = "usstrikeradar.com/api/data.json"
 zone_name = "usstrikeradar.com"
