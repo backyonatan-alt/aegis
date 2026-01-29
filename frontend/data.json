@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 17,
-    "detail": "27 articles, 12 critical",
+    "risk": 15,
+    "detail": "26 articles, 11 critical",
     "history": [
-      9,
       9,
       9,
       9,
@@ -22,7 +21,8 @@
       12,
       15,
       17,
-      17
+      17,
+      15
     ],
     "raw_data": {
       "articles": [
@@ -129,22 +129,17 @@
         {
           "title": "LIVE: Iran warns of quick retaliation as Trump revives US threats",
           "is_alert": true
-        },
-        {
-          "title": "How does US military build-up off Iran compare to the June 2025 strikes?",
-          "is_alert": true
         }
       ],
-      "total_count": 27,
-      "alert_count": 12,
-      "timestamp": "2026-01-29T10:01:10.701717"
+      "total_count": 26,
+      "alert_count": 11,
+      "timestamp": "2026-01-29T11:48:53.865127"
     }
   },
   "flight": {
-    "risk": 22,
-    "detail": "91 aircraft over Iran",
+    "risk": 3,
+    "detail": "115 aircraft over Iran",
     "history": [
-      95,
       95,
       95,
       95,
@@ -163,24 +158,25 @@
       25,
       7,
       31,
-      22
+      22,
+      3
     ],
     "raw_data": {
-      "aircraft_count": 91,
-      "airline_count": 45,
+      "aircraft_count": 115,
+      "airline_count": 44,
       "airlines": [
-        "CKS",
+        "BCP",
+        "AXB",
+        "FYC",
         "SVA",
-        "FGO",
-        "SPC",
-        "MNB",
-        "ELY",
+        "AIC",
+        "IAW",
+        "UPS",
         "UAE",
-        "UBG",
-        "ABY",
-        "FDB"
+        "ETD",
+        "ISR"
       ],
-      "timestamp": "2026-01-29T10:01:11.416325"
+      "timestamp": "2026-01-29T11:48:54.410499"
     }
   },
   "tanker": {
@@ -211,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-29T10:01:14.072678"
+      "timestamp": "2026-01-29T11:48:57.004346"
     }
   },
   "weather": {
@@ -444,12 +440,14 @@
                       100,
                       100,
                       100,
+                      100,
                       100
                     ],
                     "raw_data": {
                       "risk": 100,
                       "detail": "clear",
                       "history": [
+                        100,
                         100,
                         100,
                         100,
@@ -491,6 +489,7 @@
                           100,
                           100,
                           100,
+                          100,
                           100
                         ],
                         "raw_data": {
@@ -513,12 +512,14 @@
                             100,
                             100,
                             100,
+                            100,
                             100
                           ],
                           "raw_data": {
                             "risk": 100,
-                            "detail": "clear sky",
+                            "detail": "clear",
                             "history": [
+                              100,
                               100,
                               100,
                               100,
@@ -537,12 +538,34 @@
                               100
                             ],
                             "raw_data": {
-                              "temp": 4,
-                              "visibility": 8000,
-                              "clouds": 0,
-                              "description": "clear sky",
-                              "condition": "Marginal",
-                              "timestamp": "2026-01-27T00:38:50.092099"
+                              "risk": 100,
+                              "detail": "clear sky",
+                              "history": [
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100,
+                                100
+                              ],
+                              "raw_data": {
+                                "temp": 4,
+                                "visibility": 8000,
+                                "clouds": 0,
+                                "description": "clear sky",
+                                "condition": "Marginal",
+                                "timestamp": "2026-01-27T00:38:50.092099"
+                              }
                             }
                           }
                         }
@@ -566,7 +589,6 @@
       13,
       13,
       13,
-      13,
       12,
       12,
       10,
@@ -578,6 +600,7 @@
       13,
       13,
       12,
+      11,
       11,
       11,
       11
@@ -585,12 +608,12 @@
     "raw_data": {
       "odds": 11,
       "market": "Will US or Israel strike Iran by January 31, 2026?",
-      "timestamp": "2026-01-29T10:01:10.189457"
+      "timestamp": "2026-01-29T11:48:53.290435"
     }
   },
   "pentagon": {
-    "risk": 10,
-    "detail": "Low Activity",
+    "risk": 30,
+    "detail": "Normal",
     "history": [
       10,
       10,
@@ -599,7 +622,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -611,36 +633,37 @@
       10,
       10,
       10,
-      10
+      10,
+      30
     ],
     "raw_data": {
-      "score": 30,
-      "risk_contribution": 1,
-      "status": "Low Activity",
+      "score": 50,
+      "risk_contribution": 3,
+      "status": "Normal",
       "places": [
         {
           "status": "normal",
-          "score": 30,
+          "score": 50,
           "name": "Domino's Pizza"
         },
         {
           "status": "normal",
-          "score": 30,
+          "score": 50,
           "name": "Papa John's"
         },
         {
           "status": "normal",
-          "score": 30,
+          "score": 50,
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-29T10:01:09.745847",
+      "timestamp": "2026-01-29T11:48:52.883921",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 22,
+    "risk": 20,
     "history": [
       {
         "timestamp": 1769428800000,
@@ -673,11 +696,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769680874299,
-        "risk": 22
+        "timestamp": 1769687337211,
+        "risk": 20
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-29T10:01:14.299840"
+  "last_updated": "2026-01-29T11:48:57.211696"
 }
