@@ -44,9 +44,28 @@ def _make_response(body, status=200, headers_dict=None):
     return Response.new(body, init)
 
 
+ALLOWED_ORIGINS = [
+    "https://usstrikeradar.com",
+    "http://localhost",
+]
+
+
+def _get_cors_origin(request):
+    """Return the Origin header if it matches an allowed origin, else None."""
+    try:
+        origin = request.headers.get("Origin") or ""
+    except Exception:
+        return "https://usstrikeradar.com"
+    if origin in ALLOWED_ORIGINS or ".pages.dev" in origin:
+        return origin
+    return "https://usstrikeradar.com"
+
+
 async def on_fetch(request, env):
     """Serve data.json from R2 with cache headers."""
     log.info("on_fetch: serving data.json from R2")
+
+    cors_origin = _get_cors_origin(request)
 
     try:
         obj = await env.DATA_BUCKET.get(R2_KEY)
@@ -55,7 +74,10 @@ async def on_fetch(request, env):
         return _make_response(
             json.dumps({"error": "r2 read failed"}),
             status=500,
-            headers_dict={"Content-Type": "application/json"},
+            headers_dict={
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": cors_origin,
+            },
         )
 
     if obj is None:
@@ -63,7 +85,10 @@ async def on_fetch(request, env):
         return _make_response(
             json.dumps({"error": "data not found"}),
             status=404,
-            headers_dict={"Content-Type": "application/json"},
+            headers_dict={
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": cors_origin,
+            },
         )
 
     # Pass the R2 ReadableStream body directly — avoids await obj.text() hang
@@ -73,7 +98,7 @@ async def on_fetch(request, env):
         headers_dict={
             "Content-Type": "application/json",
             "Cache-Control": "public, max-age=60, s-maxage=300",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": cors_origin,
         },
     )
 
