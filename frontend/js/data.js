@@ -2,10 +2,10 @@
 // DATA FETCHING
 // =============================================
 
-// Read data from adjacent data.json file (updated by GitHub Actions)
+// Read data from Cloudflare Worker (R2-backed, CDN-cached)
 async function getData() {
     try {
-        const res = await fetch('/data.json');
+        const res = await fetch('/api/data.json');
         if (res.ok) {
             return await res.json();
         }
