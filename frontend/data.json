@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 12,
-    "detail": "24 articles, 9 critical",
+    "risk": 15,
+    "detail": "26 articles, 11 critical",
     "history": [
       9,
       9,
@@ -10,7 +10,6 @@
       9,
       9,
       9,
-      9,
       7,
       7,
       7,
@@ -22,12 +21,17 @@
       15,
       15,
       15,
-      12
+      12,
+      15
     ],
     "raw_data": {
       "articles": [
         {
           "title": "Trump warns Iran 'time is running out' for nuclear deal as US military builds up in Gulf",
+          "is_alert": true
+        },
+        {
+          "title": "What could happen if the US strikes Iran? Here are seven scenarios",
           "is_alert": true
         },
         {
@@ -115,24 +119,27 @@
           "is_alert": false
         },
         {
-          "title": "France says will support EU designation of Iran\u2019s IRGC as \u2018terrorist\u2019 group",
-          "is_alert": false
+          "title": "LIVE: Iran warns of quick retaliation as Trump revives US threats",
+          "is_alert": true
         },
         {
-          "title": "Iran delegates import powers as US war threats keep economy unstable",
+          "title": "How does US military build-up off Iran compare to the June 2025 strikes?",
           "is_alert": true
+        },
+        {
+          "title": "France says will support EU designation of Iran\u2019s IRGC as \u2018terrorist\u2019 group",
+          "is_alert": false
         }
       ],
-      "total_count": 24,
-      "alert_count": 9,
-      "timestamp": "2026-01-29T04:54:25.848653"
+      "total_count": 26,
+      "alert_count": 11,
+      "timestamp": "2026-01-29T07:29:42.648031"
     }
   },
   "flight": {
-    "risk": 25,
-    "detail": "87 aircraft over Iran",
+    "risk": 7,
+    "detail": "110 aircraft over Iran",
     "history": [
-      61,
       95,
       95,
       95,
@@ -151,24 +158,25 @@
       49,
       24,
       11,
-      25
+      25,
+      7
     ],
     "raw_data": {
-      "aircraft_count": 87,
-      "airline_count": 25,
+      "aircraft_count": 110,
+      "airline_count": 42,
       "airlines": [
-        "AIC",
-        "BAW",
+        "AXB",
+        "AWC",
+        "T7M",
         "SVA",
         "IAW",
+        "IGO",
         "UAE",
-        "THY",
-        "ABY",
-        "OMA",
-        "FDB",
-        "FJL"
+        "DAH",
+        "ETD",
+        "ISR"
       ],
-      "timestamp": "2026-01-29T04:54:26.616858"
+      "timestamp": "2026-01-29T07:29:43.129317"
     }
   },
   "tanker": {
@@ -199,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-29T04:54:29.215697"
+      "timestamp": "2026-01-29T07:29:45.609655"
     }
   },
   "weather": {
@@ -354,12 +362,14 @@
                 100,
                 100,
                 100,
+                100,
                 100
               ],
               "raw_data": {
                 "risk": 100,
                 "detail": "clear",
                 "history": [
+                  100,
                   100,
                   100,
                   100,
@@ -401,6 +411,7 @@
                     100,
                     100,
                     100,
+                    100,
                     100
                   ],
                   "raw_data": {
@@ -423,12 +434,14 @@
                       100,
                       100,
                       100,
+                      100,
                       100
                     ],
                     "raw_data": {
                       "risk": 100,
-                      "detail": "clear sky",
+                      "detail": "clear",
                       "history": [
+                        100,
                         100,
                         100,
                         100,
@@ -447,12 +460,34 @@
                         100
                       ],
                       "raw_data": {
-                        "temp": 4,
-                        "visibility": 8000,
-                        "clouds": 0,
-                        "description": "clear sky",
-                        "condition": "Marginal",
-                        "timestamp": "2026-01-27T00:38:50.092099"
+                        "risk": 100,
+                        "detail": "clear sky",
+                        "history": [
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100,
+                          100
+                        ],
+                        "raw_data": {
+                          "temp": 4,
+                          "visibility": 8000,
+                          "clouds": 0,
+                          "description": "clear sky",
+                          "condition": "Marginal",
+                          "timestamp": "2026-01-27T00:38:50.092099"
+                        }
                       }
                     }
                   }
@@ -465,8 +500,8 @@
     }
   },
   "polymarket": {
-    "risk": 12,
-    "detail": "12% odds",
+    "risk": 11,
+    "detail": "11% odds",
     "history": [
       13,
       13,
@@ -476,7 +511,6 @@
       13,
       13,
       13,
-      13,
       12,
       12,
       10,
@@ -487,17 +521,18 @@
       13,
       13,
       13,
-      12
+      12,
+      11
     ],
     "raw_data": {
-      "odds": 12,
+      "odds": 11,
       "market": "Will US or Israel strike Iran by January 31, 2026?",
-      "timestamp": "2026-01-29T04:54:25.215504"
+      "timestamp": "2026-01-29T07:29:41.846222"
     }
   },
   "pentagon": {
     "risk": 10,
-    "detail": "Low Activity (late night)",
+    "detail": "Low Activity",
     "history": [
       10,
       10,
@@ -509,11 +544,11 @@
       10,
       10,
       10,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
       10,
       10,
       10,
@@ -521,33 +556,33 @@
       10
     ],
     "raw_data": {
-      "score": 20,
+      "score": 30,
       "risk_contribution": 1,
       "status": "Low Activity",
       "places": [
         {
           "status": "normal",
-          "score": 20,
+          "score": 30,
           "name": "Domino's Pizza"
         },
         {
           "status": "normal",
-          "score": 20,
+          "score": 30,
           "name": "Papa John's"
         },
         {
           "status": "normal",
-          "score": 20,
+          "score": 30,
           "name": "Pizza Hut"
         }
       ],
-      "timestamp": "2026-01-29T04:54:24.846816",
-      "is_late_night": true,
+      "timestamp": "2026-01-29T07:29:41.605290",
+      "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 21,
+    "risk": 18,
     "history": [
       {
         "timestamp": 1769428800000,
@@ -580,11 +615,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769662469351,
-        "risk": 21
+        "timestamp": 1769671785750,
+        "risk": 18
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-29T04:54:29.351750"
+  "last_updated": "2026-01-29T07:29:45.750045"
 }
