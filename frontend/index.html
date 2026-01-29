@@ -41,51 +41,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXY7DKJKVK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-JXY7DKJKVK');
-
-        // Custom event tracking helper
-        function trackEvent(action, category, label, value) {
-            gtag('event', action, {
-                'event_category': category,
-                'event_label': label,
-                'value': value
-            });
-        }
-
-        // Track page engagement
-        let sessionStartTime = Date.now();
-        let maxRiskSeen = 0;
-
-        // Track time on page when leaving
-        window.addEventListener('beforeunload', () => {
-            const sessionDuration = Math.round((Date.now() - sessionStartTime) / 1000);
-            trackEvent('session_end', 'engagement', 'session_duration', sessionDuration);
-            trackEvent('max_risk_seen', 'engagement', 'highest_risk', maxRiskSeen);
-        });
-
-        // Track scroll depth
-        let scrollTracked = { 25: false, 50: false, 75: false, 100: false };
-        window.addEventListener('scroll', () => {
-            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-            [25, 50, 75, 100].forEach(threshold => {
-                if (scrollPercent >= threshold && !scrollTracked[threshold]) {
-                    scrollTracked[threshold] = true;
-                    trackEvent('scroll_depth', 'engagement', `scroll_${threshold}`, threshold);
-                }
-            });
-        });
-    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8033751083492488"
-        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 
     <!-- Structured Data (JSON-LD) for Google -->
@@ -284,6 +241,11 @@
                 <span>ℹ️</span> About
             </button>
         </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="footer-separator">|</span>
+            <a href="javascript:void(0)" onclick="openCookieSettings()">Cookie Settings</a>
+        </div>
 
         <!-- Offline indicator -->
         <div id="offlineBar" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--orange); color: #000; text-align: center; padding: 8px; font-size: 12px; font-weight: 600;">
@@ -324,7 +286,21 @@
         </div>
     </noscript>
 
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="consent-banner" style="display:none;">
+        <div class="consent-text">
+            <p>We use cookies for analytics and advertising (Google Analytics &amp; Google AdSense).
+               No personal data is stored on our servers.</p>
+            <a href="privacy.html" class="consent-privacy-link">Privacy Policy</a>
+        </div>
+        <div class="consent-buttons">
+            <button class="consent-btn consent-accept" onclick="acceptConsent()">Accept</button>
+            <button class="consent-btn consent-reject" onclick="rejectConsent()">Reject</button>
+        </div>
+    </div>
+
     <!-- Modular JavaScript - Load in dependency order -->
+    <script src="js/consent.js"></script>
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/sparklines.js"></script>
