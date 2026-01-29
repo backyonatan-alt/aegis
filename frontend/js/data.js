@@ -2,15 +2,18 @@
 // DATA FETCHING
 // =============================================
 
-// Read data from adjacent data.json file (updated by GitHub Actions)
+// Read data from Cloudflare Worker (R2-backed, CDN-cached)
+// Always fetches from production endpoint — works on preview deploys via CORS
+const DATA_URL = 'https://usstrikeradar.com/api/data.json';
+
 async function getData() {
     try {
-        const res = await fetch('./data.json');
+        const res = await fetch(DATA_URL);
         if (res.ok) {
             return await res.json();
         }
     } catch (e) {
-        console.log('Error reading data.json:', e.message);
+        console.log('Error reading data:', e.message);
     }
     
     // Fallback if data.json can't be read - use new structure
