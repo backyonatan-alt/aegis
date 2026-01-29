@@ -1,15 +1,20 @@
-"""Async API fetchers for the Aegis data pipeline."""
+"""Async API fetchers for the Aegis data pipeline.
+
+Uses the built-in js.fetch (Cloudflare Workers runtime) for HTTP requests
+instead of httpx/requests, since Python Workers run on Pyodide (WASM).
+"""
 
 import hashlib
+import json
 import logging
 import re
 import traceback
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 
-import httpx
+from js import Headers, Request, fetch
 
-from .constants import (
+from constants import (
     ALERT_KEYWORDS,
     IRAN_KEYWORDS,
     MONTHS,
@@ -24,23 +29,20 @@ from .constants import (
 log = logging.getLogger("aegis.fetchers")
 
 
-async def fetch_polymarket_odds(client: httpx.AsyncClient) -> dict | None:
+async def fetch_polymarket_odds() -> dict | None:
     """Fetch Iran strike odds from Polymarket Gamma API."""
     try:
         log.info("=" * 50)
         log.info("POLYMARKET ODDS")
         log.info("=" * 50)
 
-        response = await client.get(
-            "https://gamma-api.polymarket.com/public-search?q=iran",
-            timeout=20,
-        )
+        response = await fetch("https://gamma-api.polymarket.com/public-search?q=iran")
 
-        if response.status_code != 200:
-            log.warning("Polymarket API error: %d", response.status_code)
+        if response.status != 200:
+            log.warning("Polymarket API error: %d", response.status)
             return None
 
-        data = response.json()
+        data = json.loads(await response.text())
 
         if isinstance(data, dict) and data.get("events"):
             events = data["events"]
@@ -203,14 +205,14 @@ async def fetch_polymarket_odds(client: httpx.AsyncClient) -> dict | None:
         return None
 
 
-async def fetch_news_intel(client: httpx.AsyncClient) -> dict | None:
+async def fetch_news_intel() -> dict | None:
     """Fetch Iran-related news from RSS feeds."""
     try:
         log.info("=" * 50)
         log.info("NEWS INTELLIGENCE")
         log.info("=" * 50)
 
-        from .constants import RSS_FEEDS
+        from constants import RSS_FEEDS
 
         all_articles = []
         alert_count = 0
@@ -218,16 +220,17 @@ async def fetch_news_intel(client: httpx.AsyncClient) -> dict | None:
         for feed_url in RSS_FEEDS:
             try:
                 log.info("  Fetching %s...", feed_url[:50])
-                response = await client.get(
-                    feed_url,
-                    timeout=15,
-                    headers={"User-Agent": "Mozilla/5.0 (compatible; StrikeRadar/1.0)"},
+                headers = Headers.new(
+                    {"User-Agent": "Mozilla/5.0 (compatible; StrikeRadar/1.0)"}.items()
                 )
-                if not response.is_success:
-                    log.warning("    Failed: %d", response.status_code)
+                req = Request.new(feed_url, headers=headers)
+                response = await fetch(req)
+                if not response.ok:
+                    log.warning("    Failed: %d", response.status)
                     continue
 
-                root = ET.fromstring(response.content)
+                content = await response.text()
+                root = ET.fromstring(content)
                 items = root.findall(".//item")
                 if not items:
                     items = root.findall(".//{http://www.w3.org/2005/Atom}entry")
@@ -284,7 +287,7 @@ async def fetch_news_intel(client: httpx.AsyncClient) -> dict | None:
         return None
 
 
-async def fetch_aviation_data(client: httpx.AsyncClient) -> dict | None:
+async def fetch_aviation_data() -> dict | None:
     """Fetch OpenSky Network data for aircraft over Iran."""
     try:
         log.info("=" * 50)
@@ -292,12 +295,12 @@ async def fetch_aviation_data(client: httpx.AsyncClient) -> dict | None:
         log.info("=" * 50)
 
         url = "https://opensky-network.org/api/states/all?lamin=25&lomin=44&lamax=40&lomax=64"
-        response = await client.get(url, timeout=20)
-        if not response.is_success:
-            log.warning("OpenSky API error: %d", response.status_code)
+        response = await fetch(url)
+        if not response.ok:
+            log.warning("OpenSky API error: %d", response.status)
             return None
 
-        data = response.json()
+        data = json.loads(await response.text())
         civil_count = 0
         airlines = []
 
@@ -338,7 +341,7 @@ async def fetch_aviation_data(client: httpx.AsyncClient) -> dict | None:
         return None
 
 
-async def fetch_tanker_activity(client: httpx.AsyncClient) -> dict | None:
+async def fetch_tanker_activity() -> dict | None:
     """Fetch US military tanker activity in Middle East."""
     try:
         log.info("=" * 50)
@@ -346,12 +349,12 @@ async def fetch_tanker_activity(client: httpx.AsyncClient) -> dict | None:
         log.info("=" * 50)
 
         url = "https://opensky-network.org/api/states/all?lamin=20&lomin=40&lamax=40&lomax=65"
-        response = await client.get(url, timeout=20)
-        if not response.is_success:
-            log.warning("OpenSky API error: %d", response.status_code)
+        response = await fetch(url)
+        if not response.ok:
+            log.warning("OpenSky API error: %d", response.status)
             return None
 
-        data = response.json()
+        data = json.loads(await response.text())
         tanker_count = 0
         tanker_callsigns = []
 
@@ -392,7 +395,7 @@ async def fetch_tanker_activity(client: httpx.AsyncClient) -> dict | None:
         return None
 
 
-async def fetch_weather_data(client: httpx.AsyncClient, api_key: str) -> dict | None:
+async def fetch_weather_data(api_key: str) -> dict | None:
     """Fetch weather conditions for Tehran."""
     try:
         log.info("=" * 50)
@@ -400,12 +403,12 @@ async def fetch_weather_data(client: httpx.AsyncClient, api_key: str) -> dict | 
         log.info("=" * 50)
 
         url = f"https://api.openweathermap.org/data/2.5/weather?lat=35.6892&lon=51.389&appid={api_key}&units=metric"
-        response = await client.get(url, timeout=10)
-        if not response.is_success:
-            log.warning("Weather API error: %d", response.status_code)
+        response = await fetch(url)
+        if not response.ok:
+            log.warning("Weather API error: %d", response.status)
             return None
 
-        data = response.json()
+        data = json.loads(await response.text())
         if not data.get("main"):
             log.warning("Weather: No main data in response")
             return None

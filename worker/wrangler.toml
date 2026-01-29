@@ -12,3 +12,4 @@ bucket_name = "aegis-data"
 
 [[routes]]
 pattern = "usstrikeradar.com/data.json"
+zone_name = "usstrikeradar.com"

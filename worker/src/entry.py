@@ -9,11 +9,10 @@ import asyncio
 import json
 import logging
 
-import httpx
 from js import Response
 
-from .constants import R2_KEY
-from .fetchers import (
+from constants import R2_KEY
+from fetchers import (
     fetch_aviation_data,
     fetch_news_intel,
     fetch_pentagon_data,
@@ -21,7 +20,7 @@ from .fetchers import (
     fetch_tanker_activity,
     fetch_weather_data,
 )
-from .risk import calculate_risk_scores, update_history
+from risk import calculate_risk_scores, update_history
 
 # Configure logging — Cloudflare captures stdout/stderr and shows it in
 # Workers Logs / `wrangler tail`.  In local dev (`wrangler dev`) it prints
@@ -82,40 +81,39 @@ async def on_scheduled(controller, env, ctx):
     # 3. Fetch 4 independent APIs in parallel
     api_key = getattr(env, "OPENWEATHER_API_KEY", "")
 
-    async with httpx.AsyncClient() as client:
-        polymarket_result, news_result, aviation_result, weather_result = (
-            await asyncio.gather(
-                fetch_polymarket_odds(client),
-                fetch_news_intel(client),
-                fetch_aviation_data(client),
-                fetch_weather_data(client, api_key),
-                return_exceptions=True,
-            )
+    polymarket_result, news_result, aviation_result, weather_result = (
+        await asyncio.gather(
+            fetch_polymarket_odds(),
+            fetch_news_intel(),
+            fetch_aviation_data(),
+            fetch_weather_data(api_key),
+            return_exceptions=True,
         )
+    )
 
-        # Convert exceptions to None and log them
-        for name, result in [
-            ("Polymarket", polymarket_result),
-            ("News", news_result),
-            ("Aviation", aviation_result),
-            ("Weather", weather_result),
-        ]:
-            if isinstance(result, Exception):
-                log.error("%s fetch raised exception: %s", name, result)
+    # Convert exceptions to None and log them
+    for name, result in [
+        ("Polymarket", polymarket_result),
+        ("News", news_result),
+        ("Aviation", aviation_result),
+        ("Weather", weather_result),
+    ]:
+        if isinstance(result, Exception):
+            log.error("%s fetch raised exception: %s", name, result)
 
-        if isinstance(polymarket_result, Exception):
-            polymarket_result = None
-        if isinstance(news_result, Exception):
-            news_result = None
-        if isinstance(aviation_result, Exception):
-            aviation_result = None
-        if isinstance(weather_result, Exception):
-            weather_result = None
+    if isinstance(polymarket_result, Exception):
+        polymarket_result = None
+    if isinstance(news_result, Exception):
+        news_result = None
+    if isinstance(aviation_result, Exception):
+        aviation_result = None
+    if isinstance(weather_result, Exception):
+        weather_result = None
 
-        # 4. Sleep for OpenSky rate limit, then fetch tanker data
-        log.info("Waiting 2s for OpenSky rate limit...")
-        await asyncio.sleep(2)
-        tanker_result = await fetch_tanker_activity(client)
+    # 4. Sleep for OpenSky rate limit, then fetch tanker data
+    log.info("Waiting 2s for OpenSky rate limit...")
+    await asyncio.sleep(2)
+    tanker_result = await fetch_tanker_activity()
 
     # Use previous data as fallback for any failed fetches
     polymarket_data = polymarket_result or current_data.get("polymarket", {}).get("raw_data", {})
