@@ -5,7 +5,6 @@
     "history": [
       7,
       7,
-      7,
       18,
       16,
       18,
@@ -22,6 +21,7 @@
       16,
       16,
       16,
+      18,
       18
     ],
     "raw_data": {
@@ -31,7 +31,7 @@
           "is_alert": true
         },
         {
-          "title": "Trump says 'it would be great' if US 'didn't have to use' military force on Iran",
+          "title": "Trump tells Iran to drop nuclear aims and stop killing protesters to avoid military action",
           "is_alert": true
         },
         {
@@ -125,14 +125,13 @@
       ],
       "total_count": 24,
       "alert_count": 11,
-      "timestamp": "2026-01-30T14:55:05.901547"
+      "timestamp": "2026-01-30T15:25:10.589312"
     }
   },
   "flight": {
-    "risk": 19,
-    "detail": "95 aircraft over Iran",
+    "risk": 12,
+    "detail": "104 aircraft over Iran",
     "history": [
-      55,
       52,
       49,
       9,
@@ -151,24 +150,25 @@
       3,
       16,
       3,
-      19
+      19,
+      12
     ],
     "raw_data": {
-      "aircraft_count": 95,
-      "airline_count": 35,
+      "aircraft_count": 104,
+      "airline_count": 42,
       "airlines": [
-        "DAH",
-        "PAL",
         "CKS",
-        "IGO",
-        "AXB",
-        "FYC",
         "GLH",
         "S3V",
-        "DLH",
-        "BNL"
+        "BNL",
+        "IAW",
+        "UAE",
+        "ENT",
+        "T7A",
+        "TAY",
+        "ABY"
       ],
-      "timestamp": "2026-01-30T14:55:06.314266"
+      "timestamp": "2026-01-30T15:25:10.861521"
     }
   },
   "tanker": {
@@ -199,7 +199,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-30T14:55:08.573628"
+      "timestamp": "2026-01-30T15:25:13.127793"
     }
   },
   "weather": {
@@ -223,7 +223,7 @@
       100,
       100,
       100,
-      100,
+      0,
       0,
       0
     ],
@@ -233,14 +233,13 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-01-30T14:55:05.854228"
+      "timestamp": "2026-01-30T15:25:10.444137"
     }
   },
   "polymarket": {
     "risk": 7,
     "detail": "7% odds",
     "history": [
-      13,
       12,
       12,
       10,
@@ -259,21 +258,21 @@
       11,
       15,
       7,
+      7,
       7
     ],
     "raw_data": {
       "odds": 7,
       "market": "Will the US next strike Iran on January 31, 2026 (ET)?",
-      "timestamp": "2026-01-30T14:55:05.851950"
+      "timestamp": "2026-01-30T15:25:10.469298"
     }
   },
   "pentagon": {
-    "risk": 30,
-    "detail": "Normal",
+    "risk": 10,
+    "detail": "Low Activity",
     "history": [
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -290,36 +289,37 @@
       30,
       10,
       30,
-      30
+      30,
+      10
     ],
     "raw_data": {
-      "score": 50,
-      "risk_contribution": 3,
-      "status": "Normal",
+      "score": 30,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 50
+          "score": 30
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 50
+          "score": 30
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 50
+          "score": 30
         }
       ],
-      "timestamp": "2026-01-30T14:55:08.575517",
+      "timestamp": "2026-01-30T15:25:13.129703",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 13,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769515200000,
@@ -352,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769784908576,
-        "risk": 13
+        "timestamp": 1769786713130,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-30T14:55:08.576466"
+  "last_updated": "2026-01-30T15:25:13.130932"
 }
