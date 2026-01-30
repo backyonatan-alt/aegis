@@ -3,7 +3,6 @@
     "risk": 15,
     "detail": "24 articles, 10 critical",
     "history": [
-      16,
       18,
       18,
       16,
@@ -22,6 +21,7 @@
       18,
       16,
       16,
+      15,
       15
     ],
     "raw_data": {
@@ -125,14 +125,13 @@
       ],
       "total_count": 24,
       "alert_count": 10,
-      "timestamp": "2026-01-30T16:55:23.997336"
+      "timestamp": "2026-01-30T17:25:28.586682"
     }
   },
   "flight": {
-    "risk": 13,
-    "detail": "103 aircraft over Iran",
+    "risk": 27,
+    "detail": "85 aircraft over Iran",
     "history": [
-      9,
       15,
       3,
       30,
@@ -151,24 +150,25 @@
       12,
       13,
       6,
-      13
+      13,
+      27
     ],
     "raw_data": {
-      "aircraft_count": 103,
-      "airline_count": 44,
+      "aircraft_count": 85,
+      "airline_count": 36,
       "airlines": [
         "IGO",
         "FYC",
-        "AXB",
         "IAW",
         "BBC",
         "DLH",
         "AIC",
         "VRH",
         "N77",
-        "UAE"
+        "UAE",
+        "AFL"
       ],
-      "timestamp": "2026-01-30T16:55:24.264097"
+      "timestamp": "2026-01-30T17:25:28.866894"
     }
   },
   "tanker": {
@@ -199,7 +199,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-30T16:55:26.521056"
+      "timestamp": "2026-01-30T17:25:31.128980"
     }
   },
   "weather": {
@@ -219,7 +219,7 @@
       100,
       100,
       100,
-      100,
+      0,
       0,
       0,
       0,
@@ -233,14 +233,13 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-01-30T16:55:23.824995"
+      "timestamp": "2026-01-30T17:25:28.371198"
     }
   },
   "polymarket": {
     "risk": 7,
     "detail": "7% odds",
     "history": [
-      10,
       11,
       11,
       12,
@@ -259,21 +258,21 @@
       7,
       7,
       7,
+      7,
       7
     ],
     "raw_data": {
       "odds": 7,
       "market": "Will the US next strike Iran on January 31, 2026 (ET)?",
-      "timestamp": "2026-01-30T16:55:23.972953"
+      "timestamp": "2026-01-30T17:25:28.524807"
     }
   },
   "pentagon": {
-    "risk": 10,
-    "detail": "Low Activity",
+    "risk": 30,
+    "detail": "Normal",
     "history": [
       30,
       30,
-      30,
       10,
       10,
       10,
@@ -290,36 +289,37 @@
       10,
       10,
       10,
-      10
+      10,
+      30
     ],
     "raw_data": {
-      "score": 30,
-      "risk_contribution": 1,
-      "status": "Low Activity",
+      "score": 55,
+      "risk_contribution": 3,
+      "status": "Normal",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 30
+          "score": 55
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 30
+          "score": 55
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 30
+          "score": 55
         }
       ],
-      "timestamp": "2026-01-30T16:55:26.522677",
+      "timestamp": "2026-01-30T17:25:31.131302",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 9,
+    "risk": 14,
     "history": [
       {
         "timestamp": 1769515200000,
@@ -352,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769792126523,
-        "risk": 9
+        "timestamp": 1769793931132,
+        "risk": 14
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-30T16:55:26.523618"
+  "last_updated": "2026-01-30T17:25:31.132482"
 }
