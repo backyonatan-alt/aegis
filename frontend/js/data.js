@@ -2,9 +2,8 @@
 // DATA FETCHING
 // =============================================
 
-// Read data from Cloudflare Worker (R2-backed, CDN-cached)
-// Always fetches from production endpoint — works on preview deploys via CORS
-const DATA_URL = 'https://usstrikeradar.com/api/data.json';
+// Read data from local static file (no Worker dependency)
+const DATA_URL = 'data.json';
 
 async function getData() {
     try {

@@ -2,130 +2,34 @@
   "news": {
     "risk": 16,
     "detail": "25 articles, 11 critical",
-    "history": [
-      9,
-      9,
-      7,
-      7,
-      7,
-      18,
-      16,
-      18,
-      18,
-      16,
-      15,
-      15,
-      15,
-      12,
-      15,
-      17,
-      17,
-      15,
-      16,
-      16
-    ],
+    "history": [9, 9, 7, 7, 7, 18, 16, 18, 18, 16, 15, 15, 15, 12, 15, 17, 17, 15, 16, 16],
     "raw_data": {
       "articles": [
-        {
-          "title": "What could happen if the US strikes Iran? Here are seven scenarios",
-          "is_alert": true
-        },
-        {
-          "title": "Trump warns Iran 'time is running out' for nuclear deal as US military builds up in Gulf",
-          "is_alert": true
-        },
-        {
-          "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
-          "is_alert": false
-        },
-        {
-          "title": "Is the US preparing to strike Iran again?",
-          "is_alert": true
-        },
-        {
-          "title": "Iran's internet is returning - but not for everyone",
-          "is_alert": false
-        },
-        {
-          "title": "New Iran videos show bodies piled in hospital and snipers on roofs",
-          "is_alert": false
-        },
-        {
-          "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
-          "is_alert": true
-        },
-        {
-          "title": "'I saw people getting shot': Eyewitness tells of Iran protest crackdown",
-          "is_alert": true
-        },
-        {
-          "title": "Fears Iran's internet shutdown could lead to 'extreme digital isolation'",
-          "is_alert": true
-        },
-        {
-          "title": "What next for Iran's supreme leader?",
-          "is_alert": false
-        },
-        {
-          "title": "'I carried my wife's body for an hour and a half' - BBC hears stories of protesters killed in Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Tehran morgue videos show the brutality of Iran's crackdown on protesters",
-          "is_alert": false
-        },
-        {
-          "title": "Why are there protests in Iran and what has Trump said about US action?",
-          "is_alert": true
-        },
-        {
-          "title": "Bowen: Authoritarian regimes die gradually then suddenly, but Iran is not there yet",
-          "is_alert": false
-        },
-        {
-          "title": "Decision time for Trump on Iran but what does he ultimately want?",
-          "is_alert": false
-        },
-        {
-          "title": "Which countries do business with Iran  and what could US tariffs mean?",
-          "is_alert": false
-        },
-        {
-          "title": "'They just kept killing': Eyewitnesses describe deadly crackdown in Iran",
-          "is_alert": true
-        },
-        {
-          "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
-          "is_alert": false
-        },
-        {
-          "title": "Where do these protests leave the Iranian regime?",
-          "is_alert": true
-        },
-        {
-          "title": "'Now there's the threat of executions' in Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Mortuary videos show how deadly Iran crackdown has become",
-          "is_alert": false
-        },
-        {
-          "title": "Watch: Buildings in Tehran set on fire as demonstrations spread across Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Watch: Protests break out in Iranian capital Tehran",
-          "is_alert": false
-        },
-        {
-          "title": "Key questions about US military build-up near Iran",
-          "is_alert": true
-        },
-        {
-          "title": "US-Iran tensions soar: What do both sides want?",
-          "is_alert": true
-        }
+        {"title": "What could happen if the US strikes Iran? Here are seven scenarios", "is_alert": true},
+        {"title": "Trump warns Iran 'time is running out' for nuclear deal as US military builds up in Gulf", "is_alert": true},
+        {"title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest", "is_alert": false},
+        {"title": "Is the US preparing to strike Iran again?", "is_alert": true},
+        {"title": "Iran's internet is returning - but not for everyone", "is_alert": false},
+        {"title": "New Iran videos show bodies piled in hospital and snipers on roofs", "is_alert": false},
+        {"title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown", "is_alert": true},
+        {"title": "'I saw people getting shot': Eyewitness tells of Iran protest crackdown", "is_alert": true},
+        {"title": "Fears Iran's internet shutdown could lead to 'extreme digital isolation'", "is_alert": true},
+        {"title": "What next for Iran's supreme leader?", "is_alert": false},
+        {"title": "'I carried my wife's body for an hour and a half' - BBC hears stories of protesters killed in Iran", "is_alert": false},
+        {"title": "Tehran morgue videos show the brutality of Iran's crackdown on protesters", "is_alert": false},
+        {"title": "Why are there protests in Iran and what has Trump said about US action?", "is_alert": true},
+        {"title": "Bowen: Authoritarian regimes die gradually then suddenly, but Iran is not there yet", "is_alert": false},
+        {"title": "Decision time for Trump on Iran but what does he ultimately want?", "is_alert": false},
+        {"title": "Which countries do business with Iran  and what could US tariffs mean?", "is_alert": false},
+        {"title": "'They just kept killing': Eyewitnesses describe deadly crackdown in Iran", "is_alert": true},
+        {"title": "'Anger and frustration': BBC reports from Iranian-Armenian border", "is_alert": false},
+        {"title": "Where do these protests leave the Iranian regime?", "is_alert": true},
+        {"title": "'Now there's the threat of executions' in Iran", "is_alert": false},
+        {"title": "Mortuary videos show how deadly Iran crackdown has become", "is_alert": false},
+        {"title": "Watch: Buildings in Tehran set on fire as demonstrations spread across Iran", "is_alert": false},
+        {"title": "Watch: Protests break out in Iranian capital Tehran", "is_alert": false},
+        {"title": "Key questions about US military build-up near Iran", "is_alert": true},
+        {"title": "US-Iran tensions soar: What do both sides want?", "is_alert": true}
       ],
       "total_count": 25,
       "alert_count": 11,
@@ -135,71 +39,18 @@
   "flight": {
     "risk": 16,
     "detail": "99 aircraft over Iran",
-    "history": [
-      95,
-      95,
-      55,
-      52,
-      49,
-      9,
-      9,
-      15,
-      3,
-      30,
-      49,
-      24,
-      11,
-      25,
-      7,
-      31,
-      22,
-      3,
-      3,
-      16
-    ],
+    "history": [95, 95, 55, 52, 49, 9, 9, 15, 3, 30, 49, 24, 11, 25, 7, 31, 22, 3, 3, 16],
     "raw_data": {
       "aircraft_count": 99,
       "airline_count": 40,
-      "airlines": [
-        "FAH",
-        "DLH",
-        "IGO",
-        "T7R",
-        "SVA",
-        "UAE",
-        "N80",
-        "N86",
-        "THY",
-        "OMS"
-      ],
+      "airlines": ["FAH", "DLH", "IGO", "T7R", "SVA", "UAE", "N80", "N86", "THY", "OMS"],
       "timestamp": "2026-01-29T16:05:04.648205"
     }
   },
   "tanker": {
     "risk": 0,
     "detail": "0 detected in region",
-    "history": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
+    "history": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
@@ -208,453 +59,21 @@
   },
   "weather": {
     "risk": 100,
-    "detail": "clear",
-    "history": [
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100
-    ],
+    "detail": "clear sky",
+    "history": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
     "raw_data": {
-      "risk": 100,
-      "detail": "clear",
-      "history": [
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100,
-        100
-      ],
-      "raw_data": {
-        "risk": 100,
-        "detail": "clear",
-        "history": [
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100,
-          100
-        ],
-        "raw_data": {
-          "risk": 100,
-          "detail": "clear",
-          "history": [
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
-          ],
-          "raw_data": {
-            "risk": 100,
-            "detail": "clear",
-            "history": [
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
-              100
-            ],
-            "raw_data": {
-              "risk": 100,
-              "detail": "clear",
-              "history": [
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100,
-                100
-              ],
-              "raw_data": {
-                "risk": 100,
-                "detail": "clear",
-                "history": [
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100
-                ],
-                "raw_data": {
-                  "risk": 100,
-                  "detail": "clear",
-                  "history": [
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100
-                  ],
-                  "raw_data": {
-                    "risk": 100,
-                    "detail": "clear",
-                    "history": [
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100,
-                      100
-                    ],
-                    "raw_data": {
-                      "risk": 100,
-                      "detail": "clear",
-                      "history": [
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100,
-                        100
-                      ],
-                      "raw_data": {
-                        "risk": 100,
-                        "detail": "clear",
-                        "history": [
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100,
-                          100
-                        ],
-                        "raw_data": {
-                          "risk": 100,
-                          "detail": "clear",
-                          "history": [
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100,
-                            100
-                          ],
-                          "raw_data": {
-                            "risk": 100,
-                            "detail": "clear",
-                            "history": [
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100,
-                              100
-                            ],
-                            "raw_data": {
-                              "risk": 100,
-                              "detail": "clear",
-                              "history": [
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100,
-                                100
-                              ],
-                              "raw_data": {
-                                "risk": 100,
-                                "detail": "clear",
-                                "history": [
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100,
-                                  100
-                                ],
-                                "raw_data": {
-                                  "risk": 100,
-                                  "detail": "clear sky",
-                                  "history": [
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100,
-                                    100
-                                  ],
-                                  "raw_data": {
-                                    "temp": 4,
-                                    "visibility": 8000,
-                                    "clouds": 0,
-                                    "description": "clear sky",
-                                    "condition": "Marginal",
-                                    "timestamp": "2026-01-27T00:38:50.092099"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      "temp": 4,
+      "visibility": 8000,
+      "clouds": 0,
+      "description": "clear sky",
+      "condition": "Marginal",
+      "timestamp": "2026-01-27T00:38:50.092099"
     }
   },
   "polymarket": {
     "risk": 15,
     "detail": "15% odds",
-    "history": [
-      13,
-      13,
-      13,
-      12,
-      12,
-      10,
-      10,
-      11,
-      11,
-      12,
-      13,
-      13,
-      13,
-      12,
-      11,
-      11,
-      11,
-      11,
-      11,
-      15
-    ],
+    "history": [13, 13, 13, 12, 12, 10, 10, 11, 11, 12, 13, 13, 13, 12, 11, 11, 11, 11, 11, 15],
     "raw_data": {
       "odds": 15,
       "market": "Will US or Israel strike Iran by January 31, 2026?",
@@ -664,48 +83,15 @@
   "pentagon": {
     "risk": 10,
     "detail": "Low Activity",
-    "history": [
-      10,
-      10,
-      10,
-      10,
-      10,
-      30,
-      30,
-      30,
-      30,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      30,
-      30,
-      10
-    ],
+    "history": [10, 10, 10, 10, 10, 30, 30, 30, 30, 10, 10, 10, 10, 10, 10, 10, 10, 30, 30, 10],
     "raw_data": {
       "score": 30,
       "risk_contribution": 1,
       "status": "Low Activity",
       "places": [
-        {
-          "status": "normal",
-          "score": 30,
-          "name": "Domino's Pizza"
-        },
-        {
-          "status": "normal",
-          "score": 30,
-          "name": "Papa John's"
-        },
-        {
-          "status": "normal",
-          "score": 30,
-          "name": "Pizza Hut"
-        }
+        {"status": "normal", "score": 30, "name": "Domino's Pizza"},
+        {"status": "normal", "score": 30, "name": "Papa John's"},
+        {"status": "normal", "score": 30, "name": "Pizza Hut"}
       ],
       "timestamp": "2026-01-29T16:05:03.046756",
       "is_late_night": false,
@@ -715,40 +101,13 @@
   "total_risk": {
     "risk": 21,
     "history": [
-      {
-        "timestamp": 1769472000000,
-        "risk": 16,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769515200000,
-        "risk": 16,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769558400000,
-        "risk": 48,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769601600000,
-        "risk": 42,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769644800000,
-        "risk": 20,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769688000000,
-        "risk": 20,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769702707451,
-        "risk": 21
-      }
+      {"timestamp": 1769472000000, "risk": 16, "pinned": true},
+      {"timestamp": 1769515200000, "risk": 16, "pinned": true},
+      {"timestamp": 1769558400000, "risk": 48, "pinned": true},
+      {"timestamp": 1769601600000, "risk": 42, "pinned": true},
+      {"timestamp": 1769644800000, "risk": 20, "pinned": true},
+      {"timestamp": 1769688000000, "risk": 20, "pinned": true},
+      {"timestamp": 1769702707451, "risk": 21}
     ],
     "elevated_count": 1
   },
