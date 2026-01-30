@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 16,
-    "detail": "23 articles, 10 critical",
+    "risk": 15,
+    "detail": "24 articles, 10 critical",
     "history": [
-      18,
       16,
       18,
       18,
@@ -22,7 +21,8 @@
       18,
       18,
       16,
-      16
+      16,
+      15
     ],
     "raw_data": {
       "articles": [
@@ -115,20 +115,23 @@
           "is_alert": false
         },
         {
+          "title": "Can Trump\u2019s \u2018madman theory\u2019 reshape Iran and the Middle East?",
+          "is_alert": false
+        },
+        {
           "title": "US-Iran tensions: The diplomatic scramble to prevent a war",
           "is_alert": true
         }
       ],
-      "total_count": 23,
+      "total_count": 24,
       "alert_count": 10,
-      "timestamp": "2026-01-30T16:25:19.469106"
+      "timestamp": "2026-01-30T16:55:23.997336"
     }
   },
   "flight": {
-    "risk": 6,
-    "detail": "111 aircraft over Iran",
+    "risk": 13,
+    "detail": "103 aircraft over Iran",
     "history": [
-      9,
       9,
       15,
       3,
@@ -147,24 +150,25 @@
       19,
       12,
       13,
-      6
+      6,
+      13
     ],
     "raw_data": {
-      "aircraft_count": 111,
-      "airline_count": 46,
+      "aircraft_count": 103,
+      "airline_count": 44,
       "airlines": [
-        "AIC",
-        "CFG",
-        "JCO",
-        "SVA",
+        "IGO",
+        "FYC",
+        "AXB",
+        "IAW",
         "BBC",
-        "UAE",
-        "WZZ",
-        "UBG",
-        "ENT",
-        "ABY"
+        "DLH",
+        "AIC",
+        "VRH",
+        "N77",
+        "UAE"
       ],
-      "timestamp": "2026-01-30T16:25:19.773571"
+      "timestamp": "2026-01-30T16:55:24.264097"
     }
   },
   "tanker": {
@@ -195,12 +199,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-30T16:25:22.031391"
+      "timestamp": "2026-01-30T16:55:26.521056"
     }
   },
   "weather": {
     "risk": 0,
-    "detail": "scattered clouds",
+    "detail": "few clouds",
     "history": [
       100,
       100,
@@ -216,7 +220,7 @@
       100,
       100,
       100,
-      100,
+      0,
       0,
       0,
       0,
@@ -224,19 +228,18 @@
       0
     ],
     "raw_data": {
-      "temp": 9,
+      "temp": 8,
       "visibility": 10000,
-      "clouds": 40,
-      "description": "scattered clouds",
-      "condition": "Marginal",
-      "timestamp": "2026-01-30T16:25:19.366608"
+      "clouds": 20,
+      "description": "few clouds",
+      "condition": "Favorable",
+      "timestamp": "2026-01-30T16:55:23.824995"
     }
   },
   "polymarket": {
     "risk": 7,
     "detail": "7% odds",
     "history": [
-      10,
       10,
       11,
       11,
@@ -255,12 +258,13 @@
       7,
       7,
       7,
+      7,
       7
     ],
     "raw_data": {
       "odds": 7,
       "market": "Will the US next strike Iran on January 31, 2026 (ET)?",
-      "timestamp": "2026-01-30T16:25:19.353492"
+      "timestamp": "2026-01-30T16:55:23.972953"
     }
   },
   "pentagon": {
@@ -270,7 +274,6 @@
       30,
       30,
       30,
-      30,
       10,
       10,
       10,
@@ -284,6 +287,7 @@
       10,
       30,
       30,
+      10,
       10,
       10,
       10
@@ -309,13 +313,13 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-01-30T16:25:22.033645",
+      "timestamp": "2026-01-30T16:55:26.522677",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769515200000,
@@ -348,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769790322034,
-        "risk": 8
+        "timestamp": 1769792126523,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-30T16:25:22.034882"
+  "last_updated": "2026-01-30T16:55:26.523618"
 }
