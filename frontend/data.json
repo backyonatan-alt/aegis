@@ -3,7 +3,6 @@
     "risk": 14,
     "detail": "25 articles, 10 critical",
     "history": [
-      15,
       17,
       17,
       15,
@@ -19,6 +18,7 @@
       15,
       15,
       15,
+      14,
       14,
       14,
       14,
@@ -129,14 +129,13 @@
       ],
       "total_count": 25,
       "alert_count": 10,
-      "timestamp": "2026-01-30T20:56:00.882561"
+      "timestamp": "2026-01-30T21:26:05.455212"
     }
   },
   "flight": {
-    "risk": 16,
-    "detail": "99 aircraft over Iran",
+    "risk": 33,
+    "detail": "78 aircraft over Iran",
     "history": [
-      7,
       31,
       22,
       3,
@@ -155,24 +154,25 @@
       3,
       3,
       9,
-      16
+      16,
+      33
     ],
     "raw_data": {
-      "aircraft_count": 99,
-      "airline_count": 29,
+      "aircraft_count": 78,
+      "airline_count": 33,
       "airlines": [
+        "AXB",
         "IGO",
-        "IAW",
+        "TKN",
+        "BBC",
         "UAE",
         "THY",
         "UBG",
         "TKJ",
-        "BAW",
-        "AIC",
-        "CPA",
-        "FDB"
+        "FDB",
+        "UNI"
       ],
-      "timestamp": "2026-01-30T20:56:00.755708"
+      "timestamp": "2026-01-30T21:26:05.472895"
     }
   },
   "tanker": {
@@ -203,19 +203,18 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-30T20:56:03.183099"
+      "timestamp": "2026-01-30T21:26:07.942510"
     }
   },
   "weather": {
-    "risk": 100,
-    "detail": "clear sky",
+    "risk": 0,
+    "detail": "scattered clouds",
     "history": [
       100,
       100,
       100,
       100,
       100,
-      100,
       0,
       0,
       0,
@@ -229,22 +228,22 @@
       100,
       100,
       100,
-      100
+      100,
+      0
     ],
     "raw_data": {
-      "temp": 5,
+      "temp": 6,
       "visibility": 10000,
-      "clouds": 0,
-      "description": "clear sky",
-      "condition": "Favorable",
-      "timestamp": "2026-01-30T20:56:00.339432"
+      "clouds": 40,
+      "description": "scattered clouds",
+      "condition": "Marginal",
+      "timestamp": "2026-01-30T21:26:05.000348"
     }
   },
   "polymarket": {
-    "risk": 7,
-    "detail": "7% odds",
+    "risk": 8,
+    "detail": "8% odds",
     "history": [
-      11,
       11,
       11,
       11,
@@ -263,21 +262,21 @@
       5,
       5,
       6,
-      7
+      7,
+      8
     ],
     "raw_data": {
-      "odds": 7,
+      "odds": 8,
       "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
-      "timestamp": "2026-01-30T20:56:00.543019"
+      "timestamp": "2026-01-30T21:26:05.143275"
     }
   },
   "pentagon": {
-    "risk": 30,
-    "detail": "Normal",
+    "risk": 10,
+    "detail": "Low Activity",
     "history": [
       10,
       10,
-      10,
       30,
       30,
       10,
@@ -294,36 +293,37 @@
       30,
       30,
       30,
-      30
+      30,
+      10
     ],
     "raw_data": {
-      "score": 55,
-      "risk_contribution": 3,
-      "status": "Normal",
+      "score": 30,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 55
+          "score": 30
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 55
+          "score": 30
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 55
+          "score": 30
         }
       ],
-      "timestamp": "2026-01-30T20:56:03.185229",
+      "timestamp": "2026-01-30T21:26:07.944258",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 21,
+    "risk": 13,
     "history": [
       {
         "timestamp": 1769515200000,
@@ -356,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769806563186,
-        "risk": 21
+        "timestamp": 1769808367945,
+        "risk": 13
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 0
   },
-  "last_updated": "2026-01-30T20:56:03.186125"
+  "last_updated": "2026-01-30T21:26:07.945546"
 }
