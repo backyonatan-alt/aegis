@@ -96,6 +96,22 @@
     </script>
 </head>
 <body>
+    <!-- Strike Active Overlay -->
+    <div class="strike-overlay" id="strikeOverlay">
+        <div class="strike-content">
+            <div class="strike-icon">📡</div>
+            <h1 class="strike-headline">STRIKE DETECTED</h1>
+            <p class="strike-subtext">Reports indicate a US strike on Iran is underway. Follow news sources for verified updates.</p>
+            <div class="strike-timestamp">As of <span id="strikeTime"></span></div>
+            <div class="strike-sources">
+                <div class="strike-links">
+                    <a href="https://www.bbc.com/news/world/middle_east" target="_blank" rel="noopener">BBC World</a>
+                </div>
+            </div>
+            <button class="strike-dismiss" onclick="dismissStrikeOverlay()">View Dashboard</button>
+        </div>
+    </div>
+
     <div class="app" id="appContainer">
         <header class="header">
             <h1 class="logo">📡 StrikeRadar</h1>
@@ -112,6 +128,10 @@
                 <button class="icon-btn" onclick="showInfo('about')" title="About StrikeRadar">?</button>
             </div>
         </header>
+
+        <div class="strike-banner" id="strikeBanner">
+            STRIKE DETECTED — Reports indicate a US strike on Iran is underway
+        </div>
 
         <div class="timestamp-bar">
             <span>Updated <span class="time" id="lastUpdate">--:--</span> <span class="tz" id="timezone"></span></span>
