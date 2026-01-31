@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "24 articles, 10 critical",
+    "risk": 14,
+    "detail": "25 articles, 10 critical",
     "history": [
-      16,
       18,
       18,
       18,
@@ -22,7 +21,8 @@
       16,
       15,
       15,
-      15
+      15,
+      14
     ],
     "raw_data": {
       "articles": [
@@ -119,20 +119,23 @@
           "is_alert": false
         },
         {
+          "title": "Explosion in Iran\u2019s Bandar Abbas caused by gas leak, official says",
+          "is_alert": false
+        },
+        {
           "title": "Iran\u2019s president says Trump, Netanyahu, EU stirred tensions during protests",
           "is_alert": false
         }
       ],
-      "total_count": 24,
+      "total_count": 25,
       "alert_count": 10,
-      "timestamp": "2026-01-31T17:29:05.524721"
+      "timestamp": "2026-01-31T17:59:10.156866"
     }
   },
   "flight": {
-    "risk": 25,
-    "detail": "88 aircraft over Iran",
+    "risk": 11,
+    "detail": "105 aircraft over Iran",
     "history": [
-      18,
       25,
       33,
       36,
@@ -151,24 +154,25 @@
       17,
       13,
       22,
-      25
+      25,
+      11
     ],
     "raw_data": {
-      "aircraft_count": 88,
-      "airline_count": 33,
+      "aircraft_count": 105,
+      "airline_count": 39,
       "airlines": [
-        "IGO",
         "SWR",
+        "WZZ",
+        "IGO",
         "DLH",
+        "BYD",
+        "IAW",
         "SVA",
-        "OYA",
-        "UAE",
-        "ETD",
-        "SSG",
-        "DUB",
-        "ABY"
+        "KLM",
+        "MEA",
+        "UAE"
       ],
-      "timestamp": "2026-01-31T17:29:05.957684"
+      "timestamp": "2026-01-31T17:59:10.421987"
     }
   },
   "tanker": {
@@ -199,7 +203,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T17:29:08.219202"
+      "timestamp": "2026-01-31T17:59:12.681422"
     }
   },
   "weather": {
@@ -222,25 +226,24 @@
       0,
       0,
       0,
-      0,
+      100,
       100,
       100,
       100
     ],
     "raw_data": {
-      "temp": 10,
+      "temp": 12,
       "visibility": 10000,
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-01-31T17:29:05.509887"
+      "timestamp": "2026-01-31T17:59:10.014629"
     }
   },
   "polymarket": {
     "risk": 10,
     "detail": "Awaiting data...",
     "history": [
-      6,
       6,
       7,
       6,
@@ -259,12 +262,13 @@
       7,
       6,
       10,
+      10,
       10
     ],
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-01-31T17:29:05.488644"
+      "timestamp": "2026-01-31T17:59:10.108405"
     }
   },
   "pentagon": {
@@ -289,7 +293,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30
     ],
     "raw_data": {
@@ -313,13 +317,13 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-01-31T17:29:08.220677",
+      "timestamp": "2026-01-31T17:59:12.683297",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 22,
+    "risk": 19,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -352,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769880548221,
-        "risk": 22
+        "timestamp": 1769882352684,
+        "risk": 19
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-01-31T17:29:08.221558"
+  "last_updated": "2026-01-31T17:59:12.684454"
 }
