@@ -1,12 +1,11 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "24 articles, 10 critical",
+    "risk": 16,
+    "detail": "25 articles, 11 critical",
     "history": [
       14,
       14,
       14,
-      14,
       15,
       15,
       15,
@@ -22,7 +21,8 @@
       14,
       14,
       15,
-      15
+      15,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -115,6 +115,10 @@
           "is_alert": false
         },
         {
+          "title": "LIVE: Iran announces live-fire naval drills near US warships amid tensions",
+          "is_alert": true
+        },
+        {
           "title": "Iran says ready for \u2018fair\u2019 talks with US but not \u2018under shadow of threats\u2019",
           "is_alert": true
         },
@@ -123,16 +127,15 @@
           "is_alert": false
         }
       ],
-      "total_count": 24,
-      "alert_count": 10,
-      "timestamp": "2026-01-31T05:57:21.273591"
+      "total_count": 25,
+      "alert_count": 11,
+      "timestamp": "2026-01-31T06:27:25.773685"
     }
   },
   "flight": {
     "risk": 3,
-    "detail": "130 aircraft over Iran",
+    "detail": "116 aircraft over Iran",
     "history": [
-      9,
       16,
       33,
       52,
@@ -151,24 +154,25 @@
       26,
       17,
       5,
+      3,
       3
     ],
     "raw_data": {
-      "aircraft_count": 130,
-      "airline_count": 38,
+      "aircraft_count": 116,
+      "airline_count": 35,
       "airlines": [
+        "AXB",
         "AIC",
         "A6A",
         "IAW",
+        "DUB",
+        "VRH",
         "UAE",
-        "PIA",
-        "FDB",
         "ETD",
-        "ABY",
-        "THY",
-        "FJL"
+        "SHI",
+        "FDB"
       ],
-      "timestamp": "2026-01-31T05:57:21.527333"
+      "timestamp": "2026-01-31T06:27:25.974834"
     }
   },
   "tanker": {
@@ -199,7 +203,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T05:57:23.782683"
+      "timestamp": "2026-01-31T06:27:28.229537"
     }
   },
   "weather": {
@@ -207,7 +211,6 @@
     "detail": "scattered clouds",
     "history": [
       100,
-      100,
       0,
       0,
       0,
@@ -216,6 +219,7 @@
       100,
       100,
       100,
+      0,
       0,
       0,
       0,
@@ -228,19 +232,18 @@
       0
     ],
     "raw_data": {
-      "temp": 9,
+      "temp": 10,
       "visibility": 10000,
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-01-31T05:57:21.068804"
+      "timestamp": "2026-01-31T06:27:25.587858"
     }
   },
   "polymarket": {
-    "risk": 7,
-    "detail": "7% odds",
+    "risk": 6,
+    "detail": "6% odds",
     "history": [
-      6,
       7,
       8,
       8,
@@ -259,20 +262,21 @@
       8,
       8,
       9,
-      7
+      7,
+      6
     ],
     "raw_data": {
-      "odds": 7,
-      "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
-      "timestamp": "2026-01-31T05:57:21.207882"
+      "odds": 6,
+      "market": "Will the US next strike Iran on February 2, 2026 (ET)?",
+      "timestamp": "2026-01-31T06:27:25.696772"
     }
   },
   "pentagon": {
     "risk": 10,
-    "detail": "Low Activity (late night) (weekend)",
+    "detail": "Low Activity (weekend)",
     "history": [
       30,
-      30,
+      10,
       10,
       10,
       10,
@@ -293,28 +297,28 @@
       10
     ],
     "raw_data": {
-      "score": 20,
+      "score": 25,
       "risk_contribution": 1,
       "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 20
+          "score": 25
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 20
+          "score": 25
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 20
+          "score": 25
         }
       ],
-      "timestamp": "2026-01-31T05:57:23.785124",
-      "is_late_night": true,
+      "timestamp": "2026-01-31T06:27:28.230902",
+      "is_late_night": false,
       "is_weekend": true
     }
   },
@@ -352,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769839043786,
+        "timestamp": 1769840848231,
         "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T05:57:23.786852"
+  "last_updated": "2026-01-31T06:27:28.231815"
 }
