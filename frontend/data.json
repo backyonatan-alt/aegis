@@ -3,7 +3,6 @@
     "risk": 15,
     "detail": "24 articles, 10 critical",
     "history": [
-      15,
       14,
       14,
       14,
@@ -20,6 +19,7 @@
       18,
       18,
       16,
+      15,
       15,
       15,
       15
@@ -125,14 +125,13 @@
       ],
       "total_count": 24,
       "alert_count": 10,
-      "timestamp": "2026-01-31T11:28:11.026179"
+      "timestamp": "2026-01-31T11:58:15.417401"
     }
   },
   "flight": {
-    "risk": 20,
-    "detail": "94 aircraft over Iran",
+    "risk": 21,
+    "detail": "92 aircraft over Iran",
     "history": [
-      5,
       14,
       18,
       30,
@@ -151,24 +150,25 @@
       29,
       19,
       13,
-      20
+      20,
+      21
     ],
     "raw_data": {
-      "aircraft_count": 94,
-      "airline_count": 38,
+      "aircraft_count": 92,
+      "airline_count": 41,
       "airlines": [
-        "AXB",
         "FYC",
         "SVA",
         "AIC",
         "IAW",
+        "GNJ",
         "UAE",
-        "P4B",
-        "ETD",
-        "UTA",
-        "AOJ"
+        "AXB",
+        "AFL",
+        "PBD",
+        "PIA"
       ],
-      "timestamp": "2026-01-31T11:28:11.185563"
+      "timestamp": "2026-01-31T11:58:15.670881"
     }
   },
   "tanker": {
@@ -199,7 +199,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T11:28:13.442269"
+      "timestamp": "2026-01-31T11:58:17.925499"
     }
   },
   "weather": {
@@ -233,14 +233,13 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-01-31T11:28:10.801654"
+      "timestamp": "2026-01-31T11:58:15.249386"
     }
   },
   "polymarket": {
-    "risk": 6,
-    "detail": "6% odds",
+    "risk": 7,
+    "detail": "7% odds",
     "history": [
-      7,
       10,
       8,
       8,
@@ -259,12 +258,13 @@
       6,
       5,
       6,
-      6
+      6,
+      7
     ],
     "raw_data": {
-      "odds": 6,
+      "odds": 7,
       "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
-      "timestamp": "2026-01-31T11:28:10.930159"
+      "timestamp": "2026-01-31T11:58:15.491911"
     }
   },
   "pentagon": {
@@ -313,7 +313,7 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-01-31T11:28:13.443733",
+      "timestamp": "2026-01-31T11:58:17.926880",
       "is_late_night": false,
       "is_weekend": true
     }
@@ -352,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769858893444,
+        "timestamp": 1769860697927,
         "risk": 10
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T11:28:13.444635"
+  "last_updated": "2026-01-31T11:58:17.927786"
 }
