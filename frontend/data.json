@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 16,
-    "detail": "25 articles, 11 critical",
+    "risk": 18,
+    "detail": "24 articles, 11 critical",
     "history": [
       15,
       15,
@@ -10,7 +10,6 @@
       15,
       15,
       15,
-      15,
       14,
       14,
       14,
@@ -22,7 +21,8 @@
       16,
       16,
       16,
-      16
+      16,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -121,22 +121,17 @@
         {
           "title": "Iran says ready for \u2018fair\u2019 talks with US but not \u2018under shadow of threats\u2019",
           "is_alert": true
-        },
-        {
-          "title": "Confusion grows over state of US-Iran negotiations",
-          "is_alert": false
         }
       ],
-      "total_count": 25,
+      "total_count": 24,
       "alert_count": 11,
-      "timestamp": "2026-01-31T07:57:39.798363"
+      "timestamp": "2026-01-31T08:27:44.477107"
     }
   },
   "flight": {
-    "risk": 18,
-    "detail": "96 aircraft over Iran",
+    "risk": 25,
+    "detail": "87 aircraft over Iran",
     "history": [
-      50,
       29,
       4,
       9,
@@ -155,24 +150,25 @@
       3,
       18,
       17,
-      18
+      18,
+      25
     ],
     "raw_data": {
-      "aircraft_count": 96,
-      "airline_count": 41,
+      "aircraft_count": 87,
+      "airline_count": 38,
       "airlines": [
         "CFG",
-        "SVA",
-        "IGO",
-        "UAE",
-        "MEA",
-        "PIA",
-        "ETD",
-        "AIC",
         "KNE",
-        "DAH"
+        "SVA",
+        "IAW",
+        "AFL",
+        "UAE",
+        "T7K",
+        "PIA",
+        "A6R",
+        "ABY"
       ],
-      "timestamp": "2026-01-31T07:57:40.055505"
+      "timestamp": "2026-01-31T08:27:44.493722"
     }
   },
   "tanker": {
@@ -203,7 +199,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T07:57:42.312680"
+      "timestamp": "2026-01-31T08:27:46.748016"
     }
   },
   "weather": {
@@ -211,11 +207,11 @@
     "detail": "few clouds",
     "history": [
       0,
+      100,
+      100,
+      100,
+      100,
       0,
-      100,
-      100,
-      100,
-      100,
       0,
       0,
       0,
@@ -237,14 +233,13 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-01-31T07:57:39.625971"
+      "timestamp": "2026-01-31T08:27:44.099157"
     }
   },
   "polymarket": {
     "risk": 6,
     "detail": "6% odds",
     "history": [
-      8,
       9,
       10,
       9,
@@ -263,12 +258,13 @@
       6,
       6,
       7,
+      6,
       6
     ],
     "raw_data": {
       "odds": 6,
-      "market": "Will the US next strike Iran on February 2, 2026 (ET)?",
-      "timestamp": "2026-01-31T07:57:39.806073"
+      "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
+      "timestamp": "2026-01-31T08:27:44.267460"
     }
   },
   "pentagon": {
@@ -317,13 +313,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-01-31T07:57:42.314170",
+      "timestamp": "2026-01-31T08:27:46.749580",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 10,
+    "risk": 12,
     "history": [
       {
         "timestamp": 1769558400000,
@@ -356,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769846262315,
-        "risk": 10
+        "timestamp": 1769848066750,
+        "risk": 12
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T07:57:42.315281"
+  "last_updated": "2026-01-31T08:27:46.750265"
 }
