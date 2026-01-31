@@ -4,7 +4,6 @@
     "detail": "24 articles, 10 critical",
     "history": [
       15,
-      15,
       14,
       14,
       14,
@@ -21,6 +20,7 @@
       18,
       18,
       16,
+      15,
       15,
       15
     ],
@@ -125,14 +125,13 @@
       ],
       "total_count": 24,
       "alert_count": 10,
-      "timestamp": "2026-01-31T10:58:06.459281"
+      "timestamp": "2026-01-31T11:28:11.026179"
     }
   },
   "flight": {
-    "risk": 13,
-    "detail": "103 aircraft over Iran",
+    "risk": 20,
+    "detail": "94 aircraft over Iran",
     "history": [
-      23,
       5,
       14,
       18,
@@ -151,24 +150,25 @@
       36,
       29,
       19,
-      13
+      13,
+      20
     ],
     "raw_data": {
-      "aircraft_count": 103,
-      "airline_count": 46,
+      "aircraft_count": 94,
+      "airline_count": 38,
       "airlines": [
+        "AXB",
+        "FYC",
         "SVA",
+        "AIC",
         "IAW",
-        "MAA",
-        "VJH",
+        "UAE",
         "P4B",
         "ETD",
         "UTA",
-        "UAE",
-        "AOJ",
-        "ABY"
+        "AOJ"
       ],
-      "timestamp": "2026-01-31T10:58:06.697112"
+      "timestamp": "2026-01-31T11:28:11.185563"
     }
   },
   "tanker": {
@@ -199,7 +199,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T10:58:08.954758"
+      "timestamp": "2026-01-31T11:28:13.442269"
     }
   },
   "weather": {
@@ -228,19 +228,18 @@
       0
     ],
     "raw_data": {
-      "temp": 13,
+      "temp": 14,
       "visibility": 10000,
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-01-31T10:58:06.283896"
+      "timestamp": "2026-01-31T11:28:10.801654"
     }
   },
   "polymarket": {
     "risk": 6,
     "detail": "6% odds",
     "history": [
-      8,
       7,
       10,
       8,
@@ -259,12 +258,13 @@
       6,
       6,
       5,
+      6,
       6
     ],
     "raw_data": {
       "odds": 6,
       "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
-      "timestamp": "2026-01-31T10:58:06.457167"
+      "timestamp": "2026-01-31T11:28:10.930159"
     }
   },
   "pentagon": {
@@ -313,13 +313,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-01-31T10:58:08.956791",
+      "timestamp": "2026-01-31T11:28:13.443733",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 9,
+    "risk": 10,
     "history": [
       {
         "timestamp": 1769558400000,
@@ -352,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769857088957,
-        "risk": 9
+        "timestamp": 1769858893444,
+        "risk": 10
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T10:58:08.957969"
+  "last_updated": "2026-01-31T11:28:13.444635"
 }
