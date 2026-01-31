@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 16,
-    "detail": "25 articles, 11 critical",
+    "risk": 15,
+    "detail": "26 articles, 11 critical",
     "history": [
-      15,
       15,
       16,
       16,
@@ -22,7 +21,8 @@
       15,
       16,
       16,
-      16
+      16,
+      15
     ],
     "raw_data": {
       "articles": [
@@ -119,6 +119,10 @@
           "is_alert": false
         },
         {
+          "title": "Iranian official says progress made on talks as US-Iran tensions persist",
+          "is_alert": false
+        },
+        {
           "title": "Appropriating the death count: Manufacturing consent for an attack on Iran",
           "is_alert": true
         },
@@ -127,16 +131,15 @@
           "is_alert": false
         }
       ],
-      "total_count": 25,
+      "total_count": 26,
       "alert_count": 11,
-      "timestamp": "2026-01-31T22:29:52.935250"
+      "timestamp": "2026-01-31T22:59:57.588628"
     }
   },
   "flight": {
-    "risk": 43,
-    "detail": "65 aircraft over Iran",
+    "risk": 21,
+    "detail": "93 aircraft over Iran",
     "history": [
-      12,
       18,
       7,
       5,
@@ -155,24 +158,25 @@
       33,
       56,
       50,
-      43
+      43,
+      21
     ],
     "raw_data": {
-      "aircraft_count": 65,
-      "airline_count": 35,
+      "aircraft_count": 93,
+      "airline_count": 32,
       "airlines": [
         "IGO",
-        "AXB",
-        "PGT",
+        "SWR",
+        "AUA",
         "ACA",
         "AIC",
-        "DLH",
+        "PGT",
         "UAE",
-        "SEJ",
-        "PIA",
-        "RAM"
+        "ETD",
+        "ABY",
+        "OMA"
       ],
-      "timestamp": "2026-01-31T22:29:53.165599"
+      "timestamp": "2026-01-31T22:59:57.699141"
     }
   },
   "tanker": {
@@ -203,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T22:29:55.420150"
+      "timestamp": "2026-01-31T22:59:59.955390"
     }
   },
   "weather": {
@@ -216,13 +220,13 @@
       0,
       0,
       0,
-      0,
       100,
       100,
       100,
       100,
       0,
       100,
+      0,
       0,
       0,
       0,
@@ -237,14 +241,13 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-01-31T22:29:52.772304"
+      "timestamp": "2026-01-31T22:59:57.262053"
     }
   },
   "polymarket": {
     "risk": 10,
     "detail": "Awaiting data...",
     "history": [
-      7,
       6,
       6,
       6,
@@ -263,12 +266,13 @@
       10,
       10,
       10,
+      10,
       10
     ],
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-01-31T22:29:52.911023"
+      "timestamp": "2026-01-31T22:59:57.576384"
     }
   },
   "pentagon": {
@@ -283,15 +287,15 @@
       10,
       10,
       10,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
       10,
       10,
       10
@@ -317,13 +321,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-01-31T22:29:55.422150",
+      "timestamp": "2026-01-31T22:59:59.957816",
       "is_late_night": true,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 14,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -356,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769898595425,
-        "risk": 14
+        "timestamp": 1769900399959,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T22:29:55.425435"
+  "last_updated": "2026-01-31T22:59:59.959018"
 }
