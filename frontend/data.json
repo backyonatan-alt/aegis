@@ -8,7 +8,6 @@
       15,
       15,
       15,
-      15,
       16,
       16,
       16,
@@ -18,6 +17,7 @@
       15,
       15,
       14,
+      15,
       15,
       15,
       15,
@@ -133,14 +133,13 @@
       ],
       "total_count": 26,
       "alert_count": 11,
-      "timestamp": "2026-01-31T20:29:33.528565"
+      "timestamp": "2026-01-31T20:59:37.762574"
     }
   },
   "flight": {
-    "risk": 8,
-    "detail": "109 aircraft over Iran",
+    "risk": 33,
+    "detail": "78 aircraft over Iran",
     "history": [
-      13,
       20,
       21,
       9,
@@ -159,24 +158,25 @@
       22,
       4,
       3,
-      8
+      8,
+      33
     ],
     "raw_data": {
-      "aircraft_count": 109,
-      "airline_count": 29,
+      "aircraft_count": 78,
+      "airline_count": 31,
       "airlines": [
-        "AXB",
-        "CKS",
+        "DHK",
+        "PAL",
+        "AIC",
         "IGO",
-        "BBC",
         "IAW",
+        "VRH",
         "UAE",
-        "ETD",
         "KNE",
         "THY",
-        "FDB"
+        "RBA"
       ],
-      "timestamp": "2026-01-31T20:29:33.269118"
+      "timestamp": "2026-01-31T20:59:37.910071"
     }
   },
   "tanker": {
@@ -207,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T20:29:35.785186"
+      "timestamp": "2026-01-31T20:59:40.166118"
     }
   },
   "weather": {
@@ -224,13 +224,13 @@
       0,
       0,
       0,
-      0,
       100,
       100,
       100,
       100,
       0,
       100,
+      0,
       0,
       0,
       0
@@ -241,14 +241,13 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-01-31T20:29:32.887326"
+      "timestamp": "2026-01-31T20:59:37.544416"
     }
   },
   "polymarket": {
     "risk": 10,
     "detail": "Awaiting data...",
     "history": [
-      6,
       6,
       7,
       6,
@@ -267,12 +266,13 @@
       10,
       10,
       10,
+      10,
       10
     ],
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-01-31T20:29:33.048584"
+      "timestamp": "2026-01-31T20:59:37.678634"
     }
   },
   "pentagon": {
@@ -291,7 +291,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30,
       30,
       30,
@@ -321,13 +321,13 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-01-31T20:29:35.787443",
+      "timestamp": "2026-01-31T20:59:40.167744",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 13,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -360,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769891375788,
-        "risk": 8
+        "timestamp": 1769893180168,
+        "risk": 13
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T20:29:35.788541"
+  "last_updated": "2026-01-31T20:59:40.168895"
 }
