@@ -5,7 +5,6 @@
     "history": [
       15,
       15,
-      15,
       16,
       16,
       16,
@@ -21,6 +20,7 @@
       15,
       15,
       15,
+      16,
       16,
       16
     ],
@@ -129,14 +129,13 @@
       ],
       "total_count": 25,
       "alert_count": 11,
-      "timestamp": "2026-01-31T21:59:48.421130"
+      "timestamp": "2026-01-31T22:29:52.935250"
     }
   },
   "flight": {
-    "risk": 50,
-    "detail": "56 aircraft over Iran",
+    "risk": 43,
+    "detail": "65 aircraft over Iran",
     "history": [
-      9,
       12,
       18,
       7,
@@ -155,24 +154,25 @@
       8,
       33,
       56,
-      50
+      50,
+      43
     ],
     "raw_data": {
-      "aircraft_count": 56,
-      "airline_count": 29,
+      "aircraft_count": 65,
+      "airline_count": 35,
       "airlines": [
-        "PGT",
+        "IGO",
         "AXB",
+        "PGT",
+        "ACA",
+        "AIC",
         "DLH",
-        "RA7",
         "UAE",
-        "TKJ",
-        "CSN",
-        "FDB",
+        "SEJ",
         "PIA",
-        "FJL"
+        "RAM"
       ],
-      "timestamp": "2026-01-31T21:59:48.577734"
+      "timestamp": "2026-01-31T22:29:53.165599"
     }
   },
   "tanker": {
@@ -203,7 +203,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T21:59:50.839863"
+      "timestamp": "2026-01-31T22:29:55.420150"
     }
   },
   "weather": {
@@ -217,13 +217,13 @@
       0,
       0,
       0,
-      0,
       100,
       100,
       100,
       100,
       0,
       100,
+      0,
       0,
       0,
       0,
@@ -232,19 +232,18 @@
       0
     ],
     "raw_data": {
-      "temp": 8,
+      "temp": 7,
       "visibility": 10000,
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-01-31T21:59:48.251141"
+      "timestamp": "2026-01-31T22:29:52.772304"
     }
   },
   "polymarket": {
     "risk": 10,
     "detail": "Awaiting data...",
     "history": [
-      6,
       7,
       6,
       6,
@@ -263,17 +262,18 @@
       10,
       10,
       10,
+      10,
       10
     ],
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-01-31T21:59:48.369259"
+      "timestamp": "2026-01-31T22:29:52.911023"
     }
   },
   "pentagon": {
     "risk": 10,
-    "detail": "Low Activity (weekend)",
+    "detail": "Low Activity (late night) (weekend)",
     "history": [
       10,
       10,
@@ -284,46 +284,46 @@
       10,
       10,
       10,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
       10,
       10
     ],
     "raw_data": {
-      "score": 25,
+      "score": 20,
       "risk_contribution": 1,
       "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 25
+          "score": 20
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 25
+          "score": 20
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 25
+          "score": 20
         }
       ],
-      "timestamp": "2026-01-31T21:59:50.842738",
-      "is_late_night": false,
+      "timestamp": "2026-01-31T22:29:55.422150",
+      "is_late_night": true,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 15,
+    "risk": 14,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -356,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769896790843,
-        "risk": 15
+        "timestamp": 1769898595425,
+        "risk": 14
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T21:59:50.843837"
+  "last_updated": "2026-01-31T22:29:55.425435"
 }
