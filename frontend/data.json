@@ -4,7 +4,6 @@
     "detail": "25 articles, 11 critical",
     "history": [
       14,
-      14,
       15,
       15,
       16,
@@ -22,6 +21,7 @@
       15,
       15,
       15,
+      16,
       16
     ],
     "raw_data": {
@@ -31,7 +31,7 @@
           "is_alert": true
         },
         {
-          "title": "Trump tells Iran to drop nuclear aims and stop killing protesters to avoid military action",
+          "title": "Iran wants to make deal rather than face military action, Trump says",
           "is_alert": true
         },
         {
@@ -129,14 +129,13 @@
       ],
       "total_count": 25,
       "alert_count": 11,
-      "timestamp": "2026-01-31T13:58:33.635863"
+      "timestamp": "2026-01-31T14:28:37.779484"
     }
   },
   "flight": {
-    "risk": 7,
-    "detail": "110 aircraft over Iran",
+    "risk": 5,
+    "detail": "112 aircraft over Iran",
     "history": [
-      26,
       17,
       5,
       3,
@@ -155,24 +154,25 @@
       9,
       12,
       18,
-      7
+      7,
+      5
     ],
     "raw_data": {
-      "aircraft_count": 110,
-      "airline_count": 44,
+      "aircraft_count": 112,
+      "airline_count": 37,
       "airlines": [
         "AIC",
-        "SWR",
-        "N55",
+        "N80",
         "PAL",
-        "T7V",
-        "T7A",
-        "CFG",
+        "TCK",
+        "IAW",
         "SVA",
         "BBC",
-        "UAE"
+        "UAE",
+        "ETD",
+        "OMS"
       ],
-      "timestamp": "2026-01-31T13:58:33.343769"
+      "timestamp": "2026-01-31T14:28:38.204879"
     }
   },
   "tanker": {
@@ -203,7 +203,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T13:58:35.894174"
+      "timestamp": "2026-01-31T14:28:40.458223"
     }
   },
   "weather": {
@@ -232,19 +232,18 @@
       0
     ],
     "raw_data": {
-      "temp": 13,
+      "temp": 12,
       "visibility": 10000,
       "clouds": 75,
       "description": "broken clouds",
       "condition": "Poor",
-      "timestamp": "2026-01-31T13:58:32.898585"
+      "timestamp": "2026-01-31T14:28:37.736610"
     }
   },
   "polymarket": {
     "risk": 6,
     "detail": "6% odds",
     "history": [
-      8,
       8,
       9,
       7,
@@ -263,12 +262,13 @@
       6,
       7,
       6,
+      6,
       6
     ],
     "raw_data": {
       "odds": 6,
-      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-01-31T13:58:33.040901"
+      "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
+      "timestamp": "2026-01-31T14:28:37.859692"
     }
   },
   "pentagon": {
@@ -317,13 +317,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-01-31T13:58:35.895729",
+      "timestamp": "2026-01-31T14:28:40.459901",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 7,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -356,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769867915896,
-        "risk": 8
+        "timestamp": 1769869720461,
+        "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T13:58:35.896810"
+  "last_updated": "2026-01-31T14:28:40.461134"
 }
