@@ -1,11 +1,10 @@
 {
   "news": {
-    "risk": 14,
-    "detail": "25 articles, 10 critical",
+    "risk": 15,
+    "detail": "26 articles, 11 critical",
     "history": [
       18,
       18,
-      18,
       16,
       15,
       15,
@@ -22,7 +21,8 @@
       15,
       15,
       15,
-      14
+      14,
+      15
     ],
     "raw_data": {
       "articles": [
@@ -119,6 +119,10 @@
           "is_alert": false
         },
         {
+          "title": "Appropriating the death count: Manufacturing consent for an attack on Iran",
+          "is_alert": true
+        },
+        {
           "title": "Explosion in Iran\u2019s Bandar Abbas caused by gas leak, official says",
           "is_alert": false
         },
@@ -127,16 +131,15 @@
           "is_alert": false
         }
       ],
-      "total_count": 25,
-      "alert_count": 10,
-      "timestamp": "2026-01-31T17:59:10.156866"
+      "total_count": 26,
+      "alert_count": 11,
+      "timestamp": "2026-01-31T18:29:14.628898"
     }
   },
   "flight": {
     "risk": 11,
     "detail": "105 aircraft over Iran",
     "history": [
-      25,
       33,
       36,
       29,
@@ -155,24 +158,25 @@
       13,
       22,
       25,
+      11,
       11
     ],
     "raw_data": {
       "aircraft_count": 105,
-      "airline_count": 39,
+      "airline_count": 35,
       "airlines": [
-        "SWR",
+        "ELG",
+        "HZ1",
+        "PAL",
         "WZZ",
-        "IGO",
-        "DLH",
-        "BYD",
+        "AXB",
         "IAW",
-        "SVA",
-        "KLM",
+        "BBC",
+        "UAE",
         "MEA",
-        "UAE"
+        "UBG"
       ],
-      "timestamp": "2026-01-31T17:59:10.421987"
+      "timestamp": "2026-01-31T18:29:15.015297"
     }
   },
   "tanker": {
@@ -203,12 +207,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T17:59:12.681422"
+      "timestamp": "2026-01-31T18:29:17.285211"
     }
   },
   "weather": {
-    "risk": 100,
-    "detail": "clear sky",
+    "risk": 0,
+    "detail": "scattered clouds",
     "history": [
       0,
       0,
@@ -225,26 +229,25 @@
       0,
       0,
       0,
-      0,
       100,
       100,
       100,
-      100
+      100,
+      0
     ],
     "raw_data": {
       "temp": 12,
       "visibility": 10000,
-      "clouds": 0,
-      "description": "clear sky",
-      "condition": "Favorable",
-      "timestamp": "2026-01-31T17:59:10.014629"
+      "clouds": 40,
+      "description": "scattered clouds",
+      "condition": "Marginal",
+      "timestamp": "2026-01-31T18:29:14.566688"
     }
   },
   "polymarket": {
     "risk": 10,
     "detail": "Awaiting data...",
     "history": [
-      6,
       7,
       6,
       6,
@@ -263,12 +266,13 @@
       6,
       10,
       10,
+      10,
       10
     ],
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-01-31T17:59:10.108405"
+      "timestamp": "2026-01-31T18:29:14.794426"
     }
   },
   "pentagon": {
@@ -292,7 +296,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30,
       30
     ],
@@ -317,13 +321,13 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-01-31T17:59:12.683297",
+      "timestamp": "2026-01-31T18:29:17.287714",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 19,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -356,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769882352684,
-        "risk": 19
+        "timestamp": 1769884157289,
+        "risk": 9
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 0
   },
-  "last_updated": "2026-01-31T17:59:12.684454"
+  "last_updated": "2026-01-31T18:29:17.289005"
 }
