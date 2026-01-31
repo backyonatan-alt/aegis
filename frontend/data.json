@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "26 articles, 11 critical",
+    "risk": 16,
+    "detail": "25 articles, 11 critical",
     "history": [
-      15,
       15,
       15,
       15,
@@ -22,7 +21,8 @@
       15,
       15,
       15,
-      15
+      15,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -125,22 +125,17 @@
         {
           "title": "Explosion in Iran\u2019s Bandar Abbas caused by gas leak, official says",
           "is_alert": false
-        },
-        {
-          "title": "Iran\u2019s president says Trump, Netanyahu, EU stirred tensions during protests",
-          "is_alert": false
         }
       ],
-      "total_count": 26,
+      "total_count": 25,
       "alert_count": 11,
-      "timestamp": "2026-01-31T20:59:37.762574"
+      "timestamp": "2026-01-31T21:29:42.175528"
     }
   },
   "flight": {
-    "risk": 33,
-    "detail": "78 aircraft over Iran",
+    "risk": 56,
+    "detail": "49 aircraft over Iran",
     "history": [
-      20,
       21,
       9,
       12,
@@ -159,24 +154,25 @@
       4,
       3,
       8,
-      33
+      33,
+      56
     ],
     "raw_data": {
-      "aircraft_count": 78,
-      "airline_count": 31,
+      "aircraft_count": 49,
+      "airline_count": 21,
       "airlines": [
-        "DHK",
-        "PAL",
-        "AIC",
         "IGO",
-        "IAW",
-        "VRH",
         "UAE",
-        "KNE",
+        "AXB",
+        "TKJ",
         "THY",
-        "RBA"
+        "FDB",
+        "FJL",
+        "UZS",
+        "UPS",
+        "UNI"
       ],
-      "timestamp": "2026-01-31T20:59:37.910071"
+      "timestamp": "2026-01-31T21:29:42.358320"
     }
   },
   "tanker": {
@@ -207,7 +203,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T20:59:40.166118"
+      "timestamp": "2026-01-31T21:29:46.359383"
     }
   },
   "weather": {
@@ -223,32 +219,31 @@
       0,
       0,
       0,
-      0,
       100,
       100,
       100,
       100,
       0,
       100,
+      0,
       0,
       0,
       0,
       0
     ],
     "raw_data": {
-      "temp": 9,
+      "temp": 8,
       "visibility": 10000,
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-01-31T20:59:37.544416"
+      "timestamp": "2026-01-31T21:29:41.993646"
     }
   },
   "polymarket": {
     "risk": 10,
     "detail": "Awaiting data...",
     "history": [
-      6,
       7,
       6,
       7,
@@ -267,17 +262,18 @@
       10,
       10,
       10,
+      10,
       10
     ],
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-01-31T20:59:37.678634"
+      "timestamp": "2026-01-31T21:29:44.039628"
     }
   },
   "pentagon": {
-    "risk": 30,
-    "detail": "Normal (weekend)",
+    "risk": 10,
+    "detail": "Low Activity (weekend)",
     "history": [
       10,
       10,
@@ -290,7 +286,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -298,36 +293,37 @@
       30,
       30,
       30,
-      30
+      30,
+      10
     ],
     "raw_data": {
-      "score": 55,
-      "risk_contribution": 3,
-      "status": "Normal",
+      "score": 25,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 55
+          "score": 25
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 55
+          "score": 25
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 55
+          "score": 25
         }
       ],
-      "timestamp": "2026-01-31T20:59:40.167744",
+      "timestamp": "2026-01-31T21:29:46.361004",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 13,
+    "risk": 16,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -360,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769893180168,
-        "risk": 13
+        "timestamp": 1769894986361,
+        "risk": 16
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T20:59:40.168895"
+  "last_updated": "2026-01-31T21:29:46.361923"
 }
