@@ -1,12 +1,11 @@
 {
   "news": {
-    "risk": 16,
-    "detail": "25 articles, 11 critical",
+    "risk": 15,
+    "detail": "24 articles, 10 critical",
     "history": [
       16,
       16,
       16,
-      16,
       18,
       18,
       18,
@@ -22,7 +21,8 @@
       16,
       16,
       16,
-      16
+      16,
+      15
     ],
     "raw_data": {
       "articles": [
@@ -121,22 +121,17 @@
         {
           "title": "Iran\u2019s president says Trump, Netanyahu, EU stirred tensions during protests",
           "is_alert": false
-        },
-        {
-          "title": "Updates: Iran announces naval drills near US warships amid tension",
-          "is_alert": true
         }
       ],
-      "total_count": 25,
-      "alert_count": 11,
-      "timestamp": "2026-01-31T15:58:51.275292"
+      "total_count": 24,
+      "alert_count": 10,
+      "timestamp": "2026-01-31T16:28:55.739099"
     }
   },
   "flight": {
-    "risk": 17,
-    "detail": "98 aircraft over Iran",
+    "risk": 13,
+    "detail": "103 aircraft over Iran",
     "history": [
-      3,
       18,
       17,
       18,
@@ -155,24 +150,25 @@
       5,
       17,
       30,
-      17
+      17,
+      13
     ],
     "raw_data": {
-      "aircraft_count": 98,
-      "airline_count": 41,
+      "aircraft_count": 103,
+      "airline_count": 49,
       "airlines": [
+        "AIC",
         "DWC",
         "IGO",
         "CFG",
         "GLH",
         "LDX",
-        "KNE",
-        "IAW",
-        "UAE",
-        "WZZ",
-        "AFL"
+        "BBC",
+        "GNJ",
+        "ROJ",
+        "DLH"
       ],
-      "timestamp": "2026-01-31T15:58:51.611941"
+      "timestamp": "2026-01-31T16:28:56.021577"
     }
   },
   "tanker": {
@@ -203,12 +199,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T15:58:53.873530"
+      "timestamp": "2026-01-31T16:28:58.277962"
     }
   },
   "weather": {
-    "risk": 0,
-    "detail": "scattered clouds",
+    "risk": 100,
+    "detail": "clear sky",
     "history": [
       0,
       0,
@@ -229,22 +225,21 @@
       0,
       0,
       0,
-      0
+      100
     ],
     "raw_data": {
       "temp": 10,
       "visibility": 10000,
-      "clouds": 40,
-      "description": "scattered clouds",
-      "condition": "Marginal",
-      "timestamp": "2026-01-31T15:58:51.116170"
+      "clouds": 0,
+      "description": "clear sky",
+      "condition": "Favorable",
+      "timestamp": "2026-01-31T16:28:55.616641"
     }
   },
   "polymarket": {
-    "risk": 7,
-    "detail": "7% odds",
+    "risk": 6,
+    "detail": "6% odds",
     "history": [
-      6,
       6,
       7,
       6,
@@ -263,12 +258,13 @@
       6,
       6,
       20,
-      7
+      7,
+      6
     ],
     "raw_data": {
-      "odds": 7,
+      "odds": 6,
       "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
-      "timestamp": "2026-01-31T15:58:51.217542"
+      "timestamp": "2026-01-31T16:28:55.691554"
     }
   },
   "pentagon": {
@@ -317,13 +313,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-01-31T15:58:53.875198",
+      "timestamp": "2026-01-31T16:28:58.279469",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 10,
+    "risk": 19,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -356,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769875133876,
-        "risk": 10
+        "timestamp": 1769876938280,
+        "risk": 19
       }
     ],
-    "elevated_count": 0
+    "elevated_count": 1
   },
-  "last_updated": "2026-01-31T15:58:53.876233"
+  "last_updated": "2026-01-31T16:28:58.280561"
 }
