@@ -1,11 +1,10 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "24 articles, 10 critical",
+    "risk": 16,
+    "detail": "25 articles, 11 critical",
     "history": [
       14,
       14,
-      14,
       15,
       15,
       16,
@@ -22,16 +21,21 @@
       15,
       15,
       15,
-      15
+      15,
+      16
     ],
     "raw_data": {
       "articles": [
         {
-          "title": "Why Iran's response to a US attack could be different this time",
+          "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
           "is_alert": true
         },
         {
           "title": "Trump tells Iran to drop nuclear aims and stop killing protesters to avoid military action",
+          "is_alert": true
+        },
+        {
+          "title": "Why Iran's response to a US attack could be different this time",
           "is_alert": true
         },
         {
@@ -123,16 +127,15 @@
           "is_alert": true
         }
       ],
-      "total_count": 24,
-      "alert_count": 10,
-      "timestamp": "2026-01-31T13:28:28.759063"
+      "total_count": 25,
+      "alert_count": 11,
+      "timestamp": "2026-01-31T13:58:33.635863"
     }
   },
   "flight": {
-    "risk": 18,
-    "detail": "96 aircraft over Iran",
+    "risk": 7,
+    "detail": "110 aircraft over Iran",
     "history": [
-      40,
       26,
       17,
       5,
@@ -151,24 +154,25 @@
       21,
       9,
       12,
-      18
+      18,
+      7
     ],
     "raw_data": {
-      "aircraft_count": 96,
-      "airline_count": 37,
+      "aircraft_count": 110,
+      "airline_count": 44,
       "airlines": [
+        "AIC",
+        "SWR",
+        "N55",
+        "PAL",
         "T7V",
         "T7A",
         "CFG",
         "SVA",
-        "KNE",
-        "IGO",
-        "UAF",
-        "AXB",
-        "UAE",
-        "AFL"
+        "BBC",
+        "UAE"
       ],
-      "timestamp": "2026-01-31T13:28:28.919325"
+      "timestamp": "2026-01-31T13:58:33.343769"
     }
   },
   "tanker": {
@@ -199,12 +203,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T13:28:31.173906"
+      "timestamp": "2026-01-31T13:58:35.894174"
     }
   },
   "weather": {
     "risk": 0,
-    "detail": "scattered clouds",
+    "detail": "broken clouds",
     "history": [
       0,
       0,
@@ -230,17 +234,16 @@
     "raw_data": {
       "temp": 13,
       "visibility": 10000,
-      "clouds": 40,
-      "description": "scattered clouds",
-      "condition": "Marginal",
-      "timestamp": "2026-01-31T13:28:28.532724"
+      "clouds": 75,
+      "description": "broken clouds",
+      "condition": "Poor",
+      "timestamp": "2026-01-31T13:58:32.898585"
     }
   },
   "polymarket": {
     "risk": 6,
     "detail": "6% odds",
     "history": [
-      8,
       8,
       8,
       9,
@@ -259,12 +262,13 @@
       7,
       6,
       7,
+      6,
       6
     ],
     "raw_data": {
       "odds": 6,
-      "market": "Will the US next strike Iran on February 1, 2026 (ET)?",
-      "timestamp": "2026-01-31T13:28:28.710819"
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-01-31T13:58:33.040901"
     }
   },
   "pentagon": {
@@ -313,13 +317,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-01-31T13:28:31.175293",
+      "timestamp": "2026-01-31T13:58:35.895729",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 10,
+    "risk": 8,
     "history": [
       {
         "timestamp": 1769601600000,
@@ -352,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769866111176,
-        "risk": 10
+        "timestamp": 1769867915896,
+        "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-01-31T13:28:31.176338"
+  "last_updated": "2026-01-31T13:58:35.896810"
 }
