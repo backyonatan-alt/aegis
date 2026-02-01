@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 17,
-    "detail": "27 articles, 12 critical",
+    "risk": 18,
+    "detail": "26 articles, 12 critical",
     "history": [
-      18,
       20,
       18,
       18,
@@ -22,7 +21,8 @@
       17,
       17,
       17,
-      17
+      17,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -129,22 +129,17 @@
         {
           "title": "Iran designates European armies \u2018terrorist groups\u2019 in retaliatory move",
           "is_alert": false
-        },
-        {
-          "title": "Iran designates EU armies \u2018terrorist groups\u2019 in retaliatory move",
-          "is_alert": false
         }
       ],
-      "total_count": 27,
+      "total_count": 26,
       "alert_count": 12,
-      "timestamp": "2026-02-01T17:02:41.232883"
+      "timestamp": "2026-02-01T17:32:45.639530"
     }
   },
   "flight": {
-    "risk": 27,
-    "detail": "85 aircraft over Iran",
+    "risk": 14,
+    "detail": "101 aircraft over Iran",
     "history": [
-      17,
       3,
       9,
       20,
@@ -163,24 +158,25 @@
       17,
       18,
       29,
-      27
+      27,
+      14
     ],
     "raw_data": {
-      "aircraft_count": 85,
-      "airline_count": 43,
+      "aircraft_count": 101,
+      "airline_count": 40,
       "airlines": [
-        "AIC",
-        "KNE",
-        "FYC",
-        "HZA",
+        "SWR",
+        "IGO",
         "DLH",
         "ELY",
-        "T7A",
-        "IGO",
-        "AXB",
-        "WZZ"
+        "UAE",
+        "MEA",
+        "PIA",
+        "ETD",
+        "ABY",
+        "THY"
       ],
-      "timestamp": "2026-02-01T17:02:41.475826"
+      "timestamp": "2026-02-01T17:32:45.982874"
     }
   },
   "tanker": {
@@ -211,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T17:02:43.733757"
+      "timestamp": "2026-02-01T17:32:48.240243"
     }
   },
   "weather": {
@@ -235,7 +231,7 @@
       0,
       0,
       0,
-      0,
+      100,
       100,
       100
     ],
@@ -245,7 +241,7 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T17:02:41.030010"
+      "timestamp": "2026-02-01T17:32:45.469126"
     }
   },
   "polymarket": {
@@ -269,14 +265,14 @@
       10,
       10,
       10,
-      10,
+      3,
       3,
       3
     ],
     "raw_data": {
       "odds": 3,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-01T17:02:41.167343"
+      "timestamp": "2026-02-01T17:32:45.655219"
     }
   },
   "pentagon": {
@@ -301,7 +297,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30
     ],
     "raw_data": {
@@ -325,13 +321,13 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-02-01T17:02:43.735458",
+      "timestamp": "2026-02-01T17:32:48.242313",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 23,
+    "risk": 21,
     "history": [
       {
         "timestamp": 1769688000000,
@@ -364,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769965363736,
-        "risk": 23
+        "timestamp": 1769967168243,
+        "risk": 21
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-01T17:02:43.736730"
+  "last_updated": "2026-02-01T17:32:48.243384"
 }
