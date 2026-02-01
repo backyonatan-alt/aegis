@@ -4,7 +4,6 @@
     "detail": "26 articles, 11 critical",
     "history": [
       15,
-      15,
       14,
       15,
       15,
@@ -15,6 +14,7 @@
       16,
       16,
       16,
+      15,
       15,
       15,
       15,
@@ -133,14 +133,13 @@
       ],
       "total_count": 26,
       "alert_count": 11,
-      "timestamp": "2026-02-01T02:30:29.433336"
+      "timestamp": "2026-02-01T03:00:33.948892"
     }
   },
   "flight": {
-    "risk": 22,
-    "detail": "91 aircraft over Iran",
+    "risk": 21,
+    "detail": "92 aircraft over Iran",
     "history": [
-      22,
       25,
       11,
       11,
@@ -159,24 +158,25 @@
       32,
       21,
       11,
-      22
+      22,
+      21
     ],
     "raw_data": {
-      "aircraft_count": 91,
-      "airline_count": 26,
+      "aircraft_count": 92,
+      "airline_count": 29,
       "airlines": [
+        "AIC",
         "DLH",
         "PGT",
-        "IAW",
         "UAE",
-        "IGO",
-        "AFL",
-        "TKJ",
+        "KQA",
+        "PIA",
+        "DAH",
         "THY",
-        "AIC",
-        "DAH"
+        "SIF",
+        "FDB"
       ],
-      "timestamp": "2026-02-01T02:30:29.644120"
+      "timestamp": "2026-02-01T03:00:34.272516"
     }
   },
   "tanker": {
@@ -207,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T02:30:31.898547"
+      "timestamp": "2026-02-01T03:00:36.526919"
     }
   },
   "weather": {
@@ -216,9 +216,9 @@
     "history": [
       100,
       100,
-      100,
       0,
       100,
+      0,
       0,
       0,
       0,
@@ -241,7 +241,7 @@
       "clouds": 75,
       "description": "broken clouds",
       "condition": "Poor",
-      "timestamp": "2026-02-01T02:30:29.253263"
+      "timestamp": "2026-02-01T03:00:33.925170"
     }
   },
   "polymarket": {
@@ -272,14 +272,13 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T02:30:29.371657"
+      "timestamp": "2026-02-01T03:00:33.879398"
     }
   },
   "pentagon": {
     "risk": 100,
     "detail": "High Activity (late night) (weekend)",
     "history": [
-      10,
       30,
       30,
       30,
@@ -293,6 +292,7 @@
       10,
       10,
       10,
+      100,
       100,
       100,
       100,
@@ -321,7 +321,7 @@
           "score": 70
         }
       ],
-      "timestamp": "2026-02-01T02:30:31.900757",
+      "timestamp": "2026-02-01T03:00:36.528497",
       "is_late_night": true,
       "is_weekend": true
     }
@@ -360,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769913031902,
+        "timestamp": 1769914836529,
         "risk": 18
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-01T02:30:31.902921"
+  "last_updated": "2026-02-01T03:00:36.529727"
 }
