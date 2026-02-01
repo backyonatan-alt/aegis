@@ -8,7 +8,6 @@
       15,
       15,
       15,
-      15,
       18,
       18,
       18,
@@ -22,6 +21,7 @@
       14,
       14,
       14,
+      16,
       16
     ],
     "raw_data": {
@@ -141,14 +141,13 @@
       ],
       "total_count": 28,
       "alert_count": 12,
-      "timestamp": "2026-02-01T12:32:00.221720"
+      "timestamp": "2026-02-01T13:02:04.612047"
     }
   },
   "flight": {
-    "risk": 3,
-    "detail": "115 aircraft over Iran",
+    "risk": 6,
+    "detail": "111 aircraft over Iran",
     "history": [
-      21,
       25,
       31,
       29,
@@ -167,24 +166,25 @@
       8,
       6,
       21,
-      3
+      3,
+      6
     ],
     "raw_data": {
-      "aircraft_count": 115,
-      "airline_count": 46,
+      "aircraft_count": 111,
+      "airline_count": 51,
       "airlines": [
-        "IGO",
         "AXB",
-        "FYC",
+        "IGO",
+        "SVA",
         "AIC",
-        "SXG",
+        "MNB",
         "UAE",
-        "PBD",
-        "AFL",
+        "DAO",
         "TCM",
+        "UTA",
         "ENT"
       ],
-      "timestamp": "2026-02-01T12:32:00.444493"
+      "timestamp": "2026-02-01T13:02:05.018846"
     }
   },
   "tanker": {
@@ -215,7 +215,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T12:32:02.701515"
+      "timestamp": "2026-02-01T13:02:07.274618"
     }
   },
   "weather": {
@@ -249,7 +249,7 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T12:31:59.994422"
+      "timestamp": "2026-02-01T13:02:04.555626"
     }
   },
   "polymarket": {
@@ -280,7 +280,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T12:32:00.103089"
+      "timestamp": "2026-02-01T13:02:04.827208"
     }
   },
   "pentagon": {
@@ -292,7 +292,7 @@
       100,
       100,
       100,
-      100,
+      10,
       10,
       10,
       10,
@@ -329,7 +329,7 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T12:32:02.703935",
+      "timestamp": "2026-02-01T13:02:07.276226",
       "is_late_night": false,
       "is_weekend": true
     }
@@ -368,11 +368,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769949122705,
+        "timestamp": 1769950927277,
         "risk": 6
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T12:32:02.705128"
+  "last_updated": "2026-02-01T13:02:07.277304"
 }
