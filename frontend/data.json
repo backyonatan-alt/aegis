@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 20,
-    "detail": "27 articles, 13 critical",
+    "risk": 18,
+    "detail": "28 articles, 13 critical",
     "history": [
-      16,
       15,
       15,
       15,
@@ -22,7 +21,8 @@
       18,
       18,
       18,
-      20
+      20,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -119,6 +119,10 @@
           "is_alert": false
         },
         {
+          "title": "Trump says India will start buying oil from Venezuela \u2018as opposed to Iran\u2019",
+          "is_alert": false
+        },
+        {
           "title": "Trump says Iran and US are talking to avert military escalation",
           "is_alert": true
         },
@@ -135,16 +139,15 @@
           "is_alert": false
         }
       ],
-      "total_count": 27,
+      "total_count": 28,
       "alert_count": 13,
-      "timestamp": "2026-02-01T08:01:19.287672"
+      "timestamp": "2026-02-01T08:31:23.893460"
     }
   },
   "flight": {
-    "risk": 3,
-    "detail": "115 aircraft over Iran",
+    "risk": 9,
+    "detail": "108 aircraft over Iran",
     "history": [
-      43,
       21,
       11,
       9,
@@ -163,24 +166,25 @@
       8,
       13,
       17,
-      3
+      3,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 115,
-      "airline_count": 61,
+      "aircraft_count": 108,
+      "airline_count": 58,
       "airlines": [
-        "T7A",
-        "CFG",
         "AXB",
-        "SVA",
-        "DAH",
-        "IAW",
         "IGO",
+        "VIR",
+        "CFG",
+        "SVA",
+        "BYD",
+        "IAW",
+        "AFL",
         "UAE",
-        "VLB",
-        "ETD"
+        "VLB"
       ],
-      "timestamp": "2026-02-01T08:01:19.512334"
+      "timestamp": "2026-02-01T08:31:24.193810"
     }
   },
   "tanker": {
@@ -211,7 +215,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T08:01:21.798884"
+      "timestamp": "2026-02-01T08:31:26.448116"
     }
   },
   "weather": {
@@ -245,7 +249,7 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T08:01:19.121601"
+      "timestamp": "2026-02-01T08:31:23.712726"
     }
   },
   "polymarket": {
@@ -276,7 +280,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T08:01:19.295092"
+      "timestamp": "2026-02-01T08:31:23.905909"
     }
   },
   "pentagon": {
@@ -285,19 +289,19 @@
     "history": [
       10,
       10,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
       10,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
       10,
       10,
       10,
@@ -325,7 +329,7 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T08:01:21.800643",
+      "timestamp": "2026-02-01T08:31:26.450589",
       "is_late_night": false,
       "is_weekend": true
     }
@@ -364,11 +368,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769932881801,
+        "timestamp": 1769934686451,
         "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T08:01:21.801490"
+  "last_updated": "2026-02-01T08:31:26.451634"
 }
