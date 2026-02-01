@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 16,
-    "detail": "28 articles, 12 critical",
+    "risk": 14,
+    "detail": "27 articles, 11 critical",
     "history": [
-      15,
       15,
       18,
       18,
@@ -22,7 +21,8 @@
       16,
       16,
       16,
-      16
+      16,
+      14
     ],
     "raw_data": {
       "articles": [
@@ -133,22 +133,17 @@
         {
           "title": "Trump says India will start buying oil from Venezuela \u2018as opposed to Iran\u2019",
           "is_alert": false
-        },
-        {
-          "title": "Trump says Iran and US are talking to avert military escalation",
-          "is_alert": true
         }
       ],
-      "total_count": 28,
-      "alert_count": 12,
-      "timestamp": "2026-02-01T14:32:18.555596"
+      "total_count": 27,
+      "alert_count": 11,
+      "timestamp": "2026-02-01T15:02:23.041761"
     }
   },
   "flight": {
     "risk": 17,
     "detail": "97 aircraft over Iran",
     "history": [
-      15,
       3,
       9,
       8,
@@ -167,24 +162,25 @@
       6,
       17,
       7,
+      17,
       17
     ],
     "raw_data": {
       "aircraft_count": 97,
-      "airline_count": 40,
+      "airline_count": 36,
       "airlines": [
-        "SWR",
         "ELJ",
-        "N80",
-        "PAL",
         "AXS",
+        "KNE",
         "SVA",
         "CSG",
+        "DLH",
         "IAW",
+        "LIW",
         "AIC",
         "ELY"
       ],
-      "timestamp": "2026-02-01T14:32:18.838290"
+      "timestamp": "2026-02-01T15:02:23.412633"
     }
   },
   "tanker": {
@@ -215,7 +211,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T14:32:21.103032"
+      "timestamp": "2026-02-01T15:02:25.671102"
     }
   },
   "weather": {
@@ -249,7 +245,7 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T14:32:18.397238"
+      "timestamp": "2026-02-01T15:02:22.971481"
     }
   },
   "polymarket": {
@@ -280,7 +276,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T14:32:18.532909"
+      "timestamp": "2026-02-01T15:02:22.970319"
     }
   },
   "pentagon": {
@@ -288,7 +284,7 @@
     "detail": "Low Activity (weekend)",
     "history": [
       100,
-      100,
+      10,
       10,
       10,
       10,
@@ -329,7 +325,7 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T14:32:21.105920",
+      "timestamp": "2026-02-01T15:02:25.672533",
       "is_late_night": false,
       "is_weekend": true
     }
@@ -368,11 +364,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769956341107,
+        "timestamp": 1769958145673,
         "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T14:32:21.107035"
+  "last_updated": "2026-02-01T15:02:25.673866"
 }
