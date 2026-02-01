@@ -37,8 +37,8 @@ def calculate_risk_scores(
     connectivity_status = connectivity.get("status", "STABLE") if connectivity else "STABLE"
     connectivity_risk = connectivity.get("risk", 0) if connectivity else 0
     connectivity_trend = connectivity.get("trend", 0) if connectivity else 0
-    # Display risk: Scale the 0-25 risk contribution to 0-100 for display
-    connectivity_display_risk = min(100, connectivity_risk * 4)
+    # Display risk: Scale the 0-25 risk contribution to 0-95 for display
+    connectivity_display_risk = min(95, round(connectivity_risk * 3.8))
     if connectivity_status == "STALE":
         connectivity_detail = "Data unavailable"
     else:
