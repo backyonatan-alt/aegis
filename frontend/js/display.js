@@ -16,7 +16,7 @@ function displayData(data) {
     console.log('Displaying data:', data);
     
     // Load signal history from restructured data
-    ['news', 'flight', 'tanker', 'pentagon', 'polymarket', 'weather'].forEach(sig => {
+    ['news', 'connectivity', 'flight', 'tanker', 'pentagon', 'polymarket', 'weather'].forEach(sig => {
         if (data[sig] && data[sig].history && data[sig].history.length > 0) {
             state.signalHistory[sig] = data[sig].history;
         }
@@ -26,7 +26,15 @@ function displayData(data) {
     if (data.news) {
         updateSignal('news', data.news.risk, data.news.detail);
     }
-    
+
+    // Connectivity signal
+    if (data.connectivity) {
+        updateSignal('connectivity', data.connectivity.risk, data.connectivity.detail);
+        const connectivityStatus = data.connectivity.raw_data?.status || 'STABLE';
+        const isStale = connectivityStatus === 'STALE';
+        setStatus('connectivityStatus', !isStale);
+    }
+
     if (data.flight) {
         updateSignal('flight', data.flight.risk, data.flight.detail);
     }

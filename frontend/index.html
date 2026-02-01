@@ -172,6 +172,18 @@
             </div>
 
             <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(6, 182, 212, 0.15);">🌐</div>
+                <div class="signal-info">
+                    <div class="signal-name">Digital Connectivity <span class="signal-status live" id="connectivityStatus">LIVE</span><button class="info-btn" onclick="showInfo('connectivity')">i</button></div>
+                    <div class="signal-detail" id="connectivityDetail">Loading...</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline" id="connectivitySparkline"></div>
+                    <div class="signal-value" id="connectivityValue">--</div>
+                </div>
+            </div>
+
+            <div class="signal-item">
                 <div class="signal-icon flight">✈️</div>
                 <div class="signal-info">
                     <div class="signal-name">Civil Aviation <span class="signal-status live" id="flightStatus">LIVE</span><button class="info-btn" onclick="showInfo('flight')">i</button></div>

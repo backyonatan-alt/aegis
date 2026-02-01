@@ -8,6 +8,7 @@ log = logging.getLogger("aegis.risk")
 
 def calculate_risk_scores(
     news_intel: dict,
+    connectivity: dict,
     aviation: dict,
     tanker: dict,
     weather: dict,
@@ -24,13 +25,25 @@ def calculate_risk_scores(
     log.info("RISK CALCULATION")
     log.info("=" * 50)
 
-    # NEWS
+    # NEWS (20% weight)
     articles = news_intel.get("total_count", 0)
     alert_count = news_intel.get("alert_count", 0)
     alert_ratio = alert_count / articles if articles > 0 else 0
     news_display_risk = max(3, round(pow(alert_ratio, 2) * 85))
     news_detail = f"{articles} articles, {alert_count} critical"
     log.info("  News:       %d%% (%s)", news_display_risk, news_detail)
+
+    # DIGITAL CONNECTIVITY (20% weight)
+    connectivity_status = connectivity.get("status", "STABLE") if connectivity else "STABLE"
+    connectivity_risk = connectivity.get("risk", 0) if connectivity else 0
+    connectivity_trend = connectivity.get("trend", 0) if connectivity else 0
+    # Display risk: Scale the 0-25 risk contribution to 0-100 for display
+    connectivity_display_risk = min(100, connectivity_risk * 4)
+    if connectivity_status == "STALE":
+        connectivity_detail = "Data unavailable"
+    else:
+        connectivity_detail = f"{connectivity_status} ({connectivity_trend:+.1f}%)"
+    log.info("  Connect:    %d%% (%s)", connectivity_display_risk, connectivity_detail)
 
     # FLIGHT
     aircraft_count = aviation.get("aircraft_count", 0)
@@ -75,35 +88,40 @@ def calculate_risk_scores(
     )
     log.info("  Pentagon:   %d%% (%s)", pentagon_display_risk, pentagon_detail)
 
-    # Weighted contributions
-    news_weighted = news_display_risk * 0.25
-    flight_weighted = flight_risk * 0.20
+    # Weighted contributions (v2.0 weights per PRD)
+    # News: 20%, Connectivity: 20%, Aviation: 15%, Tanker: 15%,
+    # Market: 15%, Pentagon: 10%, Weather: 5%
+    news_weighted = news_display_risk * 0.20
+    connectivity_weighted = connectivity_display_risk * 0.20
+    flight_weighted = flight_risk * 0.15
     tanker_weighted = tanker_risk * 0.15
-    weather_weighted = weather_risk * 0.10
-    polymarket_weighted = polymarket_contribution * 2
-    pentagon_weighted = pentagon_contribution * 1
+    polymarket_weighted = polymarket_display_risk * 0.15
+    pentagon_weighted = pentagon_display_risk * 0.10
+    weather_weighted = weather_risk * 0.05
 
-    log.info("  Weighted: news=%.1f flight=%.1f tanker=%.1f weather=%.1f poly=%.1f pent=%.1f",
-             news_weighted, flight_weighted, tanker_weighted,
-             weather_weighted, polymarket_weighted, pentagon_weighted)
+    log.info("  Weighted: news=%.1f conn=%.1f flight=%.1f tanker=%.1f poly=%.1f pent=%.1f weather=%.1f",
+             news_weighted, connectivity_weighted, flight_weighted, tanker_weighted,
+             polymarket_weighted, pentagon_weighted, weather_weighted)
 
     total_risk = (
         news_weighted
+        + connectivity_weighted
         + flight_weighted
         + tanker_weighted
-        + weather_weighted
         + polymarket_weighted
         + pentagon_weighted
+        + weather_weighted
     )
 
     # Escalation multiplier
     elevated_count = sum([
         news_display_risk > 30,
-        flight_weighted > 15,
-        tanker_weighted > 10,
-        weather_weighted > 7,
-        polymarket_contribution > 5,
-        pentagon_contribution > 5,
+        connectivity_risk >= 10,  # ANOMALOUS or higher
+        flight_risk > 50,
+        tanker_risk > 30,
+        polymarket_display_risk > 30,
+        pentagon_display_risk > 50,
+        weather_risk > 70,
     ])
 
     if elevated_count >= 3:
@@ -116,6 +134,7 @@ def calculate_risk_scores(
 
     return {
         "news": {"risk": news_display_risk, "detail": news_detail},
+        "connectivity": {"risk": connectivity_display_risk, "detail": connectivity_detail},
         "flight": {"risk": flight_risk, "detail": flight_detail},
         "tanker": {"risk": tanker_risk, "detail": tanker_detail},
         "weather": {"risk": weather_risk, "detail": weather_detail},
@@ -140,17 +159,17 @@ def update_history(current_data: dict, scores: dict, raw: dict) -> dict:
         history = current_data["total_risk"]["history"]
         signal_history = {
             sig: current_data.get(sig, {}).get("history", [])
-            for sig in ["news", "flight", "tanker", "pentagon", "polymarket", "weather"]
+            for sig in ["news", "connectivity", "flight", "tanker", "pentagon", "polymarket", "weather"]
         }
     else:
         history = current_data.get("history", [])
         signal_history = current_data.get("signalHistory", {
-            "news": [], "flight": [], "tanker": [],
+            "news": [], "connectivity": [], "flight": [], "tanker": [],
             "pentagon": [], "polymarket": [], "weather": [],
         })
 
     # Append current scores to signal histories
-    for sig in ["news", "flight", "tanker", "pentagon", "polymarket", "weather"]:
+    for sig in ["news", "connectivity", "flight", "tanker", "pentagon", "polymarket", "weather"]:
         if sig not in signal_history:
             signal_history[sig] = []
         signal_history[sig].append(scores[sig]["risk"])
@@ -200,6 +219,12 @@ def update_history(current_data: dict, scores: dict, raw: dict) -> dict:
             "detail": scores["news"]["detail"],
             "history": signal_history["news"],
             "raw_data": raw.get("news", {}),
+        },
+        "connectivity": {
+            "risk": scores["connectivity"]["risk"],
+            "detail": scores["connectivity"]["detail"],
+            "history": signal_history["connectivity"],
+            "raw_data": raw.get("connectivity", {}),
         },
         "flight": {
             "risk": scores["flight"]["risk"],
