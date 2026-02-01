@@ -6,7 +6,6 @@
       16,
       16,
       16,
-      16,
       15,
       15,
       15,
@@ -20,6 +19,7 @@
       16,
       16,
       16,
+      15,
       15,
       15,
       15
@@ -133,14 +133,13 @@
       ],
       "total_count": 26,
       "alert_count": 11,
-      "timestamp": "2026-02-01T00:00:06.676782"
+      "timestamp": "2026-02-01T00:30:11.289692"
     }
   },
   "flight": {
-    "risk": 9,
-    "detail": "107 aircraft over Iran",
+    "risk": 11,
+    "detail": "105 aircraft over Iran",
     "history": [
-      5,
       17,
       30,
       17,
@@ -159,24 +158,25 @@
       43,
       21,
       11,
-      9
+      9,
+      11
     ],
     "raw_data": {
-      "aircraft_count": 107,
-      "airline_count": 31,
+      "aircraft_count": 105,
+      "airline_count": 27,
       "airlines": [
-        "DHK",
         "AIC",
-        "IGO",
-        "PGT",
-        "PAL",
-        "VIR",
         "T7A",
-        "OCN",
-        "AAL",
-        "UAE"
+        "AXB",
+        "PGT",
+        "IAW",
+        "UAE",
+        "SEJ",
+        "PIA",
+        "ABY",
+        "ETD"
       ],
-      "timestamp": "2026-02-01T00:00:06.828643"
+      "timestamp": "2026-02-01T00:30:11.584053"
     }
   },
   "tanker": {
@@ -207,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T00:00:09.087778"
+      "timestamp": "2026-02-01T00:30:13.840955"
     }
   },
   "weather": {
@@ -217,13 +217,13 @@
       0,
       0,
       0,
-      0,
       100,
       100,
       100,
       100,
       0,
       100,
+      0,
       0,
       0,
       0,
@@ -241,7 +241,7 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-02-01T00:00:06.428451"
+      "timestamp": "2026-02-01T00:30:11.111634"
     }
   },
   "polymarket": {
@@ -249,10 +249,10 @@
     "detail": "Awaiting data...",
     "history": [
       6,
-      6,
       20,
       7,
       6,
+      10,
       10,
       10,
       10,
@@ -272,7 +272,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T00:00:06.566713"
+      "timestamp": "2026-02-01T00:30:11.281400"
     }
   },
   "pentagon": {
@@ -284,7 +284,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -298,6 +297,7 @@
       10,
       10,
       10,
+      100,
       100
     ],
     "raw_data": {
@@ -321,7 +321,7 @@
           "score": 70
         }
       ],
-      "timestamp": "2026-02-01T00:00:09.091725",
+      "timestamp": "2026-02-01T00:30:13.843830",
       "is_late_night": true,
       "is_weekend": true
     }
@@ -360,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769904009097,
+        "timestamp": 1769905813845,
         "risk": 16
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-01T00:00:09.097424"
+  "last_updated": "2026-02-01T00:30:13.845723"
 }
