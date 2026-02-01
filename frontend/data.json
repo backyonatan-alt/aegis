@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "28 articles, 13 critical",
+    "risk": 17,
+    "detail": "27 articles, 12 critical",
     "history": [
-      15,
       15,
       15,
       15,
@@ -22,7 +21,8 @@
       18,
       20,
       18,
-      18
+      18,
+      17
     ],
     "raw_data": {
       "articles": [
@@ -119,6 +119,10 @@
           "is_alert": false
         },
         {
+          "title": "Iran designates EU armies \u2018terrorist groups\u2019 in retaliatory move",
+          "is_alert": false
+        },
+        {
           "title": "Trump says India will start buying oil from Venezuela \u2018as opposed to Iran\u2019",
           "is_alert": false
         },
@@ -129,26 +133,17 @@
         {
           "title": "US, Iran signal talks to avert military conflict amid tensions in the Gulf",
           "is_alert": true
-        },
-        {
-          "title": "Appropriating the death count: Manufacturing consent for an attack on Iran",
-          "is_alert": true
-        },
-        {
-          "title": "Deadly blast in Iran\u2019s Bandar Abbas caused by gas leak, official says",
-          "is_alert": false
         }
       ],
-      "total_count": 28,
-      "alert_count": 13,
-      "timestamp": "2026-02-01T09:01:28.554559"
+      "total_count": 27,
+      "alert_count": 12,
+      "timestamp": "2026-02-01T09:31:33.031908"
     }
   },
   "flight": {
-    "risk": 20,
-    "detail": "94 aircraft over Iran",
+    "risk": 17,
+    "detail": "98 aircraft over Iran",
     "history": [
-      11,
       9,
       11,
       32,
@@ -167,24 +162,25 @@
       17,
       3,
       9,
-      20
+      20,
+      17
     ],
     "raw_data": {
-      "aircraft_count": 94,
-      "airline_count": 46,
+      "aircraft_count": 98,
+      "airline_count": 49,
       "airlines": [
         "AXB",
-        "VIR",
         "FYC",
-        "BYD",
         "IAW",
         "MNB",
+        "ELY",
         "UAE",
-        "TCM",
-        "VLB",
-        "IGO"
+        "AHY",
+        "MJJ",
+        "PBD",
+        "HYA"
       ],
-      "timestamp": "2026-02-01T09:01:28.724792"
+      "timestamp": "2026-02-01T09:31:33.221870"
     }
   },
   "tanker": {
@@ -215,7 +211,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T09:01:30.984428"
+      "timestamp": "2026-02-01T09:31:35.478730"
     }
   },
   "weather": {
@@ -249,7 +245,7 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T09:01:28.258242"
+      "timestamp": "2026-02-01T09:31:32.810679"
     }
   },
   "polymarket": {
@@ -280,26 +276,26 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T09:01:28.399854"
+      "timestamp": "2026-02-01T09:31:32.921217"
     }
   },
   "pentagon": {
     "risk": 10,
     "detail": "Low Activity (weekend)",
     "history": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
       10,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
       10,
       10,
       10,
@@ -329,13 +325,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T09:01:30.987024",
+      "timestamp": "2026-02-01T09:31:35.480347",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 10,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769644800000,
@@ -368,11 +364,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769936490988,
-        "risk": 10
+        "timestamp": 1769938295481,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T09:01:30.988196"
+  "last_updated": "2026-02-01T09:31:35.481343"
 }
