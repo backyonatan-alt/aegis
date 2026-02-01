@@ -7,7 +7,6 @@
       16,
       16,
       16,
-      16,
       15,
       15,
       15,
@@ -21,6 +20,7 @@
       16,
       16,
       16,
+      15,
       15,
       15
     ],
@@ -133,14 +133,13 @@
       ],
       "total_count": 26,
       "alert_count": 11,
-      "timestamp": "2026-01-31T23:30:01.932290"
+      "timestamp": "2026-02-01T00:00:06.676782"
     }
   },
   "flight": {
-    "risk": 11,
-    "detail": "105 aircraft over Iran",
+    "risk": 9,
+    "detail": "107 aircraft over Iran",
     "history": [
-      7,
       5,
       17,
       30,
@@ -159,24 +158,25 @@
       50,
       43,
       21,
-      11
+      11,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 105,
-      "airline_count": 35,
+      "aircraft_count": 107,
+      "airline_count": 31,
       "airlines": [
-        "N80",
-        "SWR",
-        "PAL",
-        "AUA",
-        "VIR",
+        "DHK",
+        "AIC",
         "IGO",
-        "UAE",
-        "PIA",
-        "VTH",
-        "THY"
+        "PGT",
+        "PAL",
+        "VIR",
+        "T7A",
+        "OCN",
+        "AAL",
+        "UAE"
       ],
-      "timestamp": "2026-01-31T23:30:02.234235"
+      "timestamp": "2026-02-01T00:00:06.828643"
     }
   },
   "tanker": {
@@ -207,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-01-31T23:30:04.494477"
+      "timestamp": "2026-02-01T00:00:09.087778"
     }
   },
   "weather": {
@@ -218,13 +218,13 @@
       0,
       0,
       0,
-      0,
       100,
       100,
       100,
       100,
       0,
       100,
+      0,
       0,
       0,
       0,
@@ -236,19 +236,18 @@
       0
     ],
     "raw_data": {
-      "temp": 8,
+      "temp": 7,
       "visibility": 10000,
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-01-31T23:30:01.829467"
+      "timestamp": "2026-02-01T00:00:06.428451"
     }
   },
   "polymarket": {
     "risk": 10,
     "detail": "Awaiting data...",
     "history": [
-      6,
       6,
       6,
       20,
@@ -267,17 +266,18 @@
       10,
       10,
       10,
+      10,
       10
     ],
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-01-31T23:30:01.987819"
+      "timestamp": "2026-02-01T00:00:06.566713"
     }
   },
   "pentagon": {
-    "risk": 10,
-    "detail": "Low Activity (late night) (weekend)",
+    "risk": 100,
+    "detail": "High Activity (late night) (weekend)",
     "history": [
       10,
       10,
@@ -285,7 +285,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -298,42 +297,38 @@
       10,
       10,
       10,
-      10
+      10,
+      100
     ],
     "raw_data": {
-      "score": 20,
-      "risk_contribution": 1,
-      "status": "Low Activity",
+      "score": 100,
+      "risk_contribution": 10,
+      "status": "High Activity",
       "places": [
         {
           "name": "Domino's Pizza",
-          "status": "normal",
-          "score": 20
+          "status": "elevated_late",
+          "score": 70
         },
         {
           "name": "Papa John's",
-          "status": "normal",
-          "score": 20
+          "status": "elevated_late",
+          "score": 70
         },
         {
           "name": "Pizza Hut",
-          "status": "normal",
-          "score": 20
+          "status": "elevated_late",
+          "score": 70
         }
       ],
-      "timestamp": "2026-01-31T23:30:04.498879",
+      "timestamp": "2026-02-01T00:00:09.091725",
       "is_late_night": true,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 7,
+    "risk": 16,
     "history": [
-      {
-        "timestamp": 1769601600000,
-        "risk": 42,
-        "pinned": true
-      },
       {
         "timestamp": 1769644800000,
         "risk": 20,
@@ -360,11 +355,16 @@
         "pinned": true
       },
       {
-        "timestamp": 1769902204500,
-        "risk": 7
+        "timestamp": 1769904000000,
+        "risk": 7,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769904009097,
+        "risk": 16
       }
     ],
-    "elevated_count": 0
+    "elevated_count": 1
   },
-  "last_updated": "2026-01-31T23:30:04.500972"
+  "last_updated": "2026-02-01T00:00:09.097424"
 }
