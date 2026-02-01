@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 17,
-    "detail": "27 articles, 12 critical",
+    "risk": 14,
+    "detail": "27 articles, 11 critical",
     "history": [
-      15,
       15,
       15,
       15,
@@ -22,7 +21,8 @@
       18,
       17,
       17,
-      17
+      17,
+      14
     ],
     "raw_data": {
       "articles": [
@@ -119,6 +119,10 @@
           "is_alert": false
         },
         {
+          "title": "Iran designates European armies \u2018terrorist groups\u2019 in retaliatory move",
+          "is_alert": false
+        },
+        {
           "title": "Iran designates EU armies \u2018terrorist groups\u2019 in retaliatory move",
           "is_alert": false
         },
@@ -129,22 +133,17 @@
         {
           "title": "Trump says Iran and US are talking to avert military escalation",
           "is_alert": true
-        },
-        {
-          "title": "US, Iran signal talks to avert military conflict amid tensions in the Gulf",
-          "is_alert": true
         }
       ],
       "total_count": 27,
-      "alert_count": 12,
-      "timestamp": "2026-02-01T10:31:41.867221"
+      "alert_count": 11,
+      "timestamp": "2026-02-01T11:01:46.520143"
     }
   },
   "flight": {
-    "risk": 11,
-    "detail": "105 aircraft over Iran",
+    "risk": 8,
+    "detail": "109 aircraft over Iran",
     "history": [
-      32,
       21,
       11,
       22,
@@ -163,24 +162,25 @@
       20,
       17,
       22,
-      11
+      11,
+      8
     ],
     "raw_data": {
-      "aircraft_count": 105,
-      "airline_count": 40,
+      "aircraft_count": 109,
+      "airline_count": 45,
       "airlines": [
-        "UPS",
-        "FGO",
-        "FYC",
+        "N80",
         "SVA",
-        "UAE",
-        "UTA",
         "KNE",
-        "ENT",
-        "AIC",
-        "NOS"
+        "IAW",
+        "AXB",
+        "UAE",
+        "PBD",
+        "PIA",
+        "ETD",
+        "AIC"
       ],
-      "timestamp": "2026-02-01T10:31:42.269766"
+      "timestamp": "2026-02-01T11:01:46.804238"
     }
   },
   "tanker": {
@@ -211,7 +211,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T10:31:44.525719"
+      "timestamp": "2026-02-01T11:01:49.062547"
     }
   },
   "weather": {
@@ -245,7 +245,7 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T10:31:41.733855"
+      "timestamp": "2026-02-01T11:01:46.334461"
     }
   },
   "polymarket": {
@@ -276,7 +276,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T10:31:41.936769"
+      "timestamp": "2026-02-01T11:01:46.452092"
     }
   },
   "pentagon": {
@@ -292,7 +292,7 @@
       100,
       100,
       100,
-      100,
+      10,
       10,
       10,
       10,
@@ -325,13 +325,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T10:31:44.527464",
+      "timestamp": "2026-02-01T11:01:49.064038",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 7,
+    "risk": 6,
     "history": [
       {
         "timestamp": 1769644800000,
@@ -364,11 +364,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769941904528,
-        "risk": 7
+        "timestamp": 1769943709064,
+        "risk": 6
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T10:31:44.528468"
+  "last_updated": "2026-02-01T11:01:49.064933"
 }
