@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "26 articles, 12 critical",
+    "risk": 20,
+    "detail": "25 articles, 12 critical",
     "history": [
-      14,
       16,
       16,
       16,
@@ -22,7 +21,8 @@
       18,
       18,
       18,
-      18
+      18,
+      20
     ],
     "raw_data": {
       "articles": [
@@ -125,22 +125,17 @@
         {
           "title": "Khamenei warns US of \u2018regional war\u2019 if Iran is attacked",
           "is_alert": true
-        },
-        {
-          "title": "Iran designates European armies \u2018terrorist groups\u2019 in retaliatory move",
-          "is_alert": false
         }
       ],
-      "total_count": 26,
+      "total_count": 25,
       "alert_count": 12,
-      "timestamp": "2026-02-01T21:33:23.485463"
+      "timestamp": "2026-02-01T22:03:28.270386"
     }
   },
   "flight": {
-    "risk": 43,
-    "detail": "65 aircraft over Iran",
+    "risk": 48,
+    "detail": "59 aircraft over Iran",
     "history": [
-      21,
       3,
       6,
       17,
@@ -159,24 +154,25 @@
       3,
       18,
       28,
-      43
+      43,
+      48
     ],
     "raw_data": {
-      "aircraft_count": 65,
-      "airline_count": 31,
+      "aircraft_count": 59,
+      "airline_count": 29,
       "airlines": [
         "IGO",
-        "IAW",
+        "PGT",
+        "DLH",
+        "SVA",
         "UAE",
         "AXB",
-        "WZZ",
-        "ENT",
-        "THY",
+        "TKJ",
         "PIA",
-        "ABY",
-        "FDB"
+        "THY",
+        "ACA"
       ],
-      "timestamp": "2026-02-01T21:33:23.731508"
+      "timestamp": "2026-02-01T22:03:28.666460"
     }
   },
   "tanker": {
@@ -207,7 +203,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T21:33:25.990527"
+      "timestamp": "2026-02-01T22:03:30.932812"
     }
   },
   "weather": {
@@ -222,7 +218,7 @@
       0,
       0,
       0,
-      0,
+      100,
       100,
       100,
       100,
@@ -241,14 +237,13 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T21:33:23.321077"
+      "timestamp": "2026-02-01T22:03:28.262719"
     }
   },
   "polymarket": {
-    "risk": 2,
-    "detail": "2% odds",
+    "risk": 4,
+    "detail": "4% odds",
     "history": [
-      10,
       10,
       10,
       10,
@@ -267,17 +262,18 @@
       3,
       3,
       2,
-      2
+      2,
+      4
     ],
     "raw_data": {
-      "odds": 2,
+      "odds": 4,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-01T21:33:23.461508"
+      "timestamp": "2026-02-01T22:03:28.537102"
     }
   },
   "pentagon": {
-    "risk": 10,
-    "detail": "Low Activity (weekend)",
+    "risk": 100,
+    "detail": "High Activity (late night) (weekend)",
     "history": [
       10,
       10,
@@ -288,7 +284,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -298,36 +293,37 @@
       30,
       30,
       10,
-      10
+      10,
+      100
     ],
     "raw_data": {
-      "score": 25,
-      "risk_contribution": 1,
-      "status": "Low Activity",
+      "score": 100,
+      "risk_contribution": 10,
+      "status": "High Activity",
       "places": [
         {
           "name": "Domino's Pizza",
-          "status": "normal",
-          "score": 25
+          "status": "elevated_late",
+          "score": 70
         },
         {
           "name": "Papa John's",
-          "status": "normal",
-          "score": 25
+          "status": "elevated_late",
+          "score": 70
         },
         {
           "name": "Pizza Hut",
-          "status": "normal",
-          "score": 25
+          "status": "elevated_late",
+          "score": 70
         }
       ],
-      "timestamp": "2026-02-01T21:33:25.992434",
-      "is_late_night": false,
+      "timestamp": "2026-02-01T22:03:30.936014",
+      "is_late_night": true,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 24,
+    "risk": 35,
     "history": [
       {
         "timestamp": 1769688000000,
@@ -360,11 +356,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769981605993,
-        "risk": 24
+        "timestamp": 1769983410938,
+        "risk": 35
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 2
   },
-  "last_updated": "2026-02-01T21:33:25.993480"
+  "last_updated": "2026-02-01T22:03:30.938047"
 }
