@@ -1,10 +1,9 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "26 articles, 12 critical",
+    "risk": 3,
+    "detail": "0 articles, 0 critical",
     "history": [
       14,
-      14,
       16,
       16,
       16,
@@ -22,125 +21,28 @@
       18,
       18,
       18,
-      18
+      18,
+      3
     ],
     "raw_data": {
-      "articles": [
-        {
-          "title": "Iran's supreme leader warns of regional war if US attacks",
-          "is_alert": true
-        },
-        {
-          "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
-          "is_alert": true
-        },
-        {
-          "title": "Iran wants to make deal rather than face military action, Trump says",
-          "is_alert": true
-        },
-        {
-          "title": "Worried families in India urge return of crew on ship seized by Iran",
-          "is_alert": false
-        },
-        {
-          "title": "EU adds Iran's Revolutionary Guards to terrorist list",
-          "is_alert": false
-        },
-        {
-          "title": "What could happen if the US strikes Iran? Here are seven scenarios",
-          "is_alert": true
-        },
-        {
-          "title": "Trump warns Iran 'time is running out' for nuclear deal as US military builds up in Gulf",
-          "is_alert": true
-        },
-        {
-          "title": "Why Iran's response to a US attack could be different this time",
-          "is_alert": true
-        },
-        {
-          "title": "Iran's internet is returning - but not for everyone",
-          "is_alert": false
-        },
-        {
-          "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
-          "is_alert": true
-        },
-        {
-          "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
-          "is_alert": false
-        },
-        {
-          "title": "'I saw people getting shot': Eyewitness tells of Iran protest crackdown",
-          "is_alert": true
-        },
-        {
-          "title": "Fears Iran's internet shutdown could lead to 'extreme digital isolation'",
-          "is_alert": true
-        },
-        {
-          "title": "What next for Iran's supreme leader?",
-          "is_alert": false
-        },
-        {
-          "title": "'I carried my wife's body for an hour and a half' - BBC hears stories of protesters killed in Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Tehran morgue videos show the brutality of Iran's crackdown on protesters",
-          "is_alert": false
-        },
-        {
-          "title": "Why are there protests in Iran and what has Trump said about US action?",
-          "is_alert": true
-        },
-        {
-          "title": "Bowen: Authoritarian regimes die gradually then suddenly, but Iran is not there yet",
-          "is_alert": false
-        },
-        {
-          "title": "Decision time for Trump on Iran but what does he ultimately want?",
-          "is_alert": false
-        },
-        {
-          "title": "Which countries do business with Iran  and what could US tariffs mean?",
-          "is_alert": false
-        },
-        {
-          "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
-          "is_alert": false
-        },
-        {
-          "title": "Where do these protests leave the Iranian regime?",
-          "is_alert": true
-        },
-        {
-          "title": "'Now there's the threat of executions' in Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Mortuary videos show how deadly Iran crackdown has become",
-          "is_alert": false
-        },
-        {
-          "title": "Khamenei warns US of \u2018regional war\u2019 if Iran is attacked",
-          "is_alert": true
-        },
-        {
-          "title": "Iran designates European armies \u2018terrorist groups\u2019 in retaliatory move",
-          "is_alert": false
-        }
-      ],
-      "total_count": 26,
-      "alert_count": 12,
-      "timestamp": "2026-02-01T21:03:18.802308"
+      "articles": [],
+      "total_count": 0,
+      "alert_count": 0,
+      "timestamp": "2026-02-01T21:45:22.576322"
     }
+  },
+  "connectivity": {
+    "risk": 0,
+    "detail": "STABLE (+0.0%)",
+    "history": [
+      0
+    ],
+    "raw_data": {}
   },
   "flight": {
     "risk": 28,
     "detail": "84 aircraft over Iran",
     "history": [
-      6,
       21,
       3,
       6,
@@ -159,6 +61,7 @@
       3,
       3,
       18,
+      28,
       28
     ],
     "raw_data": {
@@ -223,7 +126,7 @@
       0,
       0,
       0,
-      0,
+      100,
       100,
       100,
       100,
@@ -257,7 +160,6 @@
       10,
       10,
       10,
-      10,
       3,
       3,
       3,
@@ -267,6 +169,7 @@
       3,
       3,
       3,
+      2,
       2
     ],
     "raw_data": {
@@ -289,15 +192,15 @@
       10,
       10,
       10,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
       10
     ],
     "raw_data": {
@@ -321,13 +224,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T21:03:21.423750",
+      "timestamp": "2026-02-01T21:45:24.579451",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 22,
+    "risk": 11,
     "history": [
       {
         "timestamp": 1769688000000,
@@ -360,11 +263,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769979801424,
-        "risk": 22
+        "timestamp": 1769982324580,
+        "risk": 11
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-01T21:03:21.424684"
+  "last_updated": "2026-02-01T21:45:24.580431"
 }
