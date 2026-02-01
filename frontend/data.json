@@ -1,11 +1,10 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "26 articles, 11 critical",
+    "risk": 18,
+    "detail": "26 articles, 12 critical",
     "history": [
       15,
       15,
-      15,
       16,
       16,
       16,
@@ -22,7 +21,8 @@
       15,
       15,
       15,
-      15
+      15,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -119,8 +119,8 @@
           "is_alert": false
         },
         {
-          "title": "Iranian official says progress made on talks as US-Iran tensions persist",
-          "is_alert": false
+          "title": "US, Iran signal talks to avert military conflict amid tensions in the Gulf",
+          "is_alert": true
         },
         {
           "title": "Appropriating the death count: Manufacturing consent for an attack on Iran",
@@ -132,15 +132,14 @@
         }
       ],
       "total_count": 26,
-      "alert_count": 11,
-      "timestamp": "2026-02-01T05:30:56.559202"
+      "alert_count": 12,
+      "timestamp": "2026-02-01T06:01:01.567088"
     }
   },
   "flight": {
-    "risk": 3,
-    "detail": "117 aircraft over Iran",
+    "risk": 9,
+    "detail": "108 aircraft over Iran",
     "history": [
-      3,
       8,
       33,
       56,
@@ -159,24 +158,25 @@
       31,
       29,
       15,
-      3
+      3,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 117,
-      "airline_count": 30,
+      "aircraft_count": 108,
+      "airline_count": 36,
       "airlines": [
+        "DLH",
         "AIC",
+        "UPS",
         "DAH",
         "ASY",
         "N12",
-        "IAW",
         "DUB",
         "UAE",
-        "PIA",
-        "THY",
-        "ABY"
+        "N80",
+        "IGO"
       ],
-      "timestamp": "2026-02-01T05:30:56.867659"
+      "timestamp": "2026-02-01T06:01:01.821682"
     }
   },
   "tanker": {
@@ -207,7 +207,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T05:30:59.122247"
+      "timestamp": "2026-02-01T06:01:04.076538"
     }
   },
   "weather": {
@@ -241,7 +241,7 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-02-01T05:30:56.425632"
+      "timestamp": "2026-02-01T06:01:01.459827"
     }
   },
   "polymarket": {
@@ -272,16 +272,15 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T05:30:56.502129"
+      "timestamp": "2026-02-01T06:01:01.602709"
     }
   },
   "pentagon": {
-    "risk": 100,
-    "detail": "High Activity (late night) (weekend)",
+    "risk": 10,
+    "detail": "Low Activity (weekend)",
     "history": [
       30,
       30,
-      30,
       10,
       10,
       10,
@@ -298,36 +297,37 @@
       100,
       100,
       100,
-      100
+      100,
+      10
     ],
     "raw_data": {
-      "score": 100,
-      "risk_contribution": 10,
-      "status": "High Activity",
+      "score": 25,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
-          "status": "elevated_late",
-          "score": 70
+          "status": "normal",
+          "score": 25
         },
         {
           "name": "Papa John's",
-          "status": "elevated_late",
-          "score": 70
+          "status": "normal",
+          "score": 25
         },
         {
           "name": "Pizza Hut",
-          "status": "elevated_late",
-          "score": 70
+          "status": "normal",
+          "score": 25
         }
       ],
-      "timestamp": "2026-02-01T05:30:59.124496",
-      "is_late_night": true,
+      "timestamp": "2026-02-01T06:01:04.078957",
+      "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 14,
+    "risk": 7,
     "history": [
       {
         "timestamp": 1769644800000,
@@ -360,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769923859126,
-        "risk": 14
+        "timestamp": 1769925664080,
+        "risk": 7
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 0
   },
-  "last_updated": "2026-02-01T05:30:59.126039"
+  "last_updated": "2026-02-01T06:01:04.080131"
 }
