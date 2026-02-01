@@ -16,12 +16,12 @@
       15,
       15,
       15,
-      15,
       18,
       18,
       18,
       18,
       20,
+      18,
       18
     ],
     "raw_data": {
@@ -141,14 +141,13 @@
       ],
       "total_count": 28,
       "alert_count": 13,
-      "timestamp": "2026-02-01T08:31:23.893460"
+      "timestamp": "2026-02-01T09:01:28.554559"
     }
   },
   "flight": {
-    "risk": 9,
-    "detail": "108 aircraft over Iran",
+    "risk": 20,
+    "detail": "94 aircraft over Iran",
     "history": [
-      21,
       11,
       9,
       11,
@@ -167,24 +166,25 @@
       13,
       17,
       3,
-      9
+      9,
+      20
     ],
     "raw_data": {
-      "aircraft_count": 108,
-      "airline_count": 58,
+      "aircraft_count": 94,
+      "airline_count": 46,
       "airlines": [
         "AXB",
-        "IGO",
         "VIR",
-        "CFG",
-        "SVA",
+        "FYC",
         "BYD",
         "IAW",
-        "AFL",
+        "MNB",
         "UAE",
-        "VLB"
+        "TCM",
+        "VLB",
+        "IGO"
       ],
-      "timestamp": "2026-02-01T08:31:24.193810"
+      "timestamp": "2026-02-01T09:01:28.724792"
     }
   },
   "tanker": {
@@ -215,7 +215,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T08:31:26.448116"
+      "timestamp": "2026-02-01T09:01:30.984428"
     }
   },
   "weather": {
@@ -249,7 +249,7 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T08:31:23.712726"
+      "timestamp": "2026-02-01T09:01:28.258242"
     }
   },
   "polymarket": {
@@ -280,7 +280,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T08:31:23.905909"
+      "timestamp": "2026-02-01T09:01:28.399854"
     }
   },
   "pentagon": {
@@ -288,19 +288,19 @@
     "detail": "Low Activity (weekend)",
     "history": [
       10,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
       10,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      100,
       10,
       10,
       10,
@@ -329,13 +329,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T08:31:26.450589",
+      "timestamp": "2026-02-01T09:01:30.987024",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 7,
+    "risk": 10,
     "history": [
       {
         "timestamp": 1769644800000,
@@ -368,11 +368,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769934686451,
-        "risk": 7
+        "timestamp": 1769936490988,
+        "risk": 10
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T08:31:26.451634"
+  "last_updated": "2026-02-01T09:01:30.988196"
 }
