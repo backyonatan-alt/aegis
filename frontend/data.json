@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 14,
-    "detail": "27 articles, 11 critical",
+    "risk": 16,
+    "detail": "28 articles, 12 critical",
     "history": [
-      15,
       15,
       15,
       15,
@@ -22,7 +21,8 @@
       17,
       14,
       14,
-      14
+      14,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -119,6 +119,10 @@
           "is_alert": false
         },
         {
+          "title": "Khamenei warns US of \u2018regional war\u2019 if Iran is attacked",
+          "is_alert": true
+        },
+        {
           "title": "Iran designates European armies \u2018terrorist groups\u2019 in retaliatory move",
           "is_alert": false
         },
@@ -135,16 +139,15 @@
           "is_alert": true
         }
       ],
-      "total_count": 27,
-      "alert_count": 11,
-      "timestamp": "2026-02-01T12:01:55.796384"
+      "total_count": 28,
+      "alert_count": 12,
+      "timestamp": "2026-02-01T12:32:00.221720"
     }
   },
   "flight": {
-    "risk": 21,
-    "detail": "93 aircraft over Iran",
+    "risk": 3,
+    "detail": "115 aircraft over Iran",
     "history": [
-      22,
       21,
       25,
       31,
@@ -163,24 +166,25 @@
       11,
       8,
       6,
-      21
+      21,
+      3
     ],
     "raw_data": {
-      "aircraft_count": 93,
-      "airline_count": 47,
+      "aircraft_count": 115,
+      "airline_count": 46,
       "airlines": [
-        "FYC",
-        "SVA",
         "IGO",
+        "AXB",
+        "FYC",
         "AIC",
         "SXG",
-        "T7H",
         "UAE",
         "PBD",
-        "PIA",
-        "KNE"
+        "AFL",
+        "TCM",
+        "ENT"
       ],
-      "timestamp": "2026-02-01T12:01:55.861670"
+      "timestamp": "2026-02-01T12:32:00.444493"
     }
   },
   "tanker": {
@@ -211,7 +215,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T12:01:58.117216"
+      "timestamp": "2026-02-01T12:32:02.701515"
     }
   },
   "weather": {
@@ -245,7 +249,7 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T12:01:55.419460"
+      "timestamp": "2026-02-01T12:31:59.994422"
     }
   },
   "polymarket": {
@@ -276,7 +280,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T12:01:55.524762"
+      "timestamp": "2026-02-01T12:32:00.103089"
     }
   },
   "pentagon": {
@@ -289,7 +293,7 @@
       100,
       100,
       100,
-      100,
+      10,
       10,
       10,
       10,
@@ -325,13 +329,13 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T12:01:58.119228",
+      "timestamp": "2026-02-01T12:32:02.703935",
       "is_late_night": false,
       "is_weekend": true
     }
   },
   "total_risk": {
-    "risk": 9,
+    "risk": 6,
     "history": [
       {
         "timestamp": 1769688000000,
@@ -364,11 +368,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769947318120,
-        "risk": 9
+        "timestamp": 1769949122705,
+        "risk": 6
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T12:01:58.120172"
+  "last_updated": "2026-02-01T12:32:02.705128"
 }
