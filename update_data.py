@@ -51,8 +51,20 @@ STRIKE_KEYWORDS = ["strike", "attack", "bomb", "military action"]
 NEGATIVE_KEYWORDS = [" not ", "won't", "will not", "doesn't", "does not"]
 
 TANKER_PREFIXES = [
+    # Original fuel/gas station themed
     "IRON", "SHELL", "TEXAN", "ETHYL", "PEARL", "ARCO",
     "ESSO", "MOBIL", "GULF", "TOPAZ", "PACK", "DOOM", "TREK", "REACH",
+    # Additional fuel-themed callsigns
+    "EXXON", "TEXACO", "OILER", "OPEC", "PETRO",
+    # KC-10 unit callsigns
+    "TOGA", "DUCE", "FORCE", "GUCCI", "XTNDR", "SPUR", "TEAM", "QUID",
+    # KC-135 unit callsigns
+    "BOLT", "BROKE", "BROOM", "BOBBY", "BOBBIE", "BODE", "CONIC",
+    "MAINE", "BRIG", "ARTLY", "BANKER", "BRUSH",
+    # KC-46 unit callsigns
+    "ARRIS",
+    # Coronet/trans-Atlantic mission callsigns
+    "GOLD", "BLUE", "CLEAN", "VINYL",
 ]
 
 USAF_HEX_START = int("AE0000", 16)
