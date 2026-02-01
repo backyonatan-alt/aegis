@@ -4,7 +4,6 @@
     "detail": "26 articles, 12 critical",
     "history": [
       15,
-      15,
       16,
       16,
       16,
@@ -22,6 +21,7 @@
       15,
       15,
       15,
+      18,
       18
     ],
     "raw_data": {
@@ -133,14 +133,13 @@
       ],
       "total_count": 26,
       "alert_count": 12,
-      "timestamp": "2026-02-01T06:01:01.567088"
+      "timestamp": "2026-02-01T06:31:06.056132"
     }
   },
   "flight": {
-    "risk": 9,
-    "detail": "108 aircraft over Iran",
+    "risk": 8,
+    "detail": "109 aircraft over Iran",
     "history": [
-      8,
       33,
       56,
       50,
@@ -159,24 +158,25 @@
       29,
       15,
       3,
-      9
+      9,
+      8
     ],
     "raw_data": {
-      "aircraft_count": 108,
-      "airline_count": 36,
+      "aircraft_count": 109,
+      "airline_count": 41,
       "airlines": [
         "DLH",
-        "AIC",
         "UPS",
-        "DAH",
+        "KNE",
+        "LIW",
         "ASY",
-        "N12",
-        "DUB",
+        "IAW",
+        "ELY",
+        "NCR",
         "UAE",
-        "N80",
-        "IGO"
+        "N86"
       ],
-      "timestamp": "2026-02-01T06:01:01.821682"
+      "timestamp": "2026-02-01T06:31:06.272085"
     }
   },
   "tanker": {
@@ -207,12 +207,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T06:01:04.076538"
+      "timestamp": "2026-02-01T06:31:08.528476"
     }
   },
   "weather": {
     "risk": 0,
-    "detail": "scattered clouds",
+    "detail": "few clouds",
     "history": [
       0,
       0,
@@ -236,12 +236,12 @@
       0
     ],
     "raw_data": {
-      "temp": 12,
+      "temp": 13,
       "visibility": 10000,
-      "clouds": 40,
-      "description": "scattered clouds",
-      "condition": "Marginal",
-      "timestamp": "2026-02-01T06:01:01.459827"
+      "clouds": 20,
+      "description": "few clouds",
+      "condition": "Favorable",
+      "timestamp": "2026-02-01T06:31:05.805687"
     }
   },
   "polymarket": {
@@ -272,7 +272,7 @@
     "raw_data": {
       "odds": 0,
       "market": "",
-      "timestamp": "2026-02-01T06:01:01.602709"
+      "timestamp": "2026-02-01T06:31:05.839816"
     }
   },
   "pentagon": {
@@ -280,7 +280,6 @@
     "detail": "Low Activity (weekend)",
     "history": [
       30,
-      30,
       10,
       10,
       10,
@@ -298,6 +297,7 @@
       100,
       100,
       100,
+      10,
       10
     ],
     "raw_data": {
@@ -321,7 +321,7 @@
           "score": 25
         }
       ],
-      "timestamp": "2026-02-01T06:01:04.078957",
+      "timestamp": "2026-02-01T06:31:08.530659",
       "is_late_night": false,
       "is_weekend": true
     }
@@ -360,11 +360,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769925664080,
+        "timestamp": 1769927468531,
         "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-01T06:01:04.080131"
+  "last_updated": "2026-02-01T06:31:08.531572"
 }
