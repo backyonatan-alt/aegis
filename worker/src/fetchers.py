@@ -564,14 +564,11 @@ async def fetch_cloudflare_connectivity(api_token: str) -> dict | None:
             log.warning("Cloudflare Radar API token not configured")
             return None
 
-        # Request 8 hours of data with 1-hour intervals
+        # Request 1 day of data (8h is not a valid dateRange)
         url = (
             f"{CLOUDFLARE_RADAR_BASE_URL}/http/timeseries"
             f"?location={CLOUDFLARE_RADAR_LOCATION}"
-            f"&botClass=LIKELY_HUMAN"
-            f"&normalization=PERCENTAGE_CHANGE"
-            f"&aggInterval=1h"
-            f"&dateRange=8h"
+            f"&dateRange=1d"
         )
 
         headers = Headers.new(
@@ -613,7 +610,7 @@ async def fetch_cloudflare_connectivity(api_token: str) -> dict | None:
                 "error": "No data points returned",
             }
 
-        # Parse values (they come as percentage change values, e.g., -0.15 = -15%)
+        # Parse values (0-1 normalized scale where 1 = max traffic)
         parsed_values = []
         for v in values:
             try:
@@ -623,23 +620,35 @@ async def fetch_cloudflare_connectivity(api_token: str) -> dict | None:
 
         log.info("Received %d data points", len(parsed_values))
 
-        # Calculate 4-hour moving average (last 4 data points)
-        recent_values = parsed_values[-4:] if len(parsed_values) >= 4 else parsed_values
-        if not recent_values:
-            log.warning("No valid values to calculate trend")
+        if len(parsed_values) < 8:
+            log.warning("Not enough data points")
             return {
                 "status": "STALE",
                 "risk": 0,
                 "trend": 0,
                 "values": parsed_values,
                 "timestamp": datetime.now().isoformat(),
-                "error": "No valid values",
+                "error": "Not enough data points",
             }
 
-        trend = sum(recent_values) / len(recent_values)
-        log.info("4-hour moving average: %.3f", trend)
+        # Calculate baseline (average of first 75% of data) vs recent (last 25%)
+        split_point = int(len(parsed_values) * 0.75)
+        baseline_values = parsed_values[:split_point]
+        recent_values = parsed_values[split_point:]
 
-        # Determine risk based on thresholds (PRD specification)
+        baseline_avg = sum(baseline_values) / len(baseline_values)
+        recent_avg = sum(recent_values) / len(recent_values)
+
+        # Calculate percentage change from baseline
+        if baseline_avg > 0:
+            trend = (recent_avg - baseline_avg) / baseline_avg
+        else:
+            trend = 0
+
+        log.info("Baseline avg: %.3f, Recent avg: %.3f, Change: %.1f%%",
+                 baseline_avg, recent_avg, trend * 100)
+
+        # Determine risk based on traffic drop thresholds
         if trend <= -0.90:
             risk = 25
             status = "BLACKOUT"
