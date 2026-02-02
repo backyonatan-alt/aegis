@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "24 articles, 11 critical",
+    "risk": 13,
+    "detail": "23 articles, 9 critical",
     "history": [
-      18,
       20,
       20,
       20,
@@ -22,13 +21,18 @@
       18,
       18,
       18,
-      18
+      18,
+      13
     ],
     "raw_data": {
       "articles": [
         {
           "title": "Iran's supreme leader warns of regional war if US attacks",
           "is_alert": true
+        },
+        {
+          "title": "Iranian protester Erfan Soltani released on bail, reports say",
+          "is_alert": false
         },
         {
           "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
@@ -45,14 +49,6 @@
         {
           "title": "EU adds Iran's Revolutionary Guards to terrorist list",
           "is_alert": false
-        },
-        {
-          "title": "What could happen if the US strikes Iran? Here are seven scenarios",
-          "is_alert": true
-        },
-        {
-          "title": "Trump warns Iran 'time is running out' for nuclear deal as US military builds up in Gulf",
-          "is_alert": true
         },
         {
           "title": "Why Iran's response to a US attack could be different this time",
@@ -123,16 +119,15 @@
           "is_alert": false
         }
       ],
-      "total_count": 24,
-      "alert_count": 11,
-      "timestamp": "2026-02-02T07:04:51.259754"
+      "total_count": 23,
+      "alert_count": 9,
+      "timestamp": "2026-02-02T07:34:55.588323"
     }
   },
   "flight": {
-    "risk": 5,
-    "detail": "113 aircraft over Iran",
+    "risk": 10,
+    "detail": "106 aircraft over Iran",
     "history": [
-      43,
       48,
       42,
       26,
@@ -151,24 +146,25 @@
       3,
       3,
       9,
-      5
+      5,
+      10
     ],
     "raw_data": {
-      "aircraft_count": 113,
-      "airline_count": 37,
+      "aircraft_count": 106,
+      "airline_count": 45,
       "airlines": [
         "AXB",
-        "DLH",
-        "IAW",
-        "AUH",
+        "SVA",
+        "SPC",
+        "PGT",
         "IGO",
-        "ELY",
-        "AIC",
         "UAE",
+        "PBD",
         "THY",
-        "PIA"
+        "MJN",
+        "DAH"
       ],
-      "timestamp": "2026-02-02T07:04:51.473135"
+      "timestamp": "2026-02-02T07:34:55.975879"
     }
   },
   "tanker": {
@@ -199,7 +195,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-02T07:04:53.730441"
+      "timestamp": "2026-02-02T07:34:58.230046"
     }
   },
   "weather": {
@@ -224,7 +220,7 @@
       100,
       100,
       100,
-      100,
+      0,
       0
     ],
     "raw_data": {
@@ -233,14 +229,13 @@
       "clouds": 75,
       "description": "broken clouds",
       "condition": "Poor",
-      "timestamp": "2026-02-02T07:04:51.102502"
+      "timestamp": "2026-02-02T07:34:55.548370"
     }
   },
   "polymarket": {
-    "risk": 4,
-    "detail": "4% odds",
+    "risk": 3,
+    "detail": "3% odds",
     "history": [
-      2,
       4,
       2,
       2,
@@ -259,23 +254,24 @@
       3,
       3,
       4,
-      4
+      4,
+      3
     ],
     "raw_data": {
-      "odds": 4,
-      "market": "Will the US next strike Iran on February 8, 2026 (ET)?",
-      "timestamp": "2026-02-02T07:04:51.247385"
+      "odds": 3,
+      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
+      "timestamp": "2026-02-02T07:34:55.847940"
     }
   },
   "pentagon": {
     "risk": 10,
     "detail": "Low Activity",
     "history": [
+      100,
+      100,
+      100,
+      100,
       10,
-      100,
-      100,
-      100,
-      100,
       10,
       10,
       10,
@@ -313,7 +309,7 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-02-02T07:04:53.732076",
+      "timestamp": "2026-02-02T07:34:58.231708",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -352,11 +348,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770015893733,
+        "timestamp": 1770017698232,
         "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-02T07:04:53.733365"
+  "last_updated": "2026-02-02T07:34:58.232581"
 }
