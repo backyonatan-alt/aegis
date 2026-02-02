@@ -358,5 +358,23 @@
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-02T16:36:22.863037"
+  "last_updated": "2026-02-02T16:36:22.863037",
+  "pulse": {
+    "watching_now": 2847,
+    "activity_multiplier": 2.4,
+    "activity_level": "elevated",
+    "israel": {
+      "count": 423,
+      "surge": 4.45
+    },
+    "countries": [
+      { "cc": "US", "flag": "🇺🇸", "count": 891, "surge": 1.37 },
+      { "cc": "DE", "flag": "🇩🇪", "count": 234, "surge": 2.78 },
+      { "cc": "GB", "flag": "🇬🇧", "count": 198, "surge": 1.65 },
+      { "cc": "IR", "flag": "🇮🇷", "count": 156, "surge": 1.95 },
+      { "cc": "FR", "flag": "🇫🇷", "count": 89, "surge": 1.48 },
+      { "cc": "NL", "flag": "🇳🇱", "count": 67, "surge": 1.52 }
+    ],
+    "total_countries": 42
+  }
 }
