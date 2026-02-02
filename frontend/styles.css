@@ -55,6 +55,62 @@ html, body {
 .gauge-info-btn { width: 20px; height: 20px; border-radius: 50%; background: var(--border); border: none; color: var(--text-muted); font-size: 11px; font-weight: 700; cursor: pointer; }
 .gauge-info-btn:hover { background: var(--text-muted); color: var(--bg); }
 
+/* Pulse Row */
+.pulse-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--card);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+.pulse-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+}
+.pulse-icon { font-size: 14px; }
+.pulse-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: var(--text);
+}
+.pulse-label {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+.pulse-flag { font-size: 16px; }
+.pulse-surge {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+}
+/* Activity level colors */
+.pulse-activity .pulse-label { transition: color 0.3s ease; }
+.pulse-activity.normal .pulse-label { color: var(--text-muted); }
+.pulse-activity.elevated .pulse-label { color: var(--yellow); }
+.pulse-activity.elevated .pulse-value { color: var(--yellow); }
+.pulse-activity.high .pulse-label { color: var(--orange); }
+.pulse-activity.high .pulse-value { color: var(--orange); }
+.pulse-activity.surging .pulse-label { color: var(--red); }
+.pulse-activity.surging .pulse-value { color: var(--red); }
+/* Surge colors */
+.pulse-surge.positive { color: var(--green); }
+.pulse-surge.elevated { color: var(--yellow); }
+.pulse-surge.high { color: var(--orange); }
+.pulse-surge.surging { color: var(--red); }
+/* Rotating animation */
+.pulse-rotating {
+    transition: opacity 0.3s ease;
+}
+.pulse-rotating.fade-out {
+    opacity: 0;
+}
+
 /* Trend chart */
 .trend-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
 .trend-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }

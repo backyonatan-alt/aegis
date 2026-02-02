@@ -73,5 +73,10 @@ function displayData(data) {
     updateGauge(total);
     updateTimestamp(data.last_updated ? parseUtcTimestamp(data.last_updated) : Date.now());
 
+    // Display pulse data (Global Anxiety Pulse)
+    if (data.pulse && typeof renderPulse === 'function') {
+        renderPulse(data.pulse);
+    }
+
     return total;
 }

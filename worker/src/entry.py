@@ -24,6 +24,7 @@ from fetchers import (
     fetch_weather_data,
 )
 from risk import calculate_risk_scores, update_history
+from pulse import log_visit
 
 logging.basicConfig(
     level=logging.INFO,
@@ -62,10 +63,16 @@ def _get_cors_origin(request):
 
 
 async def on_fetch(request, env):
-    """Serve data.json from R2 with cache headers."""
+    """Serve data.json from R2 with cache headers and pulse tracking."""
     log.info("on_fetch: serving data.json from R2")
 
     cors_origin = _get_cors_origin(request)
+
+    # Extract country code from Cloudflare header
+    try:
+        country_code = request.headers.get("cf-ipcountry") or "XX"
+    except Exception:
+        country_code = "XX"
 
     try:
         obj = await env.DATA_BUCKET.get(R2_KEY)
@@ -91,10 +98,24 @@ async def on_fetch(request, env):
             },
         )
 
-    # Pass the R2 ReadableStream body directly — avoids await obj.text() hang
-    log.info("Returning R2 object body as stream")
+    # Parse data.json and add pulse stats
+    try:
+        text = await obj.text()
+        data = json.loads(text)
+
+        # Log visit and get pulse stats
+        pulse_stats = await log_visit(env, country_code)
+        data["pulse"] = pulse_stats
+
+        response_body = json.dumps(data)
+    except Exception as e:
+        log.warning("Failed to add pulse data, returning raw: %s", e)
+        # Fallback: return data without pulse
+        response_body = text if 'text' in dir() else "{}"
+
+    log.info("Returning data with pulse stats (country: %s)", country_code)
     return _make_response(
-        obj.body,
+        response_body,
         headers_dict={
             "Content-Type": "application/json",
             "Cache-Control": "public, max-age=60, s-maxage=300",
