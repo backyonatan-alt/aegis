@@ -3,199 +3,45 @@
     "risk": 15,
     "detail": "24 articles, 10 critical",
     "history": [
-      18,
-      13,
-      13,
-      14,
-      14,
-      14,
-      14,
-      14,
-      14,
-      14,
-      14,
-      14,
-      14,
-      14,
-      16,
-      16,
-      15,
-      15,
-      15,
-      15
+      18, 13, 13, 14, 14, 14, 14, 14, 14, 14,
+      14, 14, 14, 16, 16, 15, 15, 15, 15
     ],
     "raw_data": {
       "articles": [
-        {
-          "title": "Iran's supreme leader warns of regional war if US attacks",
-          "is_alert": true
-        },
-        {
-          "title": "Iranian protester Erfan Soltani released on bail, reports say",
-          "is_alert": false
-        },
-        {
-          "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
-          "is_alert": true
-        },
-        {
-          "title": "Iran wants to make deal rather than face military action, Trump says",
-          "is_alert": true
-        },
-        {
-          "title": "Worried families in India urge return of crew on ship seized by Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Why Iran's response to a US attack could be different this time",
-          "is_alert": true
-        },
-        {
-          "title": "Iran's internet is returning - but not for everyone",
-          "is_alert": false
-        },
-        {
-          "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
-          "is_alert": true
-        },
-        {
-          "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
-          "is_alert": false
-        },
-        {
-          "title": "'I saw people getting shot': Eyewitness tells of Iran protest crackdown",
-          "is_alert": true
-        },
-        {
-          "title": "Fears Iran's internet shutdown could lead to 'extreme digital isolation'",
-          "is_alert": true
-        },
-        {
-          "title": "What next for Iran's supreme leader?",
-          "is_alert": false
-        },
-        {
-          "title": "'I carried my wife's body for an hour and a half' - BBC hears stories of protesters killed in Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Tehran morgue videos show the brutality of Iran's crackdown on protesters",
-          "is_alert": false
-        },
-        {
-          "title": "Why are there protests in Iran and what has Trump said about US action?",
-          "is_alert": true
-        },
-        {
-          "title": "Bowen: Authoritarian regimes die gradually then suddenly, but Iran is not there yet",
-          "is_alert": false
-        },
-        {
-          "title": "Decision time for Trump on Iran but what does he ultimately want?",
-          "is_alert": false
-        },
-        {
-          "title": "Which countries do business with Iran  and what could US tariffs mean?",
-          "is_alert": false
-        },
-        {
-          "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
-          "is_alert": false
-        },
-        {
-          "title": "Where do these protests leave the Iranian regime?",
-          "is_alert": true
-        },
-        {
-          "title": "'Now there's the threat of executions' in Iran",
-          "is_alert": false
-        },
-        {
-          "title": "Mortuary videos show how deadly Iran crackdown has become",
-          "is_alert": false
-        },
-        {
-          "title": "Iran\u2019s economy falters as internet shutdown hits people, businesses hard",
-          "is_alert": false
-        },
-        {
-          "title": "Iran eyes progress towards US nuclear talks as tension eases",
-          "is_alert": true
-        }
+        { "title": "Iran's supreme leader warns of regional war if US attacks", "is_alert": true },
+        { "title": "Iranian protester Erfan Soltani released on bail, reports say", "is_alert": false },
+        { "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen", "is_alert": true },
+        { "title": "Iran wants to make deal rather than face military action, Trump says", "is_alert": true }
       ],
       "total_count": 24,
       "alert_count": 10,
       "timestamp": "2026-02-02T16:36:20.417501"
     }
   },
+  "connectivity": {
+    "risk": 0,
+    "detail": "STABLE (+0.0%)",
+    "history": [0],
+    "raw_data": {}
+  },
   "flight": {
     "risk": 12,
     "detail": "104 aircraft over Iran",
     "history": [
-      5,
-      10,
-      14,
-      15,
-      21,
-      29,
-      27,
-      17,
-      10,
-      18,
-      13,
-      14,
-      21,
-      12,
-      9,
-      15,
-      16,
-      24,
-      12,
-      12
+      5, 10, 14, 15, 21, 29, 27, 17, 10, 18,
+      13, 14, 21, 12, 9, 15, 16, 24, 12, 12
     ],
     "raw_data": {
       "aircraft_count": 104,
       "airline_count": 51,
-      "airlines": [
-        "KNE",
-        "FYC",
-        "SVA",
-        "WZZ",
-        "FR1",
-        "BNL",
-        "BBC",
-        "IAW",
-        "DUB",
-        "AIC"
-      ],
+      "airlines": ["KNE", "FYC", "SVA", "WZZ", "FR1", "BNL", "BBC", "IAW", "DUB", "AIC"],
       "timestamp": "2026-02-02T16:36:20.598871"
     }
   },
   "tanker": {
     "risk": 0,
     "detail": "0 detected in region",
-    "history": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
+    "history": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
@@ -205,28 +51,7 @@
   "weather": {
     "risk": 0,
     "detail": "few clouds",
-    "history": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      100,
-      100,
-      100,
-      0,
-      0,
-      0,
-      0
-    ],
+    "history": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 100, 0, 0, 0, 0],
     "raw_data": {
       "temp": 14,
       "visibility": 10000,
@@ -239,28 +64,7 @@
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
-    "history": [
-      4,
-      3,
-      3,
-      2,
-      2,
-      4,
-      2,
-      3,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2,
-      2
-    ],
+    "history": [4, 3, 3, 2, 2, 4, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
@@ -270,48 +74,15 @@
   "pentagon": {
     "risk": 10,
     "detail": "Low Activity",
-    "history": [
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      10,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      10,
-      10,
-      10,
-      10
-    ],
+    "history": [10, 10, 10, 10, 10, 10, 10, 10, 30, 30, 30, 30, 30, 30, 30, 30, 10, 10, 30, 30, 30, 30, 30, 30, 30, 30, 10, 10],
     "raw_data": {
       "score": 30,
       "risk_contribution": 1,
       "status": "Low Activity",
       "places": [
-        {
-          "name": "Domino's Pizza",
-          "status": "normal",
-          "score": 30
-        },
-        {
-          "name": "Papa John's",
-          "status": "normal",
-          "score": 30
-        },
-        {
-          "name": "Pizza Hut",
-          "status": "normal",
-          "score": 30
-        }
+        { "name": "Domino's Pizza", "status": "normal", "score": 30 },
+        { "name": "Papa John's", "status": "normal", "score": 30 },
+        { "name": "Pizza Hut", "status": "normal", "score": 30 }
       ],
       "timestamp": "2026-02-02T16:36:22.861960",
       "is_late_night": false,
@@ -321,40 +92,13 @@
   "total_risk": {
     "risk": 8,
     "history": [
-      {
-        "timestamp": 1769817600000,
-        "risk": 18,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769860800000,
-        "risk": 10,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769904000000,
-        "risk": 7,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769947200000,
-        "risk": 6,
-        "pinned": true
-      },
-      {
-        "timestamp": 1769990400000,
-        "risk": 27,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770033600000,
-        "risk": 10,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770050182863,
-        "risk": 8
-      }
+      { "timestamp": 1769817600000, "risk": 18, "pinned": true },
+      { "timestamp": 1769860800000, "risk": 10, "pinned": true },
+      { "timestamp": 1769904000000, "risk": 7, "pinned": true },
+      { "timestamp": 1769947200000, "risk": 6, "pinned": true },
+      { "timestamp": 1769990400000, "risk": 27, "pinned": true },
+      { "timestamp": 1770033600000, "risk": 10, "pinned": true },
+      { "timestamp": 1770050182863, "risk": 8 }
     ],
     "elevated_count": 0
   },
@@ -363,10 +107,7 @@
     "watching_now": 2847,
     "activity_multiplier": 2.4,
     "activity_level": "elevated",
-    "israel": {
-      "count": 423,
-      "surge": 4.45
-    },
+    "israel": { "count": 423, "surge": 4.45 },
     "countries": [
       { "cc": "US", "flag": "🇺🇸", "count": 891, "surge": 1.37 },
       { "cc": "DE", "flag": "🇩🇪", "count": 234, "surge": 2.78 },
