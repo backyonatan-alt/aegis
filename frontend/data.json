@@ -5,7 +5,6 @@
     "history": [
       14,
       14,
-      14,
       16,
       16,
       15,
@@ -22,6 +21,7 @@
       15,
       15,
       15,
+      13,
       13
     ],
     "raw_data": {
@@ -121,14 +121,13 @@
       ],
       "total_count": 23,
       "alert_count": 9,
-      "timestamp": "2026-02-02T22:07:11.704743"
+      "timestamp": "2026-02-02T22:37:16.584988"
     }
   },
   "flight": {
-    "risk": 46,
-    "detail": "61 aircraft over Iran",
+    "risk": 48,
+    "detail": "59 aircraft over Iran",
     "history": [
-      14,
       21,
       12,
       9,
@@ -147,24 +146,25 @@
       17,
       36,
       55,
-      46
+      46,
+      48
     ],
     "raw_data": {
-      "aircraft_count": 61,
-      "airline_count": 32,
+      "aircraft_count": 59,
+      "airline_count": 34,
       "airlines": [
-        "AXB",
         "IGO",
-        "PGT",
+        "SWR",
         "DLH",
         "ACA",
         "SVA",
-        "4XC",
+        "BBC",
         "UAE",
-        "TKJ",
-        "THY"
+        "AUA",
+        "ETD",
+        "TKJ"
       ],
-      "timestamp": "2026-02-02T22:07:12.032997"
+      "timestamp": "2026-02-02T22:37:16.521179"
     }
   },
   "tanker": {
@@ -195,7 +195,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-02T22:07:14.293113"
+      "timestamp": "2026-02-02T22:37:18.840306"
     }
   },
   "weather": {
@@ -203,7 +203,6 @@
     "detail": "clear sky",
     "history": [
       0,
-      0,
       100,
       100,
       100,
@@ -212,6 +211,7 @@
       0,
       0,
       0,
+      100,
       100,
       100,
       100,
@@ -229,14 +229,13 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-02T22:07:11.606491"
+      "timestamp": "2026-02-02T22:37:16.110762"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      2,
       2,
       2,
       2,
@@ -255,12 +254,13 @@
       2,
       2,
       1,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
-      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-02T22:07:11.800275"
+      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
+      "timestamp": "2026-02-02T22:37:16.260689"
     }
   },
   "pentagon": {
@@ -271,7 +271,6 @@
       30,
       30,
       30,
-      30,
       10,
       10,
       10,
@@ -284,6 +283,7 @@
       30,
       30,
       30,
+      10,
       10,
       10,
       10
@@ -309,7 +309,7 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-02T22:07:14.295423",
+      "timestamp": "2026-02-02T22:37:18.842075",
       "is_late_night": true,
       "is_weekend": false
     }
@@ -348,11 +348,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770070034297,
+        "timestamp": 1770071838843,
         "risk": 24
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-02T22:07:14.297319"
+  "last_updated": "2026-02-02T22:37:18.843131"
 }
