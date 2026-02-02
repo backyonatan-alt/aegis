@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 14,
-    "detail": "22 articles, 9 critical",
+    "risk": 16,
+    "detail": "23 articles, 10 critical",
     "history": [
       18,
       18,
@@ -9,7 +9,6 @@
       18,
       18,
       18,
-      18,
       13,
       13,
       14,
@@ -22,7 +21,8 @@
       14,
       14,
       14,
-      14
+      14,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -113,18 +113,21 @@
         {
           "title": "Mortuary videos show how deadly Iran crackdown has become",
           "is_alert": false
+        },
+        {
+          "title": "Iran eyes progress towards US nuclear talks as tension eases",
+          "is_alert": true
         }
       ],
-      "total_count": 22,
-      "alert_count": 9,
-      "timestamp": "2026-02-02T13:35:51.348286"
+      "total_count": 23,
+      "alert_count": 10,
+      "timestamp": "2026-02-02T14:05:55.853774"
     }
   },
   "flight": {
-    "risk": 12,
-    "detail": "104 aircraft over Iran",
+    "risk": 9,
+    "detail": "107 aircraft over Iran",
     "history": [
-      37,
       29,
       17,
       3,
@@ -143,24 +146,25 @@
       13,
       14,
       21,
-      12
+      12,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 104,
+      "aircraft_count": 107,
       "airline_count": 45,
       "airlines": [
-        "N78",
+        "IGO",
+        "KIS",
         "PAL",
-        "CFG",
+        "AIC",
         "FYC",
-        "EJM",
         "SVA",
         "T7S",
-        "AIC",
+        "WZZ",
         "CSG",
-        "BNL"
+        "IAW"
       ],
-      "timestamp": "2026-02-02T13:35:51.542741"
+      "timestamp": "2026-02-02T14:05:56.146845"
     }
   },
   "tanker": {
@@ -191,7 +195,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-02T13:35:53.803188"
+      "timestamp": "2026-02-02T14:05:58.406389"
     }
   },
   "weather": {
@@ -203,20 +207,20 @@
       100,
       100,
       100,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       100,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       100
     ],
     "raw_data": {
@@ -225,7 +229,7 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-02T13:35:51.177062"
+      "timestamp": "2026-02-02T14:05:55.724335"
     }
   },
   "polymarket": {
@@ -233,7 +237,6 @@
     "detail": "2% odds",
     "history": [
       2,
-      2,
       3,
       3,
       3,
@@ -246,6 +249,7 @@
       4,
       2,
       3,
+      2,
       2,
       2,
       2,
@@ -256,7 +260,7 @@
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-02T13:35:51.294985"
+      "timestamp": "2026-02-02T14:05:55.849104"
     }
   },
   "pentagon": {
@@ -276,7 +280,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30,
       30,
       30,
@@ -305,7 +309,7 @@
           "score": 50
         }
       ],
-      "timestamp": "2026-02-02T13:35:53.805618",
+      "timestamp": "2026-02-02T14:05:58.408080",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -344,11 +348,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770039353806,
+        "timestamp": 1770041158409,
         "risk": 19
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-02T13:35:53.806708"
+  "last_updated": "2026-02-02T14:05:58.409264"
 }
