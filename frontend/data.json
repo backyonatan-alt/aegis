@@ -1,11 +1,10 @@
 {
   "news": {
-    "risk": 20,
-    "detail": "25 articles, 12 critical",
+    "risk": 18,
+    "detail": "24 articles, 11 critical",
     "history": [
       17,
       17,
-      17,
       18,
       18,
       18,
@@ -22,7 +21,8 @@
       20,
       20,
       20,
-      20
+      20,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -121,22 +121,17 @@
         {
           "title": "Mortuary videos show how deadly Iran crackdown has become",
           "is_alert": false
-        },
-        {
-          "title": "Khamenei warns US of \u2018regional war\u2019 if Iran is attacked",
-          "is_alert": true
         }
       ],
-      "total_count": 25,
-      "alert_count": 12,
-      "timestamp": "2026-02-02T01:34:00.338539"
+      "total_count": 24,
+      "alert_count": 11,
+      "timestamp": "2026-02-02T02:04:04.587343"
     }
   },
   "flight": {
-    "risk": 29,
-    "detail": "82 aircraft over Iran",
+    "risk": 11,
+    "detail": "105 aircraft over Iran",
     "history": [
-      18,
       29,
       27,
       14,
@@ -155,24 +150,25 @@
       3,
       17,
       21,
-      29
+      29,
+      11
     ],
     "raw_data": {
-      "aircraft_count": 82,
-      "airline_count": 25,
+      "aircraft_count": 105,
+      "airline_count": 28,
       "airlines": [
-        "BAW",
         "SEJ",
         "SVA",
+        "IAW",
         "IGO",
         "AUA",
-        "LDX",
         "UAE",
+        "THY",
         "TKJ",
         "ETD",
-        "AIC"
+        "PIA"
       ],
-      "timestamp": "2026-02-02T01:34:00.477520"
+      "timestamp": "2026-02-02T02:04:04.792550"
     }
   },
   "tanker": {
@@ -203,14 +199,14 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-02T01:34:02.732876"
+      "timestamp": "2026-02-02T02:04:07.047645"
     }
   },
   "weather": {
     "risk": 100,
     "detail": "clear sky",
     "history": [
-      0,
+      100,
       100,
       100,
       100,
@@ -237,14 +233,13 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-02T01:34:00.065100"
+      "timestamp": "2026-02-02T02:04:04.422722"
     }
   },
   "polymarket": {
     "risk": 3,
     "detail": "3% odds",
     "history": [
-      10,
       3,
       3,
       3,
@@ -262,13 +257,14 @@
       2,
       3,
       4,
+      3,
       3,
       3
     ],
     "raw_data": {
       "odds": 3,
-      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-02T01:34:00.124998"
+      "market": "Will the US next strike Iran on February 4, 2026 (ET)?",
+      "timestamp": "2026-02-02T02:04:04.477620"
     }
   },
   "pentagon": {
@@ -276,7 +272,6 @@
     "detail": "Low Activity (late night)",
     "history": [
       10,
-      10,
       30,
       30,
       30,
@@ -291,6 +286,7 @@
       100,
       100,
       100,
+      10,
       10,
       10,
       10,
@@ -317,13 +313,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-02T01:34:02.734436",
+      "timestamp": "2026-02-02T02:04:07.049797",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 22,
+    "risk": 18,
     "history": [
       {
         "timestamp": 1769774400000,
@@ -356,11 +352,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1769996042735,
-        "risk": 22
+        "timestamp": 1769997847050,
+        "risk": 18
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-02T01:34:02.735586"
+  "last_updated": "2026-02-02T02:04:07.050936"
 }
