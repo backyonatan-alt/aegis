@@ -358,5 +358,16 @@
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-02T20:06:56.389983"
+  "last_updated": "2026-02-02T20:06:56.389983",
+  "pulse": {
+    "watching_now": 0,
+    "activity_multiplier": 0,
+    "activity_level": "normal",
+    "israel": {
+      "count": 0,
+      "surge": 0
+    },
+    "countries": [],
+    "total_countries": 0
+  }
 }
