@@ -9,6 +9,7 @@ crons = ["*/30 * * * *"]
 [[r2_buckets]]
 binding = "DATA_BUCKET"
 bucket_name = "aegis-data"
+preview_bucket_name = "aegis-data-preview"
 
 [[routes]]
 pattern = "usstrikeradar.com/api/data.json"
