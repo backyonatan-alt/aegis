@@ -4,7 +4,6 @@
     "detail": "25 articles, 12 critical",
     "history": [
       16,
-      16,
       14,
       17,
       17,
@@ -19,6 +18,7 @@
       18,
       18,
       18,
+      20,
       20,
       20,
       20,
@@ -129,14 +129,13 @@
       ],
       "total_count": 25,
       "alert_count": 12,
-      "timestamp": "2026-02-01T23:33:42.212225"
+      "timestamp": "2026-02-02T00:03:46.908772"
     }
   },
   "flight": {
-    "risk": 6,
-    "detail": "111 aircraft over Iran",
+    "risk": 3,
+    "detail": "116 aircraft over Iran",
     "history": [
-      7,
       17,
       17,
       17,
@@ -155,24 +154,25 @@
       48,
       42,
       26,
-      6
+      6,
+      3
     ],
     "raw_data": {
-      "aircraft_count": 111,
-      "airline_count": 35,
+      "aircraft_count": 116,
+      "airline_count": 31,
       "airlines": [
-        "IGO",
-        "PGT",
         "AIC",
-        "BYD",
+        "AXB",
+        "IGO",
+        "VIR",
+        "LVK",
+        "BBC",
         "UAE",
-        "AUA",
-        "TKJ",
-        "ENT",
         "PIA",
+        "THY",
         "ETD"
       ],
-      "timestamp": "2026-02-01T23:33:42.399956"
+      "timestamp": "2026-02-02T00:03:47.078112"
     }
   },
   "tanker": {
@@ -203,7 +203,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-01T23:33:44.658892"
+      "timestamp": "2026-02-02T00:03:49.399016"
     }
   },
   "weather": {
@@ -214,7 +214,7 @@
       0,
       0,
       0,
-      0,
+      100,
       100,
       100,
       100,
@@ -232,19 +232,18 @@
       100
     ],
     "raw_data": {
-      "temp": 11,
+      "temp": 10,
       "visibility": 10000,
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-01T23:33:41.931295"
+      "timestamp": "2026-02-02T00:03:46.648055"
     }
   },
   "polymarket": {
-    "risk": 2,
-    "detail": "2% odds",
+    "risk": 3,
+    "detail": "3% odds",
     "history": [
-      10,
       10,
       10,
       10,
@@ -263,24 +262,24 @@
       4,
       2,
       2,
-      2
+      2,
+      3
     ],
     "raw_data": {
-      "odds": 2,
-      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-01T23:33:42.082056"
+      "odds": 3,
+      "market": "Will the US next strike Iran on February 3, 2026 (ET)?",
+      "timestamp": "2026-02-02T00:03:46.646239"
     }
   },
   "pentagon": {
-    "risk": 100,
-    "detail": "High Activity (late night) (weekend)",
+    "risk": 10,
+    "detail": "Low Activity (late night)",
     "history": [
       10,
       10,
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -294,42 +293,38 @@
       100,
       100,
       100,
-      100
+      100,
+      10
     ],
     "raw_data": {
-      "score": 100,
-      "risk_contribution": 10,
-      "status": "High Activity",
+      "score": 20,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
-          "status": "elevated_late",
-          "score": 70
+          "status": "normal",
+          "score": 20
         },
         {
           "name": "Papa John's",
-          "status": "elevated_late",
-          "score": 70
+          "status": "normal",
+          "score": 20
         },
         {
           "name": "Pizza Hut",
-          "status": "elevated_late",
-          "score": 70
+          "status": "normal",
+          "score": 20
         }
       ],
-      "timestamp": "2026-02-01T23:33:44.661857",
+      "timestamp": "2026-02-02T00:03:49.400583",
       "is_late_night": true,
-      "is_weekend": true
+      "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 27,
+    "risk": 17,
     "history": [
-      {
-        "timestamp": 1769688000000,
-        "risk": 20,
-        "pinned": true
-      },
       {
         "timestamp": 1769774400000,
         "risk": 21,
@@ -356,11 +351,16 @@
         "pinned": true
       },
       {
-        "timestamp": 1769988824663,
-        "risk": 27
+        "timestamp": 1769990400000,
+        "risk": 27,
+        "pinned": true
+      },
+      {
+        "timestamp": 1769990629401,
+        "risk": 17
       }
     ],
-    "elevated_count": 2
+    "elevated_count": 1
   },
-  "last_updated": "2026-02-01T23:33:44.663391"
+  "last_updated": "2026-02-02T00:03:49.401804"
 }
