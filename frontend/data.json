@@ -1,12 +1,11 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "24 articles, 10 critical",
+    "risk": 13,
+    "detail": "23 articles, 9 critical",
     "history": [
       14,
       14,
       14,
-      14,
       16,
       16,
       15,
@@ -22,7 +21,8 @@
       15,
       15,
       15,
-      15
+      15,
+      13
     ],
     "raw_data": {
       "articles": [
@@ -117,22 +117,17 @@
         {
           "title": "Iran\u2019s economy falters as internet shutdown hits people, businesses hard",
           "is_alert": false
-        },
-        {
-          "title": "Iran eyes progress towards US nuclear talks as tension eases",
-          "is_alert": true
         }
       ],
-      "total_count": 24,
-      "alert_count": 10,
-      "timestamp": "2026-02-02T21:37:07.525221"
+      "total_count": 23,
+      "alert_count": 9,
+      "timestamp": "2026-02-02T22:07:11.704743"
     }
   },
   "flight": {
-    "risk": 55,
-    "detail": "50 aircraft over Iran",
+    "risk": 46,
+    "detail": "61 aircraft over Iran",
     "history": [
-      13,
       14,
       21,
       12,
@@ -151,24 +146,25 @@
       5,
       17,
       36,
-      55
+      55,
+      46
     ],
     "raw_data": {
-      "aircraft_count": 50,
-      "airline_count": 26,
+      "aircraft_count": 61,
+      "airline_count": 32,
       "airlines": [
         "AXB",
-        "PGT",
         "IGO",
+        "PGT",
+        "DLH",
+        "ACA",
+        "SVA",
         "4XC",
         "UAE",
-        "THY",
-        "PIA",
-        "SIF",
-        "ABY",
-        "VSV"
+        "TKJ",
+        "THY"
       ],
-      "timestamp": "2026-02-02T21:37:07.514268"
+      "timestamp": "2026-02-02T22:07:12.032997"
     }
   },
   "tanker": {
@@ -199,7 +195,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-02T21:37:09.803133"
+      "timestamp": "2026-02-02T22:07:14.293113"
     }
   },
   "weather": {
@@ -208,7 +204,6 @@
     "history": [
       0,
       0,
-      0,
       100,
       100,
       100,
@@ -217,6 +212,7 @@
       0,
       0,
       0,
+      100,
       100,
       100,
       100,
@@ -233,14 +229,13 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-02T21:37:07.176419"
+      "timestamp": "2026-02-02T22:07:11.606491"
     }
   },
   "polymarket": {
-    "risk": 1,
-    "detail": "1% odds",
+    "risk": 2,
+    "detail": "2% odds",
     "history": [
-      2,
       2,
       2,
       2,
@@ -259,24 +254,24 @@
       2,
       2,
       2,
-      1
+      1,
+      2
     ],
     "raw_data": {
-      "odds": 1,
-      "market": "Will the US next strike Iran on February 4, 2026 (ET)?",
-      "timestamp": "2026-02-02T21:37:07.537872"
+      "odds": 2,
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-02-02T22:07:11.800275"
     }
   },
   "pentagon": {
     "risk": 10,
-    "detail": "Low Activity",
+    "detail": "Low Activity (late night)",
     "history": [
       30,
       30,
       30,
       30,
       30,
-      30,
       10,
       10,
       10,
@@ -289,37 +284,38 @@
       30,
       30,
       30,
+      10,
       10,
       10
     ],
     "raw_data": {
-      "score": 30,
+      "score": 20,
       "risk_contribution": 1,
       "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 30
+          "score": 20
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 30
+          "score": 20
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 30
+          "score": 20
         }
       ],
-      "timestamp": "2026-02-02T21:37:09.805037",
-      "is_late_night": false,
+      "timestamp": "2026-02-02T22:07:14.295423",
+      "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 26,
+    "risk": 24,
     "history": [
       {
         "timestamp": 1769817600000,
@@ -352,11 +348,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770068229805,
-        "risk": 26
+        "timestamp": 1770070034297,
+        "risk": 24
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-02T21:37:09.805925"
+  "last_updated": "2026-02-02T22:07:14.297319"
 }
