@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 13,
-    "detail": "23 articles, 9 critical",
+    "risk": 14,
+    "detail": "22 articles, 9 critical",
     "history": [
-      20,
       20,
       20,
       20,
@@ -22,7 +21,8 @@
       18,
       18,
       13,
-      13
+      13,
+      14
     ],
     "raw_data": {
       "articles": [
@@ -44,10 +44,6 @@
         },
         {
           "title": "Worried families in India urge return of crew on ship seized by Iran",
-          "is_alert": false
-        },
-        {
-          "title": "EU adds Iran's Revolutionary Guards to terrorist list",
           "is_alert": false
         },
         {
@@ -119,16 +115,15 @@
           "is_alert": false
         }
       ],
-      "total_count": 23,
+      "total_count": 22,
       "alert_count": 9,
-      "timestamp": "2026-02-02T08:05:00.216099"
+      "timestamp": "2026-02-02T08:35:05.005185"
     }
   },
   "flight": {
-    "risk": 14,
-    "detail": "101 aircraft over Iran",
+    "risk": 15,
+    "detail": "100 aircraft over Iran",
     "history": [
-      42,
       26,
       6,
       3,
@@ -147,24 +142,25 @@
       9,
       5,
       10,
-      14
+      14,
+      15
     ],
     "raw_data": {
-      "aircraft_count": 101,
+      "aircraft_count": 100,
       "airline_count": 51,
       "airlines": [
+        "IGO",
         "BCP",
         "CKS",
         "CFG",
+        "SHR",
         "SVA",
-        "AUH",
-        "IGO",
-        "UAE",
-        "AZG",
-        "VPC",
-        "PBD"
+        "IAW",
+        "VRH",
+        "DWC",
+        "UAE"
       ],
-      "timestamp": "2026-02-02T08:05:00.468556"
+      "timestamp": "2026-02-02T08:35:05.247363"
     }
   },
   "tanker": {
@@ -195,7 +191,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-02T08:05:02.723987"
+      "timestamp": "2026-02-02T08:35:07.502395"
     }
   },
   "weather": {
@@ -218,27 +214,26 @@
       100,
       100,
       100,
-      100,
+      0,
       0,
       0,
       0
     ],
     "raw_data": {
-      "temp": 12,
+      "temp": 14,
       "visibility": 10000,
       "clouds": 75,
       "description": "broken clouds",
       "condition": "Poor",
-      "timestamp": "2026-02-02T08:05:00.054805"
+      "timestamp": "2026-02-02T08:35:04.818347"
     }
   },
   "polymarket": {
-    "risk": 3,
-    "detail": "3% odds",
+    "risk": 2,
+    "detail": "2% odds",
     "history": [
       2,
       2,
-      2,
       3,
       4,
       3,
@@ -255,12 +250,13 @@
       4,
       4,
       3,
-      3
+      3,
+      2
     ],
     "raw_data": {
-      "odds": 3,
-      "market": "Will the US next strike Iran on February 8, 2026 (ET)?",
-      "timestamp": "2026-02-02T08:05:00.324109"
+      "odds": 2,
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-02-02T08:35:04.966462"
     }
   },
   "pentagon": {
@@ -269,7 +265,7 @@
     "history": [
       100,
       100,
-      100,
+      10,
       10,
       10,
       10,
@@ -309,7 +305,7 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-02-02T08:05:02.725503",
+      "timestamp": "2026-02-02T08:35:07.504085",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -348,11 +344,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770019502726,
+        "timestamp": 1770021307505,
         "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-02T08:05:02.726444"
+  "last_updated": "2026-02-02T08:35:07.505060"
 }
