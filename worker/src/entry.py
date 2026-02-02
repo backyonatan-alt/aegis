@@ -108,6 +108,15 @@ async def on_fetch(request, env):
         pulse_stats = await log_visit(env, country_code)
         data["pulse"] = pulse_stats
 
+        # Add mock connectivity data if missing (until scheduled task runs)
+        if "connectivity" not in data:
+            data["connectivity"] = {
+                "risk": 0,
+                "detail": "STABLE (+0.0%)",
+                "history": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "raw_data": {"status": "STABLE", "trend": 0.0}
+            }
+
         response_body = json.dumps(data)
     except Exception as e:
         log.warning("Failed to add pulse data, returning raw: %s", e)
