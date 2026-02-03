@@ -1,14 +1,13 @@
 {
   "news": {
-    "risk": 14,
-    "detail": "22 articles, 9 critical",
+    "risk": 18,
+    "detail": "22 articles, 10 critical",
     "history": [
       13,
       13,
       13,
       13,
       13,
-      13,
       14,
       14,
       14,
@@ -22,10 +21,15 @@
       14,
       14,
       14,
-      14
+      14,
+      18
     ],
     "raw_data": {
       "articles": [
+        {
+          "title": "Iran's president says it will negotiate with the US",
+          "is_alert": true
+        },
         {
           "title": "Iran's supreme leader warns of regional war if US attacks",
           "is_alert": true
@@ -41,10 +45,6 @@
         {
           "title": "Iran wants to make deal rather than face military action, Trump says",
           "is_alert": true
-        },
-        {
-          "title": "Worried families in India urge return of crew on ship seized by Iran",
-          "is_alert": false
         },
         {
           "title": "Why Iran's response to a US attack could be different this time",
@@ -116,8 +116,8 @@
         }
       ],
       "total_count": 22,
-      "alert_count": 9,
-      "timestamp": "2026-02-03T09:22:07.045439"
+      "alert_count": 10,
+      "timestamp": "2026-02-03T09:52:11.615132"
     }
   },
   "connectivity": {
@@ -125,15 +125,15 @@
     "detail": "STABLE (+0.0%)",
     "history": [
       0,
+      0,
       0
     ],
     "raw_data": {}
   },
   "flight": {
-    "risk": 18,
-    "detail": "96 aircraft over Iran",
+    "risk": 22,
+    "detail": "91 aircraft over Iran",
     "history": [
-      19,
       33,
       36,
       17,
@@ -152,24 +152,25 @@
       6,
       18,
       7,
-      18
+      18,
+      22
     ],
     "raw_data": {
-      "aircraft_count": 96,
-      "airline_count": 51,
+      "aircraft_count": 91,
+      "airline_count": 41,
       "airlines": [
-        "IGO",
-        "AXB",
-        "FYC",
+        "AIC",
         "SVA",
+        "SPC",
+        "TKN",
         "IAW",
-        "AFL",
+        "RAV",
+        "ELY",
         "UAE",
         "T7V",
-        "UBG",
-        "ZSM"
+        "ABY"
       ],
-      "timestamp": "2026-02-03T09:22:07.226894"
+      "timestamp": "2026-02-03T09:52:12.125762"
     }
   },
   "tanker": {
@@ -200,7 +201,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T09:22:09.495491"
+      "timestamp": "2026-02-03T09:52:14.389934"
     }
   },
   "weather": {
@@ -212,7 +213,7 @@
       100,
       100,
       100,
-      100,
+      0,
       0,
       0,
       0,
@@ -230,18 +231,17 @@
     ],
     "raw_data": {
       "temp": 15,
-      "visibility": 8000,
+      "visibility": 7000,
       "clouds": 100,
       "description": "overcast clouds",
       "condition": "Poor",
-      "timestamp": "2026-02-03T09:22:06.830184"
+      "timestamp": "2026-02-03T09:52:11.573486"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      2,
       1,
       1,
       2,
@@ -253,6 +253,7 @@
       1,
       2,
       1,
+      2,
       2,
       2,
       2,
@@ -264,8 +265,8 @@
     ],
     "raw_data": {
       "odds": 2,
-      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-03T09:22:07.166025"
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-02-03T09:52:11.731516"
     }
   },
   "pentagon": {
@@ -314,13 +315,13 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-02-03T09:22:09.498991",
+      "timestamp": "2026-02-03T09:52:14.392870",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 7,
+    "risk": 8,
     "history": [
       {
         "timestamp": 1769860800000,
@@ -353,11 +354,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770110529500,
-        "risk": 7
+        "timestamp": 1770112334394,
+        "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-03T09:22:09.500225"
+  "last_updated": "2026-02-03T09:52:14.394465"
 }
