@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 13,
-    "detail": "23 articles, 9 critical",
+    "risk": 14,
+    "detail": "22 articles, 9 critical",
     "history": [
       15,
       15,
@@ -12,7 +12,6 @@
       15,
       15,
       15,
-      15,
       13,
       13,
       13,
@@ -22,7 +21,8 @@
       13,
       13,
       13,
-      13
+      13,
+      14
     ],
     "raw_data": {
       "articles": [
@@ -113,22 +113,17 @@
         {
           "title": "Mortuary videos show how deadly Iran crackdown has become",
           "is_alert": false
-        },
-        {
-          "title": "Iran\u2019s economy falters as internet shutdown hits people, businesses hard",
-          "is_alert": false
         }
       ],
-      "total_count": 23,
+      "total_count": 22,
       "alert_count": 9,
-      "timestamp": "2026-02-03T02:37:53.036778"
+      "timestamp": "2026-02-03T03:07:57.439630"
     }
   },
   "flight": {
-    "risk": 15,
-    "detail": "100 aircraft over Iran",
+    "risk": 18,
+    "detail": "96 aircraft over Iran",
     "history": [
-      19,
       20,
       8,
       7,
@@ -147,24 +142,25 @@
       36,
       17,
       6,
-      15
+      15,
+      18
     ],
     "raw_data": {
-      "aircraft_count": 100,
+      "aircraft_count": 96,
       "airline_count": 32,
       "airlines": [
-        "FYC",
+        "T7M",
         "BYD",
         "PGT",
-        "IAW",
-        "UAE",
-        "IGO",
-        "THY",
-        "TKJ",
         "AIC",
-        "SIF"
+        "UAE",
+        "ETD",
+        "IGO",
+        "AUA",
+        "THY",
+        "DAH"
       ],
-      "timestamp": "2026-02-03T02:37:53.267940"
+      "timestamp": "2026-02-03T03:07:57.662638"
     }
   },
   "tanker": {
@@ -195,14 +191,13 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T02:37:55.524974"
+      "timestamp": "2026-02-03T03:07:59.917868"
     }
   },
   "weather": {
-    "risk": 100,
-    "detail": "clear sky",
+    "risk": 0,
+    "detail": "broken clouds",
     "history": [
-      0,
       100,
       100,
       100,
@@ -221,22 +216,22 @@
       100,
       100,
       100,
-      100
+      100,
+      0
     ],
     "raw_data": {
-      "temp": 10,
+      "temp": 9,
       "visibility": 10000,
-      "clouds": 0,
-      "description": "clear sky",
-      "condition": "Favorable",
-      "timestamp": "2026-02-03T02:37:52.863284"
+      "clouds": 75,
+      "description": "broken clouds",
+      "condition": "Poor",
+      "timestamp": "2026-02-03T03:07:57.283772"
     }
   },
   "polymarket": {
-    "risk": 1,
-    "detail": "1% odds",
+    "risk": 2,
+    "detail": "2% odds",
     "history": [
-      2,
       2,
       2,
       3,
@@ -255,12 +250,13 @@
       1,
       2,
       1,
-      1
+      1,
+      2
     ],
     "raw_data": {
-      "odds": 1,
-      "market": "Will the US next strike Iran on February 4, 2026 (ET)?",
-      "timestamp": "2026-02-03T02:37:52.967679"
+      "odds": 2,
+      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
+      "timestamp": "2026-02-03T03:07:57.452921"
     }
   },
   "pentagon": {
@@ -274,7 +270,7 @@
       30,
       30,
       30,
-      30,
+      10,
       10,
       10,
       10,
@@ -309,13 +305,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-03T02:37:55.526584",
+      "timestamp": "2026-02-03T03:07:59.919774",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 17,
+    "risk": 8,
     "history": [
       {
         "timestamp": 1769860800000,
@@ -348,11 +344,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770086275527,
-        "risk": 17
+        "timestamp": 1770088079920,
+        "risk": 8
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 0
   },
-  "last_updated": "2026-02-03T02:37:55.527751"
+  "last_updated": "2026-02-03T03:07:59.920942"
 }
