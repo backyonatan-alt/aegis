@@ -3,7 +3,6 @@
     "risk": 18,
     "detail": "22 articles, 10 critical",
     "history": [
-      13,
       14,
       14,
       14,
@@ -18,6 +17,7 @@
       14,
       14,
       14,
+      18,
       18,
       18,
       18,
@@ -27,7 +27,7 @@
     "raw_data": {
       "articles": [
         {
-          "title": "Iran's president says it will negotiate with the US",
+          "title": "Iran's president says it is ready to negotiate with the US",
           "is_alert": true
         },
         {
@@ -117,7 +117,7 @@
       ],
       "total_count": 22,
       "alert_count": 10,
-      "timestamp": "2026-02-03T11:52:30.091300"
+      "timestamp": "2026-02-03T12:22:34.619999"
     }
   },
   "connectivity": {
@@ -130,15 +130,15 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "raw_data": {}
   },
   "flight": {
-    "risk": 13,
-    "detail": "103 aircraft over Iran",
+    "risk": 10,
+    "detail": "106 aircraft over Iran",
     "history": [
-      15,
       18,
       19,
       19,
@@ -157,24 +157,25 @@
       17,
       7,
       15,
-      13
+      13,
+      10
     ],
     "raw_data": {
-      "aircraft_count": 103,
-      "airline_count": 45,
+      "aircraft_count": 106,
+      "airline_count": 46,
       "airlines": [
-        "IGO",
-        "AXB",
         "FYC",
-        "T7J",
-        "IAW",
+        "SVA",
+        "IGO",
         "N18",
+        "AIC",
         "UAE",
-        "JAG",
         "AFL",
-        "PBD"
+        "PBD",
+        "ABY",
+        "SHI"
       ],
-      "timestamp": "2026-02-03T11:52:30.373694"
+      "timestamp": "2026-02-03T12:22:35.004382"
     }
   },
   "tanker": {
@@ -205,14 +206,14 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T11:52:32.629393"
+      "timestamp": "2026-02-03T12:22:37.291943"
     }
   },
   "weather": {
     "risk": 0,
     "detail": "overcast clouds",
     "history": [
-      100,
+      0,
       0,
       0,
       0,
@@ -234,25 +235,25 @@
       0
     ],
     "raw_data": {
-      "temp": 14,
-      "visibility": 7000,
+      "temp": 15,
+      "visibility": 8000,
       "clouds": 100,
       "description": "overcast clouds",
       "condition": "Poor",
-      "timestamp": "2026-02-03T11:52:29.979255"
+      "timestamp": "2026-02-03T12:22:34.537295"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      1,
       2,
       2,
       1,
       1,
       2,
       1,
+      2,
       2,
       2,
       2,
@@ -270,7 +271,7 @@
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-03T11:52:30.118716"
+      "timestamp": "2026-02-03T12:22:34.929815"
     }
   },
   "pentagon": {
@@ -294,7 +295,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30,
       30
     ],
@@ -319,19 +320,14 @@
           "score": 50
         }
       ],
-      "timestamp": "2026-02-03T11:52:32.630984",
+      "timestamp": "2026-02-03T12:22:37.294944",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 9,
+    "risk": 8,
     "history": [
-      {
-        "timestamp": 1769860800000,
-        "risk": 10,
-        "pinned": true
-      },
       {
         "timestamp": 1769904000000,
         "risk": 7,
@@ -358,11 +354,16 @@
         "pinned": true
       },
       {
-        "timestamp": 1770119552631,
-        "risk": 9
+        "timestamp": 1770120000000,
+        "risk": 9,
+        "pinned": true
+      },
+      {
+        "timestamp": 1770121357296,
+        "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-03T11:52:32.631949"
+  "last_updated": "2026-02-03T12:22:37.296419"
 }
