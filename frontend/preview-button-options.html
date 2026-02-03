@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Options Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a; --card: #141414; --card-elevated: #1c1c1c;
+            --border: #252525; --text: #ffffff; --text-secondary: #999; --text-muted: #666;
+            --accent: #3b82f6; --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444;
+            --purple: #a855f7; --teal: #14b8a6; --cyan: #22d3ee;
+        }
+        html, body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 400px; margin: 0 auto; }
+        h1 { font-size: 18px; margin-bottom: 24px; color: var(--text-secondary); text-align: center; }
+        .option { background: var(--card); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+        .option-label { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .option-row { display: flex; gap: 8px; align-items: center; }
+        .demo-input {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: inherit;
+        }
+
+        /* Option 1: Subtle White/Gray */
+        .btn-1 {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-1:hover { color: var(--text); border-color: var(--text-muted); }
+
+        /* Option 2: Teal */
+        .btn-2 {
+            background: rgba(20, 184, 166, 0.1);
+            color: var(--teal);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-2:hover { background: rgba(20, 184, 166, 0.2); border-color: rgba(20, 184, 166, 0.5); }
+
+        /* Option 3: Purple */
+        .btn-3 {
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--purple);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-3:hover { background: rgba(168, 85, 247, 0.2); border-color: rgba(168, 85, 247, 0.5); }
+
+        /* Option 4: Orange/Amber */
+        .btn-4 {
+            background: rgba(234, 179, 8, 0.1);
+            color: var(--yellow);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-4:hover { background: rgba(234, 179, 8, 0.2); border-color: rgba(234, 179, 8, 0.5); }
+
+        /* Option 5: Cyan */
+        .btn-5 {
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--cyan);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-5:hover { background: rgba(34, 211, 238, 0.2); border-color: rgba(34, 211, 238, 0.5); }
+
+        /* Option 6: Solid subtle gray */
+        .btn-6 {
+            background: var(--card-elevated);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-6:hover { background: var(--border); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pick a Button Style</h1>
+
+        <div class="option">
+            <div class="option-label">Option 1: Subtle outline (matches Share/About)</div>
+            <div class="option-row">
+                <input type="text" class="demo-input" value="Social media sentiment..." readonly>
+                <button class="btn-1">Submit</button>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="option-label">Option 2: Teal</div>
+            <div class="option-row">
+                <input type="text" class="demo-input" value="Social media sentiment..." readonly>
+                <button class="btn-2">Submit</button>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="option-label">Option 3: Purple (matches Connectivity signal)</div>
+            <div class="option-row">
+                <input type="text" class="demo-input" value="Social media sentiment..." readonly>
+                <button class="btn-3">Submit</button>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="option-label">Option 4: Amber/Yellow</div>
+            <div class="option-row">
+                <input type="text" class="demo-input" value="Social media sentiment..." readonly>
+                <button class="btn-4">Submit</button>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="option-label">Option 5: Cyan</div>
+            <div class="option-row">
+                <input type="text" class="demo-input" value="Social media sentiment..." readonly>
+                <button class="btn-5">Submit</button>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="option-label">Option 6: Solid gray</div>
+            <div class="option-row">
+                <input type="text" class="demo-input" value="Social media sentiment..." readonly>
+                <button class="btn-6">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
