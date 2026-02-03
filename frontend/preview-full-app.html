@@ -89,7 +89,7 @@
         .radar-idea-icon {
             width: 40px;
             height: 40px;
-            background: rgba(168, 85, 247, 0.15);
+            background: rgba(34, 197, 94, 0.15);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -113,11 +113,11 @@
             transition: border-color 0.2s;
         }
         .radar-idea-input::placeholder { color: var(--text-muted); }
-        .radar-idea-input:focus { border-color: #a855f7; }
+        .radar-idea-input:focus { border-color: var(--green); }
         .radar-idea-submit {
-            background: rgba(168, 85, 247, 0.1);
-            color: #a855f7;
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--green);
+            border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 8px;
             padding: 10px 16px;
             font-size: 12px;
@@ -127,8 +127,8 @@
             white-space: nowrap;
         }
         .radar-idea-submit:hover {
-            background: rgba(168, 85, 247, 0.2);
-            border-color: rgba(168, 85, 247, 0.5);
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.5);
         }
         .radar-idea-submit:disabled { opacity: 0.5; cursor: not-allowed; }
         .radar-idea-thanks {
@@ -291,7 +291,7 @@
         <div class="radar-idea-card" id="radarIdeaCard">
             <div class="radar-idea-icon">🎯</div>
             <div class="radar-idea-content">
-                <div class="radar-idea-title">What would you track?</div>
+                <div class="radar-idea-title">Design your radar: what would you track?</div>
                 <div class="radar-idea-form" id="radarIdeaForm">
                     <input type="text" class="radar-idea-input" id="radarIdeaInput" placeholder="e.g., Social media sentiment..." maxlength="200">
                     <button class="radar-idea-submit" id="radarIdeaSubmit" onclick="submitRadarIdea()">Submit</button>
