@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 15,
-    "detail": "24 articles, 10 critical",
+    "risk": 16,
+    "detail": "25 articles, 11 critical",
     "history": [
-      14,
       14,
       14,
       14,
@@ -22,7 +21,8 @@
       16,
       16,
       15,
-      15
+      15,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -115,6 +115,10 @@
           "is_alert": false
         },
         {
+          "title": "Will Iran and Israel go to war?",
+          "is_alert": true
+        },
+        {
           "title": "\u2018Extensive\u2019 fire breaks out at Tehran shopping centre",
           "is_alert": false
         },
@@ -123,9 +127,9 @@
           "is_alert": false
         }
       ],
-      "total_count": 24,
-      "alert_count": 10,
-      "timestamp": "2026-02-03T16:53:16.726870"
+      "total_count": 25,
+      "alert_count": 11,
+      "timestamp": "2026-02-03T17:23:21.441230"
     }
   },
   "connectivity": {
@@ -148,15 +152,15 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "raw_data": {}
   },
   "flight": {
-    "risk": 27,
-    "detail": "85 aircraft over Iran",
+    "risk": 15,
+    "detail": "100 aircraft over Iran",
     "history": [
-      17,
       6,
       18,
       7,
@@ -175,24 +179,25 @@
       18,
       13,
       19,
-      27
+      27,
+      15
     ],
     "raw_data": {
-      "aircraft_count": 85,
-      "airline_count": 40,
+      "aircraft_count": 100,
+      "airline_count": 41,
       "airlines": [
-        "PAL",
-        "IGO",
-        "KNE",
-        "FYC",
-        "FR1",
-        "IAW",
+        "SWR",
         "AIC",
-        "UAE",
-        "MEA",
-        "AXB"
+        "IGO",
+        "FR1",
+        "DLH",
+        "IAW",
+        "BBC",
+        "LIW",
+        "T7D",
+        "ELY"
       ],
-      "timestamp": "2026-02-03T16:53:17.090407"
+      "timestamp": "2026-02-03T17:23:21.915569"
     }
   },
   "tanker": {
@@ -223,7 +228,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T16:53:19.378153"
+      "timestamp": "2026-02-03T17:23:24.177931"
     }
   },
   "weather": {
@@ -253,11 +258,11 @@
     ],
     "raw_data": {
       "temp": 9,
-      "visibility": 7000,
+      "visibility": 8000,
       "clouds": 100,
       "description": "moderate rain",
       "condition": "Poor",
-      "timestamp": "2026-02-03T16:53:16.697920"
+      "timestamp": "2026-02-03T17:23:21.382164"
     }
   },
   "polymarket": {
@@ -288,12 +293,12 @@
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-03T16:53:16.844373"
+      "timestamp": "2026-02-03T17:23:21.529868"
     }
   },
   "pentagon": {
-    "risk": 10,
-    "detail": "Low Activity",
+    "risk": 30,
+    "detail": "Normal",
     "history": [
       10,
       10,
@@ -302,7 +307,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -314,36 +318,37 @@
       10,
       10,
       10,
-      10
+      10,
+      30
     ],
     "raw_data": {
-      "score": 30,
-      "risk_contribution": 1,
-      "status": "Low Activity",
+      "score": 55,
+      "risk_contribution": 3,
+      "status": "Normal",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 30
+          "score": 55
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 30
+          "score": 55
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 30
+          "score": 55
         }
       ],
-      "timestamp": "2026-02-03T16:53:19.380492",
+      "timestamp": "2026-02-03T17:23:24.179439",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769904000000,
@@ -376,11 +381,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770137599381,
-        "risk": 8
+        "timestamp": 1770139404180,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-03T16:53:19.381623"
+  "last_updated": "2026-02-03T17:23:24.180468"
 }
