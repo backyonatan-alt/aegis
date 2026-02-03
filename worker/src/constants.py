@@ -103,3 +103,7 @@ MONTHS = [
     "january", "february", "march", "april", "may", "june",
     "july", "august", "september", "october", "november", "december",
 ]
+
+# Cloudflare Radar API configuration
+CLOUDFLARE_RADAR_BASE_URL = "https://api.cloudflare.com/client/v4/radar"
+CLOUDFLARE_RADAR_LOCATION = "IR"  # Iran

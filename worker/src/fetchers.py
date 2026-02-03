@@ -16,6 +16,8 @@ from js import Headers, Request, fetch
 
 from constants import (
     ALERT_KEYWORDS,
+    CLOUDFLARE_RADAR_BASE_URL,
+    CLOUDFLARE_RADAR_LOCATION,
     IRAN_KEYWORDS,
     MONTHS,
     NEGATIVE_KEYWORDS,
@@ -541,3 +543,136 @@ def fetch_pentagon_data() -> dict:
         "is_late_night": is_late_night,
         "is_weekend": is_weekend,
     }
+
+
+async def fetch_cloudflare_connectivity(api_token: str) -> dict | None:
+    """Fetch Iran internet connectivity data from Cloudflare Radar API.
+
+    Uses the HTTP timeseries endpoint to detect internet disruptions.
+    A 4-hour moving average of percentage change values determines risk:
+    - Stable (> -15%): 0% risk contribution
+    - Anomalous (-15% to -25%): 10% risk contribution
+    - Critical (-25% to -50%): 20% risk contribution
+    - Blackout (<= -90%): 25% risk contribution
+    """
+    try:
+        log.info("=" * 50)
+        log.info("DIGITAL CONNECTIVITY")
+        log.info("=" * 50)
+
+        if not api_token:
+            log.warning("Cloudflare Radar API token not configured")
+            return None
+
+        # Request 1 day of data (8h is not a valid dateRange)
+        url = (
+            f"{CLOUDFLARE_RADAR_BASE_URL}/http/timeseries"
+            f"?location={CLOUDFLARE_RADAR_LOCATION}"
+            f"&dateRange=1d"
+        )
+
+        headers = Headers.new(
+            {
+                "Authorization": f"Bearer {api_token}",
+                "Content-Type": "application/json",
+            }.items()
+        )
+        req = Request.new(url, headers=headers)
+        response = await fetch(req)
+
+        if response.status != 200:
+            log.warning("Cloudflare Radar API error: %d", response.status)
+            # Return stale status indicator
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "trend": 0,
+                "values": [],
+                "timestamp": datetime.now().isoformat(),
+                "error": f"API returned {response.status}",
+            }
+
+        data = json.loads(await response.text())
+
+        # Extract timeseries values from the response
+        result = data.get("result", {})
+        series = result.get("serie_0", {}) if result else {}
+        values = series.get("values", [])
+
+        if not values:
+            log.warning("No data points in Cloudflare response")
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "trend": 0,
+                "values": [],
+                "timestamp": datetime.now().isoformat(),
+                "error": "No data points returned",
+            }
+
+        # Parse values (0-1 normalized scale where 1 = max traffic)
+        parsed_values = []
+        for v in values:
+            try:
+                parsed_values.append(float(v))
+            except (ValueError, TypeError):
+                continue
+
+        log.info("Received %d data points", len(parsed_values))
+
+        if len(parsed_values) < 8:
+            log.warning("Not enough data points")
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "trend": 0,
+                "values": parsed_values,
+                "timestamp": datetime.now().isoformat(),
+                "error": "Not enough data points",
+            }
+
+        # Calculate baseline (average of first 75% of data) vs recent (last 25%)
+        split_point = int(len(parsed_values) * 0.75)
+        baseline_values = parsed_values[:split_point]
+        recent_values = parsed_values[split_point:]
+
+        baseline_avg = sum(baseline_values) / len(baseline_values)
+        recent_avg = sum(recent_values) / len(recent_values)
+
+        # Calculate percentage change from baseline
+        if baseline_avg > 0:
+            trend = (recent_avg - baseline_avg) / baseline_avg
+        else:
+            trend = 0
+
+        log.info("Baseline avg: %.3f, Recent avg: %.3f, Change: %.1f%%",
+                 baseline_avg, recent_avg, trend * 100)
+
+        # Determine risk based on traffic drop thresholds
+        if trend <= -0.90:
+            risk = 25
+            status = "BLACKOUT"
+        elif trend <= -0.50:
+            risk = 20
+            status = "CRITICAL"
+        elif trend <= -0.15:
+            risk = 10
+            status = "ANOMALOUS"
+        else:
+            risk = 0
+            status = "STABLE"
+
+        log.info("Status: %s, Risk contribution: %d%%", status, risk)
+
+        return {
+            "status": status,
+            "risk": risk,
+            "trend": round(trend * 100, 1),  # Convert to percentage for display
+            "values": parsed_values,
+            "timestamp": datetime.now().isoformat(),
+        }
+
+    except Exception as e:
+        log.error("Cloudflare connectivity error: %s", e)
+        log.debug(traceback.format_exc())
+        return None

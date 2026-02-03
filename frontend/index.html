@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StrikeRadar - USA Strike on Iran Monitor</title>
+    <title>StrikeRadar - USA Strike on Iran Monitor</title><!-- deploy-v2 -->
     <meta name="description" content="Real-time geopolitical risk monitor tracking USA-Iran tension indicators. Live data from news, aviation, military tankers, prediction markets, and weather conditions. Updated every 30 minutes.">
 
     <!-- SEO Meta Tags -->
@@ -168,6 +168,18 @@
                 <div class="signal-right">
                     <div class="signal-sparkline" id="newsSparkline"></div>
                     <div class="signal-value" id="newsValue">--</div>
+                </div>
+            </div>
+
+            <div class="signal-item" id="connectivitySignal">
+                <div class="signal-icon" style="background: rgba(6, 182, 212, 0.15);">🌐</div>
+                <div class="signal-info">
+                    <div class="signal-name">Digital Connectivity <span class="signal-status live" id="connectivityStatus">LIVE</span><button class="info-btn" onclick="showInfo('connectivity')">i</button></div>
+                    <div class="signal-detail" id="connectivityDetail">Checking Iran internet...</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline" id="connectivitySparkline"></div>
+                    <div class="signal-value" id="connectivityValue">--%</div>
                 </div>
             </div>
 
