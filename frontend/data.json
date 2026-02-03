@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 21,
-    "detail": "28 articles, 14 critical",
+    "risk": 26,
+    "detail": "27 articles, 15 critical",
     "history": [
       18,
       18,
@@ -9,7 +9,6 @@
       18,
       18,
       18,
-      18,
       16,
       16,
       16,
@@ -22,12 +21,13 @@
       18,
       21,
       21,
-      21
+      21,
+      26
     ],
     "raw_data": {
       "articles": [
         {
-          "title": "Iran's president says it is ready to negotiate with the US",
+          "title": "US says it shot down Iranian drone flying towards aircraft carrier",
           "is_alert": true
         },
         {
@@ -37,6 +37,10 @@
         {
           "title": "Iranian protester Erfan Soltani released on bail, reports say",
           "is_alert": false
+        },
+        {
+          "title": "Iran's president says it is ready to negotiate with the US",
+          "is_alert": true
         },
         {
           "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
@@ -95,10 +99,6 @@
           "is_alert": false
         },
         {
-          "title": "Which countries do business with Iran  and what could US tariffs mean?",
-          "is_alert": false
-        },
-        {
           "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
           "is_alert": false
         },
@@ -133,15 +133,11 @@
         {
           "title": "\u2018Extensive\u2019 fire breaks out at Tehran shopping centre",
           "is_alert": false
-        },
-        {
-          "title": "Huge fire breaks out at Tehran market",
-          "is_alert": false
         }
       ],
-      "total_count": 28,
-      "alert_count": 14,
-      "timestamp": "2026-02-03T19:53:44.561407"
+      "total_count": 27,
+      "alert_count": 15,
+      "timestamp": "2026-02-03T20:23:49.195684"
     }
   },
   "connectivity": {
@@ -172,10 +168,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 6,
-    "detail": "111 aircraft over Iran",
+    "risk": 3,
+    "detail": "115 aircraft over Iran",
     "history": [
-      17,
       7,
       15,
       13,
@@ -194,24 +189,25 @@
       6,
       17,
       9,
-      6
+      6,
+      3
     ],
     "raw_data": {
-      "aircraft_count": 111,
-      "airline_count": 35,
+      "aircraft_count": 115,
+      "airline_count": 34,
       "airlines": [
         "IGO",
-        "AIC",
-        "N18",
-        "BBC",
-        "UAE",
-        "MEA",
         "AXB",
+        "AIC",
+        "JCO",
+        "IAW",
+        "UAE",
         "WZZ",
+        "ETD",
         "THY",
-        "ETD"
+        "ABY"
       ],
-      "timestamp": "2026-02-03T19:53:44.810558"
+      "timestamp": "2026-02-03T20:23:49.367729"
     }
   },
   "tanker": {
@@ -242,7 +238,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T19:53:47.078909"
+      "timestamp": "2026-02-03T20:23:51.627964"
     }
   },
   "weather": {
@@ -276,14 +272,13 @@
       "clouds": 100,
       "description": "moderate rain",
       "condition": "Poor",
-      "timestamp": "2026-02-03T19:53:44.435992"
+      "timestamp": "2026-02-03T20:23:48.942166"
     }
   },
   "polymarket": {
-    "risk": 3,
-    "detail": "3% odds",
+    "risk": 4,
+    "detail": "4% odds",
     "history": [
-      2,
       2,
       2,
       2,
@@ -302,12 +297,13 @@
       4,
       4,
       5,
-      3
+      3,
+      4
     ],
     "raw_data": {
-      "odds": 3,
+      "odds": 4,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-03T19:53:44.585592"
+      "timestamp": "2026-02-03T20:23:49.156558"
     }
   },
   "pentagon": {
@@ -315,7 +311,6 @@
     "detail": "Normal",
     "history": [
       10,
-      10,
       30,
       30,
       30,
@@ -328,6 +323,7 @@
       10,
       10,
       10,
+      30,
       30,
       30,
       30,
@@ -356,7 +352,7 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-02-03T19:53:47.080956",
+      "timestamp": "2026-02-03T20:23:51.629566",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -395,11 +391,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770148427082,
+        "timestamp": 1770150231630,
         "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-03T19:53:47.082138"
+  "last_updated": "2026-02-03T20:23:51.630658"
 }
