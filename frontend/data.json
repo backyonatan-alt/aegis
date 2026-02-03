@@ -1,10 +1,9 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "26 articles, 12 critical",
+    "risk": 21,
+    "detail": "28 articles, 14 critical",
     "history": [
       14,
-      14,
       18,
       18,
       18,
@@ -22,7 +21,8 @@
       15,
       16,
       16,
-      18
+      18,
+      21
     ],
     "raw_data": {
       "articles": [
@@ -115,6 +115,14 @@
           "is_alert": false
         },
         {
+          "title": "Will Hezbollah continue to avoid responding to Israel\u2019s attacks on Lebanon?",
+          "is_alert": true
+        },
+        {
+          "title": "What would be the impact of a US attack on Iran?",
+          "is_alert": true
+        },
+        {
           "title": "US military says it shot down an Iranian drone in Arabian Sea",
           "is_alert": true
         },
@@ -131,9 +139,9 @@
           "is_alert": false
         }
       ],
-      "total_count": 26,
-      "alert_count": 12,
-      "timestamp": "2026-02-03T18:23:30.741711"
+      "total_count": 28,
+      "alert_count": 14,
+      "timestamp": "2026-02-03T18:53:35.439923"
     }
   },
   "connectivity": {
@@ -164,10 +172,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 6,
-    "detail": "111 aircraft over Iran",
+    "risk": 17,
+    "detail": "97 aircraft over Iran",
     "history": [
-      7,
       18,
       22,
       17,
@@ -186,24 +193,25 @@
       27,
       15,
       7,
-      6
+      6,
+      17
     ],
     "raw_data": {
-      "aircraft_count": 111,
-      "airline_count": 39,
+      "aircraft_count": 97,
+      "airline_count": 34,
       "airlines": [
-        "CMB",
+        "KIS",
         "IGO",
-        "AXB",
-        "DLH",
-        "ELY",
-        "BBC",
+        "PAL",
+        "N18",
         "UAE",
         "MEA",
-        "VTL",
-        "WZZ"
+        "PIA",
+        "UBG",
+        "ABY",
+        "OMA"
       ],
-      "timestamp": "2026-02-03T18:23:31.011937"
+      "timestamp": "2026-02-03T18:53:35.741545"
     }
   },
   "tanker": {
@@ -234,7 +242,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T18:23:33.275480"
+      "timestamp": "2026-02-03T18:53:38.004260"
     }
   },
   "weather": {
@@ -264,11 +272,11 @@
     ],
     "raw_data": {
       "temp": 9,
-      "visibility": 5000,
+      "visibility": 7000,
       "clouds": 100,
       "description": "moderate rain",
       "condition": "Poor",
-      "timestamp": "2026-02-03T18:23:30.620531"
+      "timestamp": "2026-02-03T18:53:35.294096"
     }
   },
   "polymarket": {
@@ -292,14 +300,14 @@
       2,
       2,
       2,
-      2,
       3,
+      4,
       4
     ],
     "raw_data": {
       "odds": 4,
-      "market": "Will the US next strike Iran on February 4, 2026 (ET)?",
-      "timestamp": "2026-02-03T18:23:30.749009"
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-02-03T18:53:35.466482"
     }
   },
   "pentagon": {
@@ -310,7 +318,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -323,6 +330,7 @@
       10,
       10,
       10,
+      30,
       30,
       30,
       30
@@ -348,13 +356,13 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-02-03T18:23:33.277137",
+      "timestamp": "2026-02-03T18:53:38.006126",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 10,
     "history": [
       {
         "timestamp": 1769904000000,
@@ -387,11 +395,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770143013278,
-        "risk": 8
+        "timestamp": 1770144818007,
+        "risk": 10
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-03T18:23:33.278060"
+  "last_updated": "2026-02-03T18:53:38.007281"
 }
