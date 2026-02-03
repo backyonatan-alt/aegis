@@ -1,7 +1,7 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "22 articles, 10 critical",
+    "risk": 16,
+    "detail": "23 articles, 10 critical",
     "history": [
       14,
       14,
@@ -14,7 +14,6 @@
       14,
       14,
       14,
-      14,
       18,
       18,
       18,
@@ -22,7 +21,8 @@
       18,
       18,
       18,
-      18
+      18,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -113,11 +113,15 @@
         {
           "title": "Mortuary videos show how deadly Iran crackdown has become",
           "is_alert": false
+        },
+        {
+          "title": "Huge fire breaks out at Tehran market",
+          "is_alert": false
         }
       ],
-      "total_count": 22,
+      "total_count": 23,
       "alert_count": 10,
-      "timestamp": "2026-02-03T13:22:43.663977"
+      "timestamp": "2026-02-03T13:52:48.268868"
     }
   },
   "connectivity": {
@@ -133,15 +137,15 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "raw_data": {}
   },
   "flight": {
-    "risk": 17,
-    "detail": "97 aircraft over Iran",
+    "risk": 21,
+    "detail": "93 aircraft over Iran",
     "history": [
-      19,
       21,
       27,
       17,
@@ -160,24 +164,25 @@
       13,
       10,
       21,
-      17
+      17,
+      21
     ],
     "raw_data": {
-      "aircraft_count": 97,
-      "airline_count": 41,
+      "aircraft_count": 93,
+      "airline_count": 35,
       "airlines": [
-        "KNE",
-        "CKS",
+        "AIC",
+        "SWR",
         "FYC",
-        "N18",
-        "HMZ",
+        "BBC",
         "VPC",
-        "UAE",
-        "GJW",
-        "UTA",
-        "AAL"
+        "ELY",
+        "AFL",
+        "A6R",
+        "ETD",
+        "OMS"
       ],
-      "timestamp": "2026-02-03T13:22:44.047812"
+      "timestamp": "2026-02-03T13:52:48.543708"
     }
   },
   "tanker": {
@@ -208,7 +213,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T13:22:46.321319"
+      "timestamp": "2026-02-03T13:52:50.802948"
     }
   },
   "weather": {
@@ -242,7 +247,7 @@
       "clouds": 75,
       "description": "haze",
       "condition": "Poor",
-      "timestamp": "2026-02-03T13:22:43.668280"
+      "timestamp": "2026-02-03T13:52:48.093635"
     }
   },
   "polymarket": {
@@ -250,9 +255,9 @@
     "detail": "2% odds",
     "history": [
       1,
-      1,
       2,
       1,
+      2,
       2,
       2,
       2,
@@ -273,7 +278,7 @@
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-03T13:22:43.755166"
+      "timestamp": "2026-02-03T13:52:48.282079"
     }
   },
   "pentagon": {
@@ -294,7 +299,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30,
       30,
       30,
@@ -322,13 +327,13 @@
           "score": 50
         }
       ],
-      "timestamp": "2026-02-03T13:22:46.323192",
+      "timestamp": "2026-02-03T13:52:50.804419",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 9,
+    "risk": 10,
     "history": [
       {
         "timestamp": 1769904000000,
@@ -361,11 +366,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770124966324,
-        "risk": 9
+        "timestamp": 1770126770805,
+        "risk": 10
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-03T13:22:46.324209"
+  "last_updated": "2026-02-03T13:52:50.805404"
 }
