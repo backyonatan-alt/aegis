@@ -278,14 +278,9 @@ html, body {
 }
 .radar-idea-title {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text);
-    margin-bottom: 4px;
-}
-.radar-idea-subtitle {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 .radar-idea-form {
     display: flex;
@@ -310,19 +305,20 @@ html, body {
     border-color: var(--accent);
 }
 .radar-idea-submit {
-    background: var(--accent);
-    color: #fff;
-    border: none;
+    background: var(--bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 10px 16px;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: color 0.2s, border-color 0.2s;
     white-space: nowrap;
 }
 .radar-idea-submit:hover {
-    opacity: 0.85;
+    color: var(--text);
+    border-color: var(--text-muted);
 }
 .radar-idea-submit:disabled {
     opacity: 0.5;

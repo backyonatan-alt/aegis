@@ -61,8 +61,7 @@
             flex-shrink: 0;
         }
         .radar-idea-content { flex: 1; min-width: 0; }
-        .radar-idea-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-        .radar-idea-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+        .radar-idea-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
         .radar-idea-form { display: flex; gap: 8px; }
         .radar-idea-input {
             flex: 1;
@@ -79,18 +78,18 @@
         .radar-idea-input::placeholder { color: var(--text-muted); }
         .radar-idea-input:focus { border-color: var(--accent); }
         .radar-idea-submit {
-            background: var(--accent);
-            color: #fff;
-            border: none;
+            background: var(--bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 10px 16px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 500;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: color 0.2s, border-color 0.2s;
             white-space: nowrap;
         }
-        .radar-idea-submit:hover { opacity: 0.85; }
+        .radar-idea-submit:hover { color: var(--text); border-color: var(--text-muted); }
         .radar-idea-submit:disabled { opacity: 0.5; cursor: not-allowed; }
         .radar-idea-thanks {
             display: flex;
@@ -155,8 +154,7 @@
         <div class="radar-idea-card" id="radarIdeaCard">
             <div class="radar-idea-icon">🎯</div>
             <div class="radar-idea-content">
-                <div class="radar-idea-title">What would YOU track?</div>
-                <div class="radar-idea-subtitle">If you had your own radar, what signal would you monitor?</div>
+                <div class="radar-idea-title">What would you track?</div>
                 <div class="radar-idea-form" id="radarIdeaForm">
                     <input type="text" class="radar-idea-input" id="radarIdeaInput" placeholder="e.g., Social media sentiment, shipping routes..." maxlength="200">
                     <button class="radar-idea-submit" id="radarIdeaSubmit" onclick="submitRadarIdea()">Submit</button>
