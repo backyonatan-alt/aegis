@@ -17,6 +17,7 @@ from js import Response, Headers, Object
 from constants import R2_KEY
 from fetchers import (
     fetch_aviation_data,
+    fetch_cloudflare_connectivity,
     fetch_news_intel,
     fetch_pentagon_data,
     fetch_polymarket_odds,
@@ -91,10 +92,28 @@ async def on_fetch(request, env):
             },
         )
 
-    # Pass the R2 ReadableStream body directly — avoids await obj.text() hang
-    log.info("Returning R2 object body as stream")
+    # Parse data.json and add mock connectivity fallback if missing
+    try:
+        text = await obj.text()
+        data = json.loads(text)
+
+        # Add mock connectivity data if missing (until scheduled task runs)
+        if "connectivity" not in data:
+            data["connectivity"] = {
+                "risk": 0,
+                "detail": "STABLE (+0.0%)",
+                "history": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "raw_data": {"status": "STABLE", "trend": 0.0}
+            }
+
+        response_body = json.dumps(data)
+    except Exception as e:
+        log.warning("Failed to parse data, returning raw: %s", e)
+        response_body = text if 'text' in dir() else "{}"
+
+    log.info("Returning data.json")
     return _make_response(
-        obj.body,
+        response_body,
         headers_dict={
             "Content-Type": "application/json",
             "Cache-Control": "public, max-age=60, s-maxage=300",
@@ -126,15 +145,17 @@ async def on_scheduled(controller, env, ctx):
     # 2. Compute Pentagon data (no API call)
     pentagon_data = fetch_pentagon_data()
 
-    # 3. Fetch 4 independent APIs in parallel
+    # 3. Fetch 5 independent APIs in parallel
     api_key = getattr(env, "OPENWEATHER_API_KEY", "")
+    cloudflare_token = getattr(env, "CLOUDFLARE_RADAR_TOKEN", "")
 
-    polymarket_result, news_result, aviation_result, weather_result = (
+    polymarket_result, news_result, aviation_result, weather_result, connectivity_result = (
         await asyncio.gather(
             fetch_polymarket_odds(),
             fetch_news_intel(),
             fetch_aviation_data(),
             fetch_weather_data(api_key),
+            fetch_cloudflare_connectivity(cloudflare_token),
             return_exceptions=True,
         )
     )
@@ -145,6 +166,7 @@ async def on_scheduled(controller, env, ctx):
         ("News", news_result),
         ("Aviation", aviation_result),
         ("Weather", weather_result),
+        ("Connectivity", connectivity_result),
     ]:
         if isinstance(result, Exception):
             log.error("%s fetch raised exception: %s", name, result)
@@ -157,6 +179,8 @@ async def on_scheduled(controller, env, ctx):
         aviation_result = None
     if isinstance(weather_result, Exception):
         weather_result = None
+    if isinstance(connectivity_result, Exception):
+        connectivity_result = None
 
     # 4. Sleep for OpenSky rate limit, then fetch tanker data
     log.info("Waiting 2s for OpenSky rate limit...")
@@ -166,6 +190,7 @@ async def on_scheduled(controller, env, ctx):
     # Use previous data as fallback for any failed fetches
     polymarket_data = polymarket_result or current_data.get("polymarket", {}).get("raw_data", {})
     news_data = news_result or current_data.get("news", {}).get("raw_data", {})
+    connectivity_data = connectivity_result or current_data.get("connectivity", {}).get("raw_data", {})
     aviation_data = aviation_result or current_data.get("flight", {}).get("raw_data", {})
     weather_data = weather_result or current_data.get("weather", {}).get("raw_data", {})
     tanker_data = tanker_result or current_data.get("tanker", {}).get("raw_data", {})
@@ -175,6 +200,8 @@ async def on_scheduled(controller, env, ctx):
         fallback_used.append("polymarket")
     if news_result is None:
         fallback_used.append("news")
+    if connectivity_result is None:
+        fallback_used.append("connectivity")
     if aviation_result is None:
         fallback_used.append("aviation")
     if weather_result is None:
@@ -187,6 +214,7 @@ async def on_scheduled(controller, env, ctx):
     # 5. Calculate all risk scores
     scores = calculate_risk_scores(
         news_intel=news_data,
+        connectivity=connectivity_data,
         aviation=aviation_data,
         tanker=tanker_data,
         weather=weather_data,
@@ -197,6 +225,7 @@ async def on_scheduled(controller, env, ctx):
     # 6. Update history and build final JSON
     raw = {
         "news": news_data,
+        "connectivity": connectivity_data,
         "flight": aviation_data,
         "tanker": tanker_data,
         "weather": weather_data,

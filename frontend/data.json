@@ -350,5 +350,13 @@
     ],
     "elevated_count": 0
   },
+  "connectivity": {
+    "risk": 0,
+    "detail": "STABLE (+0.0%)",
+    "history": [
+      0
+    ],
+    "raw_data": {}
+  },
   "last_updated": "2026-02-03T09:08:55.251876"
 }
