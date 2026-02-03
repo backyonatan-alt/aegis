@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 26,
-    "detail": "27 articles, 15 critical",
+    "risk": 24,
+    "detail": "28 articles, 15 critical",
     "history": [
-      18,
       18,
       18,
       18,
@@ -22,7 +21,8 @@
       21,
       21,
       26,
-      26
+      26,
+      24
     ],
     "raw_data": {
       "articles": [
@@ -115,6 +115,10 @@
           "is_alert": false
         },
         {
+          "title": "\u2018Game is over\u2019: Iran\u2019s ex-leaders, hardliners clash after protest killings",
+          "is_alert": false
+        },
+        {
           "title": "Will Hezbollah continue to avoid responding to Israel\u2019s attacks on Lebanon?",
           "is_alert": true
         },
@@ -135,9 +139,9 @@
           "is_alert": false
         }
       ],
-      "total_count": 27,
+      "total_count": 28,
       "alert_count": 15,
-      "timestamp": "2026-02-03T20:53:53.536209"
+      "timestamp": "2026-02-03T21:23:58.132824"
     }
   },
   "connectivity": {
@@ -168,10 +172,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 25,
-    "detail": "88 aircraft over Iran",
+    "risk": 45,
+    "detail": "62 aircraft over Iran",
     "history": [
-      15,
       13,
       10,
       21,
@@ -190,24 +193,25 @@
       9,
       6,
       3,
-      25
+      25,
+      45
     ],
     "raw_data": {
-      "aircraft_count": 88,
-      "airline_count": 35,
+      "aircraft_count": 62,
+      "airline_count": 31,
       "airlines": [
+        "PGT",
         "IGO",
+        "NSZ",
         "AXB",
-        "BYD",
+        "DLH",
         "MNB",
-        "BAW",
-        "UAE",
         "THY",
-        "RBA",
-        "FJL",
-        "PIA"
+        "UAE",
+        "CMB",
+        "SIF"
       ],
-      "timestamp": "2026-02-03T20:53:53.784438"
+      "timestamp": "2026-02-03T21:23:58.350337"
     }
   },
   "tanker": {
@@ -238,7 +242,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-03T20:53:56.045395"
+      "timestamp": "2026-02-03T21:24:00.610551"
     }
   },
   "weather": {
@@ -268,11 +272,11 @@
     ],
     "raw_data": {
       "temp": 7,
-      "visibility": 6000,
+      "visibility": 7000,
       "clouds": 100,
       "description": "moderate rain",
       "condition": "Poor",
-      "timestamp": "2026-02-03T20:53:53.377813"
+      "timestamp": "2026-02-03T21:23:58.034371"
     }
   },
   "polymarket": {
@@ -291,24 +295,24 @@
       2,
       2,
       2,
-      2,
       3,
       4,
       4,
       5,
       3,
       4,
+      3,
       3
     ],
     "raw_data": {
       "odds": 3,
-      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-03T20:53:53.604743"
+      "market": "Will the US next strike Iran on February 5, 2026 (ET)?",
+      "timestamp": "2026-02-03T21:23:58.158315"
     }
   },
   "pentagon": {
-    "risk": 30,
-    "detail": "Normal",
+    "risk": 10,
+    "detail": "Low Activity",
     "history": [
       30,
       30,
@@ -317,7 +321,6 @@
       30,
       30,
       30,
-      30,
       10,
       10,
       10,
@@ -329,36 +332,37 @@
       30,
       30,
       30,
-      30
+      30,
+      10
     ],
     "raw_data": {
-      "score": 55,
-      "risk_contribution": 3,
-      "status": "Normal",
+      "score": 30,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 55
+          "score": 30
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 55
+          "score": 30
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 55
+          "score": 30
         }
       ],
-      "timestamp": "2026-02-03T20:53:56.047319",
+      "timestamp": "2026-02-03T21:24:00.612124",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 12,
+    "risk": 13,
     "history": [
       {
         "timestamp": 1769904000000,
@@ -391,11 +395,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770152036048,
-        "risk": 12
+        "timestamp": 1770153840613,
+        "risk": 13
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-03T20:53:56.048345"
+  "last_updated": "2026-02-03T21:24:00.613303"
 }
