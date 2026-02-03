@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Idea Feature Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a; --card: #141414; --card-elevated: #1c1c1c;
+            --border: #252525; --text: #ffffff; --text-secondary: #999; --text-muted: #666;
+            --accent: #3b82f6; --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444;
+        }
+        html, body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        .app { padding: 16px; max-width: 480px; margin: 0 auto; }
+
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; }
+        .live-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--green); }
+        .live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* Signals section (simplified for preview) */
+        .signals-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .section-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px; }
+        .signal-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .signal-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .signal-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px; background: rgba(14, 165, 233, 0.15); }
+        .signal-info { flex: 1; }
+        .signal-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+        .signal-detail { font-size: 11px; color: var(--text-muted); }
+        .signal-value { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--green); }
+
+        /* NEW: Radar Idea Card */
+        .radar-idea-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .radar-idea-card.hidden { display: none; }
+        .radar-idea-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(59, 130, 246, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .radar-idea-content { flex: 1; min-width: 0; }
+        .radar-idea-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+        .radar-idea-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+        .radar-idea-form { display: flex; gap: 8px; }
+        .radar-idea-input {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 13px;
+            color: var(--text);
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .radar-idea-input::placeholder { color: var(--text-muted); }
+        .radar-idea-input:focus { border-color: var(--accent); }
+        .radar-idea-submit {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+        .radar-idea-submit:hover { opacity: 0.85; }
+        .radar-idea-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        .radar-idea-thanks {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Footer buttons */
+        .show-more-btn {
+            flex: 1;
+            padding: 10px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .show-more-btn:hover { color: var(--text); }
+
+        .preview-label {
+            text-align: center;
+            padding: 10px;
+            background: var(--accent);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-label">PREVIEW - Radar Idea Feature</div>
+
+    <div class="app">
+        <header class="header">
+            <h1 class="logo">📡 StrikeRadar</h1>
+            <div class="live-badge"><div class="live-dot"></div>Live</div>
+        </header>
+
+        <!-- Last signal (Weather) - for context -->
+        <section class="signals-section">
+            <h2 class="section-title">Data Signals</h2>
+            <div class="signal-item">
+                <div class="signal-icon">🌤️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Weather Conditions</div>
+                    <div class="signal-detail">moderate rain in Tehran</div>
+                </div>
+                <div class="signal-value">0%</div>
+            </div>
+        </section>
+
+        <!-- NEW FEATURE: Radar Idea Card -->
+        <div class="radar-idea-card" id="radarIdeaCard">
+            <div class="radar-idea-icon">🎯</div>
+            <div class="radar-idea-content">
+                <div class="radar-idea-title">What would YOU track?</div>
+                <div class="radar-idea-subtitle">If you had your own radar, what signal would you monitor?</div>
+                <div class="radar-idea-form" id="radarIdeaForm">
+                    <input type="text" class="radar-idea-input" id="radarIdeaInput" placeholder="e.g., Social media sentiment, shipping routes..." maxlength="200">
+                    <button class="radar-idea-submit" id="radarIdeaSubmit" onclick="submitRadarIdea()">Submit</button>
+                </div>
+                <div class="radar-idea-thanks" id="radarIdeaThanks" style="display: none;">
+                    <span>Thanks for sharing!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer buttons -->
+        <div style="display: flex; gap: 10px; margin-top: 8px;">
+            <button class="show-more-btn"><span>📤</span> Share</button>
+            <button class="show-more-btn"><span>ℹ️</span> About</button>
+        </div>
+    </div>
+
+    <script>
+        function submitRadarIdea() {
+            const input = document.getElementById('radarIdeaInput');
+            const form = document.getElementById('radarIdeaForm');
+            const thanks = document.getElementById('radarIdeaThanks');
+            const card = document.getElementById('radarIdeaCard');
+            const submitBtn = document.getElementById('radarIdeaSubmit');
+
+            const idea = input.value.trim();
+            if (!idea) {
+                input.focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
+
+            // Log what would be sent to backend
+            console.log('Radar idea submitted:', {
+                idea: idea,
+                timestamp: new Date().toISOString()
+            });
+
+            // Show thank you
+            form.style.display = 'none';
+            thanks.style.display = 'flex';
+
+            // Fade out after 2 seconds
+            setTimeout(function() {
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(-10px)';
+                setTimeout(function() {
+                    card.classList.add('hidden');
+                }, 500);
+            }, 2000);
+        }
+
+        // Enter key support
+        document.getElementById('radarIdeaInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') submitRadarIdea();
+        });
+    </script>
+</body>
+</html>
