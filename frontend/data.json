@@ -4,7 +4,6 @@
     "detail": "28 articles, 15 critical",
     "history": [
       15,
-      15,
       16,
       16,
       18,
@@ -13,6 +12,7 @@
       21,
       26,
       26,
+      24,
       24,
       24,
       24,
@@ -141,7 +141,7 @@
       ],
       "total_count": 28,
       "alert_count": 15,
-      "timestamp": "2026-02-04T01:54:38.987892"
+      "timestamp": "2026-02-04T02:24:43.407621"
     }
   },
   "connectivity": {
@@ -172,10 +172,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 7,
-    "detail": "110 aircraft over Iran",
+    "risk": 24,
+    "detail": "89 aircraft over Iran",
     "history": [
-      19,
       27,
       15,
       7,
@@ -194,24 +193,25 @@
       4,
       6,
       18,
-      7
+      7,
+      24
     ],
     "raw_data": {
-      "aircraft_count": 110,
+      "aircraft_count": 89,
       "airline_count": 25,
       "airlines": [
         "PGT",
+        "AXB",
+        "DLH",
+        "SEJ",
         "UAE",
-        "KQA",
         "ETD",
-        "PIA",
-        "TKJ",
         "ABY",
         "FDB",
         "THY",
-        "FJL"
+        "PIA"
       ],
-      "timestamp": "2026-02-04T01:54:39.232841"
+      "timestamp": "2026-02-04T02:24:43.677570"
     }
   },
   "tanker": {
@@ -242,7 +242,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T01:54:41.487438"
+      "timestamp": "2026-02-04T02:24:45.931853"
     }
   },
   "weather": {
@@ -276,14 +276,13 @@
       "clouds": 75,
       "description": "light rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T01:54:38.848385"
+      "timestamp": "2026-02-04T02:24:43.275399"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      2,
       2,
       2,
       3,
@@ -302,12 +301,13 @@
       2,
       2,
       2,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-04T01:54:38.949514"
+      "timestamp": "2026-02-04T02:24:43.441380"
     }
   },
   "pentagon": {
@@ -315,15 +315,15 @@
     "detail": "Low Activity (late night)",
     "history": [
       10,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
       10,
       10,
       10,
@@ -356,13 +356,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-04T01:54:41.488990",
+      "timestamp": "2026-02-04T02:24:45.934252",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 7,
+    "risk": 10,
     "history": [
       {
         "timestamp": 1769947200000,
@@ -395,11 +395,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770170081489,
-        "risk": 7
+        "timestamp": 1770171885935,
+        "risk": 10
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T01:54:41.489984"
+  "last_updated": "2026-02-04T02:24:45.935344"
 }
