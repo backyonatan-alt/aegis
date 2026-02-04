@@ -75,15 +75,23 @@ function updateEnergySignal(value, detail, status, isMarketClosed) {
 
     // Display percentage like other signals
     let displayValue = Math.round(value) || 0;
-    const colorClass = getColor(displayValue);
-    valEl.textContent = `${displayValue}%`;
-    valEl.style.color = `var(--${colorClass})`;
 
-    if (detailEl) detailEl.textContent = detail;
-
-    // Update sparkline with color based on value
-    const sparkColor = getSparklineColor(displayValue);
-    updateSparkline('energy', displayValue, sparkColor);
+    // When market is closed or data is stale, show grey/muted styling
+    if (isMarketClosed || status === 'STALE') {
+        valEl.textContent = isMarketClosed ? 'CLOSED' : 'STALE';
+        valEl.style.color = 'var(--text-muted)';
+        if (detailEl) detailEl.textContent = detail;
+        // Grey sparkline for closed/stale
+        updateSparkline('energy', displayValue, '#606068');
+    } else {
+        const colorClass = getColor(displayValue);
+        valEl.textContent = `${displayValue}%`;
+        valEl.style.color = `var(--${colorClass})`;
+        if (detailEl) detailEl.textContent = detail;
+        // Update sparkline with color based on value
+        const sparkColor = getSparklineColor(displayValue);
+        updateSparkline('energy', displayValue, sparkColor);
+    }
 }
 
 function updateSignal(name, value, detail) {
