@@ -3,7 +3,6 @@
     "risk": 24,
     "detail": "28 articles, 15 critical",
     "history": [
-      16,
       15,
       15,
       16,
@@ -14,6 +13,7 @@
       21,
       26,
       26,
+      24,
       24,
       24,
       24,
@@ -141,7 +141,7 @@
       ],
       "total_count": 28,
       "alert_count": 15,
-      "timestamp": "2026-02-04T01:24:34.455313"
+      "timestamp": "2026-02-04T01:54:38.987892"
     }
   },
   "connectivity": {
@@ -172,10 +172,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 18,
-    "detail": "96 aircraft over Iran",
+    "risk": 7,
+    "detail": "110 aircraft over Iran",
     "history": [
-      13,
       19,
       27,
       15,
@@ -194,24 +193,25 @@
       3,
       4,
       6,
-      18
+      18,
+      7
     ],
     "raw_data": {
-      "aircraft_count": 96,
-      "airline_count": 27,
+      "aircraft_count": 110,
+      "airline_count": 25,
       "airlines": [
         "PGT",
-        "BBC",
         "UAE",
+        "KQA",
+        "ETD",
         "PIA",
-        "AFL",
-        "ABY",
         "TKJ",
-        "OMA",
-        "AIC",
-        "THY"
+        "ABY",
+        "FDB",
+        "THY",
+        "FJL"
       ],
-      "timestamp": "2026-02-04T01:24:34.723954"
+      "timestamp": "2026-02-04T01:54:39.232841"
     }
   },
   "tanker": {
@@ -242,7 +242,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T01:24:36.981394"
+      "timestamp": "2026-02-04T01:54:41.487438"
     }
   },
   "weather": {
@@ -276,14 +276,13 @@
       "clouds": 75,
       "description": "light rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T01:24:34.333474"
+      "timestamp": "2026-02-04T01:54:38.848385"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      2,
       2,
       2,
       2,
@@ -302,12 +301,13 @@
       2,
       2,
       2,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-04T01:24:34.430380"
+      "timestamp": "2026-02-04T01:54:38.949514"
     }
   },
   "pentagon": {
@@ -316,15 +316,15 @@
     "history": [
       10,
       10,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
       10,
       10,
       10,
@@ -356,13 +356,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-04T01:24:36.983094",
+      "timestamp": "2026-02-04T01:54:41.488990",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 9,
+    "risk": 7,
     "history": [
       {
         "timestamp": 1769947200000,
@@ -395,11 +395,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770168276984,
-        "risk": 9
+        "timestamp": 1770170081489,
+        "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T01:24:36.984116"
+  "last_updated": "2026-02-04T01:54:41.489984"
 }
