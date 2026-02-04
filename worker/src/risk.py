@@ -14,6 +14,7 @@ def calculate_risk_scores(
     weather: dict,
     polymarket: dict,
     pentagon_data: dict,
+    energy: dict | None = None,
 ) -> dict:
     """Calculate all risk scores and return the signal data dict.
 
@@ -88,24 +89,47 @@ def calculate_risk_scores(
     )
     log.info("  Pentagon:   %d%% (%s)", pentagon_display_risk, pentagon_detail)
 
-    # Weighted contributions (v2.0 weights per PRD)
-    # News: 20%, Connectivity: 20%, Aviation: 15%, Tanker: 15%,
-    # Market: 15%, Pentagon: 10%, Weather: 5%
-    news_weighted = news_display_risk * 0.20
-    connectivity_weighted = connectivity_display_risk * 0.20
-    flight_weighted = flight_risk * 0.15
-    tanker_weighted = tanker_risk * 0.15
-    polymarket_weighted = polymarket_display_risk * 0.15
-    pentagon_weighted = pentagon_display_risk * 0.10
-    weather_weighted = weather_risk * 0.05
+    # ENERGY MARKETS (15% weight)
+    if energy:
+        energy_status = energy.get("status", "STABLE")
+        energy_price = energy.get("price", 0)
+        energy_change = energy.get("change_pct", 0)
+        energy_market_closed = energy.get("market_closed", False)
+        energy_display_risk = energy.get("risk", 0)
 
-    log.info("  Weighted: news=%.1f conn=%.1f flight=%.1f tanker=%.1f poly=%.1f pent=%.1f weather=%.1f",
-             news_weighted, connectivity_weighted, flight_weighted, tanker_weighted,
+        if energy_status == "STALE":
+            energy_detail = "Data unavailable"
+        elif energy_market_closed:
+            energy_detail = f"${energy_price:.2f} (Market Closed)"
+        else:
+            energy_detail = f"${energy_price:.2f} ({energy_change:+.1f}%)"
+    else:
+        energy_status = "STABLE"
+        energy_display_risk = 0
+        energy_detail = "Awaiting data..."
+        energy_market_closed = False
+    log.info("  Energy:     %d%% (%s)", energy_display_risk, energy_detail)
+
+    # Weighted contributions (v3.0 weights per Black Gold PRD)
+    # News: 17%, Connectivity: 17%, Energy: 15%, Aviation: 13%, Tanker: 13%,
+    # Market: 13%, Pentagon: 8%, Weather: 4%
+    news_weighted = news_display_risk * 0.17
+    connectivity_weighted = connectivity_display_risk * 0.17
+    energy_weighted = energy_display_risk * 0.15
+    flight_weighted = flight_risk * 0.13
+    tanker_weighted = tanker_risk * 0.13
+    polymarket_weighted = polymarket_display_risk * 0.13
+    pentagon_weighted = pentagon_display_risk * 0.08
+    weather_weighted = weather_risk * 0.04
+
+    log.info("  Weighted: news=%.1f conn=%.1f energy=%.1f flight=%.1f tanker=%.1f poly=%.1f pent=%.1f weather=%.1f",
+             news_weighted, connectivity_weighted, energy_weighted, flight_weighted, tanker_weighted,
              polymarket_weighted, pentagon_weighted, weather_weighted)
 
     total_risk = (
         news_weighted
         + connectivity_weighted
+        + energy_weighted
         + flight_weighted
         + tanker_weighted
         + polymarket_weighted
@@ -117,6 +141,7 @@ def calculate_risk_scores(
     elevated_count = sum([
         news_display_risk > 30,
         connectivity_risk >= 10,  # ANOMALOUS or higher
+        energy_display_risk > 40,  # VOLATILE or higher
         flight_risk > 50,
         tanker_risk > 30,
         polymarket_display_risk > 30,
@@ -135,6 +160,7 @@ def calculate_risk_scores(
     return {
         "news": {"risk": news_display_risk, "detail": news_detail},
         "connectivity": {"risk": connectivity_display_risk, "detail": connectivity_detail},
+        "energy": {"risk": energy_display_risk, "detail": energy_detail},
         "flight": {"risk": flight_risk, "detail": flight_detail},
         "tanker": {"risk": tanker_risk, "detail": tanker_detail},
         "weather": {"risk": weather_risk, "detail": weather_detail},
@@ -159,17 +185,17 @@ def update_history(current_data: dict, scores: dict, raw: dict) -> dict:
         history = current_data["total_risk"]["history"]
         signal_history = {
             sig: current_data.get(sig, {}).get("history", [])
-            for sig in ["news", "connectivity", "flight", "tanker", "pentagon", "polymarket", "weather"]
+            for sig in ["news", "connectivity", "energy", "flight", "tanker", "pentagon", "polymarket", "weather"]
         }
     else:
         history = current_data.get("history", [])
         signal_history = current_data.get("signalHistory", {
-            "news": [], "connectivity": [], "flight": [], "tanker": [],
+            "news": [], "connectivity": [], "energy": [], "flight": [], "tanker": [],
             "pentagon": [], "polymarket": [], "weather": [],
         })
 
     # Append current scores to signal histories
-    for sig in ["news", "connectivity", "flight", "tanker", "pentagon", "polymarket", "weather"]:
+    for sig in ["news", "connectivity", "energy", "flight", "tanker", "pentagon", "polymarket", "weather"]:
         if sig not in signal_history:
             signal_history[sig] = []
         signal_history[sig].append(scores[sig]["risk"])
@@ -225,6 +251,12 @@ def update_history(current_data: dict, scores: dict, raw: dict) -> dict:
             "detail": scores["connectivity"]["detail"],
             "history": signal_history["connectivity"],
             "raw_data": raw.get("connectivity", {}),
+        },
+        "energy": {
+            "risk": scores["energy"]["risk"],
+            "detail": scores["energy"]["detail"],
+            "history": signal_history["energy"],
+            "raw_data": raw.get("energy", {}),
         },
         "flight": {
             "risk": scores["flight"]["risk"],

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrikeRadar - Energy Markets Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-card: #141418;
+            --bg-card-hover: #1a1a1f;
+            --border: #2a2a30;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a8;
+            --text-muted: #606068;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --orange: #f97316;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .app {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--green);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .signals-section {
+            margin-top: 20px;
+        }
+
+        .signal-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+
+        .signal-item:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .signal-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .signal-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .signal-name {
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .signal-status {
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .signal-status.live {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--green);
+        }
+
+        .signal-status.stale {
+            background: rgba(96, 96, 104, 0.2);
+            color: var(--text-muted);
+        }
+
+        .signal-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .signal-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .signal-sparkline {
+            width: 70px;
+            height: 28px;
+        }
+
+        .signal-value {
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        .info-btn {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-note {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: var(--blue);
+        }
+
+        .scenario-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .scenario-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .scenario-btn:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .scenario-btn.active {
+            border-color: var(--blue);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .scenario-btn.stable { border-color: var(--green); }
+        .scenario-btn.volatile { border-color: var(--yellow); }
+        .scenario-btn.critical { border-color: var(--red); }
+        .scenario-btn.closed { border-color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1 class="logo">StrikeRadar</h1>
+            <div class="live-badge"><div class="live-dot"></div>Preview</div>
+        </header>
+
+        <div class="preview-note">
+            <strong>Energy Markets Preview</strong> - Click buttons below to see different states
+        </div>
+
+        <div class="scenario-buttons">
+            <button class="scenario-btn stable active" onclick="setScenario('stable')">Stable</button>
+            <button class="scenario-btn volatile" onclick="setScenario('volatile')">Volatile</button>
+            <button class="scenario-btn critical" onclick="setScenario('critical')">Critical</button>
+            <button class="scenario-btn closed" onclick="setScenario('closed')">Market Closed</button>
+            <button class="scenario-btn" onclick="setScenario('stale')">Data Stale</button>
+        </div>
+
+        <section class="signals-section">
+            <h2 class="section-title">Data Signals</h2>
+
+            <!-- News Intel -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(234, 179, 8, 0.15);">📰</div>
+                <div class="signal-info">
+                    <div class="signal-name">News Intel <span class="signal-status live">LIVE</span></div>
+                    <div class="signal-detail">18 articles, 4 critical</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" viewBox="0 0 70 28">
+                        <path d="M0,20 Q10,18 15,15 T30,12 T45,14 T60,10 T70,8" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" style="color: var(--green);">12%</div>
+                </div>
+            </div>
+
+            <!-- Digital Connectivity -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(6, 182, 212, 0.15);">🌐</div>
+                <div class="signal-info">
+                    <div class="signal-name">Digital Connectivity <span class="signal-status live">LIVE</span></div>
+                    <div class="signal-detail">STABLE (+2.3%)</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" viewBox="0 0 70 28">
+                        <path d="M0,14 Q15,12 25,14 T50,13 T70,12" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" style="color: var(--green);">0%</div>
+                </div>
+            </div>
+
+            <!-- Civil Aviation -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(59, 130, 246, 0.15);">✈️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Civil Aviation <span class="signal-status live">LIVE</span></div>
+                    <div class="signal-detail">87 aircraft over Iran</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" viewBox="0 0 70 28">
+                        <path d="M0,10 Q15,12 30,11 T50,13 T70,12" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" style="color: var(--green);">25%</div>
+                </div>
+            </div>
+
+            <!-- ENERGY MARKETS - NEW! -->
+            <div class="signal-item" id="energySignal" style="border: 2px solid var(--yellow); box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);">
+                <div class="signal-icon" style="background: rgba(234, 179, 8, 0.15);">🛢️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Energy Markets <span class="signal-status live" id="energyStatus">LIVE</span> <button class="info-btn">i</button></div>
+                    <div class="signal-detail" id="energyDetail">$78.42 (+1.2%)</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" id="energySparkline" viewBox="0 0 70 28">
+                        <path d="M0,20 Q10,18 20,16 T40,14 T55,12 T70,10" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" id="energyValue" style="color: var(--green);">STABLE</div>
+                </div>
+            </div>
+
+            <!-- Military Tankers -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(239, 68, 68, 0.15);">🛩️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Military Tankers <span class="signal-status live">LIVE</span></div>
+                    <div class="signal-detail">2 detected in region</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" viewBox="0 0 70 28">
+                        <path d="M0,18 Q20,16 35,18 T55,14 T70,16" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" style="color: var(--green);">20%</div>
+                </div>
+            </div>
+
+            <!-- Pentagon Pizza Meter -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(249, 115, 22, 0.15);">🍕</div>
+                <div class="signal-info">
+                    <div class="signal-name">Pentagon Pizza Meter <span class="signal-status live">LIVE</span></div>
+                    <div class="signal-detail">Normal</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" viewBox="0 0 70 28">
+                        <path d="M0,14 Q20,14 40,14 T70,14" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" style="color: var(--green);">30%</div>
+                </div>
+            </div>
+
+            <!-- Market Odds -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(139, 92, 246, 0.15);">📊</div>
+                <div class="signal-info">
+                    <div class="signal-name">Market Odds <span class="signal-status live">LIVE</span></div>
+                    <div class="signal-detail">8% odds</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" viewBox="0 0 70 28">
+                        <path d="M0,16 Q20,18 40,14 T70,16" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" style="color: var(--green);">8%</div>
+                </div>
+            </div>
+
+            <!-- Weather -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(34, 197, 94, 0.15);">🌤️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Weather Conditions <span class="signal-status live">LIVE</span></div>
+                    <div class="signal-detail">partly cloudy</div>
+                </div>
+                <div class="signal-right">
+                    <svg class="signal-sparkline" viewBox="0 0 70 28">
+                        <path d="M0,8 Q20,10 40,6 T70,8" fill="none" stroke="#f97316" stroke-width="2"/>
+                    </svg>
+                    <div class="signal-value" style="color: var(--orange);">Clear</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const scenarios = {
+            stable: {
+                status: 'LIVE',
+                statusClass: 'live',
+                detail: '$78.42 (+1.2%)',
+                value: 'STABLE',
+                valueColor: 'var(--green)',
+                sparkColor: '#22c55e',
+                sparkPath: 'M0,20 Q10,18 20,16 T40,14 T55,12 T70,10',
+                borderColor: 'var(--green)'
+            },
+            volatile: {
+                status: 'LIVE',
+                statusClass: 'live',
+                detail: '$82.15 (+3.8%)',
+                value: 'VOLATILE',
+                valueColor: 'var(--yellow)',
+                sparkColor: '#eab308',
+                sparkPath: 'M0,22 Q10,18 20,14 T40,10 T55,6 T70,4',
+                borderColor: 'var(--yellow)'
+            },
+            critical: {
+                status: 'LIVE',
+                statusClass: 'live',
+                detail: '$89.50 (+7.2%)',
+                value: 'CRITICAL',
+                valueColor: 'var(--red)',
+                sparkColor: '#ef4444',
+                sparkPath: 'M0,26 Q10,20 20,14 T40,8 T55,4 T70,2',
+                borderColor: 'var(--red)'
+            },
+            closed: {
+                status: 'LIVE',
+                statusClass: 'live',
+                detail: '$78.42 (Market Closed)',
+                value: 'CLOSED',
+                valueColor: 'var(--text-muted)',
+                sparkColor: '#606068',
+                sparkPath: 'M0,14 Q20,14 40,14 T70,14',
+                borderColor: 'var(--text-muted)'
+            },
+            stale: {
+                status: 'STALE',
+                statusClass: 'stale',
+                detail: 'Data unavailable',
+                value: 'STALE',
+                valueColor: 'var(--text-muted)',
+                sparkColor: '#606068',
+                sparkPath: 'M0,14 Q20,14 40,14 T70,14',
+                borderColor: 'var(--text-muted)'
+            }
+        };
+
+        function setScenario(name) {
+            const s = scenarios[name];
+
+            // Update status badge
+            const statusEl = document.getElementById('energyStatus');
+            statusEl.textContent = s.status;
+            statusEl.className = 'signal-status ' + s.statusClass;
+
+            // Update detail
+            document.getElementById('energyDetail').textContent = s.detail;
+
+            // Update value
+            const valueEl = document.getElementById('energyValue');
+            valueEl.textContent = s.value;
+            valueEl.style.color = s.valueColor;
+
+            // Update sparkline
+            const sparkline = document.getElementById('energySparkline');
+            sparkline.innerHTML = `<path d="${s.sparkPath}" fill="none" stroke="${s.sparkColor}" stroke-width="2"/>`;
+
+            // Update border
+            const signal = document.getElementById('energySignal');
+            signal.style.borderColor = s.borderColor;
+            signal.style.boxShadow = `0 0 20px ${s.borderColor}33`;
+
+            // Update button states
+            document.querySelectorAll('.scenario-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -69,6 +69,23 @@ function updateGauge(score) {
     }
 }
 
+function updateEnergySignal(value, detail, status, isMarketClosed) {
+    const valEl = document.getElementById('energyValue');
+    const detailEl = document.getElementById('energyDetail');
+
+    // Display percentage like other signals
+    let displayValue = Math.round(value) || 0;
+    const colorClass = getColor(displayValue);
+    valEl.textContent = `${displayValue}%`;
+    valEl.style.color = `var(--${colorClass})`;
+
+    if (detailEl) detailEl.textContent = detail;
+
+    // Update sparkline with color based on value
+    const sparkColor = getSparklineColor(displayValue);
+    updateSparkline('energy', displayValue, sparkColor);
+}
+
 function updateSignal(name, value, detail) {
     const valEl = document.getElementById(`${name}Value`);
     const detailEl = document.getElementById(`${name}Detail`);
