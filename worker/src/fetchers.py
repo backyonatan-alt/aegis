@@ -712,7 +712,7 @@ async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> d
             log.info("DEBUG MODE: Using injected price $%.2f", debug_price)
             return _calculate_energy_metrics(
                 current_price=debug_price,
-                prices_24h=[debug_price * 0.95] * 24,  # Simulate 5% below for testing
+                prices_history=[debug_price * 0.95] * 7,  # Simulate 5% below for testing
                 is_market_closed=False,
                 is_debug=True,
                 now=now,
@@ -731,16 +731,16 @@ async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> d
                 "error": "API key not configured",
             }
 
-        # Fetch Brent Crude intraday data (60min intervals for 24h moving average)
+        # Fetch Brent Crude daily prices (Alpha Vantage commodities API)
+        # Note: Commodities only support daily/weekly/monthly, not intraday
         url = (
             f"{ALPHA_VANTAGE_BASE_URL}"
-            f"?function=TIME_SERIES_INTRADAY"
-            f"&symbol=BZ=F"  # Brent Crude Futures
-            f"&interval=60min"
-            f"&outputsize=compact"
+            f"?function=BRENT"
+            f"&interval=daily"
             f"&apikey={api_key}"
         )
 
+        log.info("Fetching Brent Crude from Alpha Vantage...")
         response = await fetch(url)
 
         if response.status != 200:
@@ -759,8 +759,8 @@ async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> d
         data = json.loads(await response.text())
 
         # Check for API error messages
-        if "Error Message" in data or "Note" in data:
-            error_msg = data.get("Error Message") or data.get("Note", "API limit reached")
+        if "Error Message" in data or "Note" in data or "Information" in data:
+            error_msg = data.get("Error Message") or data.get("Note") or data.get("Information", "API limit reached")
             log.warning("Alpha Vantage API message: %s", error_msg[:100])
             return {
                 "status": "STALE",
@@ -773,10 +773,10 @@ async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> d
                 "error": error_msg[:100],
             }
 
-        # Parse time series data
-        time_series = data.get("Time Series (60min)", {})
-        if not time_series:
-            log.warning("No time series data in Alpha Vantage response")
+        # Parse BRENT commodity data (returns "data" array, not time series)
+        price_data = data.get("data", [])
+        if not price_data:
+            log.warning("No price data in Alpha Vantage BRENT response")
             return {
                 "status": "STALE",
                 "risk": 0,
@@ -785,16 +785,17 @@ async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> d
                 "volatility_index": 0,
                 "market_closed": is_weekend,
                 "timestamp": now.isoformat(),
-                "error": "No time series data",
+                "error": "No price data",
             }
 
-        # Extract prices (most recent first)
+        # Extract prices (most recent first - data is already sorted desc)
+        # Use last 7 days for moving average (daily data, not intraday)
         prices = []
-        timestamps = sorted(time_series.keys(), reverse=True)
-        for ts in timestamps[:24]:  # Last 24 data points (24 hours)
+        for item in price_data[:7]:  # Last 7 days
             try:
-                close_price = float(time_series[ts]["4. close"])
-                prices.append(close_price)
+                value = item.get("value")
+                if value and value != ".":
+                    prices.append(float(value))
             except (KeyError, ValueError, TypeError):
                 continue
 
@@ -814,7 +815,7 @@ async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> d
         current_price = prices[0]
         return _calculate_energy_metrics(
             current_price=current_price,
-            prices_24h=prices,
+            prices_history=prices,
             is_market_closed=is_weekend,
             is_debug=False,
             now=now,
@@ -828,7 +829,7 @@ async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> d
 
 def _calculate_energy_metrics(
     current_price: float,
-    prices_24h: list[float],
+    prices_history: list[float],
     is_market_closed: bool,
     is_debug: bool,
     now: datetime,
@@ -837,7 +838,7 @@ def _calculate_energy_metrics(
 
     Args:
         current_price: Most recent oil price.
-        prices_24h: List of prices over last 24 hours.
+        prices_history: List of recent prices (7 days for daily data).
         is_market_closed: Whether markets are closed (weekend).
         is_debug: Whether this is a debug/simulation run.
         now: Current datetime.
@@ -845,12 +846,12 @@ def _calculate_energy_metrics(
     Returns:
         Dict with calculated energy metrics.
     """
-    # Calculate 24-hour moving average
-    avg_24h = sum(prices_24h) / len(prices_24h)
+    # Calculate moving average from historical prices
+    avg_price = sum(prices_history) / len(prices_history)
 
     # Calculate percentage change from moving average
-    if avg_24h > 0:
-        change_pct = (current_price - avg_24h) / avg_24h
+    if avg_price > 0:
+        change_pct = (current_price - avg_price) / avg_price
     else:
         change_pct = 0
 
@@ -876,8 +877,8 @@ def _calculate_energy_metrics(
     # Calculate risk contribution (0-100 scale)
     risk = round(volatility_index * 100)
 
-    log.info("Price: $%.2f, 24h Avg: $%.2f, Change: %.2f%%",
-             current_price, avg_24h, change_pct * 100)
+    log.info("Price: $%.2f, Avg: $%.2f, Change: %.2f%%",
+             current_price, avg_price, change_pct * 100)
     log.info("Status: %s, Volatility Index: %.2f, Risk: %d%%",
              status, volatility_index, risk)
 
@@ -885,11 +886,11 @@ def _calculate_energy_metrics(
         "status": status,
         "risk": risk,
         "price": round(current_price, 2),
-        "avg_24h": round(avg_24h, 2),
+        "avg_price": round(avg_price, 2),
         "change_pct": round(change_pct * 100, 2),
         "volatility_index": round(volatility_index, 3),
         "market_closed": is_market_closed,
         "is_debug": is_debug,
-        "prices_24h": [round(p, 2) for p in prices_24h[:24]],
+        "prices_history": [round(p, 2) for p in prices_history[:7]],
         "timestamp": now.isoformat(),
     }
