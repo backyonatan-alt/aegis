@@ -4,7 +4,6 @@
     "detail": "25 articles, 12 critical",
     "history": [
       18,
-      18,
       19,
       19,
       19,
@@ -19,6 +18,7 @@
       19,
       19,
       19,
+      20,
       20,
       20,
       20,
@@ -115,21 +115,21 @@
           "is_alert": false
         },
         {
+          "title": "US-Iran nuclear talks set for Oman on Friday, Tehran confirms",
+          "is_alert": false
+        },
+        {
           "title": "Some in Israel question its influence over US as Iran war decision nears",
           "is_alert": true
         },
         {
           "title": "Rubio: US ready to talk with Iran, \u2018not sure\u2019 a deal can be reached",
           "is_alert": false
-        },
-        {
-          "title": "Mediators propose framework for crucial Iran-US talks this week",
-          "is_alert": false
         }
       ],
       "total_count": 25,
       "alert_count": 12,
-      "timestamp": "2026-02-04T21:58:09.997760"
+      "timestamp": "2026-02-04T22:28:14.551015"
     }
   },
   "connectivity": {
@@ -160,10 +160,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 57,
-    "detail": "48 aircraft over Iran",
+    "risk": 45,
+    "detail": "62 aircraft over Iran",
     "history": [
-      3,
       9,
       25,
       20,
@@ -182,24 +181,25 @@
       9,
       19,
       46,
-      57
+      57,
+      45
     ],
     "raw_data": {
-      "aircraft_count": 48,
-      "airline_count": 26,
+      "aircraft_count": 62,
+      "airline_count": 34,
       "airlines": [
         "AXB",
-        "IGO",
-        "PGT",
-        "KIS",
-        "AKJ",
+        "SWR",
+        "SEJ",
+        "ACA",
         "DLH",
         "SVA",
+        "PGT",
         "UAE",
         "TKJ",
-        "KNE"
+        "FJL"
       ],
-      "timestamp": "2026-02-04T21:58:10.260998"
+      "timestamp": "2026-02-04T22:28:14.795307"
     }
   },
   "tanker": {
@@ -230,7 +230,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T21:58:12.518779"
+      "timestamp": "2026-02-04T22:28:17.052987"
     }
   },
   "weather": {
@@ -264,14 +264,13 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-02-04T21:58:09.826248"
+      "timestamp": "2026-02-04T22:28:14.364793"
     }
   },
   "polymarket": {
     "risk": 3,
     "detail": "3% odds",
     "history": [
-      3,
       3,
       2,
       2,
@@ -290,24 +289,24 @@
       6,
       3,
       3,
+      3,
       3
     ],
     "raw_data": {
       "odds": 3,
-      "market": "Will the US next strike Iran on February 8, 2026 (ET)?",
-      "timestamp": "2026-02-04T21:58:09.948134"
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-02-04T22:28:14.563349"
     }
   },
   "pentagon": {
     "risk": 10,
-    "detail": "Low Activity",
+    "detail": "Low Activity (late night)",
     "history": [
       30,
       30,
       30,
       30,
       30,
-      30,
       10,
       10,
       10,
@@ -320,37 +319,38 @@
       30,
       30,
       30,
+      10,
       10,
       10
     ],
     "raw_data": {
-      "score": 30,
+      "score": 20,
       "risk_contribution": 1,
       "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 30
+          "score": 20
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 30
+          "score": 20
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 30
+          "score": 20
         }
       ],
-      "timestamp": "2026-02-04T21:58:12.520227",
-      "is_late_night": false,
+      "timestamp": "2026-02-04T22:28:17.055005",
+      "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 14,
+    "risk": 12,
     "history": [
       {
         "timestamp": 1769990400000,
@@ -383,11 +383,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770242292521,
-        "risk": 14
+        "timestamp": 1770244097056,
+        "risk": 12
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 0
   },
-  "last_updated": "2026-02-04T21:58:12.521509"
+  "last_updated": "2026-02-04T22:28:17.056518"
 }
