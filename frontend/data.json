@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 19,
-    "detail": "23 articles, 11 critical",
+    "risk": 18,
+    "detail": "24 articles, 11 critical",
     "history": [
-      23,
       21,
       21,
       21,
@@ -22,7 +21,8 @@
       19,
       19,
       19,
-      19
+      19,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -115,13 +115,17 @@
           "is_alert": false
         },
         {
+          "title": "Mediators propose framework for crucial Iran-US talks this week",
+          "is_alert": false
+        },
+        {
           "title": "Can US-Iran diplomacy work? Inside the narrow window for talks",
           "is_alert": false
         }
       ],
-      "total_count": 23,
+      "total_count": 24,
       "alert_count": 11,
-      "timestamp": "2026-02-04T14:57:03.545410"
+      "timestamp": "2026-02-04T15:27:08.136653"
     }
   },
   "connectivity": {
@@ -152,10 +156,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 18,
-    "detail": "96 aircraft over Iran",
+    "risk": 9,
+    "detail": "107 aircraft over Iran",
     "history": [
-      11,
       8,
       3,
       3,
@@ -174,24 +177,25 @@
       25,
       20,
       11,
-      18
+      18,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 96,
+      "aircraft_count": 107,
       "airline_count": 44,
       "airlines": [
-        "DAH",
-        "SWR",
+        "VJH",
+        "AXB",
         "N78",
-        "PAL",
-        "KNE",
-        "AIC",
         "FR1",
+        "AIC",
         "DLH",
         "SVA",
-        "ELY"
+        "UAE",
+        "MEA",
+        "CEB"
       ],
-      "timestamp": "2026-02-04T14:57:03.940939"
+      "timestamp": "2026-02-04T15:27:08.506985"
     }
   },
   "tanker": {
@@ -222,12 +226,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T14:57:06.200294"
+      "timestamp": "2026-02-04T15:27:10.765925"
     }
   },
   "weather": {
     "risk": 0,
-    "detail": "broken clouds",
+    "detail": "scattered clouds",
     "history": [
       0,
       0,
@@ -253,10 +257,10 @@
     "raw_data": {
       "temp": 8,
       "visibility": 10000,
-      "clouds": 75,
-      "description": "broken clouds",
-      "condition": "Poor",
-      "timestamp": "2026-02-04T14:57:03.523978"
+      "clouds": 40,
+      "description": "scattered clouds",
+      "condition": "Marginal",
+      "timestamp": "2026-02-04T15:27:08.053103"
     }
   },
   "polymarket": {
@@ -273,7 +277,6 @@
       2,
       2,
       2,
-      2,
       3,
       3,
       3,
@@ -281,18 +284,19 @@
       3,
       2,
       2,
+      3,
       3,
       3
     ],
     "raw_data": {
       "odds": 3,
-      "market": "Will the US next strike Iran on February 8, 2026 (ET)?",
-      "timestamp": "2026-02-04T14:57:03.654681"
+      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
+      "timestamp": "2026-02-04T15:27:08.178790"
     }
   },
   "pentagon": {
-    "risk": 30,
-    "detail": "Normal",
+    "risk": 10,
+    "detail": "Low Activity",
     "history": [
       10,
       10,
@@ -305,7 +309,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -313,36 +316,37 @@
       30,
       30,
       30,
-      30
+      30,
+      10
     ],
     "raw_data": {
-      "score": 50,
-      "risk_contribution": 3,
-      "status": "Normal",
+      "score": 30,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 50
+          "score": 30
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 50
+          "score": 30
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 50
+          "score": 30
         }
       ],
-      "timestamp": "2026-02-04T14:57:06.201793",
+      "timestamp": "2026-02-04T15:27:10.767414",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 10,
+    "risk": 6,
     "history": [
       {
         "timestamp": 1769990400000,
@@ -375,11 +379,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770217026202,
-        "risk": 10
+        "timestamp": 1770218830768,
+        "risk": 6
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T14:57:06.202774"
+  "last_updated": "2026-02-04T15:27:10.768465"
 }
