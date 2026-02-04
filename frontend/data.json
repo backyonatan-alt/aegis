@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 23,
-    "detail": "27 articles, 14 critical",
+    "risk": 21,
+    "detail": "26 articles, 13 critical",
     "history": [
-      21,
       26,
       26,
       24,
@@ -22,7 +21,8 @@
       24,
       24,
       26,
-      23
+      23,
+      21
     ],
     "raw_data": {
       "articles": [
@@ -129,15 +129,11 @@
         {
           "title": "Trump says talks with Iran continuing as US shoots down an Iranian drone",
           "is_alert": false
-        },
-        {
-          "title": "Will Iran and Israel go to war?",
-          "is_alert": true
         }
       ],
-      "total_count": 27,
-      "alert_count": 14,
-      "timestamp": "2026-02-04T05:25:11.137395"
+      "total_count": 26,
+      "alert_count": 13,
+      "timestamp": "2026-02-04T05:55:15.771001"
     }
   },
   "connectivity": {
@@ -168,10 +164,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 11,
-    "detail": "105 aircraft over Iran",
+    "risk": 8,
+    "detail": "109 aircraft over Iran",
     "history": [
-      6,
       3,
       25,
       45,
@@ -190,24 +185,25 @@
       19,
       16,
       13,
-      11
+      11,
+      8
     ],
     "raw_data": {
-      "aircraft_count": 105,
-      "airline_count": 31,
+      "aircraft_count": 109,
+      "airline_count": 30,
       "airlines": [
-        "N80",
         "AIC",
+        "DLH",
+        "IGO",
+        "HMZ",
         "SHR",
-        "LIW",
         "UAE",
-        "AXB",
-        "MJN",
-        "ETD",
+        "KNE",
         "ABY",
-        "QSM"
+        "FDB",
+        "THY"
       ],
-      "timestamp": "2026-02-04T05:25:11.499480"
+      "timestamp": "2026-02-04T05:55:16.071549"
     }
   },
   "tanker": {
@@ -238,7 +234,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T05:25:13.754641"
+      "timestamp": "2026-02-04T05:55:18.327335"
     }
   },
   "weather": {
@@ -268,18 +264,17 @@
     ],
     "raw_data": {
       "temp": 7,
-      "visibility": 8000,
+      "visibility": 6000,
       "clouds": 100,
       "description": "moderate rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T05:25:11.041968"
+      "timestamp": "2026-02-04T05:55:15.641327"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      3,
       4,
       3,
       3,
@@ -298,12 +293,13 @@
       2,
       2,
       2,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
-      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-04T05:25:11.210878"
+      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
+      "timestamp": "2026-02-04T05:55:15.768639"
     }
   },
   "pentagon": {
@@ -312,7 +308,7 @@
     "history": [
       30,
       30,
-      30,
+      10,
       10,
       10,
       10,
@@ -352,13 +348,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-04T05:25:13.756165",
+      "timestamp": "2026-02-04T05:55:18.329151",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 7,
     "history": [
       {
         "timestamp": 1769947200000,
@@ -391,11 +387,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770182713757,
-        "risk": 8
+        "timestamp": 1770184518330,
+        "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T05:25:13.757437"
+  "last_updated": "2026-02-04T05:55:18.330165"
 }
