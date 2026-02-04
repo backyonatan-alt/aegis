@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrikeRadar - Full App Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root {
+            --bg: #0a0a0a; --card: #141414; --card-elevated: #1c1c1c;
+            --border: #252525; --text: #ffffff; --text-secondary: #999; --text-muted: #666;
+            --accent: #3b82f6; --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444;
+        }
+        html, body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .app { padding: 16px; padding-bottom: 80px; max-width: 100%; }
+
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; }
+        .header-right { display: flex; align-items: center; gap: 10px; }
+        .live-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--green); }
+        .live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .icon-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--card); border: none; border-radius: 10px; color: var(--text-secondary); cursor: pointer; }
+
+        /* Timestamp bar */
+        .timestamp-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--card); border-radius: 10px; margin-bottom: 16px; font-size: 12px; }
+        .timestamp-bar .time { color: var(--text); font-weight: 600; }
+        .timestamp-bar .tz { color: var(--text-muted); }
+
+        /* Main gauge card */
+        .gauge-card { background: var(--card); border-radius: 20px; padding: 24px 20px; text-align: center; margin-bottom: 16px; }
+        .gauge-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .gauge-subtitle { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; }
+        .status-label { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+        .status-label.low { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+        .status-label.elevated { background: rgba(234, 179, 8, 0.15); color: var(--yellow); }
+        .status-label.high { background: rgba(249, 115, 22, 0.15); color: var(--orange); }
+        .gauge-container { position: relative; width: 200px; height: 115px; margin: 0 auto 12px; }
+        .gauge-svg { width: 100%; height: 100%; overflow: visible; }
+        .gauge-track { fill: none; stroke: var(--card-elevated); stroke-width: 20; stroke-linecap: round; }
+        .gauge-fill { fill: none; stroke-width: 20; stroke-linecap: round; transition: stroke-dashoffset 0.8s ease, stroke 0.5s ease; }
+        .gauge-value { font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 700; line-height: 1; }
+        .gauge-value.green { color: var(--green); } .gauge-value.yellow { color: var(--yellow); }
+        .gauge-value.orange { color: var(--orange); } .gauge-value.red { color: var(--red); }
+        .gauge-window { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+        .gauge-header { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px; }
+        .gauge-info-btn { width: 20px; height: 20px; border-radius: 50%; background: var(--border); border: none; color: var(--text-muted); font-size: 11px; font-weight: 700; cursor: pointer; }
+
+        /* Trend chart */
+        .trend-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .trend-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .trend-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+        .chart-wrap { height: 100px; position: relative; display: flex; align-items: center; justify-content: center; }
+
+        /* Signals */
+        .signals-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .section-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px; }
+        .signal-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .signal-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .signal-item:first-of-type { padding-top: 0; }
+        .signal-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px; }
+        .signal-info { flex: 1; min-width: 0; }
+        .signal-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
+        .signal-detail { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .signal-status { font-size: 9px; padding: 2px 5px; border-radius: 4px; font-weight: 600; }
+        .signal-status.live { background: rgba(34, 197, 94, 0.2); color: var(--green); }
+        .info-btn { width: 18px; height: 18px; border-radius: 50%; background: var(--border); border: none; color: var(--text-muted); font-size: 10px; font-weight: 700; cursor: pointer; margin-left: 4px; }
+        .signal-right { display: flex; align-items: center; gap: 10px; }
+        .signal-value { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; text-align: right; min-width: 40px; }
+        .signal-sparkline { width: 70px; height: 28px; }
+        .signal-sparkline svg { width: 100%; height: 100%; }
+
+        /* Footer buttons */
+        .show-more-btn { padding: 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text-secondary); font-size: 12px; font-weight: 500; cursor: pointer; }
+        .footer-links { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 12px; padding-bottom: 8px; font-size: 12px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; }
+        .footer-separator { color: var(--border); }
+
+        /* Preview banner */
+        .preview-banner {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .preview-banner strong { color: var(--accent); }
+        .preview-banner p { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+
+        /* Scenario controls */
+        .scenario-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .scenario-btn {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .scenario-btn:hover { background: var(--card-elevated); }
+        .scenario-btn.active { border-color: var(--accent); background: rgba(59, 130, 246, 0.15); }
+
+        @media (min-width: 768px) {
+            .app { max-width: 480px; margin: 0 auto; padding: 24px; }
+            .gauge-container { width: 240px; height: 135px; }
+            .gauge-value { font-size: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="preview-banner">
+            <strong>Full App Preview with Energy Markets</strong>
+            <p>Click scenarios to test different energy volatility states</p>
+        </div>
+
+        <div class="scenario-controls">
+            <button class="scenario-btn active" onclick="setScenario('stable')">Stable (0%)</button>
+            <button class="scenario-btn" onclick="setScenario('low')">Low (20%)</button>
+            <button class="scenario-btn" onclick="setScenario('volatile')">Volatile (60%)</button>
+            <button class="scenario-btn" onclick="setScenario('critical')">Critical (100%)</button>
+        </div>
+
+        <header class="header">
+            <h1 class="logo">StrikeRadar</h1>
+            <div class="header-right">
+                <div class="live-badge"><div class="live-dot"></div>Live</div>
+                <button class="icon-btn">?</button>
+            </div>
+        </header>
+
+        <div class="timestamp-bar">
+            <span>Updated <span class="time">2 min ago</span> <span class="tz">EST</span></span>
+            <span style="color: var(--text-muted)">Next update in 28:42</span>
+        </div>
+
+        <div class="gauge-card">
+            <div class="gauge-header">
+                <span class="gauge-title">US Strike on Iran Probability</span>
+                <button class="gauge-info-btn">i</button>
+            </div>
+            <div class="gauge-subtitle">Tactical Alert Level</div>
+            <div class="status-label low" id="statusLabel">Low Risk</div>
+            <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 200 115">
+                    <defs>
+                        <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#22c55e"/>
+                        </linearGradient>
+                        <linearGradient id="gradYellow" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#eab308"/>
+                        </linearGradient>
+                    </defs>
+                    <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/>
+                    <path class="gauge-fill" id="gaugeFill" d="M 20 100 A 80 80 0 0 1 180 100" stroke="url(#gradGreen)" stroke-dasharray="251.2" stroke-dashoffset="188.4"/>
+                </svg>
+            </div>
+            <div class="gauge-value green" id="gaugeValue">25%</div>
+            <div class="gauge-window">Projected Risk: Next 8 Hours</div>
+        </div>
+
+        <div class="trend-section">
+            <div class="trend-header">
+                <span class="trend-title">72 Hour Risk Trends</span>
+            </div>
+            <div class="chart-wrap">
+                <svg viewBox="0 0 300 80" style="width: 100%; height: 100%;">
+                    <path d="M0,60 Q30,55 60,58 T120,52 T180,48 T240,45 T300,40" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    <path d="M0,60 Q30,55 60,58 T120,52 T180,48 T240,45 T300,40 L300,80 L0,80 Z" fill="rgba(34, 197, 94, 0.1)"/>
+                </svg>
+            </div>
+        </div>
+
+        <section class="signals-section">
+            <h2 class="section-title">Data Signals</h2>
+
+            <!-- News Intel -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(59, 130, 246, 0.15);">📰</div>
+                <div class="signal-info">
+                    <div class="signal-name">News Intel <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail">18 articles, 4 critical</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,20 Q10,18 20,15 T40,12 T55,10 T70,8" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" style="color: var(--green);">12%</div>
+                </div>
+            </div>
+
+            <!-- Digital Connectivity -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(6, 182, 212, 0.15);">🌐</div>
+                <div class="signal-info">
+                    <div class="signal-name">Digital Connectivity <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail">STABLE (+2.3%)</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,14 Q15,12 25,14 T50,13 T70,12" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" style="color: var(--green);">0%</div>
+                </div>
+            </div>
+
+            <!-- Civil Aviation -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(34, 197, 94, 0.15);">✈️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Civil Aviation <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail">87 aircraft over Iran</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,10 Q15,12 30,11 T50,13 T70,12" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" style="color: var(--green);">25%</div>
+                </div>
+            </div>
+
+            <!-- ENERGY MARKETS - Shows percentage like other signals -->
+            <div class="signal-item" id="energySignal">
+                <div class="signal-icon" style="background: rgba(234, 179, 8, 0.15);">🛢️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Energy Markets <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail" id="energyDetail">$78.42 (+1.2%)</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline" id="energySparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,20 Q10,18 20,16 T40,14 T55,12 T70,10" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" id="energyValue" style="color: var(--green);">0%</div>
+                </div>
+            </div>
+
+            <!-- Military Tankers -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(239, 68, 68, 0.15);">🛩️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Military Tankers <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail">2 detected in region</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,18 Q20,16 35,18 T55,14 T70,16" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" style="color: var(--green);">20%</div>
+                </div>
+            </div>
+
+            <!-- Pentagon Pizza Meter -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(249, 115, 22, 0.15);">🍕</div>
+                <div class="signal-info">
+                    <div class="signal-name">Pentagon Pizza Meter <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail">Normal</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,14 Q20,14 40,14 T70,14" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" style="color: var(--green);">30%</div>
+                </div>
+            </div>
+
+            <!-- Market Odds -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(139, 92, 246, 0.15);">📊</div>
+                <div class="signal-info">
+                    <div class="signal-name">Market Odds <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail">8% odds</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,16 Q20,18 40,14 T70,16" fill="none" stroke="#22c55e" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" style="color: var(--green);">8%</div>
+                </div>
+            </div>
+
+            <!-- Weather -->
+            <div class="signal-item">
+                <div class="signal-icon" style="background: rgba(14, 165, 233, 0.15);">🌤️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Weather Conditions <span class="signal-status live">LIVE</span><button class="info-btn">i</button></div>
+                    <div class="signal-detail">partly cloudy</div>
+                </div>
+                <div class="signal-right">
+                    <div class="signal-sparkline">
+                        <svg viewBox="0 0 70 28"><path d="M0,8 Q20,10 40,6 T70,8" fill="none" stroke="#f97316" stroke-width="2"/></svg>
+                    </div>
+                    <div class="signal-value" style="color: var(--orange);">Clear</div>
+                </div>
+            </div>
+        </section>
+
+        <div style="display: flex; gap: 10px; margin-top: 8px;">
+            <button class="show-more-btn" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <span>📤</span> Share
+            </button>
+            <button class="show-more-btn" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <span>ℹ️</span> About
+            </button>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <span class="footer-separator">|</span>
+            <a href="#">Cookie Settings</a>
+        </div>
+    </div>
+
+    <script>
+        const scenarios = {
+            stable: {
+                risk: 0,
+                detail: '$78.42 (+1.2%)',
+                color: 'var(--green)',
+                sparkColor: '#22c55e',
+                sparkPath: 'M0,20 Q10,18 20,16 T40,14 T55,12 T70,14'
+            },
+            low: {
+                risk: 20,
+                detail: '$79.85 (+2.1%)',
+                color: 'var(--green)',
+                sparkColor: '#22c55e',
+                sparkPath: 'M0,22 Q10,20 20,18 T40,16 T55,14 T70,12'
+            },
+            volatile: {
+                risk: 60,
+                detail: '$82.15 (+3.8%)',
+                color: 'var(--yellow)',
+                sparkColor: '#eab308',
+                sparkPath: 'M0,24 Q10,20 20,16 T40,12 T55,8 T70,6'
+            },
+            critical: {
+                risk: 100,
+                detail: '$89.50 (+7.2%)',
+                color: 'var(--red)',
+                sparkColor: '#ef4444',
+                sparkPath: 'M0,26 Q10,22 20,16 T40,10 T55,6 T70,2'
+            }
+        };
+
+        function setScenario(name) {
+            const s = scenarios[name];
+
+            // Update energy value (percentage like other signals)
+            const valueEl = document.getElementById('energyValue');
+            valueEl.textContent = `${s.risk}%`;
+            valueEl.style.color = s.color;
+
+            // Update detail
+            document.getElementById('energyDetail').textContent = s.detail;
+
+            // Update sparkline
+            const sparkline = document.getElementById('energySparkline');
+            sparkline.innerHTML = `<svg viewBox="0 0 70 28"><path d="${s.sparkPath}" fill="none" stroke="${s.sparkColor}" stroke-width="2"/></svg>`;
+
+            // Update button states
+            document.querySelectorAll('.scenario-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -73,36 +73,17 @@ function updateEnergySignal(value, detail, status, isMarketClosed) {
     const valEl = document.getElementById('energyValue');
     const detailEl = document.getElementById('energyDetail');
 
-    // Determine display based on status
-    let displayText, displayColor;
-
-    if (isMarketClosed) {
-        displayText = 'CLOSED';
-        displayColor = 'var(--text-muted)';
-    } else if (status === 'CRITICAL') {
-        displayText = 'CRITICAL';
-        displayColor = 'var(--red)';
-    } else if (status === 'VOLATILE') {
-        displayText = 'VOLATILE';
-        displayColor = 'var(--yellow)';
-    } else if (status === 'STALE') {
-        displayText = 'STALE';
-        displayColor = 'var(--text-muted)';
-    } else {
-        displayText = 'STABLE';
-        displayColor = 'var(--green)';
-    }
-
-    valEl.textContent = displayText;
-    valEl.style.color = displayColor;
+    // Display percentage like other signals
+    let displayValue = Math.round(value) || 0;
+    const colorClass = getColor(displayValue);
+    valEl.textContent = `${displayValue}%`;
+    valEl.style.color = `var(--${colorClass})`;
 
     if (detailEl) detailEl.textContent = detail;
 
-    // Update sparkline
-    const sparkColor = status === 'CRITICAL' ? '#ef4444' :
-                       status === 'VOLATILE' ? '#eab308' :
-                       status === 'STALE' ? '#6b7280' : '#22c55e';
-    updateSparkline('energy', value, sparkColor);
+    // Update sparkline with color based on value
+    const sparkColor = getSparklineColor(displayValue);
+    updateSparkline('energy', displayValue, sparkColor);
 }
 
 function updateSignal(name, value, detail) {
