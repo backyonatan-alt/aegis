@@ -1,11 +1,10 @@
 {
   "news": {
-    "risk": 24,
-    "detail": "28 articles, 15 critical",
+    "risk": 26,
+    "detail": "27 articles, 15 critical",
     "history": [
       21,
       21,
-      21,
       26,
       26,
       24,
@@ -22,7 +21,8 @@
       24,
       24,
       24,
-      24
+      24,
+      26
     ],
     "raw_data": {
       "articles": [
@@ -133,15 +133,11 @@
         {
           "title": "Will Iran and Israel go to war?",
           "is_alert": true
-        },
-        {
-          "title": "\u2018Extensive\u2019 fire breaks out at Tehran shopping centre",
-          "is_alert": false
         }
       ],
-      "total_count": 28,
+      "total_count": 27,
       "alert_count": 15,
-      "timestamp": "2026-02-04T04:25:02.435381"
+      "timestamp": "2026-02-04T04:55:06.695272"
     }
   },
   "connectivity": {
@@ -172,10 +168,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 16,
-    "detail": "99 aircraft over Iran",
+    "risk": 13,
+    "detail": "102 aircraft over Iran",
     "history": [
-      17,
       9,
       6,
       3,
@@ -194,24 +189,25 @@
       21,
       22,
       19,
-      16
+      16,
+      13
     ],
     "raw_data": {
-      "aircraft_count": 99,
-      "airline_count": 36,
+      "aircraft_count": 102,
+      "airline_count": 34,
       "airlines": [
         "AIC",
         "CFG",
         "EJM",
-        "VIR",
-        "IGO",
-        "PGT",
-        "IAW",
+        "BAW",
+        "DLH",
         "UAE",
         "ETD",
-        "UTA"
+        "MJN",
+        "ABY",
+        "FJL"
       ],
-      "timestamp": "2026-02-04T04:25:01.672949"
+      "timestamp": "2026-02-04T04:55:06.999993"
     }
   },
   "tanker": {
@@ -242,12 +238,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T04:25:04.691635"
+      "timestamp": "2026-02-04T04:55:09.255251"
     }
   },
   "weather": {
     "risk": 0,
-    "detail": "light rain",
+    "detail": "moderate rain",
     "history": [
       0,
       0,
@@ -271,19 +267,18 @@
       0
     ],
     "raw_data": {
-      "temp": 8,
+      "temp": 7,
       "visibility": 10000,
       "clouds": 100,
-      "description": "light rain",
+      "description": "moderate rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T04:25:01.276337"
+      "timestamp": "2026-02-04T04:55:06.575671"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      4,
       5,
       3,
       4,
@@ -302,12 +297,13 @@
       2,
       2,
       2,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-04T04:25:01.405874"
+      "timestamp": "2026-02-04T04:55:06.721670"
     }
   },
   "pentagon": {
@@ -318,7 +314,7 @@
       30,
       30,
       30,
-      30,
+      10,
       10,
       10,
       10,
@@ -356,7 +352,7 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-04T04:25:04.693986",
+      "timestamp": "2026-02-04T04:55:09.257112",
       "is_late_night": true,
       "is_weekend": false
     }
@@ -395,11 +391,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770179104695,
+        "timestamp": 1770180909258,
         "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T04:25:04.695196"
+  "last_updated": "2026-02-04T04:55:09.258377"
 }
