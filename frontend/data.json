@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 21,
-    "detail": "26 articles, 13 critical",
+    "risk": 20,
+    "detail": "27 articles, 13 critical",
     "history": [
-      24,
       24,
       24,
       24,
@@ -22,12 +21,17 @@
       23,
       21,
       21,
-      21
+      21,
+      20
     ],
     "raw_data": {
       "articles": [
         {
           "title": "US says it shot down Iranian drone flying towards aircraft carrier",
+          "is_alert": true
+        },
+        {
+          "title": "Iran's president says it is ready to negotiate with the US",
           "is_alert": true
         },
         {
@@ -37,10 +41,6 @@
         {
           "title": "Iranian protester Erfan Soltani released on bail, reports say",
           "is_alert": false
-        },
-        {
-          "title": "Iran's president says it is ready to negotiate with the US",
-          "is_alert": true
         },
         {
           "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
@@ -99,6 +99,10 @@
           "is_alert": false
         },
         {
+          "title": "Which countries do business with Iran  and what could US tariffs mean?",
+          "is_alert": false
+        },
+        {
           "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
           "is_alert": false
         },
@@ -131,9 +135,9 @@
           "is_alert": false
         }
       ],
-      "total_count": 26,
+      "total_count": 27,
       "alert_count": 13,
-      "timestamp": "2026-02-04T06:55:24.573959"
+      "timestamp": "2026-02-04T07:25:29.452310"
     }
   },
   "connectivity": {
@@ -164,10 +168,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 3,
-    "detail": "131 aircraft over Iran",
+    "risk": 10,
+    "detail": "106 aircraft over Iran",
     "history": [
-      45,
       49,
       47,
       33,
@@ -186,24 +189,25 @@
       11,
       8,
       3,
-      3
+      3,
+      10
     ],
     "raw_data": {
-      "aircraft_count": 131,
-      "airline_count": 50,
+      "aircraft_count": 106,
+      "airline_count": 45,
       "airlines": [
-        "DLH",
-        "KNE",
-        "IGO",
-        "FYC",
+        "CFG",
+        "AXB",
+        "BYD",
         "IAW",
         "T7C",
-        "YAS",
-        "ELY",
         "UAE",
-        "AIC"
+        "UBG",
+        "AIC",
+        "PIA",
+        "DAH"
       ],
-      "timestamp": "2026-02-04T06:55:24.946025"
+      "timestamp": "2026-02-04T07:25:29.708521"
     }
   },
   "tanker": {
@@ -234,7 +238,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T06:55:27.202988"
+      "timestamp": "2026-02-04T07:25:31.963545"
     }
   },
   "weather": {
@@ -268,16 +272,16 @@
       "clouds": 75,
       "description": "moderate rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T06:55:24.531343"
+      "timestamp": "2026-02-04T07:25:29.279795"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      3,
       2,
       3,
+      2,
       2,
       2,
       2,
@@ -299,7 +303,7 @@
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-04T06:55:24.916495"
+      "timestamp": "2026-02-04T07:25:29.467219"
     }
   },
   "pentagon": {
@@ -348,13 +352,13 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-02-04T06:55:27.204584",
+      "timestamp": "2026-02-04T07:25:31.965404",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 6,
+    "risk": 7,
     "history": [
       {
         "timestamp": 1769947200000,
@@ -387,11 +391,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770188127205,
-        "risk": 6
+        "timestamp": 1770189931966,
+        "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T06:55:27.205746"
+  "last_updated": "2026-02-04T07:25:31.966545"
 }
