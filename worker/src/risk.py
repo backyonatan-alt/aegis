@@ -90,18 +90,21 @@ def calculate_risk_scores(
     log.info("  Pentagon:   %d%% (%s)", pentagon_display_risk, pentagon_detail)
 
     # ENERGY MARKETS (15% weight)
+    # When markets are closed or data is stale, risk = 0 to avoid affecting the gauge
     if energy:
         energy_status = energy.get("status", "STABLE")
         energy_price = energy.get("price", 0)
         energy_change = energy.get("change_pct", 0)
         energy_market_closed = energy.get("market_closed", False)
-        energy_display_risk = energy.get("risk", 0)
 
         if energy_status == "STALE":
+            energy_display_risk = 0  # Don't affect gauge when data unavailable
             energy_detail = "Data unavailable"
         elif energy_market_closed:
+            energy_display_risk = 0  # Don't affect gauge when markets closed
             energy_detail = f"${energy_price:.2f} (Market Closed)"
         else:
+            energy_display_risk = energy.get("risk", 0)
             energy_detail = f"${energy_price:.2f} ({energy_change:+.1f}%)"
     else:
         energy_status = "STABLE"
