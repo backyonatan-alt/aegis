@@ -105,7 +105,7 @@ def calculate_risk_scores(
             energy_detail = f"${energy_price:.2f} (Market Closed)"
         else:
             energy_display_risk = energy.get("risk", 0)
-            energy_detail = f"${energy_price:.2f} ({energy_change:+.1f}%)"
+            energy_detail = f"{energy_status.title()} • ${energy_price:.2f} ({energy_change:+.1f}%)"
     else:
         energy_status = "STABLE"
         energy_display_risk = 0
