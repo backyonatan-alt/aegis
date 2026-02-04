@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "24 articles, 11 critical",
+    "risk": 19,
+    "detail": "23 articles, 11 critical",
     "history": [
-      24,
       24,
       24,
       24,
@@ -22,7 +21,8 @@
       18,
       18,
       18,
-      18
+      18,
+      19
     ],
     "raw_data": {
       "articles": [
@@ -117,15 +117,11 @@
         {
           "title": "Trump says talks with Iran continuing amid tensions",
           "is_alert": false
-        },
-        {
-          "title": "\u2018Game is over\u2019: Iran\u2019s ex-leaders, hardliners clash after protest killings",
-          "is_alert": false
         }
       ],
-      "total_count": 24,
+      "total_count": 23,
       "alert_count": 11,
-      "timestamp": "2026-02-04T09:26:12.769862"
+      "timestamp": "2026-02-04T09:56:17.295415"
     }
   },
   "connectivity": {
@@ -156,10 +152,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 27,
-    "detail": "85 aircraft over Iran",
+    "risk": 25,
+    "detail": "88 aircraft over Iran",
     "history": [
-      3,
       4,
       6,
       18,
@@ -178,24 +173,25 @@
       17,
       17,
       28,
-      27
+      27,
+      25
     ],
     "raw_data": {
-      "aircraft_count": 85,
-      "airline_count": 43,
+      "aircraft_count": 88,
+      "airline_count": 42,
       "airlines": [
-        "SEJ",
         "FYC",
-        "AXB",
-        "IGO",
-        "BAW",
-        "IAW",
-        "ROJ",
+        "SVA",
         "ELY",
         "AUA",
-        "UAE"
+        "UAE",
+        "VRH",
+        "PBD",
+        "AFL",
+        "ENT",
+        "ABY"
       ],
-      "timestamp": "2026-02-04T09:26:13.017816"
+      "timestamp": "2026-02-04T09:56:17.672534"
     }
   },
   "tanker": {
@@ -226,7 +222,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T09:26:15.274726"
+      "timestamp": "2026-02-04T09:56:19.957210"
     }
   },
   "weather": {
@@ -260,7 +256,7 @@
       "clouds": 100,
       "description": "light rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T09:26:12.602191"
+      "timestamp": "2026-02-04T09:56:17.256254"
     }
   },
   "polymarket": {
@@ -291,7 +287,7 @@
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-04T09:26:12.767982"
+      "timestamp": "2026-02-04T09:56:17.402742"
     }
   },
   "pentagon": {
@@ -340,7 +336,7 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-02-04T09:26:15.276571",
+      "timestamp": "2026-02-04T09:56:19.959829",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -379,11 +375,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770197175277,
+        "timestamp": 1770198979961,
         "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T09:26:15.277793"
+  "last_updated": "2026-02-04T09:56:19.961094"
 }
