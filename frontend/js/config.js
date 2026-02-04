@@ -84,7 +84,7 @@ const INFO_CONTENT = {
     energy: `<strong>Energy Markets</strong><br><br>
         Monitors Brent Crude oil price volatility via financial APIs.<br><br>
         <strong>Why it matters:</strong> Oil markets often move faster than the news cycle. Price spikes typically indicate institutional players hedging against supply chain disruptions in the Middle East.<br><br>
-        <strong>How it works:</strong> We track the rate of change relative to the 24-hour moving average:<br>
+        <strong>How it works:</strong> We track the rate of change relative to the 7-day moving average:<br>
         • Stable (&lt;2%): Normal market conditions<br>
         • Volatile (2-5%): Elevated market anxiety<br>
         • Critical (&gt;5%): Maximum risk signal<br><br>
