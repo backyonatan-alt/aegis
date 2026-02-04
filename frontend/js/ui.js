@@ -69,6 +69,42 @@ function updateGauge(score) {
     }
 }
 
+function updateEnergySignal(value, detail, status, isMarketClosed) {
+    const valEl = document.getElementById('energyValue');
+    const detailEl = document.getElementById('energyDetail');
+
+    // Determine display based on status
+    let displayText, displayColor;
+
+    if (isMarketClosed) {
+        displayText = 'CLOSED';
+        displayColor = 'var(--text-muted)';
+    } else if (status === 'CRITICAL') {
+        displayText = 'CRITICAL';
+        displayColor = 'var(--red)';
+    } else if (status === 'VOLATILE') {
+        displayText = 'VOLATILE';
+        displayColor = 'var(--yellow)';
+    } else if (status === 'STALE') {
+        displayText = 'STALE';
+        displayColor = 'var(--text-muted)';
+    } else {
+        displayText = 'STABLE';
+        displayColor = 'var(--green)';
+    }
+
+    valEl.textContent = displayText;
+    valEl.style.color = displayColor;
+
+    if (detailEl) detailEl.textContent = detail;
+
+    // Update sparkline
+    const sparkColor = status === 'CRITICAL' ? '#ef4444' :
+                       status === 'VOLATILE' ? '#eab308' :
+                       status === 'STALE' ? '#6b7280' : '#22c55e';
+    updateSparkline('energy', value, sparkColor);
+}
+
 function updateSignal(name, value, detail) {
     const valEl = document.getElementById(`${name}Value`);
     const detailEl = document.getElementById(`${name}Detail`);

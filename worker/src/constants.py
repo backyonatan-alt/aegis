@@ -107,3 +107,11 @@ MONTHS = [
 # Cloudflare Radar API configuration
 CLOUDFLARE_RADAR_BASE_URL = "https://api.cloudflare.com/client/v4/radar"
 CLOUDFLARE_RADAR_LOCATION = "IR"  # Iran
+
+# Alpha Vantage API configuration (Energy Markets)
+ALPHA_VANTAGE_BASE_URL = "https://www.alphavantage.co/query"
+BRENT_CRUDE_SYMBOL = "BRENT"  # Brent Crude Oil
+
+# Energy Volatility Index thresholds
+ENERGY_CRITICAL_THRESHOLD = 0.05  # 5% jump = Critical (1.0)
+ENERGY_VOLATILE_THRESHOLD = 0.02  # 2% jump = Volatile

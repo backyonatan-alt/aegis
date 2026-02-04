@@ -18,6 +18,7 @@ from constants import R2_KEY
 from fetchers import (
     fetch_aviation_data,
     fetch_cloudflare_connectivity,
+    fetch_energy_data,
     fetch_news_intel,
     fetch_pentagon_data,
     fetch_polymarket_odds,
@@ -106,6 +107,15 @@ async def on_fetch(request, env):
                 "raw_data": {"status": "STABLE", "trend": 0.0}
             }
 
+        # Add mock energy data if missing (until scheduled task runs)
+        if "energy" not in data:
+            data["energy"] = {
+                "risk": 0,
+                "detail": "Awaiting data...",
+                "history": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "raw_data": {"status": "STABLE", "price": 0, "change_pct": 0, "market_closed": False}
+            }
+
         response_body = json.dumps(data)
     except Exception as e:
         log.warning("Failed to parse data, returning raw: %s", e)
@@ -145,17 +155,28 @@ async def on_scheduled(controller, env, ctx):
     # 2. Compute Pentagon data (no API call)
     pentagon_data = fetch_pentagon_data()
 
-    # 3. Fetch 5 independent APIs in parallel
+    # 3. Fetch 6 independent APIs in parallel
     api_key = getattr(env, "OPENWEATHER_API_KEY", "")
     cloudflare_token = getattr(env, "CLOUDFLARE_RADAR_TOKEN", "")
+    alpha_vantage_key = getattr(env, "ALPHA_VANTAGE_API_KEY", "")
 
-    polymarket_result, news_result, aviation_result, weather_result, connectivity_result = (
+    # Check for debug/simulation mode
+    energy_debug_price = getattr(env, "ENERGY_DEBUG_PRICE", None)
+    if energy_debug_price:
+        try:
+            energy_debug_price = float(energy_debug_price)
+            log.info("Energy debug mode: using price $%.2f", energy_debug_price)
+        except (ValueError, TypeError):
+            energy_debug_price = None
+
+    polymarket_result, news_result, aviation_result, weather_result, connectivity_result, energy_result = (
         await asyncio.gather(
             fetch_polymarket_odds(),
             fetch_news_intel(),
             fetch_aviation_data(),
             fetch_weather_data(api_key),
             fetch_cloudflare_connectivity(cloudflare_token),
+            fetch_energy_data(alpha_vantage_key, energy_debug_price),
             return_exceptions=True,
         )
     )
@@ -167,6 +188,7 @@ async def on_scheduled(controller, env, ctx):
         ("Aviation", aviation_result),
         ("Weather", weather_result),
         ("Connectivity", connectivity_result),
+        ("Energy", energy_result),
     ]:
         if isinstance(result, Exception):
             log.error("%s fetch raised exception: %s", name, result)
@@ -181,6 +203,8 @@ async def on_scheduled(controller, env, ctx):
         weather_result = None
     if isinstance(connectivity_result, Exception):
         connectivity_result = None
+    if isinstance(energy_result, Exception):
+        energy_result = None
 
     # 4. Sleep for OpenSky rate limit, then fetch tanker data
     log.info("Waiting 2s for OpenSky rate limit...")
@@ -191,6 +215,7 @@ async def on_scheduled(controller, env, ctx):
     polymarket_data = polymarket_result or current_data.get("polymarket", {}).get("raw_data", {})
     news_data = news_result or current_data.get("news", {}).get("raw_data", {})
     connectivity_data = connectivity_result or current_data.get("connectivity", {}).get("raw_data", {})
+    energy_data = energy_result or current_data.get("energy", {}).get("raw_data", {})
     aviation_data = aviation_result or current_data.get("flight", {}).get("raw_data", {})
     weather_data = weather_result or current_data.get("weather", {}).get("raw_data", {})
     tanker_data = tanker_result or current_data.get("tanker", {}).get("raw_data", {})
@@ -202,6 +227,8 @@ async def on_scheduled(controller, env, ctx):
         fallback_used.append("news")
     if connectivity_result is None:
         fallback_used.append("connectivity")
+    if energy_result is None:
+        fallback_used.append("energy")
     if aviation_result is None:
         fallback_used.append("aviation")
     if weather_result is None:
@@ -220,12 +247,14 @@ async def on_scheduled(controller, env, ctx):
         weather=weather_data,
         polymarket=polymarket_data,
         pentagon_data=pentagon_data,
+        energy=energy_data,
     )
 
     # 6. Update history and build final JSON
     raw = {
         "news": news_data,
         "connectivity": connectivity_data,
+        "energy": energy_data,
         "flight": aviation_data,
         "tanker": tanker_data,
         "weather": weather_data,
