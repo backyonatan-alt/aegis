@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 20,
-    "detail": "27 articles, 13 critical",
+    "risk": 18,
+    "detail": "24 articles, 11 critical",
     "history": [
-      24,
       24,
       24,
       24,
@@ -22,7 +21,8 @@
       21,
       21,
       21,
-      20
+      20,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -43,6 +43,10 @@
           "is_alert": false
         },
         {
+          "title": "Five killed in gas explosions in Iran, officials say",
+          "is_alert": false
+        },
+        {
           "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
           "is_alert": true
         },
@@ -59,12 +63,12 @@
           "is_alert": false
         },
         {
-          "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
-          "is_alert": true
-        },
-        {
           "title": "'Don't take us to a hospital': Iran protesters treated in secret to avoid arrest",
           "is_alert": false
+        },
+        {
+          "title": "'We all know someone who was killed' -  Iran protesters tell BBC of brutal crackdown",
+          "is_alert": true
         },
         {
           "title": "'I saw people getting shot': Eyewitness tells of Iran protest crackdown",
@@ -95,14 +99,6 @@
           "is_alert": false
         },
         {
-          "title": "Decision time for Trump on Iran but what does he ultimately want?",
-          "is_alert": false
-        },
-        {
-          "title": "Which countries do business with Iran  and what could US tariffs mean?",
-          "is_alert": false
-        },
-        {
           "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
           "is_alert": false
         },
@@ -119,25 +115,17 @@
           "is_alert": false
         },
         {
-          "title": "\u2018Game is over\u2019: Iran\u2019s ex-leaders, hardliners clash after protest killings",
+          "title": "Trump says talks with Iran continuing amid tensions",
           "is_alert": false
         },
         {
-          "title": "Will Hezbollah continue to avoid responding to Israel\u2019s attacks on Lebanon?",
-          "is_alert": true
-        },
-        {
-          "title": "What would be the impact of a US attack on Iran?",
-          "is_alert": true
-        },
-        {
-          "title": "Trump says talks with Iran continuing as US shoots down an Iranian drone",
+          "title": "\u2018Game is over\u2019: Iran\u2019s ex-leaders, hardliners clash after protest killings",
           "is_alert": false
         }
       ],
-      "total_count": 27,
-      "alert_count": 13,
-      "timestamp": "2026-02-04T07:25:29.452310"
+      "total_count": 24,
+      "alert_count": 11,
+      "timestamp": "2026-02-04T07:55:34.093299"
     }
   },
   "connectivity": {
@@ -168,10 +156,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 10,
-    "detail": "106 aircraft over Iran",
+    "risk": 17,
+    "detail": "98 aircraft over Iran",
     "history": [
-      49,
       47,
       33,
       13,
@@ -190,24 +177,25 @@
       8,
       3,
       3,
-      10
+      10,
+      17
     ],
     "raw_data": {
-      "aircraft_count": 106,
-      "airline_count": 45,
+      "aircraft_count": 98,
+      "airline_count": 46,
       "airlines": [
         "CFG",
         "AXB",
-        "BYD",
-        "IAW",
-        "T7C",
+        "HMZ",
+        "ROJ",
+        "IGO",
         "UAE",
-        "UBG",
-        "AIC",
+        "P4B",
+        "ETD",
         "PIA",
-        "DAH"
+        "ISR"
       ],
-      "timestamp": "2026-02-04T07:25:29.708521"
+      "timestamp": "2026-02-04T07:55:34.309846"
     }
   },
   "tanker": {
@@ -238,12 +226,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T07:25:31.963545"
+      "timestamp": "2026-02-04T07:55:36.564569"
     }
   },
   "weather": {
     "risk": 0,
-    "detail": "moderate rain",
+    "detail": "light rain",
     "history": [
       0,
       0,
@@ -269,18 +257,18 @@
     "raw_data": {
       "temp": 7,
       "visibility": 10000,
-      "clouds": 75,
-      "description": "moderate rain",
+      "clouds": 100,
+      "description": "light rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T07:25:29.279795"
+      "timestamp": "2026-02-04T07:55:33.913994"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      2,
       3,
+      2,
       2,
       2,
       2,
@@ -302,8 +290,8 @@
     ],
     "raw_data": {
       "odds": 2,
-      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-04T07:25:29.467219"
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-02-04T07:55:34.090894"
     }
   },
   "pentagon": {
@@ -352,7 +340,7 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-02-04T07:25:31.965404",
+      "timestamp": "2026-02-04T07:55:36.567358",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -391,11 +379,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770189931966,
+        "timestamp": 1770191736569,
         "risk": 7
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T07:25:31.966545"
+  "last_updated": "2026-02-04T07:55:36.569463"
 }
