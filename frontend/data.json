@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 19,
-    "detail": "23 articles, 11 critical",
+    "risk": 20,
+    "detail": "25 articles, 12 critical",
     "history": [
-      19,
       18,
       18,
       18,
@@ -22,7 +21,8 @@
       19,
       19,
       19,
-      19
+      19,
+      20
     ],
     "raw_data": {
       "articles": [
@@ -115,13 +115,21 @@
           "is_alert": false
         },
         {
+          "title": "Some in Israel question its influence over US as Iran war decision nears",
+          "is_alert": true
+        },
+        {
+          "title": "Rubio: US ready to talk with Iran, \u2018not sure\u2019 a deal can be reached",
+          "is_alert": false
+        },
+        {
           "title": "Mediators propose framework for crucial Iran-US talks this week",
           "is_alert": false
         }
       ],
-      "total_count": 23,
-      "alert_count": 11,
-      "timestamp": "2026-02-04T19:57:50.618648"
+      "total_count": 25,
+      "alert_count": 12,
+      "timestamp": "2026-02-04T20:27:55.562405"
     }
   },
   "connectivity": {
@@ -152,10 +160,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 3,
-    "detail": "117 aircraft over Iran",
+    "risk": 9,
+    "detail": "108 aircraft over Iran",
     "history": [
-      25,
       18,
       3,
       10,
@@ -174,24 +181,25 @@
       6,
       9,
       7,
-      3
+      3,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 117,
+      "aircraft_count": 108,
       "airline_count": 34,
       "airlines": [
-        "AIC",
-        "VJH",
         "IGO",
+        "AIC",
         "AXB",
         "PAL",
-        "GIA",
+        "FYC",
         "BBC",
+        "IAW",
         "UAE",
         "WZZ",
-        "PIA"
+        "ETD"
       ],
-      "timestamp": "2026-02-04T19:57:50.328647"
+      "timestamp": "2026-02-04T20:27:55.940456"
     }
   },
   "tanker": {
@@ -222,7 +230,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T19:57:52.880855"
+      "timestamp": "2026-02-04T20:27:58.209089"
     }
   },
   "weather": {
@@ -256,14 +264,13 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-02-04T19:57:49.910053"
+      "timestamp": "2026-02-04T20:27:55.430562"
     }
   },
   "polymarket": {
-    "risk": 4,
-    "detail": "4% odds",
+    "risk": 6,
+    "detail": "6% odds",
     "history": [
-      2,
       3,
       3,
       3,
@@ -282,12 +289,13 @@
       8,
       5,
       4,
-      4
+      4,
+      6
     ],
     "raw_data": {
-      "odds": 4,
-      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-04T19:57:50.042166"
+      "odds": 6,
+      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
+      "timestamp": "2026-02-04T20:27:55.560321"
     }
   },
   "pentagon": {
@@ -295,7 +303,6 @@
     "detail": "Normal",
     "history": [
       10,
-      10,
       30,
       30,
       30,
@@ -308,6 +315,7 @@
       10,
       10,
       10,
+      30,
       30,
       30,
       30,
@@ -336,13 +344,13 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-02-04T19:57:52.882947",
+      "timestamp": "2026-02-04T20:27:58.210969",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769990400000,
@@ -375,11 +383,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770235072884,
-        "risk": 8
+        "timestamp": 1770236878211,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T19:57:52.884215"
+  "last_updated": "2026-02-04T20:27:58.211917"
 }
