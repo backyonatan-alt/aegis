@@ -3,7 +3,6 @@
     "risk": 24,
     "detail": "28 articles, 15 critical",
     "history": [
-      15,
       16,
       16,
       18,
@@ -12,6 +11,7 @@
       21,
       26,
       26,
+      24,
       24,
       24,
       24,
@@ -127,7 +127,7 @@
           "is_alert": true
         },
         {
-          "title": "US military says it shot down an Iranian drone in Arabian Sea",
+          "title": "Trump confirms talks with Iran as US military shoots down Iranian drone",
           "is_alert": true
         },
         {
@@ -141,7 +141,7 @@
       ],
       "total_count": 28,
       "alert_count": 15,
-      "timestamp": "2026-02-04T02:24:43.407621"
+      "timestamp": "2026-02-04T02:54:47.889341"
     }
   },
   "connectivity": {
@@ -172,10 +172,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 24,
-    "detail": "89 aircraft over Iran",
+    "risk": 21,
+    "detail": "92 aircraft over Iran",
     "history": [
-      27,
       15,
       7,
       6,
@@ -194,24 +193,25 @@
       6,
       18,
       7,
-      24
+      24,
+      21
     ],
     "raw_data": {
-      "aircraft_count": 89,
-      "airline_count": 25,
+      "aircraft_count": 92,
+      "airline_count": 24,
       "airlines": [
-        "PGT",
-        "AXB",
         "DLH",
-        "SEJ",
+        "IGO",
+        "AIC",
         "UAE",
-        "ETD",
         "ABY",
-        "FDB",
         "THY",
-        "PIA"
+        "SIF",
+        "FDB",
+        "ETD",
+        "KAC"
       ],
-      "timestamp": "2026-02-04T02:24:43.677570"
+      "timestamp": "2026-02-04T02:54:48.135462"
     }
   },
   "tanker": {
@@ -242,7 +242,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-04T02:24:45.931853"
+      "timestamp": "2026-02-04T02:54:50.400668"
     }
   },
   "weather": {
@@ -276,14 +276,13 @@
       "clouds": 75,
       "description": "light rain",
       "condition": "Poor",
-      "timestamp": "2026-02-04T02:24:43.275399"
+      "timestamp": "2026-02-04T02:54:47.710183"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      2,
       2,
       3,
       4,
@@ -302,27 +301,28 @@
       2,
       2,
       2,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
-      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-04T02:24:43.441380"
+      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
+      "timestamp": "2026-02-04T02:54:47.887322"
     }
   },
   "pentagon": {
     "risk": 10,
     "detail": "Low Activity (late night)",
     "history": [
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
       10,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30,
       10,
       10,
       10,
@@ -356,13 +356,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-04T02:24:45.934252",
+      "timestamp": "2026-02-04T02:54:50.402743",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 10,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1769947200000,
@@ -395,11 +395,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770171885935,
-        "risk": 10
+        "timestamp": 1770173690403,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-04T02:24:45.935344"
+  "last_updated": "2026-02-04T02:54:50.403800"
 }
