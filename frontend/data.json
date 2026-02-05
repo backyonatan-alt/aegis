@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 17,
-    "detail": "27 articles, 12 critical",
+    "risk": 16,
+    "detail": "25 articles, 11 critical",
     "history": [
-      20,
       20,
       20,
       20,
@@ -22,7 +21,8 @@
       20,
       18,
       17,
-      17
+      17,
+      16
     ],
     "raw_data": {
       "articles": [
@@ -125,19 +125,11 @@
         {
           "title": "US-Iran nuclear talks set for Oman on Friday, Tehran confirms",
           "is_alert": false
-        },
-        {
-          "title": "Some in Israel question its influence over US as Iran war decision nears",
-          "is_alert": true
-        },
-        {
-          "title": "Rubio: US ready to talk with Iran, \u2018not sure\u2019 a deal can be reached",
-          "is_alert": false
         }
       ],
-      "total_count": 27,
-      "alert_count": 12,
-      "timestamp": "2026-02-05T06:29:27.160337"
+      "total_count": 25,
+      "alert_count": 11,
+      "timestamp": "2026-02-05T06:59:31.719283"
     }
   },
   "connectivity": {
@@ -168,10 +160,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 6,
-    "detail": "111 aircraft over Iran",
+    "risk": 7,
+    "detail": "110 aircraft over Iran",
     "history": [
-      19,
       46,
       57,
       45,
@@ -190,24 +181,25 @@
       16,
       9,
       5,
-      6
+      6,
+      7
     ],
     "raw_data": {
-      "aircraft_count": 111,
-      "airline_count": 36,
+      "aircraft_count": 110,
+      "airline_count": 41,
       "airlines": [
-        "DLH",
-        "AXB",
-        "T7A",
-        "IGO",
+        "AIC",
+        "KIS",
+        "DAH",
         "BYD",
         "IAW",
-        "GAF",
         "ELY",
         "UAE",
-        "VRH"
+        "IGO",
+        "PIA",
+        "MJN"
       ],
-      "timestamp": "2026-02-05T06:29:27.346508"
+      "timestamp": "2026-02-05T06:59:31.897138"
     }
   },
   "tanker": {
@@ -238,7 +230,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-05T06:29:29.624727"
+      "timestamp": "2026-02-05T06:59:34.152538"
     }
   },
   "weather": {
@@ -272,18 +264,17 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-02-05T06:29:26.916945"
+      "timestamp": "2026-02-05T06:59:31.507010"
     }
   },
   "polymarket": {
-    "risk": 4,
-    "detail": "4% odds",
+    "risk": 3,
+    "detail": "3% odds",
     "history": [
       3,
       3,
       3,
       3,
-      3,
       2,
       2,
       2,
@@ -298,19 +289,20 @@
       2,
       2,
       2,
-      4
+      4,
+      3
     ],
     "raw_data": {
-      "odds": 4,
+      "odds": 3,
       "market": "Will the US next strike Iran on February 8, 2026 (ET)?",
-      "timestamp": "2026-02-05T06:29:27.063440"
+      "timestamp": "2026-02-05T06:59:31.623949"
     }
   },
   "pentagon": {
     "risk": 10,
     "detail": "Low Activity",
     "history": [
-      30,
+      10,
       10,
       10,
       10,
@@ -352,7 +344,7 @@
           "score": 30
         }
       ],
-      "timestamp": "2026-02-05T06:29:29.626607",
+      "timestamp": "2026-02-05T06:59:34.154122",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -391,11 +383,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770272969627,
+        "timestamp": 1770274774155,
         "risk": 6
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-05T06:29:29.627568"
+  "last_updated": "2026-02-05T06:59:34.155237"
 }
