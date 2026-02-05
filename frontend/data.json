@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 21,
-    "detail": "24 articles, 12 critical",
+    "risk": 20,
+    "detail": "25 articles, 12 critical",
     "history": [
-      20,
       18,
       17,
       17,
@@ -22,7 +21,8 @@
       21,
       21,
       23,
-      21
+      21,
+      20
     ],
     "raw_data": {
       "articles": [
@@ -119,13 +119,17 @@
           "is_alert": false
         },
         {
+          "title": "US-Iran talks face \u2018serious obstacles in the way of diplomacy\u2019",
+          "is_alert": false
+        },
+        {
           "title": "The weapons the US has in place as it threatens to attack Iran",
           "is_alert": true
         }
       ],
-      "total_count": 24,
+      "total_count": 25,
       "alert_count": 12,
-      "timestamp": "2026-02-05T14:30:43.198571"
+      "timestamp": "2026-02-05T15:00:47.785117"
     }
   },
   "connectivity": {
@@ -156,10 +160,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 3,
-    "detail": "124 aircraft over Iran",
+    "risk": 7,
+    "detail": "110 aircraft over Iran",
     "history": [
-      16,
       9,
       5,
       6,
@@ -178,24 +181,25 @@
       6,
       4,
       3,
-      3
+      3,
+      7
     ],
     "raw_data": {
-      "aircraft_count": 124,
-      "airline_count": 47,
+      "aircraft_count": 110,
+      "airline_count": 48,
       "airlines": [
+        "AXB",
+        "KNE",
+        "FGO",
         "AIC",
-        "SWR",
-        "KIS",
-        "PAL",
-        "FYC",
         "FR1",
         "UAF",
-        "BBC",
+        "DLH",
         "IAW",
-        "ELY"
+        "BBC",
+        "T7C"
       ],
-      "timestamp": "2026-02-05T14:30:43.408756"
+      "timestamp": "2026-02-05T15:00:48.239466"
     }
   },
   "tanker": {
@@ -226,12 +230,12 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-05T14:30:45.686718"
+      "timestamp": "2026-02-05T15:00:50.501659"
     }
   },
   "weather": {
     "risk": 0,
-    "detail": "few clouds",
+    "detail": "scattered clouds",
     "history": [
       0,
       0,
@@ -255,19 +259,18 @@
       0
     ],
     "raw_data": {
-      "temp": 8,
+      "temp": 7,
       "visibility": 10000,
-      "clouds": 20,
-      "description": "few clouds",
-      "condition": "Favorable",
-      "timestamp": "2026-02-05T14:30:42.951084"
+      "clouds": 40,
+      "description": "scattered clouds",
+      "condition": "Marginal",
+      "timestamp": "2026-02-05T15:00:47.779869"
     }
   },
   "polymarket": {
-    "risk": 2,
-    "detail": "2% odds",
+    "risk": 3,
+    "detail": "3% odds",
     "history": [
-      2,
       2,
       2,
       4,
@@ -286,17 +289,18 @@
       3,
       3,
       2,
-      2
+      2,
+      3
     ],
     "raw_data": {
-      "odds": 2,
-      "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-05T14:30:43.106723"
+      "odds": 3,
+      "market": "Will the US next strike Iran on February 8, 2026 (ET)?",
+      "timestamp": "2026-02-05T15:00:47.904939"
     }
   },
   "pentagon": {
-    "risk": 30,
-    "detail": "Normal",
+    "risk": 10,
+    "detail": "Low Activity",
     "history": [
       10,
       10,
@@ -309,7 +313,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -317,36 +320,37 @@
       30,
       30,
       30,
-      30
+      30,
+      10
     ],
     "raw_data": {
-      "score": 50,
-      "risk_contribution": 3,
-      "status": "Normal",
+      "score": 30,
+      "risk_contribution": 1,
+      "status": "Low Activity",
       "places": [
         {
           "name": "Domino's Pizza",
           "status": "normal",
-          "score": 50
+          "score": 30
         },
         {
           "name": "Papa John's",
           "status": "normal",
-          "score": 50
+          "score": 30
         },
         {
           "name": "Pizza Hut",
           "status": "normal",
-          "score": 50
+          "score": 30
         }
       ],
-      "timestamp": "2026-02-05T14:30:45.688890",
+      "timestamp": "2026-02-05T15:00:50.503735",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 6,
     "history": [
       {
         "timestamp": 1770076800000,
@@ -379,11 +383,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770301845689,
-        "risk": 8
+        "timestamp": 1770303650505,
+        "risk": 6
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-05T14:30:45.689648"
+  "last_updated": "2026-02-05T15:00:50.505102"
 }
