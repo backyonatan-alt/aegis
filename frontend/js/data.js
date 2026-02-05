@@ -3,7 +3,7 @@
 // =============================================
 
 // Read data from local static file (no Worker dependency)
-const DATA_URL = 'data.json';
+const DATA_URL = 'https://api.usstrikeradar.com/api/data';
 
 async function getData() {
     try {

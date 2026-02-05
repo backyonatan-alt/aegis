@@ -3,3 +3,5 @@
 worker/.dev.vars
 .wrangler/
 node_modules/
+backend/aegis
+__pycache__/

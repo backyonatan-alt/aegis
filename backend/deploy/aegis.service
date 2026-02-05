@@ -1,0 +1,21 @@
+[Unit]
+Description=Aegis Strike Radar API
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=aegis
+Group=aegis
+ExecStart=/usr/local/bin/aegis
+Restart=always
+RestartSec=5
+EnvironmentFile=/etc/aegis/env
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log
+
+[Install]
+WantedBy=multi-user.target
