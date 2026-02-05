@@ -1,9 +1,8 @@
 {
   "news": {
     "risk": 18,
-    "detail": "24 articles, 11 critical",
+    "detail": "22 articles, 10 critical",
     "history": [
-      16,
       16,
       16,
       18,
@@ -19,6 +18,7 @@
       23,
       21,
       20,
+      18,
       18,
       18,
       18,
@@ -51,11 +51,11 @@
           "is_alert": false
         },
         {
-          "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
+          "title": "Iran wants to make deal rather than face military action, Trump says",
           "is_alert": true
         },
         {
-          "title": "Iran wants to make deal rather than face military action, Trump says",
+          "title": "Israel eyes regime change in Iran - and is counting on Trump to make it happen",
           "is_alert": true
         },
         {
@@ -95,14 +95,6 @@
           "is_alert": false
         },
         {
-          "title": "Why are there protests in Iran and what has Trump said about US action?",
-          "is_alert": true
-        },
-        {
-          "title": "Bowen: Authoritarian regimes die gradually then suddenly, but Iran is not there yet",
-          "is_alert": false
-        },
-        {
           "title": "'Anger and frustration': BBC reports from Iranian-Armenian border",
           "is_alert": false
         },
@@ -123,9 +115,9 @@
           "is_alert": false
         }
       ],
-      "total_count": 24,
-      "alert_count": 11,
-      "timestamp": "2026-02-05T17:01:06.615718"
+      "total_count": 22,
+      "alert_count": 10,
+      "timestamp": "2026-02-05T17:31:11.506085"
     }
   },
   "connectivity": {
@@ -156,10 +148,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 6,
-    "detail": "111 aircraft over Iran",
+    "risk": 4,
+    "detail": "114 aircraft over Iran",
     "history": [
-      21,
       15,
       20,
       17,
@@ -178,24 +169,25 @@
       11,
       6,
       20,
-      6
+      6,
+      4
     ],
     "raw_data": {
-      "aircraft_count": 111,
-      "airline_count": 45,
+      "aircraft_count": 114,
+      "airline_count": 43,
       "airlines": [
-        "KNE",
-        "FYC",
+        "SWR",
+        "PAL",
         "FR1",
+        "BBC",
+        "ELY",
         "DLH",
         "UAE",
+        "MEA",
         "WZZ",
-        "PIA",
-        "ABY",
-        "FDB",
-        "FJL"
+        "IGO"
       ],
-      "timestamp": "2026-02-05T17:01:06.999555"
+      "timestamp": "2026-02-05T17:31:11.693704"
     }
   },
   "tanker": {
@@ -226,7 +218,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-05T17:01:09.263286"
+      "timestamp": "2026-02-05T17:31:13.967499"
     }
   },
   "weather": {
@@ -250,7 +242,7 @@
       0,
       0,
       0,
-      0,
+      100,
       100,
       100
     ],
@@ -260,14 +252,13 @@
       "clouds": 0,
       "description": "clear sky",
       "condition": "Favorable",
-      "timestamp": "2026-02-05T17:01:06.452435"
+      "timestamp": "2026-02-05T17:31:11.172483"
     }
   },
   "polymarket": {
-    "risk": 4,
-    "detail": "4% odds",
+    "risk": 3,
+    "detail": "3% odds",
     "history": [
-      3,
       3,
       3,
       3,
@@ -286,12 +277,13 @@
       3,
       4,
       3,
-      4
+      4,
+      3
     ],
     "raw_data": {
-      "odds": 4,
-      "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-05T17:01:06.568874"
+      "odds": 3,
+      "market": "Will the US next strike Iran on February 8, 2026 (ET)?",
+      "timestamp": "2026-02-05T17:31:11.282758"
     }
   },
   "pentagon": {
@@ -304,7 +296,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -317,6 +308,7 @@
       10,
       10,
       10,
+      30,
       30
     ],
     "raw_data": {
@@ -340,7 +332,7 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-02-05T17:01:09.265143",
+      "timestamp": "2026-02-05T17:31:13.969039",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -379,11 +371,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770310869266,
+        "timestamp": 1770312673970,
         "risk": 13
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-05T17:01:09.266123"
+  "last_updated": "2026-02-05T17:31:13.970006"
 }
