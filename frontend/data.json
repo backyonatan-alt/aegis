@@ -1,13 +1,12 @@
 {
   "news": {
-    "risk": 20,
-    "detail": "25 articles, 12 critical",
+    "risk": 21,
+    "detail": "24 articles, 12 critical",
     "history": [
       20,
       20,
       20,
       20,
-      20,
       18,
       17,
       17,
@@ -22,7 +21,8 @@
       20,
       20,
       20,
-      20
+      20,
+      21
     ],
     "raw_data": {
       "articles": [
@@ -121,15 +121,11 @@
         {
           "title": "LIVE: US, Iran struggle to find common ground ahead of talks",
           "is_alert": false
-        },
-        {
-          "title": "Questions after Iran\u2019s government releases victim list in protest killings",
-          "is_alert": false
         }
       ],
-      "total_count": 25,
+      "total_count": 24,
       "alert_count": 12,
-      "timestamp": "2026-02-05T12:30:23.137501"
+      "timestamp": "2026-02-05T13:00:28.575385"
     }
   },
   "connectivity": {
@@ -160,10 +156,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 21,
-    "detail": "93 aircraft over Iran",
+    "risk": 6,
+    "detail": "111 aircraft over Iran",
     "history": [
-      29,
       21,
       30,
       29,
@@ -182,24 +177,25 @@
       20,
       9,
       17,
-      21
+      21,
+      6
     ],
     "raw_data": {
-      "aircraft_count": 93,
+      "aircraft_count": 111,
       "airline_count": 41,
       "airlines": [
-        "KIS",
-        "T7A",
-        "FYC",
-        "SVA",
-        "IGO",
-        "IAW",
+        "AIC",
+        "GHN",
+        "LNX",
+        "N11",
+        "MNB",
         "UAE",
-        "N86",
+        "AXB",
         "ABY",
-        "THY"
+        "OMA",
+        "SHI"
       ],
-      "timestamp": "2026-02-05T12:30:23.376661"
+      "timestamp": "2026-02-05T13:00:28.739627"
     }
   },
   "tanker": {
@@ -230,7 +226,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-05T12:30:25.677107"
+      "timestamp": "2026-02-05T13:00:31.000483"
     }
   },
   "weather": {
@@ -264,14 +260,13 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-05T12:30:22.857641"
+      "timestamp": "2026-02-05T13:00:28.438826"
     }
   },
   "polymarket": {
     "risk": 3,
     "detail": "3% odds",
     "history": [
-      2,
       2,
       3,
       3,
@@ -290,12 +285,13 @@
       3,
       3,
       3,
+      3,
       3
     ],
     "raw_data": {
       "odds": 3,
       "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-05T12:30:22.969252"
+      "timestamp": "2026-02-05T13:00:28.473909"
     }
   },
   "pentagon": {
@@ -317,7 +313,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30,
       30,
       30,
@@ -344,13 +340,13 @@
           "score": 50
         }
       ],
-      "timestamp": "2026-02-05T12:30:25.678838",
+      "timestamp": "2026-02-05T13:00:31.002997",
       "is_late_night": false,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 11,
+    "risk": 9,
     "history": [
       {
         "timestamp": 1770076800000,
@@ -383,11 +379,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770294625679,
-        "risk": 11
+        "timestamp": 1770296431004,
+        "risk": 9
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-05T12:30:25.679823"
+  "last_updated": "2026-02-05T13:00:31.004259"
 }
