@@ -1,10 +1,9 @@
 {
   "news": {
-    "risk": 20,
-    "detail": "25 articles, 12 critical",
+    "risk": 18,
+    "detail": "26 articles, 12 critical",
     "history": [
       19,
-      19,
       20,
       20,
       20,
@@ -22,7 +21,8 @@
       20,
       20,
       20,
-      20
+      20,
+      18
     ],
     "raw_data": {
       "articles": [
@@ -115,6 +115,10 @@
           "is_alert": false
         },
         {
+          "title": "Questions after Iran\u2019s government releases victim list in protest killings",
+          "is_alert": false
+        },
+        {
           "title": "US-Iran nuclear talks set for Oman on Friday, Tehran confirms",
           "is_alert": false
         },
@@ -127,9 +131,9 @@
           "is_alert": false
         }
       ],
-      "total_count": 25,
+      "total_count": 26,
       "alert_count": 12,
-      "timestamp": "2026-02-05T04:59:13.439191"
+      "timestamp": "2026-02-05T05:29:17.934291"
     }
   },
   "connectivity": {
@@ -160,10 +164,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 16,
-    "detail": "99 aircraft over Iran",
+    "risk": 9,
+    "detail": "108 aircraft over Iran",
     "history": [
-      7,
       3,
       9,
       19,
@@ -182,24 +185,25 @@
       21,
       30,
       29,
-      16
+      16,
+      9
     ],
     "raw_data": {
-      "aircraft_count": 99,
-      "airline_count": 32,
+      "aircraft_count": 108,
+      "airline_count": 31,
       "airlines": [
-        "CFG",
-        "AIC",
+        "T7A",
         "SHR",
-        "IAW",
+        "AIC",
         "UAE",
-        "PIA",
         "ETD",
         "THY",
         "ABY",
-        "OMA"
+        "OMS",
+        "OMA",
+        "FJL"
       ],
-      "timestamp": "2026-02-05T04:59:13.824614"
+      "timestamp": "2026-02-05T05:29:18.334578"
     }
   },
   "tanker": {
@@ -230,7 +234,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-05T04:59:16.081370"
+      "timestamp": "2026-02-05T05:29:20.591061"
     }
   },
   "weather": {
@@ -264,14 +268,13 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-02-05T04:59:13.426008"
+      "timestamp": "2026-02-05T05:29:17.825965"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      4,
       4,
       6,
       3,
@@ -290,12 +293,13 @@
       2,
       3,
       3,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-05T04:59:13.513316"
+      "timestamp": "2026-02-05T05:29:17.932410"
     }
   },
   "pentagon": {
@@ -305,7 +309,7 @@
       30,
       30,
       30,
-      30,
+      10,
       10,
       10,
       10,
@@ -344,13 +348,13 @@
           "score": 20
         }
       ],
-      "timestamp": "2026-02-05T04:59:16.083557",
+      "timestamp": "2026-02-05T05:29:20.593132",
       "is_late_night": true,
       "is_weekend": false
     }
   },
   "total_risk": {
-    "risk": 8,
+    "risk": 6,
     "history": [
       {
         "timestamp": 1770033600000,
@@ -383,11 +387,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770267556085,
-        "risk": 8
+        "timestamp": 1770269360594,
+        "risk": 6
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-05T04:59:16.085616"
+  "last_updated": "2026-02-05T05:29:20.594184"
 }
