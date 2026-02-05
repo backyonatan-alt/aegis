@@ -1,9 +1,8 @@
 {
   "news": {
-    "risk": 18,
-    "detail": "22 articles, 10 critical",
+    "risk": 19,
+    "detail": "23 articles, 11 critical",
     "history": [
-      18,
       18,
       20,
       20,
@@ -22,7 +21,8 @@
       18,
       18,
       18,
-      18
+      18,
+      19
     ],
     "raw_data": {
       "articles": [
@@ -111,13 +111,17 @@
           "is_alert": false
         },
         {
+          "title": "Germany\u2019s Merz warns of potential escalation as US, Iran prepare for talks",
+          "is_alert": true
+        },
+        {
           "title": "US-Iran talks face \u2018serious obstacles in the way of diplomacy\u2019",
           "is_alert": false
         }
       ],
-      "total_count": 22,
-      "alert_count": 10,
-      "timestamp": "2026-02-05T18:31:21.329846"
+      "total_count": 23,
+      "alert_count": 11,
+      "timestamp": "2026-02-05T19:01:25.927406"
     }
   },
   "connectivity": {
@@ -148,10 +152,9 @@
     "raw_data": {}
   },
   "flight": {
-    "risk": 3,
-    "detail": "130 aircraft over Iran",
+    "risk": 5,
+    "detail": "112 aircraft over Iran",
     "history": [
-      17,
       12,
       22,
       22,
@@ -170,24 +173,25 @@
       6,
       4,
       9,
-      3
+      3,
+      5
     ],
     "raw_data": {
-      "aircraft_count": 130,
-      "airline_count": 45,
+      "aircraft_count": 112,
+      "airline_count": 41,
       "airlines": [
-        "AXB",
-        "WZZ",
+        "NSZ",
         "IGO",
-        "FAD",
         "WMT",
-        "DLH",
-        "VAJ",
-        "IAW",
-        "AIC",
-        "UAE"
+        "BYD",
+        "BBC",
+        "UAE",
+        "VLB",
+        "SSG",
+        "ETD",
+        "CCA"
       ],
-      "timestamp": "2026-02-05T18:31:21.610946"
+      "timestamp": "2026-02-05T19:01:26.187301"
     }
   },
   "tanker": {
@@ -218,7 +222,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-05T18:31:23.874196"
+      "timestamp": "2026-02-05T19:01:28.452457"
     }
   },
   "weather": {
@@ -239,11 +243,11 @@
       0,
       0,
       0,
+      100,
+      100,
+      100,
+      100,
       0,
-      100,
-      100,
-      100,
-      100,
       0
     ],
     "raw_data": {
@@ -252,7 +256,7 @@
       "clouds": 40,
       "description": "scattered clouds",
       "condition": "Marginal",
-      "timestamp": "2026-02-05T18:31:21.193762"
+      "timestamp": "2026-02-05T19:01:25.724130"
     }
   },
   "polymarket": {
@@ -268,7 +272,6 @@
       3,
       3,
       3,
-      3,
       2,
       2,
       3,
@@ -278,12 +281,13 @@
       4,
       3,
       2,
+      3,
       3
     ],
     "raw_data": {
       "odds": 3,
       "market": "Will the US next strike Iran on February 7, 2026 (ET)?",
-      "timestamp": "2026-02-05T18:31:21.192883"
+      "timestamp": "2026-02-05T19:01:25.925376"
     }
   },
   "pentagon": {
@@ -293,7 +297,6 @@
       10,
       10,
       10,
-      10,
       30,
       30,
       30,
@@ -306,6 +309,7 @@
       10,
       10,
       10,
+      30,
       30,
       30,
       30,
@@ -332,7 +336,7 @@
           "score": 55
         }
       ],
-      "timestamp": "2026-02-05T18:31:23.875784",
+      "timestamp": "2026-02-05T19:01:28.454206",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -371,11 +375,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770316283876,
+        "timestamp": 1770318088455,
         "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-05T18:31:23.876929"
+  "last_updated": "2026-02-05T19:01:28.455379"
 }
