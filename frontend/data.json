@@ -1,10 +1,9 @@
 {
   "news": {
-    "risk": 23,
-    "detail": "23 articles, 12 critical",
+    "risk": 21,
+    "detail": "24 articles, 12 critical",
     "history": [
       20,
-      20,
       18,
       17,
       17,
@@ -22,10 +21,15 @@
       20,
       21,
       21,
-      23
+      23,
+      21
     ],
     "raw_data": {
       "articles": [
+        {
+          "title": "US and Iran agree to hold nuclear talks in Oman on Friday",
+          "is_alert": false
+        },
         {
           "title": "US says it shot down Iranian drone flying towards aircraft carrier",
           "is_alert": true
@@ -119,9 +123,9 @@
           "is_alert": true
         }
       ],
-      "total_count": 23,
+      "total_count": 24,
       "alert_count": 12,
-      "timestamp": "2026-02-05T14:00:38.729207"
+      "timestamp": "2026-02-05T14:30:43.198571"
     }
   },
   "connectivity": {
@@ -153,9 +157,8 @@
   },
   "flight": {
     "risk": 3,
-    "detail": "120 aircraft over Iran",
+    "detail": "124 aircraft over Iran",
     "history": [
-      29,
       16,
       9,
       5,
@@ -174,24 +177,25 @@
       21,
       6,
       4,
+      3,
       3
     ],
     "raw_data": {
-      "aircraft_count": 120,
-      "airline_count": 45,
+      "aircraft_count": 124,
+      "airline_count": 47,
       "airlines": [
-        "SWR",
         "AIC",
+        "SWR",
+        "KIS",
+        "PAL",
         "FYC",
+        "FR1",
+        "UAF",
+        "BBC",
         "IAW",
-        "T7C",
-        "YAS",
-        "MNB",
-        "ELY",
-        "UAE",
-        "PBD"
+        "ELY"
       ],
-      "timestamp": "2026-02-05T14:00:38.689321"
+      "timestamp": "2026-02-05T14:30:43.408756"
     }
   },
   "tanker": {
@@ -222,7 +226,7 @@
     "raw_data": {
       "tanker_count": 0,
       "callsigns": [],
-      "timestamp": "2026-02-05T14:00:40.985524"
+      "timestamp": "2026-02-05T14:30:45.686718"
     }
   },
   "weather": {
@@ -256,14 +260,13 @@
       "clouds": 20,
       "description": "few clouds",
       "condition": "Favorable",
-      "timestamp": "2026-02-05T14:00:38.274020"
+      "timestamp": "2026-02-05T14:30:42.951084"
     }
   },
   "polymarket": {
     "risk": 2,
     "detail": "2% odds",
     "history": [
-      3,
       2,
       2,
       2,
@@ -282,12 +285,13 @@
       3,
       3,
       3,
+      2,
       2
     ],
     "raw_data": {
       "odds": 2,
       "market": "Will the US next strike Iran on February 6, 2026 (ET)?",
-      "timestamp": "2026-02-05T14:00:38.433041"
+      "timestamp": "2026-02-05T14:30:43.106723"
     }
   },
   "pentagon": {
@@ -306,7 +310,7 @@
       10,
       10,
       10,
-      10,
+      30,
       30,
       30,
       30,
@@ -336,7 +340,7 @@
           "score": 50
         }
       ],
-      "timestamp": "2026-02-05T14:00:40.986956",
+      "timestamp": "2026-02-05T14:30:45.688890",
       "is_late_night": false,
       "is_weekend": false
     }
@@ -375,11 +379,11 @@
         "pinned": true
       },
       {
-        "timestamp": 1770300040987,
+        "timestamp": 1770301845689,
         "risk": 8
       }
     ],
     "elevated_count": 0
   },
-  "last_updated": "2026-02-05T14:00:40.987882"
+  "last_updated": "2026-02-05T14:30:45.689648"
 }
