@@ -1,0 +1,7 @@
+# Caddy reverse proxy for Aegis API
+# Cloudflare Proxy (orange cloud) terminates TLS at edge,
+# then connects to this server on port 80.
+
+:80 {
+    reverse_proxy localhost:8080
+}

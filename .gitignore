@@ -3,3 +3,6 @@
 worker/.dev.vars
 .wrangler/
 node_modules/
+backend/aegis
+__pycache__/
+gcp-key.json
