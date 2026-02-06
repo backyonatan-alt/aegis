@@ -2,8 +2,8 @@
 // DATA FETCHING
 // =============================================
 
-// Read data from local static file (no Worker dependency)
 const DATA_URL = 'https://api.usstrikeradar.com/api/data';
+const PULSE_URL = 'https://api.usstrikeradar.com/api/pulse';
 
 async function getData() {
     try {
@@ -26,4 +26,30 @@ async function getData() {
         total_risk: { risk: 20, history: [], elevated_count: 0 },
         last_updated: new Date().toISOString()
     };
+}
+
+// Log visit and get pulse stats (Global Anxiety Pulse)
+async function logPulseVisit() {
+    try {
+        const res = await fetch(PULSE_URL, { method: 'POST' });
+        if (res.ok) {
+            return await res.json();
+        }
+    } catch (e) {
+        console.log('Error logging pulse:', e.message);
+    }
+    return null;
+}
+
+// Get pulse stats without logging a visit
+async function getPulseStats() {
+    try {
+        const res = await fetch(PULSE_URL);
+        if (res.ok) {
+            return await res.json();
+        }
+    } catch (e) {
+        console.log('Error fetching pulse:', e.message);
+    }
+    return null;
 }

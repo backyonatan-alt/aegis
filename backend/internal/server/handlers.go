@@ -56,3 +56,39 @@ func (s *Server) handleHealth(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resp)
 }
+
+func (s *Server) handlePulse(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusNoContent)
+		return
+	}
+
+	if r.Method != http.MethodPost && r.Method != http.MethodGet {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Extract country code from headers
+	// Cloudflare: CF-IPCountry, other proxies may use X-Country
+	countryCode := r.Header.Get("CF-IPCountry")
+	if countryCode == "" {
+		countryCode = r.Header.Get("X-Country")
+	}
+	if countryCode == "" {
+		countryCode = "XX"
+	}
+
+	var stats interface{}
+	if r.Method == http.MethodPost {
+		// POST logs a visit and returns stats
+		stats = s.pulse.LogVisit(countryCode)
+		slog.Debug("pulse visit logged", "country", countryCode)
+	} else {
+		// GET just returns current stats without logging
+		stats = s.pulse.GetStats()
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+	json.NewEncoder(w).Encode(stats)
+}
