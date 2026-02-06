@@ -22,6 +22,30 @@ type TotalRisk struct {
 	ElevatedCount int             `json:"elevated_count"`
 }
 
+// PulseIsrael holds Israel-specific pulse statistics.
+type PulseIsrael struct {
+	Count int     `json:"count"`
+	Surge float64 `json:"surge"`
+}
+
+// PulseCountry holds statistics for a single country.
+type PulseCountry struct {
+	CC    string  `json:"cc"`
+	Flag  string  `json:"flag"`
+	Count int     `json:"count"`
+	Surge float64 `json:"surge"`
+}
+
+// Pulse holds the Global Anxiety Pulse visitor tracking data.
+type Pulse struct {
+	WatchingNow        int            `json:"watching_now"`
+	ActivityMultiplier float64        `json:"activity_multiplier"`
+	ActivityLevel      string         `json:"activity_level"`
+	Israel             PulseIsrael    `json:"israel"`
+	Countries          []PulseCountry `json:"countries"`
+	TotalCountries     int            `json:"total_countries"`
+}
+
 // Snapshot is the full API response served to the frontend.
 type Snapshot struct {
 	News         Signal    `json:"news"`
@@ -33,6 +57,7 @@ type Snapshot struct {
 	Pentagon     Signal    `json:"pentagon"`
 	TotalRisk    TotalRisk `json:"total_risk"`
 	LastUpdated  string    `json:"last_updated"`
+	Pulse        *Pulse    `json:"pulse,omitempty"`
 }
 
 // RiskScores holds the output of the risk calculator before history is applied.

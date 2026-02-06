@@ -149,6 +149,27 @@
             <div class="gauge-window">Projected Risk: Next 8 Hours</div>
         </div>
 
+        <div class="pulse-row" id="pulseRow">
+            <div class="pulse-item pulse-watching">
+                <span class="pulse-icon">👁️</span>
+                <span class="pulse-value" id="pulseWatching">--</span>
+                <span class="pulse-label">watching</span>
+            </div>
+            <div class="pulse-item pulse-activity">
+                <span class="pulse-icon">⚡</span>
+                <span class="pulse-value" id="pulseMultiplier">--</span>
+                <span class="pulse-label" id="pulseLevel">normal</span>
+            </div>
+            <div class="pulse-item pulse-israel">
+                <span class="pulse-flag">🇮🇱</span>
+                <span class="pulse-surge" id="pulseIsrael">--%</span>
+            </div>
+            <div class="pulse-item pulse-rotating">
+                <span class="pulse-flag" id="pulseRotatingFlag">🌍</span>
+                <span class="pulse-surge" id="pulseRotatingSurge">--%</span>
+            </div>
+        </div>
+
         <div class="trend-section">
             <div class="trend-header">
                 <span class="trend-title">72 Hour Risk Trends</span>
@@ -318,6 +339,7 @@
     <script src="js/sparklines.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/chart.js"></script>
+    <script src="js/pulse.js"></script>
     <script src="js/data.js"></script>
     <script src="js/display.js"></script>
     <script src="js/main.js"></script>
