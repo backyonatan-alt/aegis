@@ -10,4 +10,8 @@ type Store interface {
 	LatestSnapshot(ctx context.Context) ([]byte, error)
 	// Migrate runs database migrations.
 	Migrate(ctx context.Context) error
+	// SaveRadarIdea stores a user-submitted radar idea.
+	SaveRadarIdea(ctx context.Context, idea, countryCode string) error
+	// MigrateRadarIdeas creates the radar_ideas table.
+	MigrateRadarIdeas(ctx context.Context) error
 }

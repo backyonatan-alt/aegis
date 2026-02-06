@@ -3,6 +3,7 @@
 
 (function() {
     const STORAGE_KEY = 'radarIdeaSubmitted';
+    const API_URL = 'https://api.usstrikeradar.com/api/radar-ideas';
 
     // Check if user already submitted
     function hasSubmitted() {
@@ -48,22 +49,14 @@
         submitBtn.disabled = true;
         submitBtn.textContent = '...';
 
-        // Prepare data for backend
-        const payload = {
-            idea: idea,
-            timestamp: new Date().toISOString(),
-            // Backend can add: IP, country, etc.
-        };
-
-        // TODO: Your friend will replace this with actual API call
-        // Example:
-        // fetch('/api/radar-ideas', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(payload)
-        // });
-
-        console.log('Radar idea submitted:', payload);
+        // Submit to backend
+        fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ idea: idea })
+        }).catch(function(err) {
+            console.log('Error submitting idea:', err.message);
+        });
 
         // Mark as submitted
         localStorage.setItem(STORAGE_KEY, 'true');

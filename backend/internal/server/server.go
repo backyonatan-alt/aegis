@@ -31,6 +31,7 @@ func (s *Server) Router() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/data", s.handleData)
 	mux.HandleFunc("/api/pulse", s.handlePulse)
+	mux.HandleFunc("/api/radar-ideas", s.handleRadarIdea)
 	mux.HandleFunc("/healthz", s.handleHealth)
 	return s.corsMiddleware(mux)
 }

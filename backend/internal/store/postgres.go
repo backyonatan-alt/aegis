@@ -44,3 +44,25 @@ func (p *Postgres) LatestSnapshot(ctx context.Context) ([]byte, error) {
 	}
 	return response, err
 }
+
+func (p *Postgres) SaveRadarIdea(ctx context.Context, idea, countryCode string) error {
+	_, err := p.db.ExecContext(ctx,
+		"INSERT INTO radar_ideas (idea, country_code) VALUES ($1, $2)",
+		idea, countryCode,
+	)
+	return err
+}
+
+func (p *Postgres) MigrateRadarIdeas(ctx context.Context) error {
+	query := `
+		CREATE TABLE IF NOT EXISTS radar_ideas (
+			id           BIGSERIAL PRIMARY KEY,
+			idea         TEXT NOT NULL,
+			country_code VARCHAR(10) NOT NULL DEFAULT 'XX',
+			created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+		);
+		CREATE INDEX IF NOT EXISTS idx_radar_ideas_created_at ON radar_ideas (created_at DESC);
+	`
+	_, err := p.db.ExecContext(ctx, query)
+	return err
+}
