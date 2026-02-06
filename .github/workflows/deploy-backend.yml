@@ -1,0 +1,45 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Build binary
+        working-directory: backend
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o aegis ./cmd/aegis
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy with health check and auto-rollback
+        run: |
+          # Copy new binary and deploy script
+          gcloud compute scp backend/aegis aegis-worker:/tmp/aegis-new \
+            --zone=us-central1-a --quiet
+          gcloud compute scp backend/deploy/deploy.sh aegis-worker:/tmp/deploy.sh \
+            --zone=us-central1-a --quiet
+
+          # Run deploy script (handles backup, swap, health check, rollback)
+          gcloud compute ssh aegis-worker --zone=us-central1-a --quiet --command='
+            chmod +x /tmp/deploy.sh && /tmp/deploy.sh
+          '
