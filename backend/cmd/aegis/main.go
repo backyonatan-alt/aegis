@@ -53,6 +53,10 @@ func main() {
 		slog.Error("failed to run migrations", "error", err)
 		os.Exit(1)
 	}
+	if err := pgStore.MigrateRadarIdeas(context.Background()); err != nil {
+		slog.Error("failed to run radar ideas migration", "error", err)
+		os.Exit(1)
+	}
 
 	c := cache.New()
 	f := fetcher.New(cfg)

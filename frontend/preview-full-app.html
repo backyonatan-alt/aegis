@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StrikeRadar - Full Preview (v2)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root {
+            --bg: #0a0a0a; --card: #141414; --card-elevated: #1c1c1c;
+            --border: #252525; --text: #ffffff; --text-secondary: #999; --text-muted: #666;
+            --accent: #3b82f6; --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444;
+        }
+        html, body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .app { padding: 16px; padding-bottom: 80px; max-width: 100%; }
+
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; }
+        .header-right { display: flex; align-items: center; gap: 10px; }
+        .live-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--green); }
+        .live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* Timestamp bar */
+        .timestamp-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--card); border-radius: 10px; margin-bottom: 16px; font-size: 12px; }
+        .timestamp-bar .time { color: var(--text); font-weight: 600; }
+        .timestamp-bar .tz { color: var(--text-muted); }
+
+        /* Main gauge card */
+        .gauge-card { background: var(--card); border-radius: 20px; padding: 24px 20px; text-align: center; margin-bottom: 16px; }
+        .gauge-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .gauge-subtitle { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; }
+        .status-label { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+        .status-label.low { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+        .gauge-container { position: relative; width: 200px; height: 115px; margin: 0 auto 12px; }
+        .gauge-svg { width: 100%; height: 100%; overflow: visible; }
+        .gauge-track { fill: none; stroke: var(--card-elevated); stroke-width: 20; stroke-linecap: round; }
+        .gauge-fill { fill: none; stroke-width: 20; stroke-linecap: round; stroke: var(--green); }
+        .gauge-value { font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 700; line-height: 1; color: var(--green); }
+        .gauge-window { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+
+        /* Trend chart */
+        .trend-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .trend-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .trend-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+        .chart-wrap { height: 100px; position: relative; background: var(--card-elevated); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; }
+
+        /* Signals */
+        .signals-section { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+        .section-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px; }
+        .signal-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .signal-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .signal-item:first-of-type { padding-top: 0; }
+        .signal-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px; }
+        .signal-icon.news { background: rgba(59, 130, 246, 0.15); }
+        .signal-icon.connectivity { background: rgba(168, 85, 247, 0.15); }
+        .signal-icon.flight { background: rgba(34, 197, 94, 0.15); }
+        .signal-icon.tanker { background: rgba(249, 115, 22, 0.15); }
+        .signal-icon.pentagon { background: rgba(239, 68, 68, 0.15); }
+        .signal-icon.market { background: rgba(234, 179, 8, 0.15); }
+        .signal-icon.weather { background: rgba(14, 165, 233, 0.15); }
+        .signal-info { flex: 1; min-width: 0; }
+        .signal-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+        .signal-detail { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .signal-value { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; text-align: right; min-width: 40px; }
+        .signal-value.green { color: var(--green); }
+        .signal-value.yellow { color: var(--yellow); }
+        .signal-value.orange { color: var(--orange); }
+
+        /* Radar Idea Card */
+        .radar-idea-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .radar-idea-card.hidden { display: none; }
+        .radar-idea-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(34, 197, 94, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .radar-idea-content { flex: 1; min-width: 0; }
+        .radar-idea-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+        .radar-idea-form { display: flex; gap: 8px; }
+        .radar-idea-input {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 13px;
+            color: var(--text);
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .radar-idea-input::placeholder { color: var(--text-muted); }
+        .radar-idea-input:focus { border-color: var(--green); }
+        .radar-idea-submit {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--green);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .radar-idea-submit:hover {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+        .radar-idea-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        .radar-idea-thanks {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Footer buttons */
+        .footer-buttons { display: flex; gap: 10px; margin-top: 8px; }
+        .show-more-btn {
+            flex: 1;
+            padding: 10px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .show-more-btn:hover { color: var(--text); }
+
+        /* Footer links */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding-bottom: 8px;
+            font-size: 12px;
+        }
+        .footer-links a { color: var(--text-muted); text-decoration: none; }
+        .footer-links a:hover { color: var(--text-secondary); text-decoration: underline; }
+        .footer-separator { color: var(--border); }
+
+        @media (min-width: 768px) {
+            .app { max-width: 480px; margin: 0 auto; padding: 24px; }
+            .gauge-container { width: 240px; height: 135px; }
+            .gauge-value { font-size: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">📡 StrikeRadar</h1>
+            <div class="header-right">
+                <div class="live-badge"><div class="live-dot"></div>Live</div>
+            </div>
+        </header>
+
+        <!-- Timestamp -->
+        <div class="timestamp-bar">
+            <span class="time">Updated 12 min ago</span>
+            <span class="tz">Next update in 18 min</span>
+        </div>
+
+        <!-- Main Gauge -->
+        <div class="gauge-card">
+            <div class="gauge-title">US Strike on Iran Probability</div>
+            <div class="gauge-subtitle">Composite risk assessment</div>
+            <div class="status-label low">Low Risk</div>
+            <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 200 115">
+                    <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"></path>
+                    <path class="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" stroke-dasharray="251.2" stroke-dashoffset="230"></path>
+                </svg>
+            </div>
+            <div class="gauge-value">8%</div>
+            <div class="gauge-window">Next 8 Hours</div>
+        </div>
+
+        <!-- Trend Chart -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <span class="trend-title">72 Hour Risk Trend</span>
+            </div>
+            <div class="chart-wrap">[Chart Preview]</div>
+        </section>
+
+        <!-- Signals -->
+        <section class="signals-section">
+            <h2 class="section-title">Data Signals</h2>
+
+            <div class="signal-item">
+                <div class="signal-icon news">📰</div>
+                <div class="signal-info">
+                    <div class="signal-name">News Intel</div>
+                    <div class="signal-detail">25 articles, 11 critical keywords</div>
+                </div>
+                <div class="signal-value yellow">16%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon connectivity">🌐</div>
+                <div class="signal-info">
+                    <div class="signal-name">Digital Connectivity</div>
+                    <div class="signal-detail">STABLE (+0.0%)</div>
+                </div>
+                <div class="signal-value green">0%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon flight">✈️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Civil Aviation</div>
+                    <div class="signal-detail">110 aircraft over Iran</div>
+                </div>
+                <div class="signal-value green">7%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon tanker">🛩️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Military Tankers</div>
+                    <div class="signal-detail">0 detected in region</div>
+                </div>
+                <div class="signal-value green">0%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon pentagon">🍕</div>
+                <div class="signal-info">
+                    <div class="signal-name">Pentagon Pizza Meter</div>
+                    <div class="signal-detail">Normal activity</div>
+                </div>
+                <div class="signal-value orange">30%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon market">📊</div>
+                <div class="signal-info">
+                    <div class="signal-name">Market Odds</div>
+                    <div class="signal-detail">3% on Polymarket</div>
+                </div>
+                <div class="signal-value green">3%</div>
+            </div>
+
+            <div class="signal-item">
+                <div class="signal-icon weather">🌤️</div>
+                <div class="signal-info">
+                    <div class="signal-name">Weather Conditions</div>
+                    <div class="signal-detail">moderate rain in Tehran</div>
+                </div>
+                <div class="signal-value green">0%</div>
+            </div>
+        </section>
+
+        <!-- NEW FEATURE: Radar Idea Card -->
+        <div class="radar-idea-card" id="radarIdeaCard">
+            <div class="radar-idea-icon">🎯</div>
+            <div class="radar-idea-content">
+                <div class="radar-idea-title">Design your radar: what would you track?</div>
+                <div class="radar-idea-form" id="radarIdeaForm">
+                    <input type="text" class="radar-idea-input" id="radarIdeaInput" placeholder="e.g., Social media sentiment..." maxlength="200">
+                    <button class="radar-idea-submit" id="radarIdeaSubmit" onclick="submitRadarIdea()">Submit</button>
+                </div>
+                <div class="radar-idea-thanks" id="radarIdeaThanks" style="display: none;">
+                    <span>Thanks for sharing!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer buttons -->
+        <div class="footer-buttons">
+            <button class="show-more-btn"><span>📤</span> Share</button>
+            <button class="show-more-btn"><span>✈️</span> Telegram</button>
+            <button class="show-more-btn"><span>ℹ️</span> About</button>
+        </div>
+
+        <!-- Footer links -->
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <span class="footer-separator">|</span>
+            <a href="#">Cookie Settings</a>
+        </div>
+    </div>
+
+    <script>
+        function submitRadarIdea() {
+            const input = document.getElementById('radarIdeaInput');
+            const form = document.getElementById('radarIdeaForm');
+            const thanks = document.getElementById('radarIdeaThanks');
+            const card = document.getElementById('radarIdeaCard');
+            const submitBtn = document.getElementById('radarIdeaSubmit');
+
+            const idea = input.value.trim();
+            if (!idea) {
+                input.focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
+
+            console.log('Radar idea submitted:', {
+                idea: idea,
+                timestamp: new Date().toISOString()
+            });
+
+            form.style.display = 'none';
+            thanks.style.display = 'flex';
+
+            setTimeout(function() {
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(-10px)';
+                setTimeout(function() {
+                    card.classList.add('hidden');
+                }, 500);
+            }, 2000);
+        }
+
+        document.getElementById('radarIdeaInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') submitRadarIdea();
+        });
+    </script>
+</body>
+</html>
