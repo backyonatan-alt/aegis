@@ -16,8 +16,11 @@ from js import Headers, Request, fetch
 
 from constants import (
     ALERT_KEYWORDS,
+    ALPHA_VANTAGE_BASE_URL,
     CLOUDFLARE_RADAR_BASE_URL,
     CLOUDFLARE_RADAR_LOCATION,
+    ENERGY_CRITICAL_THRESHOLD,
+    ENERGY_VOLATILE_THRESHOLD,
     IRAN_KEYWORDS,
     MONTHS,
     NEGATIVE_KEYWORDS,
@@ -676,3 +679,218 @@ async def fetch_cloudflare_connectivity(api_token: str) -> dict | None:
         log.error("Cloudflare connectivity error: %s", e)
         log.debug(traceback.format_exc())
         return None
+
+
+async def fetch_energy_data(api_key: str, debug_price: float | None = None) -> dict | None:
+    """Fetch Brent Crude oil price data from Alpha Vantage API.
+
+    Calculates the Energy Volatility Index based on rate of change
+    relative to the 24-hour moving average. Only tracks upside volatility
+    (price drops result in 0% risk contribution).
+
+    Args:
+        api_key: Alpha Vantage API key.
+        debug_price: Optional debug/simulation price to inject for testing.
+
+    Returns:
+        Dict with price, volatility index, and market status.
+    """
+    try:
+        log.info("=" * 50)
+        log.info("ENERGY MARKETS")
+        log.info("=" * 50)
+
+        now = datetime.now()
+
+        # Check if oil markets are closed (weekends)
+        # Oil markets trade Sunday 5pm EST to Friday 5pm EST
+        # Simplified: consider Saturday and Sunday before 5pm as closed
+        is_weekend = now.weekday() >= 5  # Saturday=5, Sunday=6
+
+        # Debug mode: inject fake price for testing
+        if debug_price is not None:
+            log.info("DEBUG MODE: Using injected price $%.2f", debug_price)
+            return _calculate_energy_metrics(
+                current_price=debug_price,
+                prices_history=[debug_price * 0.95] * 7,  # Simulate 5% below for testing
+                is_market_closed=False,
+                is_debug=True,
+                now=now,
+            )
+
+        if not api_key:
+            log.warning("Alpha Vantage API key not configured")
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "price": 0,
+                "change_pct": 0,
+                "volatility_index": 0,
+                "market_closed": is_weekend,
+                "timestamp": now.isoformat(),
+                "error": "API key not configured",
+            }
+
+        # Fetch Brent Crude daily prices (Alpha Vantage commodities API)
+        # Note: Commodities only support daily/weekly/monthly, not intraday
+        url = (
+            f"{ALPHA_VANTAGE_BASE_URL}"
+            f"?function=BRENT"
+            f"&interval=daily"
+            f"&apikey={api_key}"
+        )
+
+        log.info("Fetching Brent Crude from Alpha Vantage...")
+        response = await fetch(url)
+
+        if response.status != 200:
+            log.warning("Alpha Vantage API error: %d", response.status)
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "price": 0,
+                "change_pct": 0,
+                "volatility_index": 0,
+                "market_closed": is_weekend,
+                "timestamp": now.isoformat(),
+                "error": f"API returned {response.status}",
+            }
+
+        data = json.loads(await response.text())
+
+        # Check for API error messages
+        if "Error Message" in data or "Note" in data or "Information" in data:
+            error_msg = data.get("Error Message") or data.get("Note") or data.get("Information", "API limit reached")
+            log.warning("Alpha Vantage API message: %s", error_msg[:100])
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "price": 0,
+                "change_pct": 0,
+                "volatility_index": 0,
+                "market_closed": is_weekend,
+                "timestamp": now.isoformat(),
+                "error": error_msg[:100],
+            }
+
+        # Parse BRENT commodity data (returns "data" array, not time series)
+        price_data = data.get("data", [])
+        if not price_data:
+            log.warning("No price data in Alpha Vantage BRENT response")
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "price": 0,
+                "change_pct": 0,
+                "volatility_index": 0,
+                "market_closed": is_weekend,
+                "timestamp": now.isoformat(),
+                "error": "No price data",
+            }
+
+        # Extract prices (most recent first - data is already sorted desc)
+        # Use last 7 days for moving average (daily data, not intraday)
+        prices = []
+        for item in price_data[:7]:  # Last 7 days
+            try:
+                value = item.get("value")
+                if value and value != ".":
+                    prices.append(float(value))
+            except (KeyError, ValueError, TypeError):
+                continue
+
+        if len(prices) < 2:
+            log.warning("Not enough price data points")
+            return {
+                "status": "STALE",
+                "risk": 0,
+                "price": 0,
+                "change_pct": 0,
+                "volatility_index": 0,
+                "market_closed": is_weekend,
+                "timestamp": now.isoformat(),
+                "error": "Insufficient data points",
+            }
+
+        current_price = prices[0]
+        return _calculate_energy_metrics(
+            current_price=current_price,
+            prices_history=prices,
+            is_market_closed=is_weekend,
+            is_debug=False,
+            now=now,
+        )
+
+    except Exception as e:
+        log.error("Energy data fetch error: %s", e)
+        log.debug(traceback.format_exc())
+        return None
+
+
+def _calculate_energy_metrics(
+    current_price: float,
+    prices_history: list[float],
+    is_market_closed: bool,
+    is_debug: bool,
+    now: datetime,
+) -> dict:
+    """Calculate energy volatility metrics from price data.
+
+    Args:
+        current_price: Most recent oil price.
+        prices_history: List of recent prices (7 days for daily data).
+        is_market_closed: Whether markets are closed (weekend).
+        is_debug: Whether this is a debug/simulation run.
+        now: Current datetime.
+
+    Returns:
+        Dict with calculated energy metrics.
+    """
+    # Calculate moving average from historical prices
+    avg_price = sum(prices_history) / len(prices_history)
+
+    # Calculate percentage change from moving average
+    if avg_price > 0:
+        change_pct = (current_price - avg_price) / avg_price
+    else:
+        change_pct = 0
+
+    # Only track UPSIDE volatility (positive bias)
+    # Price drops result in 0% risk contribution
+    if change_pct < 0:
+        change_pct = 0
+        volatility_index = 0
+    else:
+        # Normalize: 5% jump = 1.0 (Critical)
+        volatility_index = min(1.0, change_pct / ENERGY_CRITICAL_THRESHOLD)
+
+    # Determine status based on thresholds
+    if is_market_closed:
+        status = "MARKET CLOSED"
+    elif change_pct >= ENERGY_CRITICAL_THRESHOLD:
+        status = "CRITICAL"
+    elif change_pct >= ENERGY_VOLATILE_THRESHOLD:
+        status = "VOLATILE"
+    else:
+        status = "STABLE"
+
+    # Calculate risk contribution (0-100 scale)
+    risk = round(volatility_index * 100)
+
+    log.info("Price: $%.2f, Avg: $%.2f, Change: %.2f%%",
+             current_price, avg_price, change_pct * 100)
+    log.info("Status: %s, Volatility Index: %.2f, Risk: %d%%",
+             status, volatility_index, risk)
+
+    return {
+        "status": status,
+        "risk": risk,
+        "price": round(current_price, 2),
+        "avg_price": round(avg_price, 2),
+        "change_pct": round(change_pct * 100, 2),
+        "volatility_index": round(volatility_index, 3),
+        "market_closed": is_market_closed,
+        "is_debug": is_debug,
+        "prices_history": [round(p, 2) for p in prices_history[:7]],
+        "timestamp": now.isoformat(),
+    }

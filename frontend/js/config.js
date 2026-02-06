@@ -8,6 +8,7 @@ const state = {
     signalHistory: {
         news: [],
         connectivity: [],
+        energy: [],
         flight: [],
         tanker: [],
         pentagon: [],
@@ -25,14 +26,15 @@ const INFO_CONTENT = {
     },
     calculation: {
         title: 'How We Calculate Risk',
-        content: `<strong>Total Risk = Weighted Sum of 7 Signals</strong><br><br>
-        <strong>News Intel (20%):</strong> Breaking news with critical keywords increases risk.<br><br>
-        <strong>Digital Connectivity (20%):</strong> Internet disruptions in Iran = government action = higher risk.<br><br>
-        <strong>Civil Aviation (15%):</strong> Fewer flights over Iran = airlines avoiding = higher risk.<br><br>
-        <strong>Military Tankers (15%):</strong> More US tankers in the region = higher risk.<br><br>
-        <strong>Market Odds (15%):</strong> Prediction market betting odds for strike within 7 days.<br><br>
-        <strong>Pentagon Activity (10%):</strong> Unusual late-night activity near Pentagon = higher risk.<br><br>
-        <strong>Weather (5%):</strong> Clear skies in Tehran = favorable for operations = higher risk.<br><br>
+        content: `<strong>Total Risk = Weighted Sum of 8 Signals</strong><br><br>
+        <strong>News Intel (17%):</strong> Breaking news with critical keywords increases risk.<br><br>
+        <strong>Digital Connectivity (17%):</strong> Internet disruptions in Iran = government action = higher risk.<br><br>
+        <strong>Energy Markets (15%):</strong> Oil price spikes indicate institutional hedging against supply disruptions.<br><br>
+        <strong>Civil Aviation (13%):</strong> Fewer flights over Iran = airlines avoiding = higher risk.<br><br>
+        <strong>Military Tankers (13%):</strong> More US tankers in the region = higher risk.<br><br>
+        <strong>Market Odds (13%):</strong> Prediction market betting odds for strike within 7 days.<br><br>
+        <strong>Pentagon Activity (8%):</strong> Unusual late-night activity near Pentagon = higher risk.<br><br>
+        <strong>Weather (4%):</strong> Clear skies in Tehran = favorable for operations = higher risk.<br><br>
         <strong>Escalation Multiplier:</strong> If 3+ signals are elevated, total gets a 15% boost.<br><br>
         <strong>Risk Levels:</strong><br>
         • 0-30% = Low<br>
@@ -44,7 +46,7 @@ const INFO_CONTENT = {
         Scans BBC World and Al Jazeera for Iran-related news.<br><br>
         <strong>What we look for:</strong> Headlines containing "strike", "attack", "military", "missile", "war", "imminent"<br><br>
         <strong>How it works:</strong> More critical articles = higher risk. The ratio of alarming headlines to total coverage drives the score.<br><br>
-        <strong>Weight:</strong> 20% of total risk`,
+        <strong>Weight:</strong> 17% of total risk`,
     connectivity: `<strong>Digital Connectivity</strong><br><br>
         Monitors internet traffic in Iran via Cloudflare Radar.<br><br>
         <strong>Why it matters:</strong> Internet shutdowns are statistically significant leading indicators of government-directed tactical actions. They provide an 8-hour lead time on escalations.<br><br>
@@ -53,32 +55,42 @@ const INFO_CONTENT = {
         • Anomalous (-15% to -50%): Elevated risk<br>
         • Critical (-50% to -90%): High risk<br>
         • Blackout (< -90%): Maximum risk<br><br>
-        <strong>Weight:</strong> 20% of total risk`,
+        <strong>Weight:</strong> 17% of total risk`,
     flight: `<strong>Civil Aviation</strong><br><br>
         Tracks commercial flights over Iranian airspace via OpenSky Network.<br><br>
         <strong>Why it matters:</strong> Airlines avoid conflict zones. When flights drop, it often signals that carriers have intelligence suggesting danger.<br><br>
         <strong>How it works:</strong> Fewer aircraft = higher risk. Normal traffic (~100+ planes) = low risk.<br><br>
-        <strong>Weight:</strong> 15% of total risk`,
+        <strong>Weight:</strong> 13% of total risk`,
     tanker: `<strong>Military Tankers</strong><br><br>
         Monitors US Air Force refueling aircraft in the Middle East.<br><br>
         <strong>Why it matters:</strong> Tankers (KC-135, KC-46) enable fighters and bombers to operate far from base. A surge in tanker activity often precedes military operations.<br><br>
         <strong>How it works:</strong> More tankers detected = higher risk.<br><br>
-        <strong>Weight:</strong> 15% of total risk`,
+        <strong>Weight:</strong> 13% of total risk`,
     pentagon: `<strong>Pentagon Activity</strong><br><br>
         Monitors activity patterns near the Pentagon.<br><br>
         <strong>Why it matters:</strong> Unusual late-night or weekend activity can indicate crisis planning sessions.<br><br>
         <strong>How it works:</strong> Normal business hours = low risk. Elevated activity at odd hours = higher risk.<br><br>
-        <strong>Weight:</strong> 10% of total risk`,
+        <strong>Weight:</strong> 8% of total risk`,
     polymarket: `<strong>Prediction Markets</strong><br><br>
         Real-money betting odds on "US or Israel strike Iran" within 7 days.<br><br>
         <strong>Source:</strong> Polymarket<br><br>
         <strong>Why it matters:</strong> When people bet real money, they research carefully. Market odds aggregate the wisdom of thousands of informed traders.<br><br>
-        <strong>Weight:</strong> 15% of total risk`,
+        <strong>Weight:</strong> 13% of total risk`,
     weather: `<strong>Weather Conditions</strong><br><br>
         Current weather in Tehran, Iran.<br><br>
         <strong>Why it matters:</strong> Military operations favor clear skies for visibility and precision targeting. Poor weather provides natural cover.<br><br>
         <strong>How it works:</strong> Clear skies = higher risk. Cloudy/poor visibility = lower risk.<br><br>
-        <strong>Weight:</strong> 5% of total risk`
+        <strong>Weight:</strong> 4% of total risk`,
+    energy: `<strong>Energy Markets</strong><br><br>
+        Monitors Brent Crude oil price volatility via financial APIs.<br><br>
+        <strong>Why it matters:</strong> Oil markets often move faster than the news cycle. Price spikes typically indicate institutional players hedging against supply chain disruptions in the Middle East.<br><br>
+        <strong>How it works:</strong> We track the rate of change relative to the 7-day moving average:<br>
+        • Stable (&lt;2%): Normal market conditions<br>
+        • Volatile (2-5%): Elevated market anxiety<br>
+        • Critical (&gt;5%): Maximum risk signal<br><br>
+        <strong>Positive Bias:</strong> Only upside volatility is tracked. Price drops indicate lower immediate conflict risk and contribute 0% to the score.<br><br>
+        <strong>Market Hours:</strong> Oil markets close on weekends. The system freezes the last close price and displays "Market Closed" status.<br><br>
+        <strong>Weight:</strong> 15% of total risk`
 };
 
 const ALERT_COOLDOWN = 60 * 60 * 1000; // 1 hour between alerts

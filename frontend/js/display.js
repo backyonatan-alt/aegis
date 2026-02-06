@@ -16,7 +16,7 @@ function displayData(data) {
     console.log('Displaying data:', data);
 
     // Load signal history from restructured data
-    ['news', 'connectivity', 'flight', 'tanker', 'pentagon', 'polymarket', 'weather'].forEach(sig => {
+    ['news', 'connectivity', 'energy', 'flight', 'tanker', 'pentagon', 'polymarket', 'weather'].forEach(sig => {
         if (data[sig] && data[sig].history && data[sig].history.length > 0) {
             state.signalHistory[sig] = data[sig].history;
         }
@@ -33,6 +33,17 @@ function displayData(data) {
         const connectivityStatus = data.connectivity.raw_data?.status || 'STABLE';
         const isStale = connectivityStatus === 'STALE';
         setStatus('connectivityStatus', !isStale);
+    }
+
+    // Energy Markets signal
+    if (data.energy) {
+        const energyStatus = data.energy.raw_data?.status || 'STABLE';
+        const isStale = energyStatus === 'STALE';
+        const isMarketClosed = data.energy.raw_data?.market_closed || false;
+
+        // Custom display for energy: show status tag (STABLE/VOLATILE/CRITICAL/MARKET CLOSED)
+        updateEnergySignal(data.energy.risk, data.energy.detail, energyStatus, isMarketClosed);
+        setStatus('energyStatus', !isStale);
     }
 
     if (data.flight) {
